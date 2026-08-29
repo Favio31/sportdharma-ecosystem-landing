@@ -8,6 +8,7 @@ Read the full feature story on my journey: **[Magical - Storytellus Interview](h
 ---
 
 ### 🚀 The SportDharma Ecosystem
+**🚀 Live Website:** [https://favio31.github.io/sportdharma-ecosystem-landing/](https://favio31.github.io/sportdharma-ecosystem-landing/)
 Field resilience isn't just about surviving physical extremes; it is the ultimate training ground for software engineering, systems architecture, and strategic problem-solving. Today, that exact mindset drives the core of the **SportDharma Ecosystem**—integrating cloud infrastructure, advanced artificial intelligence, Flutter architecture, and rigorous data science.
 
 Whether mapping out an intricate bicycle route across continents or architecting scalable technical solutions, execution requires discipline, systemic logic, and absolute focus: **One pedal stroke at a time, one line of code at a time.**
