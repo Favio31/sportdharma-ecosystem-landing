@@ -1,0 +1,20 @@
+# SportDharma Ecosystem
+
+> Sovereign, offline-first, and open-source technology designed for extreme outdoor resilience, athletic autonomy, and edge AI analytics.
+
+## About
+SportDharma Ecosystem is an independent, open-source (FOSS) project created to provide robust technological infrastructure for athletes, cyclists, and explorers operating in environments with zero or intermittent cloud connectivity. By replacing traditional cloud-dependent architectures with local-first processing (*Edge AI* and local SLMs), the ecosystem guarantees absolute data sovereignty and continuous operational safety.
+
+## Core Pillars & Architecture
+- **SportDharma App**: Offline mapping, telemetry, and critical path telemetry running directly on mobile devices without external API dependency.
+- **Edge AI & Local Intelligence**: Localized processing of biometric variables and geospatial data leveraging embedded frameworks (Flutter, SQLite, LiteRT-LM).
+- **Network Resilience**: Designed for low-bandwidth environments, integrating autonomous node logic and sovereign field management.
+
+## Project Status & Funding
+- **Current Stage**: Early Stage infrastructure consolidation and FOSS architecture deployment.
+- **Grant Application**: Active submission and alignment under EU open-source frameworks (NGI / NLnet) to foster decentralized, privacy-first public digital infrastructure.
+
+## Links & Resources
+- Official Website: [https://www.sportdharmaecosystem.com](https://www.sportdharmaecosystem.com)
+- Institutional Contact: contact@sportdharmaecosystem.com
+- Primary Source Code & Repositories: [GitHub Profile](https://github.com)
