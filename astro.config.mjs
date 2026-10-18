@@ -1,40 +1,19 @@
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-import { VitePWA } from 'vite-plugin-pwa';
+import sitemap from '@astrojs/sitemap';
 
+// https://astro.build/config
 export default defineConfig({
-  site: 'https://www.sportdharmaecosystem.com',
-  output: 'static',
+  site: 'https://sportdharmaecosystem.com',
+  integrations: [
+    sitemap(),
+  ],
   vite: {
-    plugins: [
-      tailwindcss(),
-      VitePWA({
-        registerType: 'autoUpdate',
-        manifest: {
-          name: 'SportDharma Ecosystem',
-          short_name: 'SportDharma',
-          description: 'Infraestructura libre para quienes viven en ruta',
-          theme_color: '#0f172a',
-          background_color: '#ffffff',
-          display: 'standalone',
-          start_url: '/',
-          icons: [
-            {
-              src: '/logo.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/logo.png',
-              sizes: '512x512',
-              type: 'image/png'
-            }
-          ]
-        },
-        workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}']
-        }
-      })
-    ],
+    build: {
+      assetsInlineLimit: 4096,
+      chunkSizeWarningLimit: 5000,
+    },
+    ssr: {
+      noExternal: ['@astrojs/sitemap'],
+    },
   },
 });
