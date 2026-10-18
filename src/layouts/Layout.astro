@@ -1,0 +1,37 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SWRegister from '../components/SWRegister.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content="SportDharma Ecosystem: App offline y web open source para deportistas outdoor. Fusión de deporte y dharma (ética y deber personal). Sin rastreo, sin cuenta, sin servidores. 9 pilares. 0 trackers. 100% soberano." />
+    <meta name="keywords" content="sportdharma, open source, offline-first, ciclismo, outdoor, privacidad, software libre, edge AI, dharma, deporte ético" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0f172a" />
+  </head>
+  <body class="bg-white text-slate-900 flex flex-col min-h-screen">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+    <SWRegister />
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>

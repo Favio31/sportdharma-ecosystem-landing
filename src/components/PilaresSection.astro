@@ -1,0 +1,42 @@
+---
+// Sección de los 9 Pilares de SportDharma Ecosystem
+import PilarCard from './PilarCard.astro';
+
+const pilares = [
+  { numero: '1', titulo: 'Zero-tracking', descripcion: 'Sin Google Analytics, sin cookies de terceros, sin rastreadores. Tu privacidad es innegociable.', icono: '🛡️' },
+  { numero: '2', titulo: 'Local-first', descripcion: 'Tus datos viven en tu dispositivo. La nube es opcional. Funciona offline por diseño.', icono: '💾' },
+  { numero: '3', titulo: 'AGPLv3', descripcion: 'Código 100% abierto bajo licencia AGPLv3. Fork, modifica y redistribuye libremente.', icono: '⚖️' },
+  { numero: '4', titulo: 'Resiliencia outdoor', descripcion: 'Diseñado para funcionar en montaña, ruta y zonas con conectividad intermitente.', icono: '🏔️' },
+  { numero: '5', titulo: 'Cicloviajero-friendly', descripcion: 'Optimizado para quienes viven sobre dos ruedas: ligero, offline, multi-idioma.', icono: '🚴' },
+  { numero: '6', titulo: 'Curación humana', descripcion: 'Contenido seleccionado por humanos, no por algoritmos. Calidad sobre cantidad.', icono: '🧠' },
+  { numero: '7', titulo: 'Multi-idioma', descripcion: 'Español e inglés desde el día 1. Selector con localStorage, sin cookies.', icono: '🌍' },
+  { numero: '8', titulo: 'PWA offline', descripcion: 'Instalable como app. Service Worker para lectura sin conexión.', icono: '📱' },
+  { numero: '9', titulo: 'Comunidad abierta', descripcion: 'Decisiones en público. Issues abiertos. Contribuciones bienvenidas.', icono: '🤝' },
+];
+---
+
+<section id="pilares" class="py-20 px-6 bg-[#F5F1ED]">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="text-center mb-16">
+      <span class="text-[#334155] font-semibold uppercase tracking-wide text-sm">Los 9 Pilares</span>
+      <h2 class="text-3xl md:text-5xl font-bold text-[#0F172A] mt-3 mb-4">
+        Principios que nos <span class="text-[#334155]">definen</span>
+      </h2>
+      <p class="text-lg text-[#334155] max-w-2xl mx-auto">
+        Cada pilar es una decisión de diseño. Juntos forman un ecosistema coherente, soberano y resiliente.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {pilares.map((pilar) => (
+        <PilarCard
+          numero={pilar.numero}
+          titulo={pilar.titulo}
+          descripcion={pilar.descripcion}
+          icono={pilar.icono}
+        />
+      ))}
+    </div>
+  </div>
+</section>

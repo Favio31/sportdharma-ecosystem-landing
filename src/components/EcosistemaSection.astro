@@ -1,0 +1,40 @@
+---
+// Sección Ecosistema - Apps y herramientas
+import ArticleCard from './ArticleCard.astro';
+
+const apps = [
+  { titulo: 'SportDharma App', fuente: 'Flutter · Android/iOS', fecha: 'v1.0', resumen: 'App principal para cicloviajeros. Tracking offline, mapas topográficos, diario de ruta.', url: '#' },
+  { titulo: 'Bybit Dashboard', fuente: 'Web · React', fecha: 'Live', resumen: 'Panel de control financiero con datos en tiempo real. Sin APIs de terceros.', url: '#' },
+  { titulo: 'Ripio Wallet', fuente: 'Crypto · Mobile', fecha: 'v2.3', resumen: 'Billetera multi-cadena para pagos en ruta. Soporta BTC, ETH, USDC.', url: '#' },
+  { titulo: 'Tuta Mail', fuente: 'Email · Web', fecha: 'E2E', resumen: 'Correo encriptado end-to-end. Sin lectura de mensajes. Servidores en Alemania.', url: '#' },
+  { titulo: 'NotebookLM', fuente: 'IA · Google', fecha: 'Beta', resumen: 'Asistente de investigación con fuentes propias. Ideal para curar contenido.', url: '#' },
+  { titulo: 'Kaggle Notebooks', fuente: 'Data · Python', fecha: 'Free', resumen: 'Entorno de análisis de datos. Útil para métricas de comunidad y rutas.', url: '#' },
+];
+---
+
+<section id="ecosistema" class="py-20 px-6 bg-[#FAF8F5]">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="text-center mb-16">
+      <span class="text-[#334155] font-semibold uppercase tracking-wide text-sm">El Ecosistema</span>
+      <h2 class="text-3xl md:text-5xl font-bold text-[#0F172A] mt-3 mb-4">
+        Herramientas que <span class="text-[#334155]">usamos</span>
+      </h2>
+      <p class="text-lg text-[#334155] max-w-2xl mx-auto">
+        Apps y servicios que forman parte del flujo de trabajo SportDharma. Todos probados en ruta.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {apps.map((app) => (
+        <ArticleCard
+          titulo={app.titulo}
+          fuente={app.fuente}
+          fecha={app.fecha}
+          resumen={app.resumen}
+          url={app.url}
+        />
+      ))}
+    </div>
+  </div>
+</section>
