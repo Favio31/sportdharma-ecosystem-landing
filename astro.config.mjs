@@ -6,10 +6,13 @@ export default defineConfig({
   site: 'https://www.sportdharmaecosystem.com',
   output: 'static',
   vite: {
+    build: {
+      chunkSizeWarningLimit: 5000,
+    },
     plugins: [
       tailwindcss(),
       VitePWA({
-        registerType: 'autoUpdate',
+        registerType: 'autoupdate',
         manifest: {
           name: 'SportDharma Ecosystem',
           short_name: 'SportDharma',
@@ -32,9 +35,10 @@ export default defineConfig({
           ]
         },
         workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}']
+          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
+          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
         }
       })
-    ],
-  },
+    ]
+  }
 });
