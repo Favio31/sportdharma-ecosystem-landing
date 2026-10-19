@@ -55,37 +55,37 @@
     </div>
   </div>
 
-    <script is:inline>
-      (function() {
-        const getTheme = () => localStorage.getItem('theme') || 'system';
-      
-        const setTheme = (theme) => {
-          const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          document.documentElement.classList.toggle('dark', isDark);
-          localStorage.setItem('theme', theme);
-        
-          // Actualizar estado visual de los botones de forma segura
-          ['system', 'light', 'dark'].forEach(t => {
-            const btn = document.getElementById('btn-' + t);
-            if (btn) {
-              if (t === theme) {
-                btn.classList.add('bg-slate-700');
-              } else {
+        <script is:inline>
+          (function() {
+            function applyTheme(theme) {
+              const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+              document.documentElement.classList.toggle('dark', isDark);
+              localStorage.setItem('theme', theme);
+              document.querySelectorAll('[id^="btn-"]').forEach(btn => {
                 btn.classList.remove('bg-slate-700');
-              }
-            }
-          });
-        };
+              });
+              const activeBtn = document.getElementById('btn-' + theme);
+              if (activeBtn) activeBtn.classList.add('bg-slate-700');
+          }
 
-        // Ejecutar inmediatamente para evitar parpadeos
-        setTheme(getTheme());
+          function init() {
+            const saved = localStorage.getItem('theme') || 'system';
+            applyTheme(saved);
+      
+            const btnSystem = document.getElementById('btn-system');
+            const btnLight = document.getElementById('btn-light');
+            const btnDark = document.getElementById('btn-dark');
+      
+            if (btnSystem) btnSystem.onclick = function() { applyTheme('system'); };
+            if (btnLight) btnLight.onclick = function() { applyTheme('light'); };
+            if (btnDark) btnDark.onclick = function() { applyTheme('dark'); };
+          }
 
-        // Asignar eventos cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-          document.getElementById('btn-system')?.addEventListener('click', () => setTheme('system'));
-          document.getElementById('btn-light')?.addEventListener('click', () => setTheme('light'));
-          document.getElementById('btn-dark')?.addEventListener('click', () => setTheme('dark'));
-        });
-      })();
-    </script>
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+          } else {
+            init();
+          }
+        })();
+      </script>
 </header>
