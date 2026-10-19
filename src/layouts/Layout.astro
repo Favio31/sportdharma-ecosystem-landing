@@ -17,7 +17,51 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link rel="canonical" href="https://sportdharmaecosystem.com/" />
+    <link rel="canonical" href="https://www.sportdharmaecosystem.com/" />
+    <meta name="description" content="SportDharma Ecosystem: App offline y web open source para deportistas outdoor. Fusión de deporte y dharma (ética y deber personal). Sin rastreo, sin cuenta, sin servidores. 9 pilares. 0 trackers. 100% soberano." />
+    <meta name="keywords" content="sportdharma, open source, offline-first, ciclismo, outdoor, privacidad, software libre, edge AI, dharma, deporte ético" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0f172a" />
+    
+    <!-- ESTILO GLOBAL DEBE IR DENTRO DEL HEAD -->
+    <style is:global>
+      @import "../styles/global.css";
+    </style>
+
+    <!-- SCRIPT DE TEMA TAMBIÉN VA DENTRO DEL HEAD -->
+    <script is:inline>
+      (function() {
+        function applyTheme(theme) {
+          const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', isDark);
+          localStorage.setItem('theme', theme);
+          document.querySelectorAll('[id^="btn-"]').forEach(btn => {
+            btn.classList.remove('bg-slate-700');
+          });
+          const activeBtn = document.getElementById('btn-' + theme);
+          if (activeBtn) activeBtn.classList.add('bg-slate-700');
+        }
+
+        function init() {
+          const saved = localStorage.getItem('theme') || 'system';
+          applyTheme(saved);
+          
+          const btnSystem = document.getElementById('btn-system');
+          const btnLight = document.getElementById('btn-light');
+          const btnDark = document.getElementById('btn-dark');
+          
+          if (btnSystem) btnSystem.onclick = function() { applyTheme('system'); };
+          if (btnLight) btnLight.onclick = function() { applyTheme('light'); };
+          if (btnDark) btnDark.onclick = function() { applyTheme('dark'); };
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', init);
+        } else {
+          init();
+        }
+      })();
+    </script>
   </head>
   <body class="bg-white text-slate-900 flex flex-col min-h-screen">
     <Header />
@@ -26,20 +70,5 @@ const { title } = Astro.props;
     </main>
     <Footer />
     <SWRegister />
-    <script is:inline>
-      function applyTheme(theme) {
-        const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.classList.toggle('dark', isDark);
-        localStorage.setItem('theme', theme);
-        document.querySelectorAll('[id^="btn-"]').forEach(btn => {
-          btn.classList.remove('bg-slate-700');
-        });
-        const activeBtn = document.getElementById('btn-' + theme);
-        if (activeBtn) activeBtn.classList.add('bg-slate-700');
-      }
-      
-      const savedTheme = localStorage.getItem('theme') || 'system';
-      applyTheme(savedTheme);
-    </script>
   </body>
 </html>
