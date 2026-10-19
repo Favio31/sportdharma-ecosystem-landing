@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  site: 'https://sportdharmaecosystem.com',
+  site: 'https://www.sportdharmaecosystem.com',
   output: 'static',
   vite: {
     build: {
@@ -35,7 +35,8 @@ export default defineConfig({
           ]
         },
         workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}']
+          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
+          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024
         }
       })
     ]
