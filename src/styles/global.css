@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-/* Configurar modo oscuro - Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Variables de color */
 :root {
   --color-bg: #ffffff;
   --color-text: #0f172a;
@@ -15,13 +13,11 @@
   color-scheme: dark;
 }
 
-/* Aplicar colores base */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
 }
 
-/* Forzar colores en modo oscuro */
 .dark body {
   background-color: #0f172a !important;
   color: #f1f5f9 !important;

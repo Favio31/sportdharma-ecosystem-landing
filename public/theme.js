@@ -9,7 +9,6 @@ window.applyTheme = function(theme) {
   
   localStorage.setItem('theme', theme);
   
-  // Actualizar botones activos
   document.querySelectorAll('[id^="btn-"]').forEach(btn => btn.classList.remove('bg-slate-700'));
   const activeBtn = document.getElementById('btn-' + theme);
   if (activeBtn) activeBtn.classList.add('bg-slate-700');
@@ -17,6 +16,5 @@ window.applyTheme = function(theme) {
   console.log('✅ Tema aplicado:', theme);
 };
 
-// Aplicar tema guardado al cargar
 const savedTheme = localStorage.getItem('theme') || 'system';
 window.applyTheme(savedTheme);

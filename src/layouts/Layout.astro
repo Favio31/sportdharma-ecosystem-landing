@@ -23,12 +23,10 @@ const { title } = Astro.props;
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#0f172a" />
     
-    <!-- CSS Global con Tailwind v4 -->
     <style is:global>
       @import "../styles/global.css";
     </style>
     
-    <!-- Script de tema - se carga desde public/ -->
     <script src="/theme.js"></script>
   </head>
   <body class="bg-white text-slate-900 flex flex-col min-h-screen">
