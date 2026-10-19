@@ -55,19 +55,37 @@
     </div>
   </div>
 
-  <script>
-    const getTheme = () => localStorage.getItem('theme') || 'system';
-    const setTheme = (theme) => {
-      const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      document.documentElement.classList.toggle('dark', isDark);
-      localStorage.setItem('theme', theme);
-      ['btn-system', 'btn-light', 'btn-dark'].forEach(id => {
-        document.getElementById(id).classList.toggle('bg-slate-700', id === 'btn-' + theme);
-      });
-    };
-    setTheme(getTheme());
-    document.getElementById('btn-system').addEventListener('click', () => setTheme('system'));
-    document.getElementById('btn-light').addEventListener('click', () => setTheme('light'));
-    document.getElementById('btn-dark').addEventListener('click', () => setTheme('dark'));
-  </script>
+    <script is:inline>
+      (function() {
+        const getTheme = () => localStorage.getItem('theme') || 'system';
+      
+        const setTheme = (theme) => {
+          const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', isDark);
+          localStorage.setItem('theme', theme);
+        
+          // Actualizar estado visual de los botones de forma segura
+          ['system', 'light', 'dark'].forEach(t => {
+            const btn = document.getElementById('btn-' + t);
+            if (btn) {
+              if (t === theme) {
+                btn.classList.add('bg-slate-700');
+              } else {
+                btn.classList.remove('bg-slate-700');
+              }
+            }
+          });
+        };
+
+        // Ejecutar inmediatamente para evitar parpadeos
+        setTheme(getTheme());
+
+        // Asignar eventos cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+          document.getElementById('btn-system')?.addEventListener('click', () => setTheme('system'));
+          document.getElementById('btn-light')?.addEventListener('click', () => setTheme('light'));
+          document.getElementById('btn-dark')?.addEventListener('click', () => setTheme('dark'));
+        });
+      })();
+    </script>
 </header>
