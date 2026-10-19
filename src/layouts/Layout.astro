@@ -18,15 +18,17 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link rel="canonical" href="https://www.sportdharmaecosystem.com/" />
-    <meta name="description" content="SportDharma Ecosystem: App offline y web open source para deportistas outdoor. Fusión de deporte y dharma (ética y deber personal). Sin rastreo, sin cuenta, sin servidores. 9 pilares. 0 trackers. 100% soberano." />
-    <meta name="keywords" content="sportdharma, open source, offline-first, ciclismo, outdoor, privacidad, software libre, edge AI, dharma, deporte ético" />
+    <meta name="description" content="SportDharma Ecosystem: App offline y web open source para deportistas outdoor." />
+    <meta name="keywords" content="sportdharma, open source, offline-first, ciclismo, outdoor, privacidad" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#0f172a" />
     
+    <!-- CSS Global con Tailwind v4 -->
     <style is:global>
       @import "../styles/global.css";
     </style>
     
+    <!-- Script de tema - se carga desde public/ -->
     <script src="/theme.js"></script>
   </head>
   <body class="bg-white text-slate-900 flex flex-col min-h-screen">
