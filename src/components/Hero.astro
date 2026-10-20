@@ -1,10 +1,10 @@
 ---
-// Hero Section con imagen de fondo
+// Hero Section con imagen de fondo - 100% Responsive
 ---
 
-<section class="relative min-h-screen flex flex-col justify-center overflow-hidden">
+<section class="relative min-h-screen flex flex-col justify-center overflow-x-hidden">
   
-  <!-- Imagen de fondo con overlay oscuro para garantizar lectura en ambos modos -->
+  <!-- Imagen de fondo con overlay oscuro -->
   <div class="absolute inset-0 z-0">
     <img 
       src="/hero-bike.jpg" 
@@ -15,72 +15,68 @@
   </div>
 
   <!-- Contenido -->
-  <div class="relative z-10 px-6 max-w-6xl mx-auto py-32">
+  <div class="relative z-10 px-4 sm:px-6 max-w-6xl mx-auto py-20 sm:py-32 w-full">
     
-    <!-- Badge -->
-    <div class="flex justify-center mb-12">
-      <div class="inline-flex items-center gap-3 bg-slate-900/80 border border-slate-700 rounded-full px-6 py-3 backdrop-blur-sm">
-        <span class="flex items-center gap-3 text-slate-300 text-base font-mono tracking-wide">
-          <span class="flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-pulse"></span>
-            Software libre
-          </span>
-          <span class="text-slate-500">·</span>
-          <span class="flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-pulse"></span>
-            Local-first
-          </span>
-          <span class="text-slate-500">·</span>
-          <span class="flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-pulse"></span>
-            Privacidad total
-          </span>
+    <!-- Badge (Ahora con flex-wrap para móviles) -->
+    <div class="flex justify-center mb-8 sm:mb-12">
+      <div class="inline-flex flex-wrap justify-center items-center gap-2 sm:gap-3 bg-slate-900/80 border border-slate-700 rounded-full px-4 py-2 sm:px-6 sm:py-3 backdrop-blur-sm">
+        <span class="flex items-center gap-1.5 text-slate-300 text-xs sm:text-base font-mono tracking-wide">
+          <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-pulse"></span>
+          Software libre
+        </span>
+        <span class="text-slate-500 hidden sm:inline">·</span>
+        <span class="flex items-center gap-1.5 text-slate-300 text-xs sm:text-base font-mono tracking-wide">
+          <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-pulse"></span>
+          Local-first
+        </span>
+        <span class="text-slate-500 hidden sm:inline">·</span>
+        <span class="flex items-center gap-1.5 text-slate-300 text-xs sm:text-base font-mono tracking-wide">
+          <span class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-pulse"></span>
+          Privacidad total
         </span>
       </div>
     </div>
 
-    <!-- Título línea 1 -->
-    <h1 class="text-5xl md:text-7xl font-bold text-white text-center mb-2 leading-tight">
+    <!-- Títulos (Tamaño adaptativo y centrados en móvil) -->
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white text-center mb-2 leading-tight px-2">
       Infraestructura libre para
     </h1>
-    <!-- Título línea 2 -->
-    <h1 class="text-5xl md:text-7xl font-bold text-slate-300 text-right md:pr-24 lg:pr-40 mb-12 leading-tight">
+    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-300 text-center md:text-right md:pr-24 lg:pr-40 mb-8 md:mb-12 leading-tight px-2">
       quienes viven en libertad
     </h1>
 
-    <!-- Subtítulo -->
-    <div class="max-w-lg ml-[15%] text-center mb-10">
-      <p class="text-lg md:text-xl text-slate-300 leading-relaxed">
-        Nueve pilares. Arquitectura soberana. Resiliencia outdoor.<br />
-        Un ecosistema abierto para deportistas, equipos de<br />
-        primera respuesta, comunidades aisladas<br />
-        y territorios sin conectividad.
+    <!-- Subtítulo (Centrado, sin márgenes raros, flujo natural) -->
+    <div class="max-w-2xl mx-auto text-center mb-10 px-4">
+      <p class="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed">
+        Nueve pilares. Arquitectura soberana. Resiliencia outdoor. 
+        Un ecosistema abierto para deportistas, equipos de primera respuesta, 
+        comunidades aisladas y territorios sin conectividad.
       </p>
     </div>
 
-    <!-- Botones -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-end mb-16">
-      <a href="#pilares" class="bg-transparent border-2 border-slate-300 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-300 hover:text-slate-900 transition-colors">
+    <!-- Botones (Centrados en móvil, ancho completo para fácil toque) -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sm:mb-16 px-4">
+      <a href="#pilares" class="w-full sm:w-auto text-center bg-transparent border-2 border-slate-300 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold hover:bg-slate-300 hover:text-slate-900 transition-colors">
         Explorar los Nueve Pilares
       </a>
-      <a href="#ecosistema" class="bg-transparent border-2 border-slate-300 text-white px-8 py-4 rounded-lg font-semibold hover:bg-slate-300 hover:text-slate-900 transition-colors">
+      <a href="#ecosistema" class="w-full sm:w-auto text-center bg-transparent border-2 border-slate-300 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold hover:bg-slate-300 hover:text-slate-900 transition-colors">
         Ver el Ecosistema
       </a>
     </div>
 
-    <!-- Stats -->
-    <div class="flex justify-end gap-8 md:gap-16 lg:gap-24">
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-white">9</div>
-        <div class="text-sm text-slate-300 mt-1">Pilares</div>
+    <!-- Stats (Centradas y con wrap para que no se salgan de la pantalla) -->
+    <div class="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 px-4">
+      <div class="text-center min-w-[80px]">
+        <div class="text-3xl sm:text-4xl font-bold text-white">9</div>
+        <div class="text-xs sm:text-sm text-slate-300 mt-1">Pilares</div>
       </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-white">100%</div>
-        <div class="text-sm text-slate-300 mt-1">Código Abierto</div>
+      <div class="text-center min-w-[120px]">
+        <div class="text-3xl sm:text-4xl font-bold text-white">100%</div>
+        <div class="text-xs sm:text-sm text-slate-300 mt-1">Código Abierto</div>
       </div>
-      <div class="text-center">
-        <div class="text-3xl md:text-4xl font-bold text-white">0</div>
-        <div class="text-sm text-slate-300 mt-1">Cookies</div>
+      <div class="text-center min-w-[80px]">
+        <div class="text-3xl sm:text-4xl font-bold text-white">0</div>
+        <div class="text-xs sm:text-sm text-slate-300 mt-1">Cookies</div>
       </div>
     </div>
 
