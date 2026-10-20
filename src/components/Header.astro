@@ -2,7 +2,7 @@
 // Header SportDharma Ecosystem
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 bg-[#0B0F1A] dark:bg-[#0B0F1A]">
+<header class="fixed top-0 left-0 w-full z-50 bg-[#0B0F1A] dark:bg-surface transition-colors duration-300">
   <div class="max-w-6xl mx-auto px-6 py-6">
     <div class="flex items-center justify-between">
       
@@ -33,7 +33,7 @@
           </button>
         </div>
 
-        <!-- Theme Toggle (3 botones) -->
+        <!-- Theme Toggle -->
         <div class="flex items-center gap-1 ml-2 pl-2 border-l-2 border-white">
           <button data-theme-btn="system" class="p-2 rounded hover:bg-slate-700 transition-colors" aria-label="Tema sistema">
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +77,6 @@
     btn.addEventListener('click', () => apply(btn.dataset.themeBtn!))
   );
 
-  // Si está en "system", reacciona a cambios del SO
   mq.addEventListener('change', () => { 
     if (getTheme() === 'system') apply('system'); 
   });
