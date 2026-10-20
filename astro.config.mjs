@@ -38,7 +38,7 @@ export default defineConfig({
           globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
           // Forzar nueva versión del caché
-          cacheId: 'sportdharma-v2',
+             cacheId: 'sportdharma-v3', // Cambiamos a v3 para forzar nuevo caché
           skipWaiting: true,
           clientsClaim: true
         }
