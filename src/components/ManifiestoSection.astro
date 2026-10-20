@@ -1,15 +1,15 @@
 ---
-// Manifiesto Section - Fondo azul oscuro
+// Manifiesto Section
 ---
 
-<section id="manifiesto" class="py-20 px-6 bg-[#1e293b]">
+<section id="manifiesto" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
   <div class="max-w-6xl mx-auto">
     
     <!-- Título -->
     <div class="text-center mb-12">
-      <p class="text-slate-400 font-semibold text-sm uppercase tracking-wider mb-2">MANIFIESTO</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-white">
-        Así nació <span class="text-[#E8530E]">SportDharma Ecosystem</span>
+      <p class="text-ink-soft font-semibold text-sm uppercase tracking-wider mb-2">MANIFIESTO</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-ink">
+        Así nació <span class="text-[#E8530E] dark:text-orange-500">SportDharma Ecosystem</span>
       </h2>
     </div>
 
@@ -18,37 +18,37 @@
       
       <!-- Texto -->
       <div>
-        <blockquote class="border-l-4 border-[#E8530E] rounded-r-xl p-8">
-          <p class="text-lg text-slate-300 leading-relaxed mb-4">
-            Vivimos en ruta. Sobre dos ruedas, con mochila al hombro, en montaña o en ciudad ajena. Necesitamos herramientas que funcionen <strong class="text-white">sin depender de servidores lejanos</strong>, sin vender nuestros datos, sin pedirnos permiso para existir.
+        <blockquote class="border-l-4 border-[#E8530E] dark:border-orange-500 rounded-r-xl p-8 bg-surface dark:bg-surface/50 transition-colors duration-300">
+          <p class="text-lg text-ink-soft leading-relaxed mb-4">
+            Vivimos en ruta. Sobre dos ruedas, con mochila al hombro, en montaña o en ciudad ajena. Necesitamos herramientas que funcionen <strong class="text-ink">sin depender de servidores lejanos</strong>, sin vender nuestros datos, sin pedirnos permiso para existir.
           </p>
-          <p class="text-lg text-slate-300 leading-relaxed mb-4">
-            SportDharma Ecosystem es <strong class="text-white">infraestructura libre</strong>: software que puedes auditar, modificar y redistribuir. Arquitectura local-first que funciona offline. Contenido curado por humanos, no por algoritmos.
+          <p class="text-lg text-ink-soft leading-relaxed mb-4">
+            SportDharma Ecosystem es <strong class="text-ink">infraestructura libre</strong>: software que puedes auditar, modificar y redistribuir. Arquitectura local-first que funciona offline. Contenido curado por humanos, no por algoritmos.
           </p>
-          <p class="text-lg text-slate-300 leading-relaxed mb-4">
-            Creemos en la <strong class="text-white">soberanía digital</strong> del cicloviajero, del nómade, del outdoor. En la resiliencia de construir con las manos, de compartir en público, de no dejar rastro digital no deseado.
+          <p class="text-lg text-ink-soft leading-relaxed mb-4">
+            Creemos en la <strong class="text-ink">soberanía digital</strong> del cicloviajero, del nómade, del outdoor. En la resiliencia de construir con las manos, de compartir en público, de no dejar rastro digital no deseado.
           </p>
-          <p class="text-lg text-white font-semibold">
+          <p class="text-lg text-ink font-semibold">
             9 pilares. 0 trackers. 100% abierto.
           </p>
         </blockquote>
       </div>
 
-            <!-- Fotos con layout asimétrico -->
+      <!-- Fotos con layout asimétrico -->
       <div class="grid grid-rows-3 gap-4 h-[500px]">
         
         <!-- Fila superior: dos fotos pequeñas lado a lado -->
         <div class="grid grid-cols-2 gap-4 row-span-1">
           <!-- Foto 1: Templo en Laos -->
-          <div class="rounded-xl overflow-hidden shadow-lg">
+          <div class="rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
             <img 
               src="/manifiesto-laos.jpg" 
               alt="Templo en Laos" 
               class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
-          <!-- Foto 2: Camino de tierra (ANTES era grupo) -->
-          <div class="rounded-xl overflow-hidden shadow-lg">
+          <!-- Foto 2: Camino de tierra -->
+          <div class="rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
             <img 
               src="/manifiesto-camino.jpg" 
               alt="Camino de tierra" 
@@ -57,8 +57,8 @@
           </div>
         </div>
 
-        <!-- Fila inferior: foto ancha (ANTES era camino, AHORA es ruta) -->
-        <div class="row-span-2 rounded-xl overflow-hidden shadow-lg">
+        <!-- Fila inferior: foto ancha -->
+        <div class="row-span-2 rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
           <img 
             src="/manifiesto-ruta.jpg" 
             alt="Cicloviajero en ruta" 
@@ -66,3 +66,7 @@
           />
         </div>
       </div>
+
+    </div>
+  </div>
+</section>

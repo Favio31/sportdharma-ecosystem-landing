@@ -11,15 +11,15 @@ interface Props {
 const { titulo, fuente, fecha, resumen, url } = Astro.props;
 ---
 
-<article class="bg-white border border-slate-200 rounded-xl p-6 hover:border-emerald-500 transition-all">
-  <div class="flex items-center gap-2 text-xs text-slate-500 mb-2">
+<article class="bg-surface border border-line rounded-xl p-6 hover:border-emerald-500 dark:hover:border-emerald-400 transition-all duration-300">
+  <div class="flex items-center gap-2 text-xs text-ink-soft mb-2">
     <span>{fuente}</span>
     <span>•</span>
     <span>{fecha}</span>
   </div>
-  <h3 class="text-lg font-bold text-slate-900 mb-2">{titulo}</h3>
-  <p class="text-sm text-slate-600 mb-4">{resumen}</p>
-  <a href={url} target="_blank" rel="noopener" class="text-emerald-600 hover:text-emerald-700 text-sm font-semibold">
+  <h3 class="text-lg font-bold text-ink mb-2">{titulo}</h3>
+  <p class="text-sm text-ink-soft mb-4">{resumen}</p>
+  <a href={url} target="_blank" rel="noopener" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 text-sm font-semibold transition-colors">
     Leer más →
   </a>
 </article>

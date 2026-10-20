@@ -2,16 +2,16 @@
 // Motor MASF - Flujo Human-in-the-Loop
 ---
 
-<section id="masf" class="py-20 px-6 bg-[#EDE8E3]">
+<section id="masf" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
   <div class="max-w-6xl mx-auto">
     
     <div class="text-center mb-16">
-      <span class="text-[#334155] font-semibold uppercase tracking-wide text-sm">Motor MASF</span>
-      <h2 class="text-3xl md:text-5xl font-bold text-[#0F172A] mt-3 mb-4">
-        Curación <span class="text-[#334155]">humana</span>, no algorítmica
+      <span class="text-ink-soft font-semibold uppercase tracking-wide text-sm">Motor MASF</span>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mt-3 mb-4">
+        Curación <span class="text-ink-soft">humana</span>, no algorítmica
       </h2>
-      <p class="text-lg text-[#334155] max-w-2xl mx-auto">
-        MASF = <strong>Manual Article Submission Flow</strong>. Un flujo simple donde humanos curan contenido y Astro lo publica automáticamente.
+      <p class="text-lg text-ink-soft max-w-2xl mx-auto">
+        MASF = <strong class="text-ink">Manual Article Submission Flow</strong>. Un flujo simple donde humanos curan contenido y Astro lo publica automáticamente.
       </p>
     </div>
 
@@ -19,42 +19,42 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
       
       <div class="text-center p-6">
-        <div class="w-16 h-16 bg-[#0F172A] rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-[#FAF8F5]">1</div>
-        <h3 class="font-bold text-[#0F172A] mb-2">Descubrimiento</h3>
-        <p class="text-sm text-[#64748B]">El curador encuentra contenido relevante en ruta: artículos, videos, herramientas.</p>
+        <div class="w-16 h-16 bg-ink text-surface dark:bg-slate-800 dark:text-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold transition-colors duration-300">1</div>
+        <h3 class="font-bold text-ink mb-2">Descubrimiento</h3>
+        <p class="text-sm text-ink-soft">El curador encuentra contenido relevante en ruta: artículos, videos, herramientas.</p>
       </div>
 
       <div class="text-center p-6">
-        <div class="w-16 h-16 bg-[#0F172A] rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-[#FAF8F5]">2</div>
-        <h3 class="font-bold text-[#0F172A] mb-2">Curación</h3>
-        <p class="text-sm text-[#64748B]">Se crea un archivo Markdown en /content/ con título, fuente, resumen y nota de transparencia.</p>
+        <div class="w-16 h-16 bg-ink text-surface dark:bg-slate-800 dark:text-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold transition-colors duration-300">2</div>
+        <h3 class="font-bold text-ink mb-2">Curación</h3>
+        <p class="text-sm text-ink-soft">Se crea un archivo Markdown en /content/ con título, fuente, resumen y nota de transparencia.</p>
       </div>
 
       <div class="text-center p-6">
-        <div class="w-16 h-16 bg-[#0F172A] rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-[#FAF8F5]">3</div>
-        <h3 class="font-bold text-[#0F172A] mb-2">Publicación</h3>
-        <p class="text-sm text-[#64748B]">Astro detecta el nuevo .md y genera automáticamente la página HTML estática.</p>
+        <div class="w-16 h-16 bg-ink text-surface dark:bg-slate-800 dark:text-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold transition-colors duration-300">3</div>
+        <h3 class="font-bold text-ink mb-2">Publicación</h3>
+        <p class="text-sm text-ink-soft">Astro detecta el nuevo .md y genera automáticamente la página HTML estática.</p>
       </div>
 
       <div class="text-center p-6">
-        <div class="w-16 h-16 bg-[#0F172A] rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-[#FAF8F5]">4</div>
-        <h3 class="font-bold text-[#0F172A] mb-2">Distribución</h3>
-        <p class="text-sm text-[#64748B]">La web se redeploya en Cloudflare Pages. Lectores acceden offline vía PWA.</p>
+        <div class="w-16 h-16 bg-ink text-surface dark:bg-slate-800 dark:text-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold transition-colors duration-300">4</div>
+        <h3 class="font-bold text-ink mb-2">Distribución</h3>
+        <p class="text-sm text-ink-soft">La web se redeploya en Cloudflare Pages. Lectores acceden offline vía PWA.</p>
       </div>
     </div>
 
     <!-- Nota de transparencia -->
-    <div class="bg-[#FAF8F5] border border-[#EDE8E3] rounded-xl p-8 max-w-3xl mx-auto shadow-sm">
-      <h3 class="font-bold text-[#0F172A] mb-3 flex items-center gap-2">
-        <svg class="w-5 h-5 text-[#334155]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="bg-surface border border-line rounded-xl p-8 max-w-3xl mx-auto shadow-sm transition-colors duration-300">
+      <h3 class="font-bold text-ink mb-3 flex items-center gap-2">
+        <svg class="w-5 h-5 text-ink-soft" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
         Nota de transparencia
       </h3>
-      <p class="text-sm text-[#334155] leading-relaxed">
+      <p class="text-sm text-ink-soft leading-relaxed">
         Cada artículo publicado incluye una nota de transparencia que indica: 
         quién lo curó, por qué fue seleccionado, qué fuentes se consultaron, 
-        y si existe algún conflicto de interés. <strong>Sin algoritmos opacos. Sin sesgos ocultos.</strong>
+        y si existe algún conflicto de interés. <strong class="text-ink">Sin algoritmos opacos. Sin sesgos ocultos.</strong>
       </p>
     </div>
   </div>
