@@ -1,85 +1,104 @@
 ---
-// Header SportDharma Ecosystem
+// Manifiesto Section - Historia de origen de SportDharma
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 bg-[#0B0F1A] dark:bg-surface transition-colors duration-300">
-  <div class="max-w-6xl mx-auto px-6 py-6">
-    <div class="flex items-center justify-between">
+<section id="manifiesto" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- Título -->
+    <div class="text-center mb-12">
+      <p class="text-ink-soft font-semibold text-sm uppercase tracking-wider mb-2">MANIFIESTO</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-ink">
+        Así nació <span class="text-[#E8530E] dark:text-orange-500">SportDharma Ecosystem</span>
+      </h2>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-3">
-        <img src="/logo.png" alt="SportDharma Ecosystem" class="h-14 w-auto" />
-      </a>
+      <!-- Texto -->
+      <div>
+        <blockquote class="border-l-4 border-[#E8530E] dark:border-orange-500 rounded-r-xl p-8 transition-colors duration-300">
+          <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
+            De niño, los libros y películas sembraron en mí un sueño: conocer el mundo. Aquellas lecturas e historias crearon una fascinación que, con el tiempo, se transformó en mi destino. En el transitar de la vida elegí soñar despierto: abrirme a sentir el hoy, el aquí y el ahora.
+          </p>
+          <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
+            Durante años, "La Estrella" —mi compañera de dos ruedas— y yo recorrimos el mundo en bicicleta. Fue un viaje exterior e interior, con días únicos e irrepetibles.
+          </p>
+          <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
+            Como nos enseña el Buda: "Todo lo que tiene un comienzo tiene un final". Aquella vuelta al mundo planificada encontró su horizonte de cierre en Nueva Zelanda. Surgieron entonces sentimientos encontrados de festejo, profunda satisfacción y gratitud hacia todos los seres que hicieron posible el camino. Pero también brotaron preguntas existenciales sobre la impermanencia y ese futuro incierto que intentamos descifrar.
+          </p>
+          <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
+            Buscando respuestas, me adentré en la filosofía japonesa del Ikigai para redescubrir mi propósito de vida. El punto de convergencia marcaba con claridad una dirección: debía construir algo que honrara la experiencia del viaje, la exploración y el deporte, integrado con la necesidad de adquirir nuevo conocimiento alineado al mundo contemporáneo.
+          </p>
+          <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
+            Fue así como incursioné formalmente en el estudio de la arquitectura y gestión de la Inteligencia Artificial.
+          </p>
+          <p class="text-lg text-ink font-semibold text-justify">
+            El Proyecto SportDharma Ecosystem nace precisamente allí: en la unión entre la pasión por el deporte, el viaje, la resiliencia humana y la tecnología soberana.
+          </p>
+        </blockquote>
+      </div>
 
-      <!-- Navegación -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a href="#pilares" class="text-white hover:text-slate-300 transition-colors font-semibold text-lg uppercase tracking-wide">
-          Pilares
-        </a>
-        <a href="#ecosistema" class="text-white hover:text-slate-300 transition-colors font-semibold text-lg uppercase tracking-wide">
-          Ecosistema
-        </a>
-        <a href="#contacto" class="text-white hover:text-slate-300 transition-colors font-semibold text-lg uppercase tracking-wide">
-          Contacto
-        </a>
+      <!-- Fotos con layout 2x3 grid (2 columnas, 3 filas) -->
+      <div class="grid grid-cols-2 grid-rows-3 gap-4 h-[700px]">
         
-        <!-- Selector de idioma -->
-        <div class="flex items-center gap-2">
-          <button class="bg-transparent text-white font-semibold text-sm px-4 py-1.5 border border-white rounded hover:bg-white hover:text-slate-900 transition-colors">
-            Español
-          </button>
-          <button class="bg-transparent text-white font-semibold text-sm px-4 py-1.5 border border-white rounded hover:bg-white hover:text-slate-900 transition-colors">
-            English
-          </button>
+        <!-- Foto 1: Templo en Laos -->
+        <div class="rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
+          <img 
+            src="/manifiesto-laos.jpg" 
+            alt="Templo en Laos" 
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
         </div>
 
-        <!-- Theme Toggle -->
-        <div class="flex items-center gap-1 ml-2 pl-2 border-l-2 border-white">
-          <button data-theme-btn="system" class="p-2 rounded hover:bg-slate-700 transition-colors" aria-label="Tema sistema">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-          </button>
-          <button data-theme-btn="light" class="p-2 rounded hover:bg-slate-700 transition-colors" aria-label="Tema claro">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-            </svg>
-          </button>
-          <button data-theme-btn="dark" class="p-2 rounded hover:bg-slate-700 transition-colors" aria-label="Tema oscuro">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-            </svg>
-          </button>
+        <!-- Foto 2: Camino de tierra -->
+        <div class="rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
+          <img 
+            src="/manifiesto-camino.jpg" 
+            alt="Camino de tierra" 
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
         </div>
-      </nav>
+
+        <!-- Foto 3: Ruta con montañas -->
+        <div class="rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
+          <img 
+            src="/manifiesto-ruta.jpg" 
+            alt="Cicloviajero en ruta" 
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        <!-- Foto 4: Grupo -->
+        <div class="rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
+          <img 
+            src="/manifiesto-grupo.jpg" 
+            alt="Grupo de cicloviajeros" 
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        <!-- Foto 5: Pamir -->
+        <div class="rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
+          <img 
+            src="/manifiesto-pamir.jpg" 
+            alt="Montañas del Pamir" 
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        <!-- Foto 6: Tayikistán -->
+        <div class="rounded-xl overflow-hidden shadow-lg ring-1 ring-line dark:ring-transparent">
+          <img 
+            src="/manifiesto-tayikistan.jpg" 
+            alt="Cicloviaje en Tayikistán" 
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+      </div>
+
     </div>
   </div>
-</header>
-
-<script>
-  const root = document.documentElement;
-  const mq = matchMedia('(prefers-color-scheme: dark)');
-  const getTheme = () => localStorage.getItem('theme') || 'system';
-
-  function apply(theme: string) {
-    const dark = theme === 'dark' || (theme === 'system' && mq.matches);
-    root.classList.toggle('dark', dark);
-    localStorage.setItem('theme', theme);
-    
-    document.querySelectorAll<HTMLElement>('[data-theme-btn]').forEach((btn) => {
-      const active = btn.dataset.themeBtn === theme;
-      btn.classList.toggle('bg-slate-700', active);
-      btn.setAttribute('aria-pressed', String(active));
-    });
-  }
-
-  document.querySelectorAll<HTMLElement>('[data-theme-btn]').forEach((btn) =>
-    btn.addEventListener('click', () => apply(btn.dataset.themeBtn!))
-  );
-
-  mq.addEventListener('change', () => { 
-    if (getTheme() === 'system') apply('system'); 
-  });
-
-  apply(getTheme());
-</script>
+</section>
