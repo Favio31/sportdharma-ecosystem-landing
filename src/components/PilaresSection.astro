@@ -1,42 +1,169 @@
 ---
-// Sección de los 9 Pilares de SportDharma Ecosystem
-import PilarCard from './PilarCard.astro';
-
-const pilares = [
-  { numero: '1', titulo: 'Zero-tracking', descripcion: 'Sin Google Analytics, sin cookies de terceros, sin rastreadores. Tu privacidad es innegociable.', icono: '🛡️' },
-  { numero: '2', titulo: 'Local-first', descripcion: 'Tus datos viven en tu dispositivo. La nube es opcional. Funciona offline por diseño.', icono: '💾' },
-  { numero: '3', titulo: 'AGPLv3', descripcion: 'Código 100% abierto bajo licencia AGPLv3. Fork, modifica y redistribuye libremente.', icono: '⚖️' },
-  { numero: '4', titulo: 'Resiliencia outdoor', descripcion: 'Diseñado para funcionar en montaña, ruta y zonas con conectividad intermitente.', icono: '🏔️' },
-  { numero: '5', titulo: 'Cicloviajero-friendly', descripcion: 'Optimizado para quienes viven sobre dos ruedas: ligero, offline, multi-idioma.', icono: '🚴' },
-  { numero: '6', titulo: 'Curación humana', descripcion: 'Contenido seleccionado por humanos, no por algoritmos. Calidad sobre cantidad.', icono: '🧠' },
-  { numero: '7', titulo: 'Multi-idioma', descripcion: 'Español e inglés desde el día 1. Selector con localStorage, sin cookies.', icono: '🌍' },
-  { numero: '8', titulo: 'PWA offline', descripcion: 'Instalable como app. Service Worker para lectura sin conexión.', icono: '📱' },
-  { numero: '9', titulo: 'Comunidad abierta', descripcion: 'Decisiones en público. Issues abiertos. Contribuciones bienvenidas.', icono: '🤝' },
-];
+// Los 9 Pilares - Principios que nos definen
 ---
 
-<section id="pilares" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+<section id="pilares" class="py-24 px-6 bg-surface-alt transition-colors duration-300">
   <div class="max-w-6xl mx-auto">
     
+    <!-- Título -->
     <div class="text-center mb-16">
-      <span class="text-ink-soft font-semibold uppercase tracking-wide text-sm">Los 9 Pilares</span>
-      <h2 class="text-3xl md:text-5xl font-bold text-ink mt-3 mb-4">
-        Principios que nos <span class="text-ink-soft">definen</span>
+      <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">LOS 9 PILARES</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-ink">
+        Principios que nos definen
       </h2>
-      <p class="text-lg text-ink-soft max-w-2xl mx-auto">
+      <p class="text-lg text-ink-soft max-w-2xl mx-auto mt-4">
         Cada pilar es una decisión de diseño. Juntos forman un ecosistema coherente, soberano y resiliente.
       </p>
     </div>
 
+    <!-- Grid de 9 pilares -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {pilares.map((pilar) => (
-        <PilarCard
-          numero={pilar.numero}
-          titulo={pilar.titulo}
-          descripcion={pilar.descripcion}
-          icono={pilar.icono}
-        />
-      ))}
+      
+      <!-- PILAR 1: Software Soberano -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 1</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Software Soberano</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Código 100% abierto bajo licencia AGPLv3. Sin dependencia de servidores externos. El usuario controla sus datos y su experiencia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILAR 2: Transparente -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 2</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Transparente</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Decisiones en público. Issues abiertos. Sin algoritmos opacos ni sesgos ocultos. Trazabilidad total en cada proceso.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILAR 3: Modular -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 3</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Modular</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Componentes independientes y escalables. Adaptable a cada necesidad. Usá solo lo que necesitás, sin bloatware.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILAR 4: Educación Permanente -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 4</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Educación Permanente</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Contenido curado por humanos. Aprendizaje continuo. Conocimiento accesible para todos, sin barreras ni paywalls.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILAR 5: Solidaria -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 5</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Solidaria</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Comunidad abierta y colaborativa. Apoyo mutuo entre usuarios. Contribuciones bienvenidas. Decisiones construidas en conjunto.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILAR 6: Ecológica -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 6</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Ecológica</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Bajo consumo energético. Arquitectura ligera. Respeto por el entorno natural. Huella digital mínima en cada interacción.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILAR 7: Inclusiva -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 7</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Inclusiva</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Multi-idioma desde el día 1. Accesible para todos los perfiles. Sin barreras técnicas ni económicas. Para quien vive en ruta.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILAR 8: Sostenibilidad Alineada -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 8</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Sostenibilidad Alineada</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Crecimiento responsable. Financiamiento ético. Visión de largo plazo. Sin vender datos ni depender de publicidad invasiva.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILAR 9: Resiliente (Offline-First) -->
+      <div class="bg-surface border border-line rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 group">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wider mb-1">PILAR 9</p>
+            <h3 class="text-lg font-bold text-ink mb-2">Resiliente (Offline-First)</h3>
+            <p class="text-sm text-ink-soft leading-relaxed">Funciona sin conexión a internet. Prioridad por zonas sin conectividad. Datos locales, sincronización opcional cuando hay red.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
