@@ -1,11 +1,10 @@
----
+﻿---
 // Tarjeta resumen del Manifiesto - Estilo Astro.build
 ---
 
 <a href="/manifiesto" class="group block">
-  <div class="bg-surface border border-line rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+  <div class="bg-surface border border-line rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:bg-surface-alt transition-all duration-300 hover:-translate-y-1 h-full flex flex-col cursor-pointer">
     
-    <!-- Imagen destacada -->
     <div class="mb-6 rounded-xl overflow-hidden border-2 border-white/30">
       <img 
         src="/manifiesto-grupo.jpg" 
@@ -14,26 +13,17 @@
       />
     </div>
 
-    <!-- Contenido -->
-    <div>
+    <div class="flex-1">
       <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">
         MANIFIESTO
       </p>
       <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">
         Así nació SportDharma Ecosystem
       </h3>
-      <p class="text-ink-soft leading-relaxed mb-4">
+      <p class="text-ink-soft leading-relaxed">
         De los libros de la infancia a la vuelta al mundo en bicicleta. Del budismo a la IA. 
         Una búsqueda de propósito que se transformó en infraestructura libre para deportistas.
       </p>
-      
-      <!-- Link "Saber más" -->
-      <div class="flex items-center gap-2 text-[#E8530E] dark:text-orange-500 font-semibold group-hover:gap-3 transition-all">
-        <span>Saber más</span>
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-        </svg>
-      </div>
     </div>
     
   </div>
