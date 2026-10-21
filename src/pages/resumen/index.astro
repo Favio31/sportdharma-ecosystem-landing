@@ -1,0 +1,49 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Resumen | SportDharma Ecosystem">
+  <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Tarjeta Manifiesto -->
+        <div class="group block">
+          <a href="/manifiesto" class="block">
+            <div class="bg-surface border border-line rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:bg-surface-alt transition-all duration-300 hover:-translate-y-1 h-full cursor-pointer">
+              <div class="grid grid-cols-2 gap-6 h-full">
+                <div class="flex flex-col justify-center">
+                  <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">MANIFIESTO</p>
+                  <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Así nació SportDharma Ecosystem</h3>
+                  <p class="text-ink-soft leading-relaxed text-sm">De los libros de la infancia a la vuelta al mundo en bicicleta. Del budismo a la IA. Una búsqueda de propósito que se transformó en infraestructura libre para deportistas.</p>
+                </div>
+                <div class="space-y-3">
+                  <div class="rounded-lg overflow-hidden border-2 border-white/30 h-[140px]">
+                    <img src="/manifiesto-grupo.jpg" alt="Cicloviajeros" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div class="rounded-lg overflow-hidden border-2 border-white/30 h-[140px]">
+                    <img src="/manifiesto-laos.jpg" alt="Templo en Laos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Tarjeta Qué Es -->
+        <div class="group block">
+          <a href="/ecosistema" class="block">
+            <div class="bg-surface border border-line rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:bg-surface-alt transition-all duration-300 hover:-translate-y-1 h-full cursor-pointer">
+              <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">DESCUBRÍ</p>
+              <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">¿Qué es SportDharma Ecosystem?</h3>
+              <div class="rounded-xl overflow-hidden border-2 border-white/30 h-[280px]">
+                <img src="/masf-captura-v2.png" alt="Interfaz del sistema MASF" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>
