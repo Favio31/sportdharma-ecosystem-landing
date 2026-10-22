@@ -5,25 +5,36 @@ const { lang = defaultLocale } = Astro.props;
 // Navegación segura para la ruta actual
 const pathname = Astro.url?.pathname || '/';
 const currentPath = pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+
+// Mapeo de códigos a nombres completos para tooltip
+const langNames = {
+  es: 'Español',
+  en: 'English',
+  fr: 'Français',
+  pt: 'Português',
+  de: 'Deutsch'
+};
 ---
 
-<div class="flex items-center gap-2 flex-wrap">
+<nav class="flex items-center gap-1" aria-label="Selector de idioma">
   {locales.map((l) => {
     const href = l === defaultLocale ? currentPath : `/${l}${currentPath === '/' ? '' : currentPath}`;
     const isActive = l === lang;
     return (
       <a 
         href={href} 
-        class={`px-2 py-1 text-xs sm:text-sm rounded transition-colors font-medium ${
+        title={langNames[l]}
+        class={`px-2 py-1 text-xs sm:text-sm rounded-md transition-all font-medium border ${
           isActive 
-            ? 'bg-[#E8530E] text-white' 
-            : 'text-ink-soft hover:text-[#E8530E] hover:bg-black/5 dark:hover:bg-white/5'
+            ? 'bg-[#E8530E] text-white border-[#E8530E] shadow-sm' 
+            : 'bg-transparent text-ink-soft border-transparent hover:text-[#E8530E] hover:border-[#E8530E]/30'
         }`}
         lang={l}
         aria-current={isActive ? 'page' : undefined}
+        aria-label={`Cambiar a ${langNames[l]}`}
       >
         {l.toUpperCase()}
       </a>
     );
   })}
-</div>
+</nav>
