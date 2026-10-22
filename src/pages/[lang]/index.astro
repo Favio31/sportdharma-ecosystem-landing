@@ -1,5 +1,4 @@
 ﻿---
-import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../i18n/utils.js';
 
 export async function getStaticPaths() {
@@ -13,156 +12,137 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const t = useTranslations(lang);
+const t = useTranslations(lang);import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/Hero.astro';
 ---
+import { useTranslations } from '../../i18n/utils.js';
 
-<Layout title={t('home.hero_title') + ' | SportDharma Ecosystem'} lang={lang}>
-  <!-- HERO SECTION -->
-  <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-    <div class="absolute inset-0 opacity-20">
-      <div class="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-    </div>
-    
-    <div class="relative z-10 max-w-6xl mx-auto px-6 py-32 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E8530E]/10 border border-[#E8530E]/20 mb-8">
-        <span class="w-2 h-2 rounded-full bg-[#E8530E] animate-pulse"></span>
-        <span class="text-[#E8530E] font-semibold text-sm">Software libre · Local-first · Privacidad total</span>
-      </div>
-      
-      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-        Infraestructura libre para<br />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#E8530E] to-orange-400">quienes viven en libertad</span>
-      </h1>
-      
-      <p class="text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed">
-        Nueve pilares. Arquitectura soberana. Resiliencia outdoor. Un ecosistema abierto para deportistas, equipos de primera respuesta, comunidades aisladas y territorios sin conectividad.
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={`/${lang}/#ecosistema`} class="px-8 py-4 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all hover:scale-105 shadow-lg shadow-[#E8530E]/25">
-          Descubrir el ecosistema
-        </a>
-        <a href={`/${lang}/#pilares`} class="px-8 py-4 rounded-lg border border-white/20 text-white font-semibold hover:bg-white/10 transition-all">
-          Ver los 9 pilares
-        </a>
-      </div>
-    </div>
-  </section>
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'de' } },
+  ];
+}
 
-  <!-- SECCIÓN DE SUSCRIPCIÓN -->
+const { lang } = Astro.params;
+const t = useTranslations(lang);<Layout title="SportDharma Ecosystem | Software Libre para Deportistas Outdoor">
+  <Hero />
+  
   <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-ink mb-4">{t('home.mantenete_al_dia')}</h2>
-      <p class="text-ink-soft text-lg mb-10">{t('home.mantenete_desc')}</p>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Web Push -->
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent text-center">
-          <h3 class="text-xl font-bold text-ink mb-2">🔔 Recibí avisos de nuevo contenido</h3>
-          <p class="text-ink-soft text-sm mb-4">Sin emails, sin registro, sin tracking. Solo notificaciones nativas del navegador.</p>
-          <a href={`/${lang}/noticias/`} class="inline-block px-6 py-2 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-colors">
-            Activar Notificaciones
-          </a>
-        </div>
-        
-        <!-- RSS Feed -->
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent text-center">
-          <h3 class="text-xl font-bold text-ink mb-2"> RSS Feed (Open Source)</h3>
-          <p class="text-ink-soft text-sm mb-4">Copiá la URL en tu lector RSS favorito (Feedly, Inoreader, NetNewsWire).</p>
-          <a href={`/${lang}/rss/`} class="inline-block px-6 py-2 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-colors">
-            Ver Feed RSS
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PILARES -->
-  <section id="pilares" class="py-20 px-6 bg-surface transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-ink mb-12 text-center">Los 9 Pilares</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Software Soberano</h3>
-          <p class="text-ink-soft">Código abierto, auditado y bajo tu control total.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Transparente</h3>
-          <p class="text-ink-soft">Sin algoritmos opacos ni sesgos ocultos.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Modular</h3>
-          <p class="text-ink-soft">Arquitectura flexible y adaptable.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Educación Permanente</h3>
-          <p class="text-ink-soft">Formación continua y accesible.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Solidaria</h3>
-          <p class="text-ink-soft">Tecnología al servicio de comunidades.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Ecológica</h3>
-          <p class="text-ink-soft">Bajo impacto ambiental y energética.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Inclusiva</h3>
-          <p class="text-ink-soft">Accesible para todos, sin barreras.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Sostenible</h3>
-          <p class="text-ink-soft">Modelo económico alineado con valores.</p>
-        </div>
-        <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-xl font-bold text-[#E8530E] mb-2">Resiliente</h3>
-          <p class="text-ink-soft">Funciona offline y en entornos extremos.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ECOSISTEMA -->
-  <section id="ecosistema" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-ink mb-12 text-center">El Ecosistema</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-2xl font-bold text-ink mb-4">App Móvil</h3>
-          <p class="text-ink-soft mb-4">Tu compañero offline en ruta. Mapas topográficos, tracking GPS y diario de viaje.</p>
-          <a href={`/${lang}/app/`} class="text-[#E8530E] font-semibold hover:underline">Más información →</a>
-        </div>
-        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-2xl font-bold text-ink mb-4">Página Web</h3>
-          <p class="text-ink-soft mb-4">Contenido curado por humanos. Instalable como PWA, multi-idioma y offline.</p>
-          <a href={`/${lang}/web/`} class="text-[#E8530E] font-semibold hover:underline">Más información →</a>
-        </div>
-        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-2xl font-bold text-ink mb-4">Motor MASF</h3>
-          <p class="text-ink-soft mb-4">Curación humana, no algorítmica. Arquitectura de Enjambre Multiagente.</p>
-          <a href={`/${lang}/masf/`} class="text-[#E8530E] font-semibold hover:underline">Más información →</a>
-        </div>
-        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface hover:border-[#E8530E]/40 transition-all">
-          <h3 class="text-2xl font-bold text-ink mb-4">Herramientas</h3>
-          <p class="text-ink-soft mb-4">Astro, Tailwind CSS, Vite PWA. Stack moderno, ligero y 100% open source.</p>
-          <a href={`/${lang}/herramientas/`} class="text-[#E8530E] font-semibold hover:underline">Más información →</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CTA FINAL -->
-  <section class="py-20 px-6 bg-gradient-to-br from-[#E8530E] to-orange-600 text-white">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-6">Sumate al proyecto</h2>
-      <p class="text-xl mb-8 opacity-90">Software libre necesita sostén. Tu contribución mantiene la infraestructura viva.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={`/${lang}/apoya/`} class="px-8 py-4 rounded-lg bg-white text-[#E8530E] font-semibold hover:bg-slate-100 transition-colors">
-          Apoyar el proyecto
+        <!-- 2. FUNDADOR -->
+        <a href="/fundador" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">FUNDADOR, SOÑADOR</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Favio M. Giorgio Data</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Cicloviajero, 120.000 kms, 84 países en 11 años. Actualmente en Luang Prabang, Laos. Certificaciones en IA, Marketing Digital y Gestión de Productos AI.</p>
         </a>
-        <a href={`/${lang}/contacto/`} class="px-8 py-4 rounded-lg border border-white text-white font-semibold hover:bg-white/10 transition-colors">
-          Contactarnos
+
+        <!-- 3. MANIFIESTO -->
+        <a href="/manifiesto" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
+            <div class="flex flex-col justify-center">
+              <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">MANIFIESTO</p>
+              <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Así nació SportDharma Ecosystem</h3>
+              <p class="text-ink-soft leading-relaxed text-sm text-justify">De los libros de la infancia a la vuelta al mundo en bicicleta. Del budismo a la IA. Una búsqueda de propósito que se transformó en infraestructura libre.</p>
+            </div>
+            <div class="space-y-3">
+              <div class="rounded-lg overflow-hidden border border-black/5 dark:border-white/5 h-[120px]">
+                <img src="/manifiesto-grupo.jpg" alt="Cicloviajeros" class="w-full h-full object-cover" draggable="false" />
+              </div>
+              <div class="rounded-lg overflow-hidden border border-black/5 dark:border-white/5 h-[120px]">
+                <img src="/manifiesto-laos.jpg" alt="Templo en Laos" class="w-full h-full object-cover" draggable="false" />
+              </div>
+            </div>
+          </div>
         </a>
+
+        <!-- 4. DESCUBRÍ -->
+        <a href="/ecosistema" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <div class="h-full flex flex-col">
+            <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">DESCUBRÍ</p>
+            <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">¿Qué es SportDharma Ecosystem?</h3>
+            <p class="text-ink-soft leading-relaxed text-sm text-justify mb-4">Infraestructura libre, soberana y offline-first para deportistas outdoor. Tecnología que respeta tu privacidad y tu entorno.</p>
+            <div class="rounded-xl overflow-hidden border border-black/5 dark:border-white/5 h-[180px] mt-auto">
+              <img src="/masf-captura-v2.png" alt="Interfaz del sistema MASF" class="w-full h-full object-cover" draggable="false" />
+            </div>
+          </div>
+        </a>
+
+        <!-- 5. LOS 9 PILARES -->
+        <a href="/pilares" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">LOS 9 PILARES</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Principios que nos definen</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Software Soberano, Transparente, Modular, Educación Permanente, Solidaria, Ecológica, Inclusiva, Sostenibilidad Alineada y Resiliente.</p>
+        </a>
+
+        <!-- 6. APP MÓVIL -->
+        <a href="/app" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">APP MÓVIL</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Tu compañero offline en ruta</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Mapas topográficos, tracking GPS y diario de viaje. Funciona 100% sin internet, manteniendo tus datos bajo tu total control.</p>
+        </a>
+
+        <!-- 7. PÁGINA WEB -->
+        <a href="/web" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">PÁGINA WEB</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Contenido curado por humanos</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Noticias, guías técnicas y recursos organizados. Instalable como PWA, multi-idioma y completamente funcional offline.</p>
+        </a>
+
+        <!-- 8. MOTOR MASF -->
+        <a href="/masf" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">MOTOR MASF</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Curación humana, no algorítmica</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Arquitectura de Enjambre Multiagente. Humanos curan, IA asiste. Sin algoritmos opacos ni sesgos ocultos.</p>
+        </a>
+
+        <!-- 9. ESTADO ACTUAL DEL PROYECTO -->
+        <a href="/estado" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">ESTADO ACTUAL</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Proyecto en desarrollo activo</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Fase de construcción de la infraestructura base. Preparando la aplicación al Proton Foundation Community Project con máxima calidad y seguridad.</p>
+        </a>
+
+        <!-- 10. NOTICIAS E INFORMACIÓN -->
+        <a href="/noticias" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">NOTICIAS E INFORMACIÓN</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Curación humana, 6 publicaciones diarias</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Contenido fresco, verificado y relevante para la comunidad outdoor, libre de sesgos comerciales y algoritmos opacos.</p>
+        </a>
+
+        <!-- 11. EL ECOSISTEMA -->
+        <a href="/herramientas" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">EL ECOSISTEMA</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Herramientas que usamos</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Astro, Tailwind CSS, Vite PWA, y arquitecturas multiagente. Stack moderno, ligero y 100% open source.</p>
+        </a>
+
+        <!-- 12. APOYA EL PROYECTO -->
+        <a href="/apoya" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">APOYA EL PROYECTO</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Software libre necesita sostén</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Tu contribución mantiene la infraestructura viva, sin publicidad ni venta de datos. Grants y donaciones directas.</p>
+        </a>
+
+        <!-- 13. SUMATE AL PROYECTO -->
+        <a href="/contacto" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">SUMATE AL PROYECTO</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">¿Querés contribuir o contactarnos?</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Buscamos colaboradores apasionados por el deporte, la tecnología soberana y el bienestar global. Escribinos.</p>
+        </a>
+
+        <!-- 14. COMUNIDAD Y PRESENCIA DIGITAL -->
+        <a href="/comunidad" class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">COMUNIDAD Y PRESENCIA</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Conectá con SportDharma Ecosystem</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">Seguinos en nuestras plataformas digitales. Construyendo juntos una red global de deportistas conscientes.</p>
+        </a>
+
       </div>
     </div>
   </section>
