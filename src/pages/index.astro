@@ -1,3 +1,20 @@
 ﻿---
+// Redirección automática al idioma por defecto (Español)
 Astro.redirect('/es/', 301);
 ---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=/es/">
+  <title>Redirigiendo a SportDharma Ecosystem...</title>
+  <script>
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+      window.location.replace('/es/');
+    }
+  </script>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding: 50px;">
+  <p>Redirigiendo a <a href="/es/">la versión en español</a>...</p>
+</body>
+</html>
