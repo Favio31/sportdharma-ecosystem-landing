@@ -1,0 +1,28 @@
+﻿---
+import { locales, defaultLocale } from '../i18n/index.js';
+const { lang = defaultLocale } = Astro.props;
+
+// Obtener la ruta actual sin el prefijo de idioma
+const currentPath = Astro.url.pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+---
+
+<div class="flex items-center gap-2 flex-wrap">
+  {locales.map((l) => {
+    const href = l === defaultLocale ? currentPath : `/${l}${currentPath === '/' ? '' : currentPath}`;
+    const isActive = l === lang;
+    return (
+      <a 
+        href={href} 
+        class={`px-2 py-1 text-xs sm:text-sm rounded transition-colors font-medium ${
+          isActive 
+            ? 'bg-[#E8530E] text-white' 
+            : 'text-ink-soft hover:text-[#E8530E] hover:bg-black/5 dark:hover:bg-white/5'
+        }`}
+        lang={l}
+        aria-current={isActive ? 'page' : undefined}
+      >
+        {l.toUpperCase()}
+      </a>
+    );
+  })}
+</div>

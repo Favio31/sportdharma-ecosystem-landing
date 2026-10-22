@@ -1,8 +1,12 @@
-import { defineConfig } from 'astro/config';
+﻿import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en', 'fr', 'pt', 'de'],
+  },
   site: 'https://www.sportdharmaecosystem.com',
   output: 'static',
   vite: {
@@ -37,8 +41,8 @@ export default defineConfig({
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-          // Forzar nueva versión del caché
-             cacheId: 'sportdharma-v3', // Cambiamos a v3 para forzar nuevo caché
+          // Forzar nueva versiÃ³n del cachÃ©
+             cacheId: 'sportdharma-v3', // Cambiamos a v3 para forzar nuevo cachÃ©
           skipWaiting: true,
           clientsClaim: true
         }
