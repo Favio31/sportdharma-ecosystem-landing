@@ -1,0 +1,43 @@
+﻿---
+// Componente para solicitar permiso de notificaciones Push (Privacy-First)
+---
+<div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent text-center">
+  <h3 class="text-xl font-bold text-ink mb-2">🔔 Recibí avisos de nuevo contenido</h3>
+  <p class="text-ink-soft text-sm mb-4">Sin emails, sin registro, sin tracking. Solo notificaciones nativas del navegador.</p>
+  <button 
+    id="subscribe-push"
+    class="px-6 py-2 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-colors outline-none! active:scale-95"
+  >
+    Activar Notificaciones
+  </button>
+  <p id="push-status" class="text-xs text-ink-soft mt-3 hidden"></p>
+</div>
+
+<script>
+  document.getElementById('subscribe-push')?.addEventListener('click', async () => {
+    const statusEl = document.getElementById('push-status');
+    statusEl.classList.remove('hidden');
+    
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+      statusEl.textContent = 'Tu navegador no soporta notificaciones push.';
+      statusEl.className = 'text-xs text-red-500 mt-3';
+      return;
+    }
+
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        statusEl.textContent = '✅ ¡Suscrito! Te avisaremos cuando haya contenido nuevo.';
+        statusEl.className = 'text-xs text-green-600 dark:text-green-400 mt-3';
+        // Aquí iremos el registro del subscription en Cloudflare KV (próximo paso)
+      } else {
+        statusEl.textContent = 'Permiso denegado. Podés activarlo luego en la configuración del navegador.';
+        statusEl.className = 'text-xs text-yellow-600 dark:text-yellow-400 mt-3';
+      }
+    } catch (err) {
+      console.error('Error al solicitar permiso:', err);
+      statusEl.textContent = 'Error al activar notificaciones.';
+      statusEl.className = 'text-xs text-red-500 mt-3';
+    }
+  });
+</script>
