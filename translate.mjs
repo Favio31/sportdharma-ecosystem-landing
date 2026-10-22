@@ -6,21 +6,15 @@ const MODEL = 'qwen3:4b-instruct';
 const TARGET_LANGS = ['en', 'fr', 'pt', 'de'];
 const LANG_NAMES = { en: 'Inglés', fr: 'Francés', pt: 'Portugués', de: 'Alemán' };
 
-// Leer diccionario base
 const esPath = path.join('src', 'i18n', 'es.json');
 const esData = JSON.parse(fs.readFileSync(esPath, 'utf-8'));
 
-console.log(`\n🤖 Iniciando traducción con ${MODEL}...\n`);
+console.log('\n🤖 Iniciando traducción con ' + MODEL + '...\n');
 
 for (const lang of TARGET_LANGS) {
-  console.log(`🔄 Traduciendo al ${LANG_NAMES[lang]} (${lang})...`);
+  console.log(' Traduciendo al ' + LANG_NAMES[lang] + ' (' + lang + ')...');
   
-  const prompt = `You are a professional translator. Translate the following JSON object from Spanish to ${LANG_NAMES[lang]}. 
-  Keep the exact same JSON structure, keys, and formatting. Do not translate proper nouns like "SportDharma Ecosystem" or "MASF". 
-  Return ONLY the valid JSON, no markdown, no explanations.
-  
-  Source JSON:
-  ${JSON.stringify(esData, null, 2)}`;
+  const prompt = 'You are a professional translator. Translate the following JSON object from Spanish to ' + LANG_NAMES[lang] + '. Keep the exact same JSON structure, keys, and formatting. Do not translate proper nouns like SportDharma Ecosystem or MASF. Return ONLY the valid JSON, no markdown, no explanations.\n\nSource JSON:\n' + JSON.stringify(esData, null, 2);
 
   try {
     const response = await fetch(OLLAMA_URL, {
@@ -36,16 +30,15 @@ for (const lang of TARGET_LANGS) {
     const result = await response.json();
     let translatedText = result.message.content.trim();
     
-    // Limpiar posibles bloques de markdown que Qwen a veces agrega
-    translatedText = translatedText.replace(/^```json\s*|\s*```$/g, '').trim();
+    translatedText = translatedText.replace(/^ + '`json\\s*|\\s*`$' + /g, '').trim();
     
     const translatedData = JSON.parse(translatedText);
-    const outPath = path.join('src', 'i18n', `${lang}.json`);
+    const outPath = path.join('src', 'i18n', lang + '.json');
     fs.writeFileSync(outPath, JSON.stringify(translatedData, null, 2), 'utf-8');
     
-    console.log(`✅ ${LANG_NAMES[lang]} guardado en ${outPath}\n`);
+    console.log('✅ ' + LANG_NAMES[lang] + ' guardado en ' + outPath + '\n');
   } catch (err) {
-    console.error(`❌ Error traduciendo al ${LANG_NAMES[lang]}:`, err.message);
+    console.error('❌ Error traduciendo al ' + LANG_NAMES[lang] + ':', err.message);
   }
 }
 
