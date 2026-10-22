@@ -1,7 +1,7 @@
 ﻿---
-import Layout from '../../../layouts/Layout.astro';
+import Layout from '../../../../layouts/Layout.astro';
+import WebPushSubscribe from '../../../../components/WebPushSubscribe.astro';
 import { useTranslations } from '../../../i18n/utils.js';
-import WebPushSubscribe from '../../../components/WebPushSubscribe.astro';
 
 export async function getStaticPaths() {
   return [
@@ -17,16 +17,26 @@ const { lang } = Astro.params;
 const t = useTranslations(lang);
 ---
 
-<Layout title="Noticias | SportDharma Ecosystem" lang={lang}>
-  <section class="py-20 px-6">
+<Layout title="Noticias | SportDharma Ecosystem">
+  <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-4xl mx-auto">
       <h1 class="text-4xl font-bold text-ink mb-8">Noticias e Información</h1>
-      <p class="text-lg text-ink-soft mb-8">Curación humana, 6 publicaciones diarias. Contenido fresco, verificado y relevante.</p>
+      <p class="text-ink-soft text-lg mb-12">Curación humana, 6 publicaciones diarias. Contenido fresco, verificado y relevante para la comunidad outdoor.</p>
       
+      <!-- Componente de Suscripción Push -->
       <WebPushSubscribe />
       
+      <!-- Link al RSS Feed -->
       <div class="mt-8 text-center">
-        <a href={`/${lang}/rss.xml`} class="text-[#E8530E] hover:underline text-sm font-semibold">📡 Suscribirse vía RSS Feed (Open Source)</a>
+        <a href="/rss.xml" class="text-[#E8530E] hover:underline text-sm font-semibold">📡 Suscribirse vía RSS Feed (Open Source)</a>
+      </div>
+      
+      <!-- Placeholder para futuras noticias -->
+      <div class="mt-16 space-y-6">
+        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent text-center">
+          <p class="text-ink-soft text-lg">🚧 Próximamente: las primeras publicaciones curadas.</p>
+          <p class="text-ink-soft text-sm mt-2">Estamos preparando contenido de valor sin algoritmos ni sesgos.</p>
+        </div>
       </div>
     </div>
   </section>
