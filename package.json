@@ -8,6 +8,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/rss": "^4.0.19",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^5.0.0",
     "astro-i18n": "^2.2.4",
