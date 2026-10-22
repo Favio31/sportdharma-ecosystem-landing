@@ -2,8 +2,9 @@
 import { locales, defaultLocale } from '../i18n/index.js';
 const { lang = defaultLocale } = Astro.props;
 
-// Obtener la ruta actual sin el prefijo de idioma
-const currentPath = Astro.url.pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+// Navegación segura para la ruta actual
+const pathname = Astro.url?.pathname || '/';
+const currentPath = pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
 ---
 
 <div class="flex items-center gap-2 flex-wrap">

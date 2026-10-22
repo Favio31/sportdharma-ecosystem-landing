@@ -1,8 +1,12 @@
 ﻿import { dictionaries, defaultLocale, locales } from './index.js';
 
 export function getLangFromUrl(url) {
-  const [, lang] = url.pathname.split('/');
-  if (locales.includes(lang)) return lang;
+  // Navegación segura: si url o pathname es undefined, usa '/'
+  const pathname = url?.pathname || '/';
+  const parts = pathname.split('/');
+  const lang = parts[1]; // El idioma está después del primer '/'
+  
+  if (lang && locales.includes(lang)) return lang;
   return defaultLocale;
 }
 
@@ -13,6 +17,6 @@ export function useTranslations(lang) {
     for (const k of keys) {
       value = value?.[k];
     }
-    return value || key; // Si no encuentra la clave, devuelve la clave misma como fallback
+    return value || key; // Fallback a la clave si no se encuentra
   };
 }
