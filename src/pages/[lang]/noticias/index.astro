@@ -1,0 +1,23 @@
+﻿---
+import Layout from '../../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils.js';
+import WebPushSubscribe from '../../../components/WebPushSubscribe.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="Noticias | SportDharma Ecosystem" lang={lang}>
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold text-ink mb-8">Noticias e Información</h1>
+      <p class="text-lg text-ink-soft mb-8">Curación humana, 6 publicaciones diarias. Contenido fresco, verificado y relevante.</p>
+      
+      <WebPushSubscribe />
+      
+      <div class="mt-8 text-center">
+        <a href="/rss.xml" class="text-[#E8530E] hover:underline text-sm font-semibold">📡 Suscribirse vía RSS Feed (Open Source)</a>
+      </div>
+    </div>
+  </section>
+</Layout>

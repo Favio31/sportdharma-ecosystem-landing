@@ -1,0 +1,26 @@
+﻿---
+import Layout from '../../../layouts/Layout.astro';
+import { getLangFromUrl } from '../../../i18n/utils.js';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<Layout title="RSS Feed | SportDharma Ecosystem" lang={lang}>
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl font-bold text-ink mb-6">📡 Suscripción vía RSS</h1>
+      <p class="text-lg text-ink-soft mb-8">El RSS es la forma más pura, privada y descentralizada de seguir nuestras novedades. Sin algoritmos, sin emails, sin tracking.</p>
+      
+      <div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt mb-8">
+        <p class="text-sm text-ink-soft mb-3">Copiá esta URL en tu lector RSS favorito (Feedly, Inoreader, NetNewsWire):</p>
+        <code class="block bg-black/5 dark:bg-white/5 p-4 rounded text-[#E8530E] font-mono text-sm break-all select-all border border-black/10 dark:border-white/10">
+          https://www.sportdharmaecosystem.com/rss.xml
+        </code>
+      </div>
+      
+      <a href="/rss.xml" target="_blank" rel="noopener" class="text-sm text-ink-soft hover:text-[#E8530E] underline">
+        Ver el archivo XML crudo (para desarrolladores)
+      </a>
+    </div>
+  </section>
+</Layout>

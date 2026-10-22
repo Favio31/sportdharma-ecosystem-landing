@@ -1,0 +1,29 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils.js';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t('home.hero_title') + ' | SportDharma Ecosystem'} lang={lang}>
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl font-bold text-ink mb-4">{t('home.hero_title')}</h1>
+      <p class="text-xl text-ink-soft mb-8">{t('home.hero_subtitle')}</p>
+      
+      <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt">
+        <h2 class="text-2xl font-bold text-ink mb-2">{t('home.mantenete_al_dia')}</h2>
+        <p class="text-ink-soft mb-6">{t('home.mantenete_desc')}</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="/noticias/" class="px-6 py-3 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-colors text-center">
+            🔔 Activar Notificaciones
+          </a>
+          <a href="/rss/" class="px-6 py-3 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-colors text-center">
+            📡 RSS Feed
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
