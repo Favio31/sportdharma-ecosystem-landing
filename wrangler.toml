@@ -1,0 +1,11 @@
+﻿name = "sportdharma-push"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+kv_namespaces = [
+  { binding = "PUSH_SUBS", id = "5e7dbd3bdc5848d68fe06d65bc05da68" }
+]
+
+[vars]
+SECRET_TOKEN = "DuZPrkfb1hsSaRF6VyJzkQ8tNeYOsM705"
+VAPID_PUBLIC_KEY = "BNsQsNC5ZMS-b2A_MiYmB-Mq2KpUX8QCiLCV41bpO-L3t6cpw0Pv91TDrqgY77uK5xZzgLnzShhWmKXWmFZA_RM"
