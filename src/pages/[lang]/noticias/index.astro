@@ -1,9 +1,19 @@
 ﻿---
 import Layout from '../../../layouts/Layout.astro';
-import { getLangFromUrl, useTranslations } from '../../../i18n/utils.js';
+import { useTranslations } from '../../../i18n/utils.js';
 import WebPushSubscribe from '../../../components/WebPushSubscribe.astro';
 
-const lang = getLangFromUrl(Astro.url);
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'de' } },
+  ];
+}
+
+const { lang } = Astro.params;
 const t = useTranslations(lang);
 ---
 
@@ -16,7 +26,7 @@ const t = useTranslations(lang);
       <WebPushSubscribe />
       
       <div class="mt-8 text-center">
-        <a href="/rss.xml" class="text-[#E8530E] hover:underline text-sm font-semibold">📡 Suscribirse vía RSS Feed (Open Source)</a>
+        <a href={`/${lang}/rss.xml`} class="text-[#E8530E] hover:underline text-sm font-semibold">📡 Suscribirse vía RSS Feed (Open Source)</a>
       </div>
     </div>
   </section>
