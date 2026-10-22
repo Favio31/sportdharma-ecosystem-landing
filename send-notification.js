@@ -1,9 +1,8 @@
-﻿const webpush = require('web-push');
-const https = require('https');
+﻿import webpush from 'web-push';
 
 // CONFIGURACIÓN
-const VAPID_PUBLIC_KEY = 'BNsQsNC5ZMS-b2A_MiYmB-Mq2KpUX8QCiLCV41bpO-L3t6cpw0Pv91TDrqgY77uK5xZzgLnzShhWmKXWmFZA_RM';
-const VAPID_PRIVATE_KEY = 'QrFY9aBsGnTrMVLh-SbsvR_ctIntMpZl0WNCvWUYZUM';
+const VAPID_PUBLIC_KEY = 'BI28sAsN2VODFAsqSyTsSV48GZhwoEamA4BMt5YG0ADhD9x1Ctxctf2KppYfxKHFeTjBlgK2Ptsr-W1yAvAXlss';
+const VAPID_PRIVATE_KEY = 's_U2VfrpAilqRv5j2KygAsoaQWKz8s1LisSaHPwXVMk';
 const WORKER_URL = 'https://sportdharma-push.faviosuenosapedal.workers.dev';
 const SECRET_TOKEN = 'DuZPrkfb1hsSaRF6VyJzkQ8tNeYOsM705';
 
@@ -13,32 +12,37 @@ const title = process.argv[2] || 'SportDharma Ecosystem';
 const body = process.argv[3] || 'Nuevo contenido disponible';
 const url = process.argv[4] || 'https://www.sportdharmaecosystem.com/';
 
-console.log(`Enviando: "${title}" -> ${url}`);
+console.log(`\n📤 Enviando: "${title}" -> ${url}\n`);
 
-// 1. Obtener suscriptores del Worker
-https.get(`${WORKER_URL}/subscribers?token=${SECRET_TOKEN}`, (res) => {
-  let data = '';
-  res.on('data', chunk => data += chunk);
-  res.on('end', async () => {
-    const subscribers = JSON.parse(data);
-    console.log(`Encontrados ${subscribers.length} suscriptores.`);
+try {
+  const res = await fetch(`${WORKER_URL}/subscribers?token=${SECRET_TOKEN}`);
+  const subscribers = await res.json();
+  console.log(`👥 Encontrados ${subscribers.length} suscriptores.`);
 
-    // 2. Enviar notificación a cada uno
-    const payload = JSON.stringify({ title, body, url });
-    const options = { TTL: 86400, vapidDetails: { subject: 'mailto:contact@sportdharmaecosystem.com', publicKey: VAPID_PUBLIC_KEY, privateKey: VAPID_PRIVATE_KEY } };
+  const payload = JSON.stringify({ title, body, url });
+  const options = { 
+    TTL: 86400, 
+    vapidDetails: { 
+      subject: 'mailto:contact@sportdharmaecosystem.com', 
+      publicKey: VAPID_PUBLIC_KEY, 
+      privateKey: VAPID_PRIVATE_KEY 
+    } 
+  };
 
-    for (const sub of subscribers) {
-      try {
-        await webpush.sendNotification(sub, payload, options);
-        console.log(`✅ Enviado a ${sub.endpoint.substring(0, 30)}...`);
-      } catch (err) {
-        if (err.statusCode === 410 || err.statusCode === 404) {
-          console.log(`🗑️ Suscripción expirada, ignorando.`);
-        } else {
-          console.error(`❌ Error: ${err.message}`);
-        }
-      }
+  for (const sub of subscribers) {
+    try {
+      await webpush.sendNotification(sub, payload, options);
+      console.log(`✅ Enviado a ${sub.endpoint.substring(0, 40)}...`);
+    } catch (err) {
+      console.error(`❌ Error al enviar a ${sub.endpoint.substring(0, 40)}:`);
+      console.error(`   - StatusCode: ${err.statusCode}`);
+      console.error(`   - Headers:`, err.headers);
+      console.error(`   - Body:`, err.body);
+      console.error(`   - Message:`, err.message);
     }
-    console.log('🚀 Proceso finalizado.');
-  });
-});
+  }
+  console.log('\n🚀 Proceso finalizado.\n');
+} catch (err) {
+  console.error('\n❌ Error general:', err.message, '\n');
+}
+
