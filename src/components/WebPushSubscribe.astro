@@ -28,42 +28,85 @@
     return outputArray;
   }
 
-  document.getElementById('subscribe-push')?.addEventListener('click', async () => {
+  function showStatus(msg, type) {
     const statusEl = document.getElementById('push-status');
     statusEl.classList.remove('hidden');
-    
-    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-      statusEl.textContent = 'Tu navegador no soporta notificaciones push.';
-      statusEl.className = 'text-xs text-red-500 mt-3';
+    statusEl.textContent = msg;
+    const colors = {
+      success: 'text-green-600 dark:text-green-400',
+      error: 'text-red-500',
+      warning: 'text-yellow-600 dark:text-yellow-400',
+      info: 'text-blue-600 dark:text-blue-400'
+    };
+    statusEl.className = 'text-xs mt-3 ' + (colors[type] || colors.info);
+  }
+
+  document.getElementById('subscribe-push')?.addEventListener('click', async () => {
+    console.log('🔔 [Push] Botón clickeado');
+    showStatus('Iniciando...', 'info');
+
+    // Check 1: Service Worker
+    if (!('serviceWorker' in navigator)) {
+      console.error('❌ [Push] Service Worker no soportado');
+      showStatus('Service Worker no soportado en este navegador', 'error');
       return;
     }
+    console.log('✅ [Push] Service Worker disponible');
+
+    // Check 2: Push Manager
+    if (!('PushManager' in window)) {
+      console.error('❌ [Push] PushManager no soportado');
+      showStatus('Push no soportado en este navegador', 'error');
+      return;
+    }
+    console.log('✅ [Push] PushManager disponible');
 
     try {
+      // Check 3: Permiso
+      console.log(' [Push] Solicitando permiso...');
       const permission = await Notification.requestPermission();
-      if (permission === 'granted') {
-        statusEl.textContent = 'Registrando...';
-        const registration = await navigator.serviceWorker.ready;
-        const subscription = await registration.pushManager.subscribe({
-          userVisibleOnly: true,
-          applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
-        });
+      console.log('📋 [Push] Permiso:', permission);
+      
+      if (permission !== 'granted') {
+        showStatus('Permiso denegado. Activá las notificaciones en la configuración del navegador.', 'warning');
+        return;
+      }
+      showStatus('Registrando suscripción...', 'info');
 
-        await fetch(WORKER_URL + '/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(subscription)
-        });
+      // Check 4: Obtener registration
+      console.log('🔔 [Push] Obteniendo SW registration...');
+      const registration = await navigator.serviceWorker.ready;
+      console.log('✅ [Push] SW ready:', registration.scope);
 
-        statusEl.textContent = '✅ ¡Suscrito! Te avisaremos cuando haya contenido nuevo.';
-        statusEl.className = 'text-xs text-green-600 dark:text-green-400 mt-3';
+      // Check 5: Suscribirse
+      console.log(' [Push] Suscribiendo con VAPID...');
+      const subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+      });
+      console.log('✅ [Push] Suscripción obtenida:', subscription.endpoint);
+      showStatus('Guardando en servidor...', 'info');
+
+      // Check 6: Enviar al Worker
+      console.log('🔔 [Push] Enviando a:', WORKER_URL + '/subscribe');
+      const response = await fetch(WORKER_URL + '/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(subscription)
+      });
+      console.log('📋 [Push] Response status:', response.status);
+      
+      const data = await response.json();
+      console.log(' [Push] Response data:', data);
+
+      if (response.ok) {
+        showStatus('✅ ¡Suscrito! Te avisaremos cuando haya contenido nuevo.', 'success');
       } else {
-        statusEl.textContent = 'Permiso denegado.';
-        statusEl.className = 'text-xs text-yellow-600 dark:text-yellow-400 mt-3';
+        showStatus('❌ Error del servidor: ' + (data.error || response.statusText), 'error');
       }
     } catch (err) {
-      console.error('Error:', err);
-      statusEl.textContent = 'Error al activar notificaciones.';
-      statusEl.className = 'text-xs text-red-500 mt-3';
+      console.error('❌ [Push] Error completo:', err);
+      showStatus('Error: ' + err.message, 'error');
     }
   });
 </script>
