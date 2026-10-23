@@ -1,11 +1,50 @@
-﻿---
+---
 import Layout from '../../layouts/Layout.astro';
 ---
 <Layout title="Contacto | SportDharma Ecosystem">
-  <section class="py-20 px-6">
+  <section class="py-20 px-6 bg-surface">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl font-bold text-ink mb-6">Contacto</h1>
-      <p class="text-lg text-ink-soft">Contenido en desarrollo. Próximamente.</p>
+      <div class="text-center mb-12">
+        <div class="text-6xl mb-6">️</div>
+        <h1 class="text-4xl md:text-5xl font-bold text-ink mb-4">Contacto</h1>
+        <p class="text-xl text-ink-soft">¿Tenés una pregunta, propuesta o querés colaborar? Escribinos.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt text-center">
+          <div class="text-4xl mb-4">📧</div>
+          <h3 class="text-xl font-bold text-ink mb-2">Email directo</h3>
+          <p class="text-ink-soft mb-4">Respuesta en 24-48 horas.</p>
+          <a href="mailto:favio@sportdharmaecosystem.com" class="text-[#E8530E] font-semibold hover:underline break-all">
+            favio@sportdharmaecosystem.com
+          </a>
+        </div>
+        
+        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt text-center">
+          <div class="text-4xl mb-4"></div>
+          <h3 class="text-xl font-bold text-ink mb-2">Ubicación actual</h3>
+          <p class="text-ink-soft mb-4">Operando desde:</p>
+          <p class="text-[#E8530E] font-semibold">Luang Prabang, Laos 🇦</p>
+        </div>
+      </div>
+      
+      <div class="p-8 rounded-2xl border-2 border-[#E8530E]/30 bg-surface-alt">
+        <h3 class="text-2xl font-bold text-ink mb-4 text-center">¿De qué querés hablar?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <a href="mailto:favio@sportdharmaecosystem.com?subject=Colaboración" class="p-4 rounded-lg border border-black/5 dark:border-white/5 hover:border-[#E8530E] transition-all text-center">
+            <div class="font-semibold text-ink">Colaboración</div>
+            <div class="text-sm text-ink-soft mt-1">Código, contenido, traducciones</div>
+          </a>
+          <a href="mailto:favio@sportdharmaecosystem.com?subject=Grant" class="p-4 rounded-lg border border-black/5 dark:border-white/5 hover:border-[#E8530E] transition-all text-center">
+            <div class="font-semibold text-ink">Grants</div>
+            <div class="text-sm text-ink-soft mt-1">Financiamiento y fondos</div>
+          </a>
+          <a href="mailto:favio@sportdharmaecosystem.com?subject=Prensa" class="p-4 rounded-lg border border-black/5 dark:border-white/5 hover:border-[#E8530E] transition-all text-center">
+            <div class="font-semibold text-ink">Prensa</div>
+            <div class="text-sm text-ink-soft mt-1">Entrevistas y medios</div>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
