@@ -26,9 +26,15 @@ const t = useTranslations(lang);
       <!-- Componente de Suscripción Push -->
       <WebPushSubscribe />
       
-      <!-- Link al RSS Feed -->
-      <div class="mt-8 text-center">
-        <a href={`/${lang}/rss/`} class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-all"><span>📡</span><span>Suscribirse vía RSS Feed (Open Source)</span></a>
+            <!-- SECCIÓN DE RSS - Estética igual al Home -->
+      <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt text-center max-w-md mx-auto mt-8">
+        <div class="text-5xl mb-4">📡</div>
+        <h3 class="text-2xl font-bold text-ink mb-3">RSS Feed (Open Source)</h3>
+        <p class="text-ink-soft mb-6">La forma más pura y descentralizada de seguir nuestras novedades.</p>
+        <a href={//rss/} class="inline-block px-8 py-3 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-all">
+          Ver instrucciones
+        </a>
+      </div>
       </div>
       
       <!-- Placeholder para futuras noticias -->
