@@ -1,0 +1,57 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'de' } },
+  ];
+}
+const { lang } = Astro.params;
+---
+<Layout title="Fundador | SportDharma Ecosystem">
+  <section class="py-20 px-6 bg-surface">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-[#E8530E]/10 flex items-center justify-center text-6xl"></div>
+        <h1 class="text-4xl md:text-5xl font-bold text-ink mb-4">Favio</h1>
+        <p class="text-xl text-[#E8530E] font-semibold">Cicloviajero · Fundador · Desarrollador</p>
+      </div>
+      
+      <div class="prose prose-lg dark:prose-invert max-w-none space-y-6 text-ink-soft">
+        <p class="text-lg leading-relaxed">
+          Durante <strong class="text-ink">11 años</strong> recorrí <strong class="text-ink">120.000 kilómetros</strong> en bicicleta a través de <strong class="text-ink">84 países</strong>. 
+          Desde los Pamir de Tayikistán hasta los templos de Luang Prabang en Laos, donde actualmente resido, descubrí que el deporte al aire libre 
+          necesita herramientas digitales que respeten la privacidad, funcionen sin conexión y pertenezcan a quienes las usan.
+        </p>
+        
+        <p class="text-lg leading-relaxed">
+          <strong class="text-ink">SportDharma Ecosystem</strong> nació de esa necesidad: una infraestructura de software libre, soberana y offline-first 
+          para deportistas outdoor. Sin algoritmos, sin tracking, sin venta de datos. Solo herramientas que te acompañen en la ruta.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
+          <div class="p-6 rounded-xl border border-black/5 dark:border-white/5 bg-surface-alt text-center">
+            <div class="text-3xl font-bold text-[#E8530E]">120.000</div>
+            <div class="text-sm text-ink-soft mt-1">Kilómetros recorridos</div>
+          </div>
+          <div class="p-6 rounded-xl border border-black/5 dark:border-white/5 bg-surface-alt text-center">
+            <div class="text-3xl font-bold text-[#E8530E]">84</div>
+            <div class="text-sm text-ink-soft mt-1">Países visitados</div>
+          </div>
+          <div class="p-6 rounded-xl border border-black/5 dark:border-white/5 bg-surface-alt text-center">
+            <div class="text-3xl font-bold text-[#E8530E]">11</div>
+            <div class="text-sm text-ink-soft mt-1">Años en ruta</div>
+          </div>
+        </div>
+        
+        <p class="text-lg leading-relaxed">
+          Hoy combino la vida en ruta con el desarrollo de software libre, construyendo herramientas que yo mismo uso cada día 
+          y que comparto con la comunidad global de deportistas conscientes.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,97 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'de' } },
+  ];
+}
+const { lang } = Astro.params;
+---
+
+<Layout title="App Móvil | SportDharma Ecosystem">
+  <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center mb-16">
+        <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">ECOSISTEMA</p>
+        <h1 class="text-4xl md:text-6xl font-bold text-ink mb-4">
+          App <span class="text-[#E8530E] dark:text-orange-500">Móvil</span>
+        </h1>
+        <p class="text-lg text-ink-soft max-w-2xl mx-auto">
+          Tu compañero offline en ruta. Soberanía digital, privacidad total y funcionalidad garantizada en los territorios más remotos.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        
+        <div class="space-y-8">
+          
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-ink mb-2">Mapas Topográficos Offline</h3>
+              <p class="text-ink-soft leading-relaxed">Descargá las zonas que vas a recorrer antes de salir. Funciona 100% sin conexión a internet, ideal para montañas, selvas y desiertos.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-ink mb-2">Tracking GPS Preciso</h3>
+              <p class="text-ink-soft leading-relaxed">Registrá tu ruta, altitud, velocidad y distancia en tiempo real. Tus datos de ubicación nunca salen de tu dispositivo.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-ink mb-2">Comunicación Segura</h3>
+              <p class="text-ink-soft leading-relaxed">Mensajería encriptada de extremo a extremo para coordinar con tu equipo de primera respuesta o grupo de cicloviajeros.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-ink mb-2">Diario de Viaje Local</h3>
+              <p class="text-ink-soft leading-relaxed">Documentá tu travesía con fotos, notas y waypoints. Todo se guarda localmente en tu dispositivo, bajo tu total control.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="bg-gradient-to-br from-[#E8530E]/10 to-ink/5 dark:from-[#E8530E]/20 dark:to-ink/20 rounded-2xl p-8 border border-line flex items-center justify-center min-h-[400px]">
+          <div class="text-center">
+            <svg class="w-32 h-32 text-[#E8530E] dark:text-orange-500 mx-auto mb-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+            <p class="text-ink-soft font-mono text-sm">Mockup de la App (Próximamente)</p>
+            <p class="text-ink-soft text-xs mt-2">Disponible para Android e iOS</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>

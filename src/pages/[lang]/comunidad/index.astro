@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'de' } },
+  ];
+}
+const { lang } = Astro.params;
+---
+<Layout title="Comunidad | SportDharma Ecosystem">
+  <section class="py-20 px-6 bg-surface">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="text-6xl mb-6">🌐</div>
+        <h1 class="text-4xl md:text-5xl font-bold text-ink mb-4">Comunidad</h1>
+        <p class="text-xl text-ink-soft">Construyendo juntos una red global de deportistas conscientes.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <a href="https://github.com/Favio31" target="_blank" rel="noopener" class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E] transition-all group">
+          <div class="text-4xl mb-4">💻</div>
+          <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">GitHub</h3>
+          <p class="text-ink-soft text-sm">Código fuente, issues y contribuciones técnicas.</p>
+        </a>
+        
+        <a href="https://sportdharmaecosystem.com/rss/" class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E] transition-all group">
+          <div class="text-4xl mb-4">📡</div>
+          <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">RSS Feed</h3>
+          <p class="text-ink-soft text-sm">Seguí las novedades sin algoritmos ni tracking.</p>
+        </a>
+        
+        <a href="mailto:favio@sportdharmaecosystem.com?subject=Newsletter" class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E] transition-all group">
+          <div class="text-4xl mb-4"></div>
+          <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Newsletter</h3>
+          <p class="text-ink-soft text-sm">Actualizaciones mensuales directas a tu email.</p>
+        </a>
+        
+        <a href="/contacto/" class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt hover:border-[#E8530E] transition-all group">
+          <div class="text-4xl mb-4">🤝</div>
+          <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Colaborá</h3>
+          <p class="text-ink-soft text-sm">Sumate al equipo de desarrollo y curación.</p>
+        </a>
+      </div>
+      
+      <div class="p-8 rounded-2xl bg-gradient-to-br from-[#E8530E]/10 to-transparent border border-[#E8530E]/30 text-center">
+        <h3 class="text-2xl font-bold text-ink mb-4">Filosofía de la comunidad</h3>
+        <p class="text-ink-soft text-lg max-w-2xl mx-auto">
+          Sin redes sociales centralizadas. Sin algoritmos que deciden qué ves. 
+          Solo herramientas libres que conectan a deportistas que valoran la privacidad, 
+          la soberanía digital y el bienestar real.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
