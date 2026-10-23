@@ -1,7 +1,5 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
-import WebPushSubscribe from '../../../components/WebPushSubscribe.astro';
-import { useTranslations } from '../../../i18n/utils.js';
 
 export async function getStaticPaths() {
   return [
@@ -14,34 +12,32 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const t = useTranslations(lang);
 ---
 
-<Layout title="Noticias | SportDharma Ecosystem">
-  <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl font-bold text-ink mb-8">Noticias e Información</h1>
-      <p class="text-ink-soft text-lg mb-12">Curación humana, 6 publicaciones diarias. Contenido fresco, verificado y relevante para la comunidad outdoor.</p>
+<Layout title="Noticias e Información | SportDharma Ecosystem" lang={lang}>
+  <!-- SECCIÓN DE NOTICIAS - Idéntica al Home -->
+  <section id="noticias" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-ink mb-4">Noticias e Información</h2>
+      <p class="text-ink-soft text-lg mb-10">Curación humana, 6 publicaciones diarias. Contenido fresco, verificado y relevante.</p>
       
-      <!-- Componente de Suscripción Push -->
-      <WebPushSubscribe />
-      
-            <!-- SECCIÓN DE RSS - Estética igual al Home -->
-      <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-surface-alt text-center max-w-md mx-auto mt-8">
-        <div class="text-5xl mb-4">📡</div>
-        <h3 class="text-2xl font-bold text-ink mb-3">RSS Feed (Open Source)</h3>
-        <p class="text-ink-soft mb-6">La forma más pura y descentralizada de seguir nuestras novedades.</p>
-        <a href={`/${lang}/rss/`} class="inline-block px-8 py-3 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-all">
-          Ver instrucciones
-        </a>
-      </div>
-      </div>
-      
-      <!-- Placeholder para futuras noticias -->
-      <div class="mt-16 space-y-6">
-        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent text-center">
-          <p class="text-ink-soft text-lg">🚧 Próximamente: las primeras publicaciones curadas.</p>
-          <p class="text-ink-soft text-sm mt-2">Estamos preparando contenido de valor sin algoritmos ni sesgos.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all">
+          <div class="text-5xl mb-4">🔔</div>
+          <h3 class="text-2xl font-bold text-ink mb-3">Activar Notificaciones</h3>
+          <p class="text-ink-soft mb-6">Sin emails, sin registro, sin tracking. Solo notificaciones nativas del navegador.</p>
+          <a href={`/${lang}/noticias/`} class="inline-block px-8 py-3 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all hover:scale-105">
+            Suscribirse
+          </a>
+        </div>
+        
+        <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all">
+          <div class="text-5xl mb-4">📡</div>
+          <h3 class="text-2xl font-bold text-ink mb-3">RSS Feed (Open Source)</h3>
+          <p class="text-ink-soft mb-6">La forma más pura y descentralizada de seguir nuestras novedades.</p>
+          <a href={`/${lang}/rss/`} class="inline-block px-8 py-3 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-all">
+            Ver instrucciones
+          </a>
         </div>
       </div>
     </div>
