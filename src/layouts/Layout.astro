@@ -39,7 +39,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ? Astro.site.href : 'ht
     </script>
           <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sportdharmaecosystem.com/" />
+    <meta property="og:url" content={canonical.href} />
     <meta property="og:title" content="SportDharma Ecosystem" />
     <meta property="og:description" content="Infraestructura libre, soberana y offline-first para deportistas outdoor." />
     <meta property="og:image" content="https://sportdharmaecosystem.com/logo-social.jpg" />
