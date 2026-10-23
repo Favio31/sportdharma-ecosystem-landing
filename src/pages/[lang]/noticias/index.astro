@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from '../../../layouts/Layout.astro';
 import WebPushSubscribe from '../../../components/WebPushSubscribe.astro';
 import { useTranslations } from '../../../i18n/utils.js';
@@ -28,7 +28,7 @@ const t = useTranslations(lang);
       
       <!-- Link al RSS Feed -->
       <div class="mt-8 text-center">
-        <a href="/rss.xml" class="text-[#E8530E] hover:underline text-sm font-semibold">📡 Suscribirse vía RSS Feed (Open Source)</a>
+        <a href="/rss.xml" class="text-[#E8530E] hover:underline text-sm font-semibold">📡 <a href={`/${lang}/rss/`} class="inline-block px-6 py-3 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-all">Suscribirse vía RSS Feed (Open Source)</a></a>
       </div>
       
       <!-- Placeholder para futuras noticias -->
