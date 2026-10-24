@@ -129,5 +129,22 @@
     "f4_desc": "Spanish and English from day one. Selector with localStorage, no cookies. Accessible for the global community of athletes.",
     "placeholder_title": "Web Portal (Coming Soon)",
     "placeholder_desc": "Accessible from any browser"
+  },
+  "app": {
+    "page_title": "Mobile App | SportDharma Ecosystem",
+    "label": "ECOSYSTEM",
+    "title_1": "Mobile",
+    "title_2": "App",
+    "subtitle": "Your offline companion on the road. Digital sovereignty, total privacy and guaranteed functionality in the most remote territories.",
+    "f1_title": "Offline Topographic Maps",
+    "f1_desc": "Download the areas you will travel before leaving. Works 100% without internet connection, ideal for mountains, jungles and deserts.",
+    "f2_title": "Precise GPS Tracking",
+    "f2_desc": "Record your route, altitude, speed and distance in real time. Your location data never leaves your device.",
+    "f3_title": "Secure Communication",
+    "f3_desc": "End-to-end encrypted messaging to coordinate with your first response team or group of cycle tourists.",
+    "f4_title": "Local Travel Diary",
+    "f4_desc": "Document your journey with photos, notes and waypoints. Everything is saved locally on your device, under your total control.",
+    "placeholder_title": "App Mockup (Coming Soon)",
+    "placeholder_desc": "Available for Android and iOS"
   }
 }

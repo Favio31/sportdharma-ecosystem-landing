@@ -129,5 +129,22 @@
     "f4_desc": "Español e inglés desde el día 1. Selector con localStorage, sin cookies. Accesible para la comunidad global de deportistas.",
     "placeholder_title": "Portal Web (Próximamente)",
     "placeholder_desc": "Accesible desde cualquier navegador"
+  },
+  "app": {
+    "page_title": "App Móvil | SportDharma Ecosystem",
+    "label": "ECOSISTEMA",
+    "title_1": "App",
+    "title_2": "Móvil",
+    "subtitle": "Tu compañero offline en ruta. Soberanía digital, privacidad total y funcionalidad garantizada en los territorios más remotos.",
+    "f1_title": "Mapas Topográficos Offline",
+    "f1_desc": "Descargá las zonas que vas a recorrer antes de salir. Funciona 100% sin conexión a internet, ideal para montañas, selvas y desiertos.",
+    "f2_title": "Tracking GPS Preciso",
+    "f2_desc": "Registrá tu ruta, altitud, velocidad y distancia en tiempo real. Tus datos de ubicación nunca salen de tu dispositivo.",
+    "f3_title": "Comunicación Segura",
+    "f3_desc": "Mensajería encriptada de extremo a extremo para coordinar con tu equipo de primera respuesta o grupo de cicloviajeros.",
+    "f4_title": "Diario de Viaje Local",
+    "f4_desc": "Documentá tu travesía con fotos, notas y waypoints. Todo se guarda localmente en tu dispositivo, bajo tu total control.",
+    "placeholder_title": "Mockup de la App (Próximamente)",
+    "placeholder_desc": "Disponible para Android e iOS"
   }
 }
