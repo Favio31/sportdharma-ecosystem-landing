@@ -23,6 +23,7 @@ const STATIC_PATHS_FN = `export async function getStaticPaths() {
     { params: { lang: 'pt' } },
     { params: { lang: 'de' } },
     { params: { lang: 'it' } },
+    { params: { lang: 'it' } },
   ];
 }`;
 const LANG_CONST = `const { lang } = Astro.params;`;
@@ -161,4 +162,5 @@ main().catch((err) => {
   console.error('❌ Error inesperado:', err);
   process.exit(1);
 });
+
 
