@@ -1,4 +1,4 @@
----
+﻿---
 import LanguageSelector from '../components/LanguageSelector.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils.js';
 import '../styles/global.css';
@@ -64,7 +64,7 @@ const {
     <meta name="twitter:image" content={ogImage} />
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen transition-colors duration-300">
-    <Header />
+    <Header lang={Astro.params.lang}  lang={Astro.params.lang} />
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-end">
       <LanguageSelector {lang} />
     </div>
