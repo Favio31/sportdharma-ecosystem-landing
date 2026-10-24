@@ -1,0 +1,14 @@
+﻿{
+    "home":  {
+                 "mantenete_al_dia":  "Mantenete al día",
+                 "hero_subtitle":  "Software libre para deportistas outdoor",
+                 "mantenete_desc":  "Elegí cómo querés recibir nuestras novedades. Sin emails, sin registro, sin tracking.",
+                 "hero_title":  "SportDharma Ecosystem"
+             },
+    "nav":  {
+                "pilares":  "Pilares",
+                "manifiesto":  "Manifiesto",
+                "noticias":  "Noticias",
+                "fundador":  "Fundador"
+            }
+}
