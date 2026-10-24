@@ -1,24 +1,12 @@
-﻿{
-    "home":  {
-                 "mantenete_al_dia":  "Mantenete al día",
-                 "hero_subtitle":  "Software libre para deportistas outdoor",
-                 "mantenete_desc":  "Elegí cómo querés recibir nuestras novedades. Sin emails, sin registro, sin tracking.",
-                 "hero_title":  "SportDharma Ecosystem"
-             },
-    "nav":  {
-                "pilares":  "Pilares",
-                "manifiesto":  "Manifiesto",
-                "noticias":  "Noticias",
-                "fundador":  "Fundador"
-            },
-    "fundador":  {
-                     "subtitle":  "Cicloviajero · Fundador · Desarrollador",
-                     "bio_p3":  "Hoy combino la vida en ruta con el desarrollo de software libre, construyendo herramientas que yo mismo uso cada día y que comparto con la comunidad global de deportistas conscientes.",
-                     "stat_km_label":  "Kilómetros recorridos",
-                     "bio_p1":  "Durante \u003cstrong\u003e11 años\u003c/strong\u003e recorrí \u003cstrong\u003e120.000 kilómetros\u003c/strong\u003e en bicicleta a través de \u003cstrong\u003e84 países\u003c/strong\u003e. Desde los Pamir de Tayikistán hasta los templos de Luang Prabang en Laos, donde actualmente resido, descubrí que el deporte al aire libre necesita herramientas digitales que respeten la privacidad, funcionen sin conexión y pertenezcan a quienes las usan.",
-                     "bio_p2":  "\u003cstrong\u003eSportDharma Ecosystem\u003c/strong\u003e nació de esa necesidad: una infraestructura de software libre, soberana y offline-first para deportistas outdoor. Sin algoritmos, sin tracking, sin venta de datos. Solo herramientas que te acompañen en la ruta.",
-                     "stat_years_label":  "Años en ruta",
-                     "stat_countries_label":  "Países visitados",
-                     "page_title":  "Fundador | SportDharma Ecosystem"
-                 }
+{
+  "fundador": {
+    "page_title": "Fundador | SportDharma Ecosystem",
+    "subtitle": "Cicloviajero · Fundador · Desarrollador",
+    "bio_p1": "Durante <strong>11 años</strong> recorrí <strong>120.000 kilómetros</strong> en bicicleta a través de <strong>84 países</strong>. Desde los Pamir de Tayikistán hasta los templos de Luang Prabang en Laos, donde actualmente resido, descubrí que el deporte al aire libre necesita herramientas digitales que respeten la privacidad, funcionen sin conexión y pertenezcan a quienes las usan.",
+    "bio_p2": "<strong>SportDharma Ecosystem</strong> nació de esa necesidad: una infraestructura de software libre, soberana y offline-first para deportistas outdoor. Sin algoritmos, sin tracking, sin venta de datos. Solo herramientas que te acompañen en la ruta.",
+    "stat_km_label": "Kilómetros recorridos",
+    "stat_countries_label": "Países visitados",
+    "stat_years_label": "Años en ruta",
+    "bio_p3": "Hoy combino la vida en ruta con el desarrollo de software libre, construyendo herramientas que yo mismo uso cada día y que comparto con la comunidad global de deportistas conscientes."
+  }
 }
