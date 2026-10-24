@@ -1,5 +1,7 @@
-﻿---
+---
 import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils.js';
+
 export async function getStaticPaths() {
   return [
     { params: { lang: 'es' } },
@@ -11,21 +13,21 @@ export async function getStaticPaths() {
   ];
 }
 const { lang } = Astro.params;
+const t = useTranslations(lang);
 ---
 
-<Layout title="Manifiesto | SportDharma Ecosystem">
+<Layout title={t('manifiesto.page_title')}>
   <section id="manifiesto" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       
       <!-- Título -->
       <div class="text-center mb-16">
-        <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">MANIFIESTO</p>
+        <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">{t('manifiesto.label')}</p>
         <h1 class="text-4xl md:text-6xl font-bold text-ink mb-4">
-          Así nació <span class="text-[#E8530E] dark:text-orange-500">SportDharma Ecosystem</span>
+          {t('manifiesto.title_1')} <span class="text-[#E8530E] dark:text-orange-500">{t('manifiesto.title_2')}</span>
         </h1>
         <p class="text-lg text-ink-soft max-w-2xl mx-auto">
-          De los libros de la infancia a la vuelta al mundo en bicicleta. Del budismo a la IA. 
-          Una búsqueda de propósito que se transformó en infraestructura libre para deportistas.
+          {t('manifiesto.subtitle')}
         </p>
       </div>
 
@@ -35,24 +37,12 @@ const { lang } = Astro.params;
         <!-- Texto -->
         <div>
           <blockquote class="border-l-4 border-[#E8530E] dark:border-orange-500 rounded-r-xl p-8 transition-colors duration-300">
-            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
-              De niño, los libros y películas sembraron en mí un sueño: conocer el mundo. Aquellas lecturas e historias crearon una fascinación que, con el tiempo, se transformó en mi destino. En el transitar de la vida elegí soñar despierto: abrirme a sentir el hoy, el aquí y el ahora.
-            </p>
-            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
-              Durante años, "La Estrella" —mi compañera de dos ruedas— y yo recorrimos el mundo en bicicleta. Fue un viaje exterior e interior, con días únicos e irrepetibles.
-            </p>
-            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
-              Como nos enseña el Buda: "Todo lo que tiene un comienzo tiene un final". Aquella vuelta al mundo planificada encontró su horizonte de cierre en Nueva Zelanda. Surgieron entonces sentimientos encontrados de festejo, profunda satisfacción y gratitud hacia todos los seres que hicieron posible el camino. Pero también brotaron preguntas existenciales sobre la impermanencia y ese futuro incierto que intentamos descifrar.
-            </p>
-            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
-              Buscando respuestas, me adentré en la filosofía japonesa del Ikigai para redescubrir mi propósito de vida. El punto de convergencia marcaba con claridad una dirección: debía construir algo que honrara la experiencia del viaje, la exploración y el deporte, integrado con la necesidad de adquirir nuevo conocimiento alineado al mundo contemporáneo.
-            </p>
-            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">
-              Fue así como incursioné formalmente en el estudio de la arquitectura y gestión de la Inteligencia Artificial.
-            </p>
-            <p class="text-lg text-ink font-semibold text-justify">
-              El Proyecto SportDharma Ecosystem nace precisamente allí: en la unión entre la pasión por el deporte, el viaje, la resiliencia humana y la tecnología soberana.
-            </p>
+            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">{t('manifiesto.p1')}</p>
+            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">{t('manifiesto.p2')}</p>
+            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">{t('manifiesto.p3')}</p>
+            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">{t('manifiesto.p4')}</p>
+            <p class="text-lg text-ink-soft leading-relaxed mb-4 text-justify">{t('manifiesto.p5')}</p>
+            <p class="text-lg text-ink font-semibold text-justify">{t('manifiesto.p6')}</p>
           </blockquote>
         </div>
 
@@ -60,27 +50,27 @@ const { lang } = Astro.params;
         <div class="grid grid-cols-2 grid-rows-3 gap-4 h-[650px]">
           
           <div class="rounded-xl overflow-hidden shadow-lg border-2 border-white/30">
-            <img src="/manifiesto-laos.jpg" alt="Templo en Laos" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <img src="/manifiesto-laos.jpg" alt={t('manifiesto.alt_laos')} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
 
           <div class="rounded-xl overflow-hidden shadow-lg border-2 border-white/30">
-            <img src="/manifiesto-camino.jpg" alt="Camino de tierra" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <img src="/manifiesto-camino.jpg" alt={t('manifiesto.alt_camino')} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
 
           <div class="rounded-xl overflow-hidden shadow-lg border-2 border-white/30">
-            <img src="/manifiesto-ruta.jpg" alt="Cicloviajero en ruta" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <img src="/manifiesto-ruta.jpg" alt={t('manifiesto.alt_ruta')} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
 
           <div class="rounded-xl overflow-hidden shadow-lg border-2 border-white/30">
-            <img src="/manifiesto-grupo.jpg" alt="Grupo de cicloviajeros" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <img src="/manifiesto-grupo.jpg" alt={t('manifiesto.alt_grupo')} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
 
           <div class="rounded-xl overflow-hidden shadow-lg border-2 border-white/30">
-            <img src="/manifiesto-pamir.jpg" alt="Montañas del Pamir" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <img src="/manifiesto-pamir.jpg" alt={t('manifiesto.alt_pamir')} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
 
           <div class="rounded-xl overflow-hidden shadow-lg border-2 border-white/30">
-            <img src="/manifiesto-tayikistan.jpg" alt="Cicloviaje en Tayikistán" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <img src="/manifiesto-tayikistan.jpg" alt={t('manifiesto.alt_tayikistan')} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
           </div>
 
         </div>

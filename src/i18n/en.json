@@ -93,5 +93,24 @@
     "theme_light": "Light theme",
     "theme_dark": "Dark theme",
     "open_menu": "Open menu"
+  },
+  "manifiesto": {
+    "page_title": "Manifesto | SportDharma Ecosystem",
+    "label": "MANIFESTO",
+    "title_1": "How",
+    "title_2": "SportDharma Ecosystem",
+    "subtitle": "Was born. From childhood books to cycling around the world. From Buddhism to AI. A search for purpose that became free infrastructure for athletes.",
+    "p1": "As a child, books and movies planted a dream in me: to see the world. Those readings and stories created a fascination that, over time, became my destiny. In the course of life I chose to dream awake: to open myself to feel today, the here and now.",
+    "p2": "For years, \"La Estrella\" —my two-wheeled companion— and I traveled the world by bicycle. It was an outer and inner journey, with unique and unrepeatable days.",
+    "p3": "As the Buddha teaches us: \"Everything that has a beginning has an end.\" That planned trip around the world found its closing horizon in New Zealand. Mixed feelings then arose of celebration, deep satisfaction and gratitude towards all the beings who made the path possible. But existential questions also sprouted about impermanence and that uncertain future we try to decipher.",
+    "p4": "Seeking answers, I delved into the Japanese philosophy of Ikigai to rediscover my life purpose. The point of convergence clearly marked a direction: I had to build something that honored the experience of travel, exploration and sport, integrated with the need to acquire new knowledge aligned with the contemporary world.",
+    "p5": "That is how I formally ventured into the study of the architecture and management of Artificial Intelligence.",
+    "p6": "The SportDharma Ecosystem Project is born precisely there: in the union between the passion for sport, travel, human resilience and sovereign technology.",
+    "alt_laos": "Temple in Laos",
+    "alt_camino": "Dirt road",
+    "alt_ruta": "Cycle tourist on the road",
+    "alt_grupo": "Group of cycle tourists",
+    "alt_pamir": "Pamir Mountains",
+    "alt_tayikistan": "Cycle touring in Tajikistan"
   }
 }

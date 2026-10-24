@@ -93,5 +93,24 @@
     "theme_light": "Tema claro",
     "theme_dark": "Tema escuro",
     "open_menu": "Abrir menu"
+  },
+  "manifiesto": {
+    "page_title": "Manifesto | SportDharma Ecosystem",
+    "label": "MANIFESTO",
+    "title_1": "Como nasceu o",
+    "title_2": "SportDharma Ecosystem",
+    "subtitle": "Dos livros da infância à volta ao mundo de bicicleta. Do budismo à IA. Uma busca de propósito que se transformou em infraestrutura livre para atletas.",
+    "p1": "Quando criança, livros e filmes plantaram em mim um sonho: conhecer o mundo. Aquelas leituras e histórias criaram um fascínio que, com o tempo, se transformou em meu destino. No transcorrer da vida, escolhi sonhar acordado: abrir-me para sentir o hoje, o aqui e o agora.",
+    "p2": "Durante anos, \"La Estrella\" —minha companheira de duas rodas— e eu percorremos o mundo de bicicleta. Foi uma viagem exterior e interior, com dias únicos e irrepetíveis.",
+    "p3": "Como nos ensina o Buda: \"Tudo o que tem um começo tem um fim\". Aquela volta ao mundo planejada encontrou seu horizonte de fechamento na Nova Zelândia. Surgiram então sentimentos contraditórios de celebração, profunda satisfação e gratidão a todos os seres que tornaram o caminho possível. Mas também brotaram questões existenciais sobre a impermanência e esse futuro incerto que tentamos decifrar.",
+    "p4": "Em busca de respostas, mergulhei na filosofia japonesa do Ikigai para redescobrir meu propósito de vida. O ponto de convergência marcava claramente uma direção: eu devia construir algo que honrasse a experiência da viagem, da exploração e do esporte, integrado com a necessidade de adquirir novos conhecimentos alinhados ao mundo contemporâneo.",
+    "p5": "Foi assim que incursionei formalmente no estudo da arquitetura e gestão da Inteligência Artificial.",
+    "p6": "O Projeto SportDharma Ecosystem nasce precisamente aí: na união entre a paixão pelo esporte, a viagem, a resiliência humana e a tecnologia soberana.",
+    "alt_laos": "Templo no Laos",
+    "alt_camino": "Caminho de terra",
+    "alt_ruta": "Cicloturista na estrada",
+    "alt_grupo": "Grupo de cicloturistas",
+    "alt_pamir": "Montanhas do Pamir",
+    "alt_tayikistan": "Cicloturismo no Tajiquistão"
   }
 }

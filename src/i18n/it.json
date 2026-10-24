@@ -93,5 +93,24 @@
     "theme_light": "Tema chiaro",
     "theme_dark": "Tema scuro",
     "open_menu": "Apri menu"
+  },
+  "manifiesto": {
+    "page_title": "Manifesto | SportDharma Ecosystem",
+    "label": "MANIFESTO",
+    "title_1": "Come è nato",
+    "title_2": "SportDharma Ecosystem",
+    "subtitle": "Dai libri dell'infanzia al giro del mondo in bicicletta. Dal buddismo all'IA. Una ricerca di scopo diventata infrastruttura libera per atleti.",
+    "p1": "Da bambino, libri e film hanno piantato in me un sogno: vedere il mondo. Quelle letture e storie hanno creato un fascino che, col tempo, è diventato il mio destino. Nel corso della vita ho scelto di sognare da sveglio: aprirmi a sentire l'oggi, il qui e l'ora.",
+    "p2": "Per anni, \"La Estrella\" —la mia compagna a due ruote— e io abbiamo percorso il mondo in bicicletta. È stato un viaggio esteriore e interiore, con giorni unici e irripetibili.",
+    "p3": "Come ci insegna il Buddha: \"Tutto ciò che ha un inizio ha una fine\". Quel giro del mondo pianificato ha trovato il suo orizzonte di chiusura in Nuova Zelanda. Sono sorti allora sentimenti contrastanti di festa, profonda soddisfazione e gratitudine verso tutti gli esseri che hanno reso possibile il cammino. Ma sono anche germogliate domande esistenziali sull'impermanenza e quel futuro incerto che cerchiamo di decifrare.",
+    "p4": "Cercando risposte, mi sono addentrato nella filosofia giapponese dell'Ikigai per riscoprire il mio scopo di vita. Il punto di convergenza segnava chiaramente una direzione: dovevo costruire qualcosa che onorasse l'esperienza del viaggio, dell'esplorazione e dello sport, integrato con la necessità di acquisire nuove conoscenze allineate al mondo contemporaneo.",
+    "p5": "Fu così che mi sono addentrato formalmente nello studio dell'architettura e della gestione dell'Intelligenza Artificiale.",
+    "p6": "Il Progetto SportDharma Ecosystem nasce proprio lì: nell'unione tra la passione per lo sport, il viaggio, la resilienza umana e la tecnologia sovrana.",
+    "alt_laos": "Tempio in Laos",
+    "alt_camino": "Strada sterrata",
+    "alt_ruta": "Cicloturista in viaggio",
+    "alt_grupo": "Gruppo di cicloturisti",
+    "alt_pamir": "Montagne del Pamir",
+    "alt_tayikistan": "Cicloturismo in Tagikistan"
   }
 }

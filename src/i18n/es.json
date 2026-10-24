@@ -93,5 +93,24 @@
     "theme_light": "Tema claro",
     "theme_dark": "Tema oscuro",
     "open_menu": "Abrir menú"
+  },
+  "manifiesto": {
+    "page_title": "Manifiesto | SportDharma Ecosystem",
+    "label": "MANIFIESTO",
+    "title_1": "Así nació",
+    "title_2": "SportDharma Ecosystem",
+    "subtitle": "De los libros de la infancia a la vuelta al mundo en bicicleta. Del budismo a la IA. Una búsqueda de propósito que se transformó en infraestructura libre para deportistas.",
+    "p1": "De niño, los libros y películas sembraron en mí un sueño: conocer el mundo. Aquellas lecturas e historias crearon una fascinación que, con el tiempo, se transformó en mi destino. En el transitar de la vida elegí soñar despierto: abrirme a sentir el hoy, el aquí y el ahora.",
+    "p2": "Durante años, \"La Estrella\" —mi compañera de dos ruedas— y yo recorrimos el mundo en bicicleta. Fue un viaje exterior e interior, con días únicos e irrepetibles.",
+    "p3": "Como nos enseña el Buda: \"Todo lo que tiene un comienzo tiene un final\". Aquella vuelta al mundo planificada encontró su horizonte de cierre en Nueva Zelanda. Surgieron entonces sentimientos encontrados de festejo, profunda satisfacción y gratitud hacia todos los seres que hicieron posible el camino. Pero también brotaron preguntas existenciales sobre la impermanencia y ese futuro incierto que intentamos descifrar.",
+    "p4": "Buscando respuestas, me adentré en la filosofía japonesa del Ikigai para redescubrir mi propósito de vida. El punto de convergencia marcaba con claridad una dirección: debía construir algo que honrara la experiencia del viaje, la exploración y el deporte, integrado con la necesidad de adquirir nuevo conocimiento alineado al mundo contemporáneo.",
+    "p5": "Fue así como incursioné formalmente en el estudio de la arquitectura y gestión de la Inteligencia Artificial.",
+    "p6": "El Proyecto SportDharma Ecosystem nace precisamente allí: en la unión entre la pasión por el deporte, el viaje, la resiliencia humana y la tecnología soberana.",
+    "alt_laos": "Templo en Laos",
+    "alt_camino": "Camino de tierra",
+    "alt_ruta": "Cicloviajero en ruta",
+    "alt_grupo": "Grupo de cicloviajeros",
+    "alt_pamir": "Montañas del Pamir",
+    "alt_tayikistan": "Cicloviaje en Tayikistán"
   }
 }

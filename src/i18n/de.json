@@ -93,5 +93,24 @@
     "theme_light": "Helles Thema",
     "theme_dark": "Dunkles Thema",
     "open_menu": "Menü öffnen"
+  },
+  "manifiesto": {
+    "page_title": "Manifest | SportDharma Ecosystem",
+    "label": "MANIFEST",
+    "title_1": "Wie",
+    "title_2": "SportDharma Ecosystem",
+    "subtitle": "Entstand. Von Kindheitsbüchern zur Radreise um die Welt. Vom Buddhismus zur KI. Eine Sinnsuche, die zur freien Infrastruktur für Athleten wurde.",
+    "p1": "Als Kind pflanzten Bücher und Filme einen Traum in mir: die Welt zu sehen. Diese Lektüren und Geschichten schufen eine Faszination, die mit der Zeit zu meinem Schicksal wurde. Im Laufe des Lebens wählte ich, wach zu träumen: mich zu öffnen, das Heute, das Hier und Jetzt zu fühlen.",
+    "p2": "Jahre lang bereisten \"La Estrella\" —meine zweirädrige Gefährtin— und ich die Welt mit dem Fahrrad. Es war eine äußere und innere Reise, mit einzigartigen und unwiederholbaren Tagen.",
+    "p3": "Wie der Buddha uns lehrt: \"Alles, was einen Anfang hat, hat ein Ende.\" Diese geplante Weltreise fand ihren Abschluss in Neuseeland. Dann entstanden gemischte Gefühle der Feier, tiefer Zufriedenheit und Dankbarkeit gegenüber allen Wesen, die den Weg ermöglichten. Aber es keimten auch existenzielle Fragen über die Vergänglichkeit und diese ungewisse Zukunft, die wir zu entschlüsseln versuchen.",
+    "p4": "Auf der Suche nach Antworten vertiefte ich mich in die japanische Philosophie des Ikigai, um meinen Lebenszweck wiederzuentdecken. Der Konvergenzpunkt markierte klar eine Richtung: Ich musste etwas bauen, das die Erfahrung des Reisens, der Exploration und des Sports ehrt, integriert mit der Notwendigkeit, neues Wissen zu erwerben, das mit der zeitgenössischen Welt übereinstimmt.",
+    "p5": "So wagte ich mich formal in das Studium der Architektur und des Managements Künstlicher Intelligenz.",
+    "p6": "Das Projekt SportDharma Ecosystem entsteht genau dort: in der Vereinigung zwischen der Leidenschaft für Sport, Reisen, menschliche Resilienz und souveräne Technologie.",
+    "alt_laos": "Tempel in Laos",
+    "alt_camino": "Feldweg",
+    "alt_ruta": "Radreisender unterwegs",
+    "alt_grupo": "Gruppe von Radreisenden",
+    "alt_pamir": "Pamir-Gebirge",
+    "alt_tayikistan": "Radreise in Tadschikistan"
   }
 }

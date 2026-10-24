@@ -93,5 +93,24 @@
     "theme_light": "Thème clair",
     "theme_dark": "Thème sombre",
     "open_menu": "Ouvrir le menu"
+  },
+  "manifiesto": {
+    "page_title": "Manifeste | SportDharma Ecosystem",
+    "label": "MANIFESTE",
+    "title_1": "Comment est né",
+    "title_2": "SportDharma Ecosystem",
+    "subtitle": "Des livres d'enfance au tour du monde à vélo. Du bouddhisme à l'IA. Une quête de sens devenue infrastructure libre pour les sportifs.",
+    "p1": "Enfant, les livres et les films ont planté en moi un rêve : voir le monde. Ces lectures et ces histoires ont créé une fascination qui, avec le temps, est devenue ma destinée. Au fil de la vie, j'ai choisi de rêver éveillé : m'ouvrir à ressentir aujourd'hui, l'ici et le maintenant.",
+    "p2": "Pendant des années, \"La Estrella\" —ma compagne à deux roues— et moi avons parcouru le monde à vélo. Ce fut un voyage extérieur et intérieur, avec des jours uniques et irremplaçables.",
+    "p3": "Comme nous l'enseigne le Bouddha : \"Tout ce qui a un commencement a une fin.\" Ce tour du monde planifié a trouvé son horizon de clôture en Nouvelle-Zélande. Des sentiments contradictoires ont alors surgi : célébration, profonde satisfaction et gratitude envers tous les êtres qui ont rendu le chemin possible. Mais des questions existentielles ont aussi germé sur l'impermanence et cet avenir incertain que nous essayons de déchiffrer.",
+    "p4": "En quête de réponses, je me suis plongé dans la philosophie japonaise de l'Ikigai pour redécouvrir mon but dans la vie. Le point de convergence marquait clairement une direction : je devais construire quelque chose qui honore l'expérience du voyage, de l'exploration et du sport, intégré avec le besoin d'acquérir de nouvelles connaissances alignées avec le monde contemporain.",
+    "p5": "C'est ainsi que je me suis lancé formellement dans l'étude de l'architecture et de la gestion de l'Intelligence Artificielle.",
+    "p6": "Le Projet SportDharma Ecosystem naît précisément là : dans l'union entre la passion pour le sport, le voyage, la résilience humaine et la technologie souveraine.",
+    "alt_laos": "Temple au Laos",
+    "alt_camino": "Chemin de terre",
+    "alt_ruta": "Cyclotouriste sur la route",
+    "alt_grupo": "Groupe de cyclotouristes",
+    "alt_pamir": "Montagnes du Pamir",
+    "alt_tayikistan": "Cyclotourisme au Tadjikistan"
   }
 }
