@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/sections/Hero.astro';
 import { useTranslations } from '../../i18n/utils.js';
@@ -10,6 +10,7 @@ export async function getStaticPaths() {
     { params: { lang: 'fr' } },
     { params: { lang: 'pt' } },
     { params: { lang: 'de' } },
+    { params: { lang: 'it' } },
   ];
 }
 
