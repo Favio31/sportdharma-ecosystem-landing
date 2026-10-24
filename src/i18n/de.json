@@ -112,5 +112,22 @@
     "alt_grupo": "Gruppe von Radreisenden",
     "alt_pamir": "Pamir-Gebirge",
     "alt_tayikistan": "Radreise in Tadschikistan"
+  },
+  "web": {
+    "page_title": "Webseite | SportDharma Ecosystem",
+    "label": "ÖKOSYSTEM",
+    "title_1": "Web",
+    "title_2": "Portal",
+    "subtitle": "Von Menschen kuratierte Inhalte, nicht von Algorithmen. Zugängliches, überprüfbares Wissen frei von kommerziellen Verzerrungen.",
+    "f1_title": "Von Menschen Kuratierte Inhalte",
+    "f1_desc": "Artikel, Leitfäden und Ressourcen, ausgewählt von Experten für Sport, Reisen und Technologie. Keine undurchsichtigen Algorithmen oder kommerziellen Verzerrungen.",
+    "f2_title": "Ständige Aktualisierung",
+    "f2_desc": "Tägliche neue Veröffentlichungen in sechs Kategorien. Immer frische und relevante Inhalte für die Outdoor-Community.",
+    "f3_title": "Als PWA Installierbar",
+    "f3_desc": "Installieren Sie es als App in Ihrem Browser. Funktioniert offline dank Service Worker. Schneller Zugriff von jedem Gerät.",
+    "f4_title": "Native Mehrsprachigkeit",
+    "f4_desc": "Spanisch und Englisch ab Tag eins. Selektor mit localStorage, keine Cookies. Zugänglich für die globale Gemeinschaft der Athleten.",
+    "placeholder_title": "Webportal (Demnächst)",
+    "placeholder_desc": "Von jedem Browser aus zugänglich"
   }
 }

@@ -112,5 +112,22 @@
     "alt_grupo": "Groupe de cyclotouristes",
     "alt_pamir": "Montagnes du Pamir",
     "alt_tayikistan": "Cyclotourisme au Tadjikistan"
+  },
+  "web": {
+    "page_title": "Site Web | SportDharma Ecosystem",
+    "label": "ÉCOSYSTÈME",
+    "title_1": "Portail",
+    "title_2": "Web",
+    "subtitle": "Contenu organisé par des humains, pas par des algorithmes. Connaissances accessibles, vérifiables et libres de biais commerciaux.",
+    "f1_title": "Contenu Organisé par des Humains",
+    "f1_desc": "Articles, guides et ressources sélectionnés par des experts en sport, voyage et technologie. Pas d'algorithmes opaques ni de biais commerciaux.",
+    "f2_title": "Mises à Jour Constantes",
+    "f2_desc": "Nouvelles publications quotidiennes organisées en six catégories. Toujours du contenu frais et pertinent pour la communauté outdoor.",
+    "f3_title": "Installable en PWA",
+    "f3_desc": "Installez-le comme une application dans votre navigateur. Fonctionne hors ligne grâce au Service Worker. Accès rapide depuis tout appareil.",
+    "f4_title": "Multilingue Natif",
+    "f4_desc": "Espagnol et anglais dès le premier jour. Sélecteur avec localStorage, sans cookies. Accessible à la communauté mondiale de sportifs.",
+    "placeholder_title": "Portail Web (Bientôt)",
+    "placeholder_desc": "Accessible depuis n'importe quel navigateur"
   }
 }

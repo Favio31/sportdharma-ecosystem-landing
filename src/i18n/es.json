@@ -112,5 +112,22 @@
     "alt_grupo": "Grupo de cicloviajeros",
     "alt_pamir": "Montañas del Pamir",
     "alt_tayikistan": "Cicloviaje en Tayikistán"
+  },
+  "web": {
+    "page_title": "Página Web | SportDharma Ecosystem",
+    "label": "ECOSISTEMA",
+    "title_1": "Página",
+    "title_2": "Web",
+    "subtitle": "Contenido curado por humanos, no por algoritmos. Conocimiento accesible, verificable y libre de sesgos comerciales.",
+    "f1_title": "Contenido Curado por Humanos",
+    "f1_desc": "Artículos, guías y recursos seleccionados por expertos en deporte, viaje y tecnología. Sin algoritmos opacos ni sesgos comerciales.",
+    "f2_title": "Actualización Constante",
+    "f2_desc": "Nuevas publicaciones diarias organizadas en seis categorías. Siempre contenido fresco y relevante para la comunidad outdoor.",
+    "f3_title": "Instalable como PWA",
+    "f3_desc": "Instalala como app en tu navegador. Funciona offline gracias al Service Worker. Acceso rápido desde cualquier dispositivo.",
+    "f4_title": "Multi-idioma Nativo",
+    "f4_desc": "Español e inglés desde el día 1. Selector con localStorage, sin cookies. Accesible para la comunidad global de deportistas.",
+    "placeholder_title": "Portal Web (Próximamente)",
+    "placeholder_desc": "Accesible desde cualquier navegador"
   }
 }

@@ -1,5 +1,7 @@
-﻿---
+---
 import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils.js';
+
 export async function getStaticPaths() {
   return [
     { params: { lang: 'es' } },
@@ -11,19 +13,20 @@ export async function getStaticPaths() {
   ];
 }
 const { lang } = Astro.params;
+const t = useTranslations(lang);
 ---
 
-<Layout title="Página Web | SportDharma Ecosystem">
+<Layout title={t('web.page_title')}>
   <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       
       <div class="text-center mb-16">
-        <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">ECOSISTEMA</p>
+        <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">{t('web.label')}</p>
         <h1 class="text-4xl md:text-6xl font-bold text-ink mb-4">
-          Página <span class="text-[#E8530E] dark:text-orange-500">Web</span>
+          {t('web.title_1')} <span class="text-[#E8530E] dark:text-orange-500">{t('web.title_2')}</span>
         </h1>
         <p class="text-lg text-ink-soft max-w-2xl mx-auto">
-          Contenido curado por humanos, no por algoritmos. Conocimiento accesible, verificable y libre de sesgos comerciales.
+          {t('web.subtitle')}
         </p>
       </div>
 
@@ -38,8 +41,8 @@ const { lang } = Astro.params;
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-ink mb-2">Contenido Curado por Humanos</h3>
-              <p class="text-ink-soft leading-relaxed">Artículos, guías y recursos seleccionados por expertos en deporte, viaje y tecnología. Sin algoritmos opacos ni sesgos comerciales.</p>
+              <h3 class="text-xl font-bold text-ink mb-2">{t('web.f1_title')}</h3>
+              <p class="text-ink-soft leading-relaxed">{t('web.f1_desc')}</p>
             </div>
           </div>
 
@@ -50,8 +53,8 @@ const { lang } = Astro.params;
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-ink mb-2">Actualización Constante</h3>
-              <p class="text-ink-soft leading-relaxed">Nuevas publicaciones diarias organizadas en seis categorías. Siempre contenido fresco y relevante para la comunidad outdoor.</p>
+              <h3 class="text-xl font-bold text-ink mb-2">{t('web.f2_title')}</h3>
+              <p class="text-ink-soft leading-relaxed">{t('web.f2_desc')}</p>
             </div>
           </div>
 
@@ -62,8 +65,8 @@ const { lang } = Astro.params;
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-ink mb-2">Instalable como PWA</h3>
-              <p class="text-ink-soft leading-relaxed">Instalala como app en tu navegador. Funciona offline gracias al Service Worker. Acceso rápido desde cualquier dispositivo.</p>
+              <h3 class="text-xl font-bold text-ink mb-2">{t('web.f3_title')}</h3>
+              <p class="text-ink-soft leading-relaxed">{t('web.f3_desc')}</p>
             </div>
           </div>
 
@@ -74,8 +77,8 @@ const { lang } = Astro.params;
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-ink mb-2">Multi-idioma Nativo</h3>
-              <p class="text-ink-soft leading-relaxed">Español e inglés desde el día 1. Selector con localStorage, sin cookies. Accesible para la comunidad global de deportistas.</p>
+              <h3 class="text-xl font-bold text-ink mb-2">{t('web.f4_title')}</h3>
+              <p class="text-ink-soft leading-relaxed">{t('web.f4_desc')}</p>
             </div>
           </div>
 
@@ -86,8 +89,8 @@ const { lang } = Astro.params;
             <svg class="w-32 h-32 text-[#E8530E] dark:text-orange-500 mx-auto mb-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
             </svg>
-            <p class="text-ink-soft font-mono text-sm">Portal Web (Próximamente)</p>
-            <p class="text-ink-soft text-xs mt-2">Accesible desde cualquier navegador</p>
+            <p class="text-ink-soft font-mono text-sm">{t('web.placeholder_title')}</p>
+            <p class="text-ink-soft text-xs mt-2">{t('web.placeholder_desc')}</p>
           </div>
         </div>
 
