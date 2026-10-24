@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../../layouts/Layout.astro';
 export async function getStaticPaths() {
   return [
@@ -7,6 +7,7 @@ export async function getStaticPaths() {
     { params: { lang: 'fr' } },
     { params: { lang: 'pt' } },
     { params: { lang: 'de' } },
+    { params: { lang: 'it' } },
   ];
 }
 const { lang } = Astro.params;
