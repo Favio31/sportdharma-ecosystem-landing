@@ -1,57 +1,44 @@
 ﻿---
 import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils.js';
+
 export async function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'fr' } },
-    { params: { lang: 'pt' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'it' } },
+    { params: { lang: 'es' } }, { params: { lang: 'en' } }, { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } }, { params: { lang: 'de' } }, { params: { lang: 'it' } },
   ];
 }
 const { lang } = Astro.params;
+const t = useTranslations(lang);
 ---
-
-<Layout title="Ecosistema | SportDharma Ecosystem">
+<Layout title={t('ecosistema.page_title')}>
   <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-        <!-- Tarjeta Manifiesto -->
-        <a
-          href="/manifiesto"
-          class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"
-        >
+        <a href={'/' + lang + '/manifiesto/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] dark:border-white/5 dark:hover:border-orange-500/40">
           <div class="grid grid-cols-2 gap-6 h-full">
             <div class="flex flex-col justify-center">
-              <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">MANIFIESTO</p>
-              <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Así nació SportDharma Ecosystem</h3>
-              <p class="text-ink-soft leading-relaxed text-sm">De los libros de la infancia a la vuelta al mundo en bicicleta. Del budismo a la IA. Una búsqueda de propósito que se transformó en infraestructura libre para deportistas.</p>
+              <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('ecosistema.card1_label')}</p>
+              <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('ecosistema.card1_title')}</h3>
+              <p class="text-ink-soft leading-relaxed text-sm">{t('ecosistema.card1_desc')}</p>
             </div>
             <div class="space-y-3">
               <div class="rounded-lg overflow-hidden border border-black/5 dark:border-white/5 h-[140px]">
-                <img src="/manifiesto-grupo.jpg" alt="Cicloviajeros" class="w-full h-full object-cover" draggable="false" />
+                <img src="/manifiesto-grupo.jpg" alt={t('ecosistema.alt_grupo')} class="w-full h-full object-cover" draggable="false" />
               </div>
               <div class="rounded-lg overflow-hidden border border-black/5 dark:border-white/5 h-[140px]">
-                <img src="/manifiesto-laos.jpg" alt="Templo en Laos" class="w-full h-full object-cover" draggable="false" />
+                <img src="/manifiesto-laos.jpg" alt={t('ecosistema.alt_laos')} class="w-full h-full object-cover" draggable="false" />
               </div>
             </div>
           </div>
         </a>
-
-        <!-- Tarjeta Qué Es -->
-        <a
-          href="/ecosistema"
-          class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"
-        >
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">DESCUBRÍ</p>
-          <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">¿Qué es SportDharma Ecosystem?</h3>
+        <a href={'/' + lang + '/ecosistema/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] dark:border-white/5 dark:hover:border-orange-500/40">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('ecosistema.card2_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-4 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('ecosistema.card2_title')}</h3>
           <div class="rounded-xl overflow-hidden border border-black/5 dark:border-white/5 h-[280px]">
-            <img src="/masf-captura-v2.png" alt="Interfaz del sistema MASF" class="w-full h-full object-cover" draggable="false" />
+            <img src="/masf-captura-v2.png" alt={t('ecosistema.alt_masf')} class="w-full h-full object-cover" draggable="false" />
           </div>
         </a>
-
       </div>
     </div>
   </section>

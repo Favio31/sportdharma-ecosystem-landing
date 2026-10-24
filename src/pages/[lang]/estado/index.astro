@@ -1,57 +1,52 @@
 ﻿---
 import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils.js';
+
 export async function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'fr' } },
-    { params: { lang: 'pt' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'it' } },
+    { params: { lang: 'es' } }, { params: { lang: 'en' } }, { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } }, { params: { lang: 'de' } }, { params: { lang: 'it' } },
   ];
 }
 const { lang } = Astro.params;
+const t = useTranslations(lang);
 ---
-<Layout title="Estado del Ecosistema | SportDharma Ecosystem">
+<Layout title={t('estado.page_title')}>
   <section class="py-20 px-6 bg-surface">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <div class="text-6xl mb-6">📊</div>
-        <h1 class="text-4xl md:text-5xl font-bold text-ink mb-4">Estado del Ecosistema</h1>
-        <p class="text-xl text-ink-soft">Transparencia total sobre el desarrollo y el roadmap.</p>
+        <h1 class="text-4xl md:text-5xl font-bold text-ink mb-4">{t('estado.title')}</h1>
+        <p class="text-xl text-ink-soft">{t('estado.subtitle')}</p>
       </div>
-      
       <div class="space-y-6">
         <div class="p-6 rounded-xl border-l-4 border-green-500 bg-surface-alt">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-ink">Landing Page Multilingüe</h3>
-            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-600 text-sm font-semibold">✅ En producción</span>
+            <h3 class="text-xl font-bold text-ink">{t('estado.s1_title')}</h3>
+            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-600 text-sm font-semibold">✅ {t('estado.s1_status')}</span>
           </div>
-          <p class="text-ink-soft">Sitio público en 5 idiomas con SEO, PWA y Open Graph optimizado.</p>
+          <p class="text-ink-soft">{t('estado.s1_desc')}</p>
         </div>
-        
         <div class="p-6 rounded-xl border-l-4 border-yellow-500 bg-surface-alt">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-ink">Sistema de Noticias Curadas</h3>
-            <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-600 text-sm font-semibold"> En desarrollo</span>
+            <h3 class="text-xl font-bold text-ink">{t('estado.s2_title')}</h3>
+            <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-600 text-sm font-semibold">🚧 {t('estado.s2_status')}</span>
           </div>
-          <p class="text-ink-soft">Curación humana de contenido outdoor, 6 publicaciones diarias. RSS y notificaciones nativas.</p>
+          <p class="text-ink-soft">{t('estado.s2_desc')}</p>
         </div>
-        
         <div class="p-6 rounded-xl border-l-4 border-blue-500 bg-surface-alt">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-ink">Multi-Agent Swarm Framework</h3>
-            <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-600 text-sm font-semibold"> Fase de investigación</span>
+            <h3 class="text-xl font-bold text-ink">{t('estado.s3_title')}</h3>
+            <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-600 text-sm font-semibold">🔬 {t('estado.s3_status')}</span>
           </div>
-          <p class="text-ink-soft">Framework de agentes IA descentralizados para curación y análisis de contenido deportivo.</p>
+          <p class="text-ink-soft">{t('estado.s3_desc')}</p>
         </div>
-        
         <div class="p-6 rounded-xl border-l-4 border-gray-400 bg-surface-alt">
           <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xl font-bold text-ink">Apps Offline-First</h3>
-            <span class="px-3 py-1 rounded-full bg-gray-400/20 text-gray-600 text-sm font-semibold">📋 Planificado</span>
+            <h3 class="text-xl font-bold text-ink">{t('estado.s4_title')}</h3>
+            <span class="px-3 py-1 rounded-full bg-gray-400/20 text-gray-600 text-sm font-semibold">📋 {t('estado.s4_status')}</span>
           </div>
-          <p class="text-ink-soft">Aplicaciones móviles para deportistas outdoor que funcionen sin conexión a internet.</p>
+          <p class="text-ink-soft">{t('estado.s4_desc')}</p>
         </div>
       </div>
     </div>

@@ -1,24 +1,21 @@
 ﻿---
 import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils.js';
 
 export async function getStaticPaths() {
   return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'fr' } },
-    { params: { lang: 'pt' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'it' } },
+    { params: { lang: 'es' } }, { params: { lang: 'en' } }, { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } }, { params: { lang: 'de' } }, { params: { lang: 'it' } },
   ];
 }
 const { lang } = Astro.params;
+const t = useTranslations(lang);
 ---
-
-<Layout title="Pilares | SportDharma Ecosystem" lang={lang}>
+<Layout title={t('pilares.page_title')}>
   <section class="py-20 px-6 bg-surface">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl font-bold text-ink mb-6">Pilares</h1>
-      <p class="text-lg text-ink-soft">Contenido en desarrollo. Próximamente.</p>
+      <h1 class="text-4xl font-bold text-ink mb-6">{t('pilares.title')}</h1>
+      <p class="text-lg text-ink-soft">{t('pilares.desc')}</p>
     </div>
   </section>
 </Layout>
