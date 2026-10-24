@@ -1,4 +1,4 @@
-﻿---
+---
 import { locales, defaultLocale } from '../i18n/index.js';
 const { lang = defaultLocale } = Astro.props;
 
@@ -19,7 +19,8 @@ const langNames = {
 
 <nav class="flex items-center gap-1" aria-label="Selector de idioma">
   {locales.map((l) => {
-    const href = l === defaultLocale ? currentPath : `/${l}${currentPath === '/' ? '' : currentPath}`;
+    // SIEMPRE incluir el prefijo de idioma (incluso para el default)
+    const href = `/${l}${currentPath === '/' ? '' : currentPath}`;
     const isActive = l === lang;
     return (
       <a 
