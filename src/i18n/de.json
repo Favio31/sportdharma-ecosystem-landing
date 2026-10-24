@@ -146,5 +146,22 @@
     "f4_desc": "Dokumentieren Sie Ihre Reise mit Fotos, Notizen und Wegpunkten. Alles wird lokal auf Ihrem Gerät gespeichert, unter Ihrer totalen Kontrolle.",
     "placeholder_title": "App-Mockup (Demnächst)",
     "placeholder_desc": "Verfügbar für Android und iOS"
+  },
+  "masf": {
+    "page_title": "MASF-Engine | SportDharma Ecosystem",
+    "label": "ÖKOSYSTEM",
+    "title_1": "MASF",
+    "title_2": "Engine",
+    "subtitle": "Multi-Agenten-Schwarm-Architektur. Menschliche Kuratierung, unterstützt durch KI. Verifizierte Inhalte, keine undurchsichtigen Algorithmen oder versteckten Verzerrungen.",
+    "f1_title": "Menschliche Kuratierung Zuerst",
+    "f1_desc": "Menschliche Kuratoren finden und wählen relevante Inhalte aus. KI assistiert, entscheidet nicht. Qualität vor Quantität.",
+    "f2_title": "Transparente Verifizierung",
+    "f2_desc": "Jeder Artikel enthält Quelle, Zusammenfassung und Transparenzhinweis. Vollständige Rückverfolgbarkeit des Kuratierungsprozesses.",
+    "f3_title": "Human-in-the-Loop-Fluss",
+    "f3_desc": "KI-Agenten verarbeiten, klassifizieren und schlagen vor. Menschen validieren, korrigieren und veröffentlichen. Keine blinde Automatisierung.",
+    "f4_title": "Open Source und Auditierbar",
+    "f4_desc": "Der vollständige Fluss ist transparent und auditierbar. Keine Black Boxes. Die Community kann den Prozess überprüfen und dazu beitragen.",
+    "alt_image": "MASF-Systemoberfläche",
+    "caption": "MASF-Engine-Oberfläche in Aktion"
   }
 }

@@ -1,5 +1,7 @@
-﻿---
+---
 import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils.js';
+
 export async function getStaticPaths() {
   return [
     { params: { lang: 'es' } },
@@ -11,19 +13,20 @@ export async function getStaticPaths() {
   ];
 }
 const { lang } = Astro.params;
+const t = useTranslations(lang);
 ---
 
-<Layout title="Motor MASF | SportDharma Ecosystem">
+<Layout title={t('masf.page_title')}>
   <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       
       <div class="text-center mb-16">
-        <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">ECOSISTEMA</p>
+        <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">{t('masf.label')}</p>
         <h1 class="text-4xl md:text-6xl font-bold text-ink mb-4">
-          Motor <span class="text-[#E8530E] dark:text-orange-500">MASF</span>
+          {t('masf.title_1')} <span class="text-[#E8530E] dark:text-orange-500">{t('masf.title_2')}</span>
         </h1>
         <p class="text-lg text-ink-soft max-w-2xl mx-auto">
-          Arquitectura de Enjambre Multiagente. Curación humana asistida por IA. Contenido verificado, sin algoritmos opacos ni sesgos ocultos.
+          {t('masf.subtitle')}
         </p>
       </div>
 
@@ -38,8 +41,8 @@ const { lang } = Astro.params;
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-ink mb-2">Curación Humana Primero</h3>
-              <p class="text-ink-soft leading-relaxed">Los curadores humanos encuentran y seleccionan el contenido relevante. La IA asiste, no decide. Calidad sobre cantidad.</p>
+              <h3 class="text-xl font-bold text-ink mb-2">{t('masf.f1_title')}</h3>
+              <p class="text-ink-soft leading-relaxed">{t('masf.f1_desc')}</p>
             </div>
           </div>
 
@@ -50,8 +53,8 @@ const { lang } = Astro.params;
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-ink mb-2">Verificación Transparente</h3>
-              <p class="text-ink-soft leading-relaxed">Cada artículo incluye fuente, resumen y nota de transparencia. Trazabilidad total del proceso de curación.</p>
+              <h3 class="text-xl font-bold text-ink mb-2">{t('masf.f2_title')}</h3>
+              <p class="text-ink-soft leading-relaxed">{t('masf.f2_desc')}</p>
             </div>
           </div>
 
@@ -62,8 +65,8 @@ const { lang } = Astro.params;
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-ink mb-2">Flujo Human-in-the-Loop</h3>
-              <p class="text-ink-soft leading-relaxed">Los agentes de IA procesan, clasifican y sugieren. Los humanos validan, corrigen y publican. Sin automatización ciega.</p>
+              <h3 class="text-xl font-bold text-ink mb-2">{t('masf.f3_title')}</h3>
+              <p class="text-ink-soft leading-relaxed">{t('masf.f3_desc')}</p>
             </div>
           </div>
 
@@ -74,8 +77,8 @@ const { lang } = Astro.params;
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold text-ink mb-2">Código Abierto y Auditables</h3>
-              <p class="text-ink-soft leading-relaxed">El flujo completo es transparente y auditable. Sin cajas negras. La comunidad puede verificar y contribuir al proceso.</p>
+              <h3 class="text-xl font-bold text-ink mb-2">{t('masf.f4_title')}</h3>
+              <p class="text-ink-soft leading-relaxed">{t('masf.f4_desc')}</p>
             </div>
           </div>
 
@@ -85,12 +88,12 @@ const { lang } = Astro.params;
           <div class="rounded-xl overflow-hidden shadow-lg border border-slate-600/50 bg-surface dark:bg-surface/50 transition-colors duration-300">
             <img 
               src="/masf-captura-v2.png" 
-              alt="Interfaz del sistema MASF" 
+              alt={t('masf.alt_image')} 
               class="w-full h-auto object-cover transition-transform duration-500"
             />
           </div>
           <p class="text-sm text-ink-soft text-center italic">
-            Interfaz del Motor MASF en acción
+            {t('masf.caption')}
           </p>
         </div>
 

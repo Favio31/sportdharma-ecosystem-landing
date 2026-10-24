@@ -146,5 +146,22 @@
     "f4_desc": "Document your journey with photos, notes and waypoints. Everything is saved locally on your device, under your total control.",
     "placeholder_title": "App Mockup (Coming Soon)",
     "placeholder_desc": "Available for Android and iOS"
+  },
+  "masf": {
+    "page_title": "MASF Engine | SportDharma Ecosystem",
+    "label": "ECOSYSTEM",
+    "title_1": "MASF",
+    "title_2": "Engine",
+    "subtitle": "Multi-Agent Swarm Architecture. Human curation assisted by AI. Verified content, no opaque algorithms or hidden biases.",
+    "f1_title": "Human Curation First",
+    "f1_desc": "Human curators find and select relevant content. AI assists, it does not decide. Quality over quantity.",
+    "f2_title": "Transparent Verification",
+    "f2_desc": "Each article includes source, summary and transparency note. Full traceability of the curation process.",
+    "f3_title": "Human-in-the-Loop Flow",
+    "f3_desc": "AI agents process, classify and suggest. Humans validate, correct and publish. No blind automation.",
+    "f4_title": "Open Source and Auditable",
+    "f4_desc": "The complete flow is transparent and auditable. No black boxes. The community can verify and contribute to the process.",
+    "alt_image": "MASF system interface",
+    "caption": "MASF Engine interface in action"
   }
 }

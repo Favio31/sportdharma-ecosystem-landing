@@ -146,5 +146,22 @@
     "f4_desc": "Documenta il tuo viaggio con foto, note e waypoint. Tutto viene salvato localmente sul tuo dispositivo, sotto il tuo totale controllo.",
     "placeholder_title": "Mockup dell'App (Prossimamente)",
     "placeholder_desc": "Disponibile per Android e iOS"
+  },
+  "masf": {
+    "page_title": "Motore MASF | SportDharma Ecosystem",
+    "label": "ECOSISTEMA",
+    "title_1": "Motore",
+    "title_2": "MASF",
+    "subtitle": "Architettura Sciame Multi-Agente. Curazione umana assistita da IA. Contenuti verificati, senza algoritmi opachi o bias nascosti.",
+    "f1_title": "Curazione Umana Prima",
+    "f1_desc": "I curatori umani trovano e selezionano i contenuti rilevanti. L'IA assiste, non decide. Qualità sopra quantità.",
+    "f2_title": "Verifica Trasparente",
+    "f2_desc": "Ogni articolo include fonte, riassunto e nota di trasparenza. Tracciabilità totale del processo di curazione.",
+    "f3_title": "Flusso Human-in-the-Loop",
+    "f3_desc": "Gli agenti IA elaborano, classificano e suggeriscono. Gli umani validano, correggono e pubblicano. Nessuna automazione cieca.",
+    "f4_title": "Open Source e Auditabile",
+    "f4_desc": "Il flusso completo è trasparente e auditabile. Nessuna scatola nera. La comunità può verificare e contribuire al processo.",
+    "alt_image": "Interfaccia del sistema MASF",
+    "caption": "Interfaccia del Motore MASF in azione"
   }
 }
