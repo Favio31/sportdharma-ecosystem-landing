@@ -1,14 +1,19 @@
-{
-  "home": {
-    "mantenete_al_dia": "Mantenha-se atualizado",
-    "hero_subtitle": "Software livre para atletas ao ar livre",
-    "mantenete_desc": "Escolha como gostaria de receber nossas novidades. Sem e-mails, sem registro, sem rastreamento.",
-    "hero_title": "SportDharma Ecosystem"
-  },
-  "nav": {
-    "pilares": "Pilares",
-    "manifiesto": "Manifesto",
-    "noticias": "Notícias",
-    "fundador": "Fundador"
-  }
+﻿{
+    "home":  {
+                 "mantenete_al_dia":  "Mantenha-se atualizado",
+                 "hero_subtitle":  "Software livre para atletas ao ar livre",
+                 "mantenete_desc":  "Escolha como gostaria de receber nossas novidades. Sem e-mails, sem registro, sem rastreamento.",
+                 "hero_title":  "SportDharma Ecosystem"
+             },
+    "nav":  {
+                "pilares":  "Pilares",
+                "manifiesto":  "Manifesto",
+                "noticias":  "Notícias",
+                "fundador":  "Fundador"
+            },
+    "fundador":  {
+                     "title":  null,
+                     "bio":  "Durante 11 anos percorri 120.000 km de bicicleta em 84 países. O SportDharma surgiu da necessidade de ferramentas digitais soberanas, primeiro offline e sem rastreamento, para atletas e comunidades remotas.",
+                     "subtitle":  null
+                 }
 }

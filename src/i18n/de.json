@@ -1,14 +1,19 @@
-{
-  "home": {
-    "mantenete_al_dia": "Bleiben Sie aktuell",
-    "hero_subtitle": "Frei verfügbares Software für Outdoor-Sportler",
-    "mantenete_desc": "Wählen Sie, wie Sie unsere Neuigkeiten erhalten möchten. Ohne E-Mails, ohne Registrierung, ohne Tracking.",
-    "hero_title": "SportDharma Ecosystem"
-  },
-  "nav": {
-    "pilares": "Säulen",
-    "manifiesto": "Manifest",
-    "noticias": "Nachrichten",
-    "fundador": "Gründer"
-  }
+﻿{
+    "home":  {
+                 "mantenete_al_dia":  "Bleiben Sie aktuell",
+                 "hero_subtitle":  "Frei verfügbares Software für Outdoor-Sportler",
+                 "mantenete_desc":  "Wählen Sie, wie Sie unsere Neuigkeiten erhalten möchten. Ohne E-Mails, ohne Registrierung, ohne Tracking.",
+                 "hero_title":  "SportDharma Ecosystem"
+             },
+    "nav":  {
+                "pilares":  "Säulen",
+                "manifiesto":  "Manifest",
+                "noticias":  "Nachrichten",
+                "fundador":  "Gründer"
+            },
+    "fundador":  {
+                     "title":  "Founder | SportDharma Ecosystem",
+                     "bio":  "Durante 11 años recorri 120.000 km en bicicleta por 84 países. SportDharma surgió de la necesidad de herramientas digitales soberanas, primero fuera de red y sin seguimiento, para deportistas y comunidades remotas.",
+                     "subtitle":  "Ciclovagante · Founder · Developer"
+                 }
 }

@@ -1,14 +1,19 @@
-{
-  "home": {
-    "mantenete_al_dia": "Restez à jour",
-    "hero_subtitle": "Logiciel libre pour les sportifs en extérieur",
-    "mantenete_desc": "Choisissez la manière dont vous souhaitez recevoir nos actualités. Sans e-mails, sans inscription, sans suivi.",
-    "hero_title": "SportDharma Ecosystem"
-  },
-  "nav": {
-    "pilares": "Piliers",
-    "manifiesto": "Manifeste",
-    "noticias": "Actualités",
-    "fundador": "Founder"
-  }
+﻿{
+    "home":  {
+                 "mantenete_al_dia":  "Restez à jour",
+                 "hero_subtitle":  "Logiciel libre pour les sportifs en extérieur",
+                 "mantenete_desc":  "Choisissez la manière dont vous souhaitez recevoir nos actualités. Sans e-mails, sans inscription, sans suivi.",
+                 "hero_title":  "SportDharma Ecosystem"
+             },
+    "nav":  {
+                "pilares":  "Piliers",
+                "manifiesto":  "Manifeste",
+                "noticias":  "Actualités",
+                "fundador":  "Founder"
+            },
+    "fundador":  {
+                     "title":  "Fondateur | SportDharma Ecosystem",
+                     "bio":  "Pendant 11 ans, j\u0027ai parcouru 120 000 km à vélo dans 84 pays. SportDharma est né de la nécessité de outils numériques souverains, préférant le mode hors ligne et sans suivi, pour les sportifs et les communautés éloignées.",
+                     "subtitle":  "Voyageur cycliste · Fondateur · Développeur"
+                 }
 }

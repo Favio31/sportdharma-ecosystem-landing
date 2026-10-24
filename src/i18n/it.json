@@ -10,5 +10,10 @@
                 "manifiesto":  "Manifiesto",
                 "noticias":  "Noticias",
                 "fundador":  "Fundador"
-            }
+            },
+    "fundador":  {
+                     "title":  "Fondatore | SportDharma Ecosystem",
+                     "bio":  "Per 11 anni ho percorso 120.000 chilometri in bicicletta in 84 paesi. SportDharma è nato dalla necessità di strumenti digitali sovrani, primi offline e senza tracciamento, per atleti e comunità remote.",
+                     "subtitle":  "Cicloturista · Fondatore · Sviluppatore"
+                 }
 }
