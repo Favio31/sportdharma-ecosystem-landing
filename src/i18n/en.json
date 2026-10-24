@@ -1,14 +1,24 @@
-{
-  "home": {
-    "mantenete_al_dia": "Stay up to date",
-    "hero_subtitle": "Free software for outdoor athletes",
-    "mantenete_desc": "Choose how you'd like to receive our updates. No emails, no registration, no tracking.",
-    "hero_title": "SportDharma Ecosystem"
-  },
-  "nav": {
-    "pilares": "Pillars",
-    "manifiesto": "Manifesto",
-    "noticias": "News",
-    "fundador": "Founder"
-  }
+﻿{
+    "home":  {
+                 "mantenete_al_dia":  "Stay up to date",
+                 "hero_subtitle":  "Free software for outdoor athletes",
+                 "mantenete_desc":  "Choose how you\u0027d like to receive our updates. No emails, no registration, no tracking.",
+                 "hero_title":  "SportDharma Ecosystem"
+             },
+    "nav":  {
+                "pilares":  "Pillars",
+                "manifiesto":  "Manifesto",
+                "noticias":  "News",
+                "fundador":  "Founder"
+            },
+    "fundador":  {
+                     "subtitle":  "Cycle Tourer · Founder · Developer",
+                     "bio_p3":  "Today I combine life on the road with free software development, building tools that I use every day and share with the global community of conscious athletes.",
+                     "stat_km_label":  "Kilometers traveled",
+                     "bio_p1":  "For \u003cstrong\u003e11 years\u003c/strong\u003e I traveled \u003cstrong\u003e120,000 kilometers\u003c/strong\u003e by bicycle across \u003cstrong\u003e84 countries\u003c/strong\u003e. From the Pamir Mountains of Tajikistan to the temples of Luang Prabang in Laos, where I currently reside, I discovered that outdoor sports need digital tools that respect privacy, work offline, and belong to those who use them.",
+                     "bio_p2":  "\u003cstrong\u003eSportDharma Ecosystem\u003c/strong\u003e was born from that need: a free, sovereign, offline-first software infrastructure for outdoor athletes. No algorithms, no tracking, no data selling. Just tools that accompany you on the road.",
+                     "stat_years_label":  "Years on the road",
+                     "stat_countries_label":  "Countries visited",
+                     "page_title":  "Founder | SportDharma Ecosystem"
+                 }
 }

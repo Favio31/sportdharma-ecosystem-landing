@@ -12,8 +12,13 @@
                 "fundador":  "Founder"
             },
     "fundador":  {
-                     "title":  "Fondateur | SportDharma Ecosystem",
-                     "bio":  "Pendant 11 ans, j\u0027ai parcouru 120 000 km à vélo dans 84 pays. SportDharma est né de la nécessité de outils numériques souverains, préférant le mode hors ligne et sans suivi, pour les sportifs et les communautés éloignées.",
-                     "subtitle":  "Voyageur cycliste · Fondateur · Développeur"
+                     "subtitle":  "Cyclotouriste · Fondateur · Développeur",
+                     "bio_p3":  "Aujourd\u0027hui, je combine la vie sur la route avec le développement de logiciels libres, construisant des outils que j\u0027utilise moi-même chaque jour et que je partage avec la communauté mondiale de sportifs conscients.",
+                     "stat_km_label":  "Kilomètres parcourus",
+                     "bio_p1":  "Pendant \u003cstrong\u003e11 ans\u003c/strong\u003e, j\u0027ai parcouru \u003cstrong\u003e120 000 kilomètres\u003c/strong\u003e à vélo à travers \u003cstrong\u003e84 pays\u003c/strong\u003e. Des Pamir du Tadjikistan aux temples de Luang Prabang au Laos, où je réside actuellement, j\u0027ai découvert que le sport de plein air a besoin d\u0027outils numériques qui respectent la vie privée, fonctionnent hors ligne et appartiennent à ceux qui les utilisent.",
+                     "bio_p2":  "\u003cstrong\u003eSportDharma Ecosystem\u003c/strong\u003e est né de ce besoin : une infrastructure logicielle libre, souveraine et offline-first pour les sportifs outdoor. Pas d\u0027algorithmes, pas de tracking, pas de vente de données. Juste des outils qui vous accompagnent sur la route.",
+                     "stat_years_label":  "Années sur la route",
+                     "stat_countries_label":  "Pays visités",
+                     "page_title":  "Fondateur | SportDharma Ecosystem"
                  }
 }
