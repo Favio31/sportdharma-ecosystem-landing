@@ -82,5 +82,16 @@
     "license_text_1": "Codice sotto licenza",
     "license_text_2": "Software sovrano, senza tracking.",
     "copyright": "Realizzato con Astro + Tailwind."
+  },
+  "header": {
+    "nav_pillars": "Pilastri",
+    "nav_ecosystem": "Ecosistema",
+    "nav_contact": "Contatto",
+    "mobile_lang_label": "Lingua:",
+    "mobile_theme_label": "Tema:",
+    "theme_system": "Tema sistema",
+    "theme_light": "Tema chiaro",
+    "theme_dark": "Tema scuro",
+    "open_menu": "Apri menu"
   }
 }
