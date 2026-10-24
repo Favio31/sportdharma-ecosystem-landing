@@ -27,18 +27,18 @@ const t = useTranslations(lang);
 
         <!-- 2. FUNDADOR -->
         <a href={'/' + lang + '/fundador/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">FUNDADOR, SOÑADOR</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Favio M. Giorgio Data</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Cicloviajero, 120.000 kms, 84 países en 11 años. Actualmente en Luang Prabang, Laos. Certificaciones en IA, Marketing Digital y Gestión de Productos AI.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.fundador_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.fundador_name')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.fundador_desc')}</p>
         </a>
 
-        <!-- 3. MANIFIESTO -->
+        <!-- 3. {t('home.manifiesto_label')} -->
         <a href={'/' + lang + '/manifiesto/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
             <div class="flex flex-col justify-center">
-              <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">MANIFIESTO</p>
-              <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Así nació SportDharma Ecosystem</h3>
-              <p class="text-ink-soft leading-relaxed text-sm text-justify">De los libros de la infancia a la vuelta al mundo en bicicleta. Del budismo a la IA. Una búsqueda de propósito que se transformó en infraestructura libre.</p>
+              <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.manifiesto_label')}</p>
+              <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.manifiesto_title')}</h3>
+              <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.manifiesto_desc')}</p>
             </div>
             <div class="space-y-3">
               <div class="rounded-lg overflow-hidden border border-black/5 dark:border-white/5 h-[120px]">
@@ -51,86 +51,86 @@ const t = useTranslations(lang);
           </div>
         </a>
 
-        <!-- 4. DESCUBRÍ -->
+        <!-- 4. {t('home.ecosistema_label')} -->
         <a href={'/' + lang + '/ecosistema/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <div class="h-full flex flex-col">
-            <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">DESCUBRÍ</p>
-            <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">¿Qué es SportDharma Ecosystem?</h3>
-            <p class="text-ink-soft leading-relaxed text-sm text-justify mb-4">Infraestructura libre, soberana y offline-first para deportistas outdoor. Tecnología que respeta tu privacidad y tu entorno.</p>
+            <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.ecosistema_label')}</p>
+            <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.ecosistema_title')}</h3>
+            <p class="text-ink-soft leading-relaxed text-sm text-justify mb-4">{t('home.ecosistema_desc')}</p>
             <div class="rounded-xl overflow-hidden border border-black/5 dark:border-white/5 h-[180px] mt-auto">
               <img src="/masf-captura-v2.png" alt="Interfaz del sistema MASF" class="w-full h-full object-cover" draggable="false" />
             </div>
           </div>
         </a>
 
-        <!-- 5. LOS 9 PILARES -->
+        <!-- 5. {t('home.pilares_label')} -->
         <a href={'/' + lang + '/pilares/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">LOS 9 PILARES</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Principios que nos definen</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Software Soberano, Transparente, Modular, Educación Permanente, Solidaria, Ecológica, Inclusiva, Sostenibilidad Alineada y Resiliente.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.pilares_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.pilares_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.pilares_desc')}</p>
         </a>
 
-        <!-- 6. APP MÓVIL -->
+        <!-- 6. {t('home.app_label')} -->
         <a href={'/' + lang + '/app/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">APP MÓVIL</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Tu compañero offline en ruta</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Mapas topográficos, tracking GPS y diario de viaje. Funciona 100% sin internet, manteniendo tus datos bajo tu total control.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.app_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.app_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.app_desc')}</p>
         </a>
 
-        <!-- 7. PÁGINA WEB -->
+        <!-- 7. {t('home.web_label')} -->
         <a href={'/' + lang + '/web/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">PÁGINA WEB</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Contenido curado por humanos</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Noticias, guías técnicas y recursos organizados. Instalable como PWA, multi-idioma y completamente funcional offline.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.web_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.web_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.web_desc')}</p>
         </a>
 
-        <!-- 8. MOTOR MASF -->
+        <!-- 8. {t('home.masf_label')} -->
         <a href={'/' + lang + '/masf/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">MOTOR MASF</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Curación humana, no algorítmica</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Arquitectura de Enjambre Multiagente. Humanos curan, IA asiste. Sin algoritmos opacos ni sesgos ocultos.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.masf_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.masf_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.masf_desc')}</p>
         </a>
 
-        <!-- 9. ESTADO ACTUAL DEL PROYECTO -->
+        <!-- 9. {t('home.estado_label')} DEL PROYECTO -->
         <a href={'/' + lang + '/estado/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">ESTADO ACTUAL</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Proyecto en desarrollo activo</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Fase de construcción de la infraestructura base. Preparando la aplicación al Proton Foundation Community Project con máxima calidad y seguridad.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.estado_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.estado_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.estado_desc')}</p>
         </a>
 
-        <!-- 10. NOTICIAS E INFORMACIÓN -->
+        <!-- 10. {t('home.noticias_label')} -->
         <a href={'/' + lang + '/noticias/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">NOTICIAS E INFORMACIÓN</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Curación humana, 6 publicaciones diarias</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Contenido fresco, verificado y relevante para la comunidad outdoor, libre de sesgos comerciales y algoritmos opacos.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.noticias_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.noticias_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.noticias_desc')}</p>
         </a>
 
-        <!-- 11. EL ECOSISTEMA -->
+        <!-- 11. {t('home.herramientas_label')} -->
         <a href={'/' + lang + '/herramientas/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">EL ECOSISTEMA</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Herramientas que usamos</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Astro, Tailwind CSS, Vite PWA, y arquitecturas multiagente. Stack moderno, ligero y 100% open source.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.herramientas_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.herramientas_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.herramientas_desc')}</p>
         </a>
 
-        <!-- 12. APOYA EL PROYECTO -->
+        <!-- 12. {t('home.apoya_label')} -->
         <a href={'/' + lang + '/apoya/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">APOYA EL PROYECTO</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Software libre necesita sostén</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Tu contribución mantiene la infraestructura viva, sin publicidad ni venta de datos. Grants y donaciones directas.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.apoya_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.apoya_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.apoya_desc')}</p>
         </a>
 
-        <!-- 13. SUMATE AL PROYECTO -->
+        <!-- 13. {t('home.contacto_label')} -->
         <a href={'/' + lang + '/contacto/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">SUMATE AL PROYECTO</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">¿Querés contribuir o contactarnos?</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Buscamos colaboradores apasionados por el deporte, la tecnología soberana y el bienestar global. Escribinos.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.contacto_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.contacto_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.contacto_desc')}</p>
         </a>
 
-        <!-- 14. COMUNIDAD Y PRESENCIA DIGITAL -->
+        <!-- 14. {t('home.comunidad_label')} DIGITAL -->
         <a href={'/' + lang + '/comunidad/'} class="group block h-full rounded-2xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">COMUNIDAD Y PRESENCIA</p>
-          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Conectá con SportDharma Ecosystem</h3>
-          <p class="text-ink-soft leading-relaxed text-sm text-justify">Seguinos en nuestras plataformas digitales. Construyendo juntos una red global de deportistas conscientes.</p>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.comunidad_label')}</p>
+          <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.comunidad_title')}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm text-justify">{t('home.comunidad_desc')}</p>
         </a>
 
       </div>
@@ -140,25 +140,25 @@ const t = useTranslations(lang);
   <!-- SECCIÓN DE NOTICIAS -->
   <section id="noticias" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-ink mb-4">Noticias e Información</h2>
-      <p class="text-ink-soft text-lg mb-10">Curación humana, 6 publicaciones diarias. Contenido fresco, verificado y relevante.</p>
+      <h2 class="text-4xl font-bold text-ink mb-4">{t('home.noticias_section_title')}</h2>
+      <p class="text-ink-soft text-lg mb-10">{t('home.noticias_title')}. Contenido fresco, verificado y relevante.</p>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all">
           <div class="text-5xl mb-4">🔔</div>
-          <h3 class="text-2xl font-bold text-ink mb-3">Activar Notificaciones</h3>
-          <p class="text-ink-soft mb-6">Sin emails, sin registro, sin tracking. Solo notificaciones nativas del navegador.</p>
+          <h3 class="text-2xl font-bold text-ink mb-3">{t('home.notif_title')}</h3>
+          <p class="text-ink-soft mb-6">{t('home.notif_desc')}</p>
           <a href={'/' + lang + '/noticias/'} class="inline-block px-8 py-3 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all hover:scale-105">
-            Suscribirse
+            {t('home.notif_btn')}
           </a>
         </div>
         
         <div class="p-8 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all">
           <div class="text-5xl mb-4"></div>
-          <h3 class="text-2xl font-bold text-ink mb-3">RSS Feed (Open Source)</h3>
-          <p class="text-ink-soft mb-6">La forma más pura y descentralizada de seguir nuestras novedades.</p>
+          <h3 class="text-2xl font-bold text-ink mb-3">{t('home.rss_title')}</h3>
+          <p class="text-ink-soft mb-6">{t('home.rss_desc')}</p>
           <a href={'/' + lang + '/rss/'} class="inline-block px-8 py-3 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-all">
-            Ver instrucciones
+            {t('home.rss_btn')}
           </a>
         </div>
       </div>
