@@ -57,5 +57,30 @@
     "rss_title": "Flux RSS (Open Source)",
     "rss_desc": "La façon la plus pure et décentralisée de suivre nos actualités.",
     "rss_btn": "Voir les instructions"
+  },
+  "hero": {
+    "badge_1": "Logiciel libre",
+    "badge_2": "Local-first",
+    "badge_3": "Confidentialité totale",
+    "title_1": "Infrastructure libre pour",
+    "title_2": "ceux qui vivent en liberté",
+    "subtitle": "Neuf piliers. Architecture souveraine. Résilience outdoor. Un écosystème ouvert pour les sportifs, les premiers intervenants, les communautés isolées et les territoires sans connectivité.",
+    "btn_1": "Explorer les Neuf Piliers",
+    "btn_2": "Voir l'Écosystème",
+    "stat_1": "Piliers",
+    "stat_2": "Open Source",
+    "stat_3": "Cookies"
+  },
+  "meta": {
+    "description": "SportDharma Ecosystem : Logiciel libre, local-first et confidentialité totale pour les sportifs outdoor et les communautés.",
+    "locale": "fr_FR"
+  },
+  "footer": {
+    "desc": "Infrastructure libre pour ceux qui vivent sur la route. Architecture local-first et résilience outdoor.",
+    "links_title": "Liens",
+    "license_title": "Licence",
+    "license_text_1": "Code sous licence",
+    "license_text_2": "Logiciel souverain, sans tracking.",
+    "copyright": "Fait avec Astro + Tailwind."
   }
 }

@@ -57,5 +57,30 @@
     "rss_title": "RSS-Feed (Open Source)",
     "rss_desc": "Die reinste und dezentralste Art, unsere Neuigkeiten zu verfolgen.",
     "rss_btn": "Anweisungen anzeigen"
+  },
+  "hero": {
+    "badge_1": "Freie Software",
+    "badge_2": "Local-first",
+    "badge_3": "Totale Privatsphäre",
+    "title_1": "Freie Infrastruktur für",
+    "title_2": "die, die in Freiheit leben",
+    "subtitle": "Neun Säulen. Souveräne Architektur. Outdoor-Resilienz. Ein offenes Ökosystem für Athleten, Ersthelfer, isolierte Gemeinden und Gebiete ohne Konnektivität.",
+    "btn_1": "Die Neun Säulen entdecken",
+    "btn_2": "Das Ökosystem ansehen",
+    "stat_1": "Säulen",
+    "stat_2": "Open Source",
+    "stat_3": "Cookies"
+  },
+  "meta": {
+    "description": "SportDharma Ecosystem: Freie Software, Local-first und totale Privatsphäre für Outdoor-Athleten und Gemeinden.",
+    "locale": "de_DE"
+  },
+  "footer": {
+    "desc": "Freie Infrastruktur für diejenigen, die unterwegs leben. Local-first-Architektur und Outdoor-Resilienz.",
+    "links_title": "Links",
+    "license_title": "Lizenz",
+    "license_text_1": "Code unter",
+    "license_text_2": "Souveräne Software, kein Tracking.",
+    "copyright": "Gemacht mit Astro + Tailwind."
   }
 }

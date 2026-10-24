@@ -57,5 +57,30 @@
     "rss_title": "Feed RSS (Open Source)",
     "rss_desc": "A forma mais pura e descentralizada de acompanhar nossas novidades.",
     "rss_btn": "Ver instruções"
+  },
+  "hero": {
+    "badge_1": "Software livre",
+    "badge_2": "Local-first",
+    "badge_3": "Privacidade total",
+    "title_1": "Infraestrutura livre para",
+    "title_2": "quem vive em liberdade",
+    "subtitle": "Nove pilares. Arquitetura soberana. Resiliência outdoor. Um ecossistema aberto para atletas, equipes de primeira resposta, comunidades isoladas e territórios sem conectividade.",
+    "btn_1": "Explorar os Nove Pilares",
+    "btn_2": "Ver o Ecossistema",
+    "stat_1": "Pilares",
+    "stat_2": "Código Aberto",
+    "stat_3": "Cookies"
+  },
+  "meta": {
+    "description": "SportDharma Ecosystem: Software livre, local-first e privacidade total para atletas outdoor e comunidades.",
+    "locale": "pt_BR"
+  },
+  "footer": {
+    "desc": "Infraestrutura livre para quem vive na estrada. Arquitetura local-first e resiliência outdoor.",
+    "links_title": "Links",
+    "license_title": "Licença",
+    "license_text_1": "Código sob licença",
+    "license_text_2": "Software soberano, sem tracking.",
+    "copyright": "Feito com Astro + Tailwind."
   }
 }

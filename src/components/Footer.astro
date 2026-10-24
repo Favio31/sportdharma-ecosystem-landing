@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils.js';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // Footer de SportDharma Ecosystem
 ---
 
@@ -7,11 +10,11 @@
     
     <div>
       <h3 class="text-white dark:text-ink font-bold mb-3">SportDharma</h3>
-      <p class="text-sm">Infraestructura libre para quienes viven en ruta. Arquitectura local-first y resiliencia outdoor.</p>
+      <p class="text-sm">{t('footer.desc')}</p>
     </div>
 
     <div>
-      <h3 class="text-white dark:text-ink font-bold mb-3">Enlaces</h3>
+      <h3 class="text-white dark:text-ink font-bold mb-3">{t('footer.links_title')}</h3>
       <ul class="space-y-2 text-sm">
         <li><a href="#pilares" class="text-slate-300 dark:text-ink-soft hover:text-white dark:hover:text-ink transition">Pilares</a></li>
         <li><a href="#ecosistema" class="text-slate-300 dark:text-ink-soft hover:text-white dark:hover:text-ink transition">Ecosistema</a></li>
@@ -20,12 +23,12 @@
     </div>
 
     <div>
-      <h3 class="text-white dark:text-ink font-bold mb-3">Licencia</h3>
-      <p class="text-sm">Código bajo licencia <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener" class="text-slate-300 dark:text-ink-soft hover:text-white dark:hover:text-ink hover:underline">AGPLv3</a>. Software soberano, sin tracking.</p>
+      <h3 class="text-white dark:text-ink font-bold mb-3">{t('footer.license_title')}</h3>
+      <p class="text-sm">{t('footer.license_text_1')} <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener" class="text-slate-300 dark:text-ink-soft hover:text-white dark:hover:text-ink hover:underline">AGPLv3</a>. {t('footer.license_text_2')}</p>
     </div>
   </div>
 
   <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-slate-700 dark:border-line text-center text-sm">
-    <p>&copy; 2026 SportDharma Ecosystem. Hecho con Astro + Tailwind.</p>
+    <p>&copy; 2026 SportDharma Ecosystem. {t('footer.copyright')}</p>
   </div>
 </footer>
