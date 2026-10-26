@@ -56,7 +56,9 @@
     "notif_btn": "Suscribirse",
     "rss_title": "RSS Feed (Open Source)",
     "rss_desc": "La forma más pura y descentralizada de seguir nuestras novedades.",
-    "rss_btn": "Ver instrucciones"
+    "rss_btn": "Ver instrucciones",
+    "fundador_alt_1": "Cicloviajero en ruta",
+    "fundador_alt_2": "En camino"
   },
   "hero": {
     "badge_1": "Software libre",

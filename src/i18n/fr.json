@@ -56,7 +56,9 @@
     "notif_btn": "S'abonner",
     "rss_title": "Flux RSS (Open Source)",
     "rss_desc": "La façon la plus pure et décentralisée de suivre nos actualités.",
-    "rss_btn": "Voir les instructions"
+    "rss_btn": "Voir les instructions",
+    "fundador_alt_1": "Cyclotouriste sur la route",
+    "fundador_alt_2": "En chemin"
   },
   "hero": {
     "badge_1": "Logiciel libre",

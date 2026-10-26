@@ -56,7 +56,9 @@
     "notif_btn": "Inscrever-se",
     "rss_title": "Feed RSS (Open Source)",
     "rss_desc": "A forma mais pura e descentralizada de acompanhar nossas novidades.",
-    "rss_btn": "Ver instruções"
+    "rss_btn": "Ver instruções",
+    "fundador_alt_1": "Cicloturista na estrada",
+    "fundador_alt_2": "A caminho"
   },
   "hero": {
     "badge_1": "Software livre",

@@ -56,7 +56,9 @@
     "notif_btn": "Abonnieren",
     "rss_title": "RSS-Feed (Open Source)",
     "rss_desc": "Die reinste und dezentralste Art, unsere Neuigkeiten zu verfolgen.",
-    "rss_btn": "Anweisungen anzeigen"
+    "rss_btn": "Anweisungen anzeigen",
+    "fundador_alt_1": "Radreisender unterwegs",
+    "fundador_alt_2": "Unterwegs"
   },
   "hero": {
     "badge_1": "Freie Software",
