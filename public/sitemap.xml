@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- Home en 6 idiomas -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/</loc>
+  <!-- HOME -->
+  <url><loc>https://sportdharmaecosystem.com/es/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/"/>
@@ -10,19 +9,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/"/>
   </url>
-  <!-- Manifiesto -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/manifiesto/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/manifiesto/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/manifiesto/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/manifiesto/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://sportdharmaecosystem.com/pt/manifiesto/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/manifiesto/"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/manifiesto/"/>
-  </url>
-  <!-- Fundador -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/fundador/</loc>
+  <!-- FUNDADOR -->
+  <url><loc>https://sportdharmaecosystem.com/es/fundador/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/fundador/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/fundador/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/fundador/"/>
@@ -30,9 +18,17 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/fundador/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/fundador/"/>
   </url>
-  <!-- Ecosistema -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/ecosistema/</loc>
+  <!-- MANIFIESTO -->
+  <url><loc>https://sportdharmaecosystem.com/es/manifiesto/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/manifiesto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/manifiesto/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/manifiesto/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://sportdharmaecosystem.com/pt/manifiesto/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/manifiesto/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/manifiesto/"/>
+  </url>
+  <!-- ECOSISTEMA -->
+  <url><loc>https://sportdharmaecosystem.com/es/ecosistema/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/ecosistema/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/ecosistema/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/ecosistema/"/>
@@ -40,9 +36,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/ecosistema/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/ecosistema/"/>
   </url>
-  <!-- Pilares -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/pilares/</loc>
+  <!-- PILARES -->
+  <url><loc>https://sportdharmaecosystem.com/es/pilares/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/pilares/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/pilares/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/pilares/"/>
@@ -50,9 +45,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/pilares/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/pilares/"/>
   </url>
-  <!-- App -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/app/</loc>
+  <!-- APP -->
+  <url><loc>https://sportdharmaecosystem.com/es/app/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/app/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/app/"/>
@@ -60,9 +54,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/app/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/app/"/>
   </url>
-  <!-- Web -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/web/</loc>
+  <!-- WEB -->
+  <url><loc>https://sportdharmaecosystem.com/es/web/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/web/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/web/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/web/"/>
@@ -71,8 +64,7 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/web/"/>
   </url>
   <!-- MASF -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/masf/</loc>
+  <url><loc>https://sportdharmaecosystem.com/es/masf/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/masf/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/masf/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/masf/"/>
@@ -80,9 +72,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/masf/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/masf/"/>
   </url>
-  <!-- Estado -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/estado/</loc>
+  <!-- ESTADO -->
+  <url><loc>https://sportdharmaecosystem.com/es/estado/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/estado/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/estado/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/estado/"/>
@@ -90,9 +81,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/estado/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/estado/"/>
   </url>
-  <!-- Noticias -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/noticias/</loc>
+  <!-- NOTICIAS -->
+  <url><loc>https://sportdharmaecosystem.com/es/noticias/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/noticias/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/noticias/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/noticias/"/>
@@ -100,9 +90,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/noticias/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/noticias/"/>
   </url>
-  <!-- Apoya -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/apoya/</loc>
+  <!-- APOYA -->
+  <url><loc>https://sportdharmaecosystem.com/es/apoya/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/apoya/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/apoya/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/apoya/"/>
@@ -110,9 +99,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/apoya/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/apoya/"/>
   </url>
-  <!-- Contacto -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/contacto/</loc>
+  <!-- CONTACTO -->
+  <url><loc>https://sportdharmaecosystem.com/es/contacto/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/contacto/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/contacto/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/contacto/"/>
@@ -120,9 +108,8 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://sportdharmaecosystem.com/de/contacto/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://sportdharmaecosystem.com/it/contacto/"/>
   </url>
-  <!-- Comunidad -->
-  <url>
-    <loc>https://sportdharmaecosystem.com/es/comunidad/</loc>
+  <!-- COMUNIDAD -->
+  <url><loc>https://sportdharmaecosystem.com/es/comunidad/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://sportdharmaecosystem.com/es/comunidad/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://sportdharmaecosystem.com/en/comunidad/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://sportdharmaecosystem.com/fr/comunidad/"/>
