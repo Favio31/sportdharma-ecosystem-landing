@@ -21,11 +21,10 @@ const t = useTranslations(lang);
   <section class="py-20 px-6 bg-surface">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
-        <!-- Logo de Sueños A Pedal -->
         <img 
           src="/images/fundador/suenos-a-pedal.png" 
           alt="Sueños A Pedal Logo" 
-          class="w-40 h-40 mx-auto mb-6 rounded-full object-cover shadow-lg"
+          class="w-48 h-48 mx-auto mb-6 rounded-full object-cover shadow-lg bg-white"
         />
         <h1 class="text-4xl md:text-5xl font-bold text-ink mb-4">{t('fundador.title')}</h1>
         <p class="text-xl text-[#E8530E] font-semibold italic">{t('fundador.tagline')}</p>
@@ -40,41 +39,6 @@ const t = useTranslations(lang);
         <p class="text-lg leading-relaxed" set:html={t('fundador.p6')}></p>
         <p class="text-lg leading-relaxed" set:html={t('fundador.p7')}></p>
         <p class="text-lg leading-relaxed" set:html={t('fundador.p8')}></p>
-        
-        <!-- Galería de 4 fotos -->
-        <div class="my-12">
-          <h2 class="text-2xl font-bold text-center text-ink mb-6">{t('fundador.gallery_title')}</h2>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <img 
-                src="/images/fundador/suenos-a-pedal.png" 
-                alt={t('fundador.photo1_alt')}
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <img 
-                src="/images/fundador/vuelta-al-mundo.jpg" 
-                alt={t('fundador.photo2_alt')}
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <img 
-                src="/images/fundador/bolivia.jpg" 
-                alt={t('fundador.photo3_alt')}
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-              <img 
-                src="/images/fundador/laos.jpg" 
-                alt={t('fundador.photo4_alt')}
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
           <div class="p-6 rounded-xl border border-black/5 dark:border-white/5 bg-surface-alt text-center">
