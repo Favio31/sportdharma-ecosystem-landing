@@ -19,7 +19,7 @@ const t = useTranslations(lang);
 
 <Layout title={t('fundador.page_title')}>
   <section class="py-20 px-6 bg-surface">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
         <img 
           src="/images/fundador/suenos-a-pedal.jpg" 
@@ -56,56 +56,62 @@ const t = useTranslations(lang);
           </div>
         </div>
         
-        <!-- Galería asimétrica tipo collage -->
+        <!-- Galería asimétrica tipo bento grid -->
         <div class="my-12">
           <h2 class="text-2xl font-bold text-center text-ink mb-6">{t('fundador.gallery_title')}</h2>
-          <div class="grid grid-cols-4 grid-rows-3 gap-3 h-[600px]">
-            <!-- Foto 1: Grande, ocupa 2x2 -->
-            <div class="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
+            <!-- Foto 1: Arriba izquierda, ocupa 2 columnas -->
+            <div class="md:col-span-2 md:row-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <img 
                 src="/images/fundador/foto-1.jpg" 
                 alt={t('fundador.photo1_alt')}
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <!-- Foto 2: Vertical, ocupa 1x2 -->
-            <div class="col-span-1 row-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <!-- Foto 2: Arriba derecha, ocupa 2 columnas -->
+            <div class="md:col-span-2 md:row-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <img 
                 src="/images/fundador/foto-2.jpg" 
                 alt={t('fundador.photo2_alt')}
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <!-- Foto 3: Horizontal, ocupa 2x1 -->
-            <div class="col-span-2 row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <!-- Foto 3: Abajo izquierda, ocupa 2 columnas y 2 filas (vertical grande) -->
+            <div class="md:col-span-2 md:row-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <img 
                 src="/images/fundador/foto-3.jpg" 
                 alt={t('fundador.photo3_alt')}
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <!-- Foto 4: Pequeña, ocupa 1x1 -->
-            <div class="col-span-1 row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <!-- Foto 4: Abajo centro-arriba, pequeña -->
+            <div class="md:col-span-1 md:row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <img 
                 src="/images/fundador/foto-4.jpg" 
                 alt={t('fundador.photo4_alt')}
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <!-- Foto 5: Pequeña, ocupa 1x1 -->
-            <div class="col-span-1 row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <!-- Foto 5: Abajo centro-arriba derecha, pequeña -->
+            <div class="md:col-span-1 md:row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <img 
                 src="/images/fundador/foto-5.jpg" 
                 alt={t('fundador.photo5_alt')}
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <!-- Foto 6: Horizontal, ocupa 2x1 -->
-            <div class="col-span-2 row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <!-- Foto 6: Abajo derecha, ocupa 2 columnas y 2 filas (poster vertical) -->
+            <div class="md:col-span-2 md:row-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               <img 
                 src="/images/fundador/foto-6.jpeg" 
                 alt={t('fundador.photo6_alt')}
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>
