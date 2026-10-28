@@ -40,6 +40,7 @@ const t = useTranslations(lang);
         <p class="text-lg leading-relaxed" set:html={t('fundador.p7')}></p>
         <p class="text-lg leading-relaxed" set:html={t('fundador.p8')}></p>
         
+        <!-- Stats -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
           <div class="p-6 rounded-xl border border-black/5 dark:border-white/5 bg-surface-alt text-center">
             <div class="text-3xl font-bold text-[#E8530E]">120.000</div>
@@ -55,6 +56,62 @@ const t = useTranslations(lang);
           </div>
         </div>
         
+        <!-- Galería asimétrica tipo collage -->
+        <div class="my-12">
+          <h2 class="text-2xl font-bold text-center text-ink mb-6">{t('fundador.gallery_title')}</h2>
+          <div class="grid grid-cols-4 grid-rows-3 gap-3 h-[600px]">
+            <!-- Foto 1: Grande, ocupa 2x2 -->
+            <div class="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <img 
+                src="/images/fundador/foto-1.jpg" 
+                alt={t('fundador.photo1_alt')}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Foto 2: Vertical, ocupa 1x2 -->
+            <div class="col-span-1 row-span-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <img 
+                src="/images/fundador/foto-2.jpg" 
+                alt={t('fundador.photo2_alt')}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Foto 3: Horizontal, ocupa 2x1 -->
+            <div class="col-span-2 row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <img 
+                src="/images/fundador/foto-3.jpg" 
+                alt={t('fundador.photo3_alt')}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Foto 4: Pequeña, ocupa 1x1 -->
+            <div class="col-span-1 row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <img 
+                src="/images/fundador/foto-4.jpg" 
+                alt={t('fundador.photo4_alt')}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Foto 5: Pequeña, ocupa 1x1 -->
+            <div class="col-span-1 row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <img 
+                src="/images/fundador/foto-5.jpg" 
+                alt={t('fundador.photo5_alt')}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Foto 6: Horizontal, ocupa 2x1 -->
+            <div class="col-span-2 row-span-1 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <img 
+                src="/images/fundador/foto-6.jpeg" 
+                alt={t('fundador.photo6_alt')}
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+        
+        <!-- CTA -->
         <div class="mt-12 text-center">
           <a href={'/' + lang + '/noticias/'} class="inline-block bg-[#E8530E] hover:bg-orange-600 text-white font-semibold py-4 px-10 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl text-lg">
             {t('fundador.cta')}
