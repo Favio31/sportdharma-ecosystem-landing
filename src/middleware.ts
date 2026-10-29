@@ -1,9 +1,14 @@
 ﻿import type { APIContext, NextFunction } from 'astro';
 
 export async function onRequest(context: APIContext, next: NextFunction) {
-  const { url, request } = context;
+  const { url } = context;
   const pathname = new URL(url).pathname;
   
+  // Excluir archivos de feed y estáticos de la redirección de idioma
+  if (pathname.match(/\.(xml|json|ico|txt|svg|png|jpg|jpeg|webp|css|js)$/i)) {
+    return next();
+  }
+
   // Si es la raíz, dejar que la redirección actual funcione
   if (pathname === '/') {
     return next();
