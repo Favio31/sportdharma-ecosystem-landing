@@ -31,8 +31,22 @@ const t = useTranslations(lang);
             <div class="flex flex-col justify-center">
               <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.fundador_label')}</p>
               <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.fundador_name')}</h3>
-              <p class="text-ink-soft leading-relaxed text-sm text-justify hyphens-auto break-words">{t('home.fundador_desc')}</p>
-            </div>
+              <p class="text-ink-soft leading-relaxed text-sm text-justify hyphens-auto break-words">{t('home.fundador_desc')}</p>    
+    <!-- Estadísticas -->
+    <div class="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-black/5 dark:border-white/5">
+      <div class="text-center">
+        <div class="text-2xl font-bold text-[#E8530E] dark:text-orange-500">120.000</div>
+        <div class="text-xs text-ink-soft mt-1">km recorridos</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-[#E8530E] dark:text-orange-500">84</div>
+        <div class="text-xs text-ink-soft mt-1">países</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-[#E8530E] dark:text-orange-500">11</div>
+        <div class="text-xs text-ink-soft mt-1">años en ruta</div>
+      </div>
+    </div></div>
             <div class="space-y-3">
               <div class="rounded-lg overflow-hidden border border-black/5 dark:border-white/5 h-[120px]">
                 <img src="/fundador-1.jpg" alt={t('home.fundador_alt_1')} class="w-full h-full object-cover" draggable="false" />
