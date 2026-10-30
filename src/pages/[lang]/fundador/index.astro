@@ -59,9 +59,9 @@ const t = useTranslations(lang);
         <!-- Galería bento grid 8 fotos -->
         <div class="my-12">
           <h2 class="text-2xl font-bold text-center text-ink mb-6">{t('fundador.gallery_title')}</h2>
-          <div class="grid gap-4 auto-rows-[200px]" style="grid-template-columns: repeat(4, 1fr); grid-template-areas: 'a a b b' 'a a b b' 'c c d e' 'c c f f' 'g h f f';">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:[grid-template-areas:'a_a_b_b'_'a_a_b_b'_'c_c_d_e'_'c_c_f_f'_'g_h_f_f']">
             <!-- Foto 1: Arriba izquierda (2×2) -->
-            <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="grid-area: a;">
+            <div class="class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 col-span-2 md:[grid-area:a]"">
               <img 
                 src="/images/fundador/foto-1.jpg" 
                 alt={t('fundador.photo1_alt')}
@@ -70,7 +70,7 @@ const t = useTranslations(lang);
               />
             </div>
             <!-- Foto 2: Arriba derecha (2×2) -->
-            <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="grid-area: b;">
+            <div class="class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 col-span-2 md:[grid-area:b]"">
               <img 
                 src="/images/fundador/foto-2.jpg" 
                 alt={t('fundador.photo2_alt')}
@@ -79,7 +79,7 @@ const t = useTranslations(lang);
               />
             </div>
             <!-- Foto 3: Medio izquierda vertical (2×2) -->
-            <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="grid-area: c;">
+            <div class="class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 col-span-2 md:[grid-area:c]"">
               <img 
                 src="/images/fundador/foto-3.jpg" 
                 alt={t('fundador.photo3_alt')}
@@ -88,7 +88,7 @@ const t = useTranslations(lang);
               />
             </div>
             <!-- Foto 4: Medio derecha arriba pequeña (1×1) -->
-            <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="grid-area: d;">
+            <div class="class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 col-span-1 md:[grid-area:d]"">
               <img 
                 src="/images/fundador/foto-4.jpg" 
                 alt={t('fundador.photo4_alt')}
@@ -97,7 +97,7 @@ const t = useTranslations(lang);
               />
             </div>
             <!-- Foto 5: Medio derecha arriba pequeña (1×1) -->
-            <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="grid-area: e;">
+            <div class="class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 col-span-1 md:[grid-area:e]"">
               <img 
                 src="/images/fundador/foto-5.jpg" 
                 alt={t('fundador.photo5_alt')}
@@ -106,7 +106,7 @@ const t = useTranslations(lang);
               />
             </div>
             <!-- Foto 6: Medio derecha abajo grande (2×2) -->
-            <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="grid-area: f;">
+            <div class="class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 col-span-2 md:[grid-area:f]"">
               <img 
                 src="/images/fundador/foto-6.jpeg" 
                 alt={t('fundador.photo6_alt')}
@@ -115,7 +115,7 @@ const t = useTranslations(lang);
               />
             </div>
             <!-- Foto 7: Abajo izquierda pequeña (1×1) -->
-            <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="grid-area: g;">
+            <div class="class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 col-span-1 md:[grid-area:g]"">
               <img 
                 src="/images/fundador/foto-7.jpg" 
                 alt={t('fundador.photo7_alt')}
@@ -124,7 +124,7 @@ const t = useTranslations(lang);
               />
             </div>
             <!-- Foto 8: Abajo izquierda pequeña (1×1) -->
-            <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300" style="grid-area: h;">
+            <div class="class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 col-span-1 md:[grid-area:h]"">
               <img 
                 src="/images/fundador/foto-8.jpeg" 
                 alt={t('fundador.photo8_alt')}
