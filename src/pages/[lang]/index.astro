@@ -201,4 +201,19 @@ const t = useTranslations(lang);
       </div>
     </div>
   </section>
+
+  <!-- PAGINAS AMIGAS -->
+  <section class="py-16 px-6 bg-surface">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-ink mb-2">{t('home.friendly_pages.title')}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">{t('home.friendly_pages.links').map(l=><a href={l.url} target="_blank" class="p-5 rounded-xl border hover:border-[#E8530E]/40"><span class="font-semibold">{l.name}</span></a>)}</div>
+    </div>
+  </section>
+  <!-- REDES SOCIALES -->
+  <section class="py-16 px-6 bg-surface-alt">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-ink mb-2">{t('home.social_media.title')}</h2>
+      <div class="flex flex-wrap justify-center gap-4">{t('home.social_media.links').map(l=><a href={l.url} target="_blank" class="px-6 py-3 rounded-lg border hover:bg-[#E8530E] hover:text-white">{l.name}</a>)}</div>
+    </div>
+  </section>
 </Layout>
