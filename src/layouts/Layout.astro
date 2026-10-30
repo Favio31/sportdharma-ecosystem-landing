@@ -1,4 +1,4 @@
----
+﻿---
 import LanguageSelector from '../components/LanguageSelector.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils.js';
 import '../styles/global.css';
@@ -28,6 +28,9 @@ const ogDescription = props.ogDescription || description;
 <!doctype html>
 <html lang={lang}>
   <head>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <meta name="theme-color" content="#0f172a" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
@@ -64,6 +67,9 @@ const ogDescription = props.ogDescription || description;
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen transition-colors duration-300">
     <Header lang={lang} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <meta name="theme-color" content="#0f172a" />
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-end">
       <LanguageSelector {lang} />
     </div>
