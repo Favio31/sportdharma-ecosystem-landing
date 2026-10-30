@@ -78,7 +78,35 @@
     "rss_desc": "Die reinste und dezentralste Art, unsere Neuigkeiten zu verfolgen.",
     "rss_btn": "Anweisungen anzeigen",
     "fundador_alt_1": "Radreisender unterwegs",
-    "fundador_alt_2": "Unterwegs"
+    "fundador_alt_2": "Unterwegs",
+    "friendly_pages": {
+      "title": "Freundliche Seiten",
+      "desc": "Projekte und Gemeinschaften, die unsere Vision von freier Software teilen.",
+      "links": [
+        {
+          "name": "Proton Foundation",
+          "url": "https://proton.me"
+        },
+        {
+          "name": "GNU/Linux",
+          "url": "https://www.gnu.org"
+        }
+      ]
+    },
+    "social_media": {
+      "title": "Verbinden Sie sich mit uns",
+      "desc": "Folgen Sie uns auf unseren offiziellen Plattformen.",
+      "links": [
+        {
+          "name": "LinkedIn (Favio M. Giorgio)",
+          "url": "https://www.linkedin.com/in/faviomgiorgiodata"
+        },
+        {
+          "name": "GitHub (SportDharma)",
+          "url": "https://github.com"
+        }
+      ]
+    }
   },
   "hero": {
     "badge_1": "Freie Software",

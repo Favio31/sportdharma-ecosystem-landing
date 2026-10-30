@@ -78,7 +78,35 @@
     "rss_desc": "A forma mais pura e descentralizada de acompanhar nossas novidades.",
     "rss_btn": "Ver instruções",
     "fundador_alt_1": "Cicloturista na estrada",
-    "fundador_alt_2": "A caminho"
+    "fundador_alt_2": "A caminho",
+    "friendly_pages": {
+      "title": "Páginas Amigas",
+      "desc": "Projetos e comunidades que compartilham nossa visão de software livre.",
+      "links": [
+        {
+          "name": "Proton Foundation",
+          "url": "https://proton.me"
+        },
+        {
+          "name": "GNU/Linux",
+          "url": "https://www.gnu.org"
+        }
+      ]
+    },
+    "social_media": {
+      "title": "Conecte-se Conosco",
+      "desc": "Siga-nos em nossas plataformas oficiais.",
+      "links": [
+        {
+          "name": "LinkedIn (Favio M. Giorgio)",
+          "url": "https://www.linkedin.com/in/faviomgiorgiodata"
+        },
+        {
+          "name": "GitHub (SportDharma)",
+          "url": "https://github.com"
+        }
+      ]
+    }
   },
   "hero": {
     "badge_1": "Software livre",
