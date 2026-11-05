@@ -1,6 +1,6 @@
 ﻿---
 import Layout from '../../layouts/Layout.astro';
-import WebPushSubscribe from '../../components/WebPushSubscribe.astro';
+
 import Hero from '../../components/sections/Hero.astro';
 import { useTranslations } from '../../i18n/utils.js';
 
@@ -176,14 +176,73 @@ const t = useTranslations(lang);
       <p class="text-ink-soft text-lg mb-10">{t('home.noticias_title')}. Contenido fresco, verificado y relevante.</p>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all">
-          <div class="text-5xl mb-4">🔔</div>
-          <h3 class="text-2xl font-bold text-ink mb-3">{t('home.notif_title')}</h3>
-          <p class="text-ink-soft mb-6">{t('home.notif_desc')}</p>
-          <a href={'/' + lang + '/noticias/'} class="inline-block px-8 py-3 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all hover:scale-105">
-            {t('home.notif_btn')}
-          </a>
-        </div>
+        <div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all flex flex-col justify-between h-full">
+            <div>
+              <div class="text-5xl mb-4">🔔</div>
+              <h3 class="text-2xl font-bold text-ink mb-3">Notificaciones Soberanas</h3>
+              <p class="text-ink-soft mb-6 text-sm leading-relaxed">
+                Recibí actualizaciones <strong>sin dejar tu correo electrónico</strong>. 
+                Usamos tecnología nativa del navegador: <strong>sin bases de datos, sin tracking y sin spam</strong>. 
+                Tenés el control absoluto para desactivarlo cuando quieras.
+              </p>
+            </div>
+            <div>
+              <button id="subscribe-push" class="w-full px-8 py-3 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all hover:scale-105 flex items-center justify-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                Activar Notificaciones
+              </button>
+              <p id="push-status" class="text-xs text-ink-soft mt-3 text-center min-h-[1.25rem]"></p>
+            </div>
+          </div>
+          <script is:inline>
+            function urlBase64ToUint8Array(base64String) {
+              const padding = '='.repeat((4 - base64String.length % 4) % 4);
+              const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+              const rawData = window.atob(base64);
+              const outputArray = new Uint8Array(rawData.length);
+              for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+              }
+              return outputArray;
+            }
+
+            document.getElementById('subscribe-push')?.addEventListener('click', async () => {
+              const statusEl = document.getElementById('push-status');
+              if (!statusEl) return;
+
+              if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+                statusEl.textContent = 'Tu navegador no soporta notificaciones push.';
+                return;
+              }
+
+              try {
+                statusEl.textContent = 'Registrando Service Worker...';
+                const registration = await navigator.serviceWorker.ready;
+                
+                statusEl.textContent = 'Solicitando permiso...';
+                const permission = await Notification.requestPermission();
+                
+                if (permission === 'denied') {
+                  statusEl.textContent = 'Permiso denegado. Actívalo en tu navegador.';
+                  return;
+                }
+
+                statusEl.textContent = 'Generando suscripción segura...';
+                const vapidPublicKey = 'TU_VAPID_PUBLIC_KEY_AQUI'; 
+                
+                const subscription = await registration.pushManager.subscribe({
+                  userVisibleOnly: true,
+                  applicationServerKey: urlBase64ToUint8Array(vapidPublicKey)
+                });
+                
+                console.log('✅ [Push] Suscripción exitosa:', subscription);
+                statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
+              } catch (error) {
+                console.error('❌ [Push] Error:', error);
+                statusEl.textContent = 'Error al suscribir. Verifica la clave VAPID.';
+              }
+            });
+          </script>
         
         <div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all">
           <div class="text-5xl mb-4"></div>
@@ -220,8 +279,6 @@ const t = useTranslations(lang);
       </div>
   </div>
 </section>
-
-<WebPushSubscribe />
 
 <!-- PAGINAS AMIGAS -->
   <section class="py-16 px-6 bg-surface">
