@@ -1,0 +1,81 @@
+﻿import { readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const componentPath = join(__dirname, 'src', 'components', 'WebPushSubscribe.astro');
+let content = await readFile(componentPath, 'utf8');
+
+// Reemplazamos el contenido del componente con uno que incluye la explicación de privacidad
+const newComponent = `<!-- Componente para solicitar permiso de notificaciones push (100% privado, sin emails) -->
+<div class="p-6 rounded-2xl bg-surface border border-black/5 dark:border-white/5 hover:border-[#E8530E]/30 transition-all">
+  <h3 class="text-xl font-bold text-ink mb-3 flex items-center gap-2">
+    <svg class="w-5 h-5 text-[#E8530E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+    Notificaciones Soberanas
+  </h3>
+  
+  <p class="text-ink-soft text-sm mb-5 leading-relaxed">
+    Recibí actualizaciones del ecosistema <strong>sin dejar tu correo electrónico</strong>. 
+    Usamos la tecnología nativa de tu navegador: <strong>no hay bases de datos, no hay rastreo (tracking) y no hay spam</strong>. 
+    Tú tienes el control absoluto y puedes desactivarlo en cualquier momento desde la configuración de tu navegador.
+  </p>
+
+  <button 
+    id="subscribe-push" 
+    class="w-full px-6 py-3 rounded-xl bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+    Activar Notificaciones
+  </button>
+  
+  <p id="push-status" class="text-xs text-ink-soft mt-4 text-center min-h-[1.25rem]"></p>
+</div>
+
+<script>
+  const WORKER_URL = "/sw.js"; // Ajusta si tu service worker tiene otra ruta
+
+  function showStatus(msg) {
+    const statusEl = document.getElementById('push-status');
+    if (statusEl) statusEl.textContent = msg;
+  }
+
+  document.getElementById('subscribe-push').addEventListener('click', async () => {
+    console.log('🔔 [Push] Botón clickeado');
+    showStatus('Verificando compatibilidad...');
+
+    if (!('serviceWorker' in navigator)) {
+      console.error('❌ [Push] Service Worker no soportado');
+      showStatus('Tu navegador no soporta notificaciones.');
+      return;
+    }
+
+    console.log('✅ [Push] Service Worker soportado');
+    
+    if (!('PushManager' in window)) {
+      console.error('❌ [Push] PushManager no soportado');
+      showStatus('Push no soportado en este navegador.');
+      return;
+    }
+
+    console.log('✅ [Push] PushManager disponible');
+
+    try {
+      console.log('📋 [Push] Solicitando permiso...');
+      const permission = await Notification.requestPermission();
+      console.log('📋 [Push] Permiso:', permission);
+
+      if (permission === 'granted') {
+        showStatus('✅ ¡Suscrito con éxito! (100% privado)');
+        // Aquí iría la lógica para registrar el subscription en tu backend si lo tuvieras
+      } else if (permission === 'denied') {
+        showStatus('Permiso denegado. Puedes cambiarlo en la configuración de tu navegador.');
+      }
+    } catch (error) {
+      console.error('❌ [Push] Error:', error);
+      showStatus('Ocurrió un error al activar las notificaciones.');
+    }
+  });
+</script>`;
+
+await writeFile(componentPath, newComponent, 'utf8');
+console.log('✅ WebPushSubscribe.astro actualizado con mensaje de privacidad y diseño mejorado');

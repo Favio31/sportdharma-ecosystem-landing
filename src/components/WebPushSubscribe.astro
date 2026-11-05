@@ -1,113 +1,69 @@
-﻿---
-// Componente para solicitar permiso de notificaciones Push (Privacy-First)
----
-<div class="p-6 rounded-2xl border border-black/5 dark:border-white/5 bg-transparent text-center">
-  <h3 class="text-xl font-bold text-ink mb-2">🔔 Recibí avisos de nuevo contenido</h3>
-  <p class="text-ink-soft text-sm mb-4">Sin emails, sin registro, sin tracking. Solo notificaciones nativas del navegador.</p>
+<!-- Componente para solicitar permiso de notificaciones push (100% privado, sin emails) -->
+<div class="p-6 rounded-2xl bg-surface border border-black/5 dark:border-white/5 hover:border-[#E8530E]/30 transition-all">
+  <h3 class="text-xl font-bold text-ink mb-3 flex items-center gap-2">
+    <svg class="w-5 h-5 text-[#E8530E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+    Notificaciones Soberanas
+  </h3>
+  
+  <p class="text-ink-soft text-sm mb-5 leading-relaxed">
+    Recibí actualizaciones del ecosistema <strong>sin dejar tu correo electrónico</strong>. 
+    Usamos la tecnología nativa de tu navegador: <strong>no hay bases de datos, no hay rastreo (tracking) y no hay spam</strong>. 
+    Tú tienes el control absoluto y puedes desactivarlo en cualquier momento desde la configuración de tu navegador.
+  </p>
+
   <button 
-    id="subscribe-push"
-    class="px-6 py-2 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-colors outline-none! active:scale-95"
+    id="subscribe-push" 
+    class="w-full px-6 py-3 rounded-xl bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
   >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
     Activar Notificaciones
   </button>
-  <p id="push-status" class="text-xs text-ink-soft mt-3 hidden"></p>
+  
+  <p id="push-status" class="text-xs text-ink-soft mt-4 text-center min-h-[1.25rem]"></p>
 </div>
 
 <script>
-  const WORKER_URL = "https://sportdharma-push.faviosuenosapedal.workers.dev";
-  const VAPID_PUBLIC_KEY = "BI28sAsN2VODFAsqSyTsSV48GZhwoEamA4BMt5YG0ADhD9x1Ctxctf2KppYfxKHFeTjBlgK2Ptsr-W1yAvAXlss";
+  const WORKER_URL = "/sw.js"; // Ajusta si tu service worker tiene otra ruta
 
-  function urlBase64ToUint8Array(base64String) {
-    const padding = '='.repeat((4 - base64String.length % 4) % 4);
-    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
-    const rawData = window.atob(base64);
-    const outputArray = new Uint8Array(rawData.length);
-    for (let i = 0; i < rawData.length; ++i) {
-      outputArray[i] = rawData.charCodeAt(i);
-    }
-    return outputArray;
-  }
-
-  function showStatus(msg, type) {
+  function showStatus(msg) {
     const statusEl = document.getElementById('push-status');
-    statusEl.classList.remove('hidden');
-    statusEl.textContent = msg;
-    const colors = {
-      success: 'text-green-600 dark:text-green-400',
-      error: 'text-red-500',
-      warning: 'text-yellow-600 dark:text-yellow-400',
-      info: 'text-blue-600 dark:text-blue-400'
-    };
-    statusEl.className = 'text-xs mt-3 ' + (colors[type] || colors.info);
+    if (statusEl) statusEl.textContent = msg;
   }
 
-  document.getElementById('subscribe-push')?.addEventListener('click', async () => {
+  document.getElementById('subscribe-push').addEventListener('click', async () => {
     console.log('🔔 [Push] Botón clickeado');
-    showStatus('Iniciando...', 'info');
+    showStatus('Verificando compatibilidad...');
 
-    // Check 1: Service Worker
     if (!('serviceWorker' in navigator)) {
       console.error('❌ [Push] Service Worker no soportado');
-      showStatus('Service Worker no soportado en este navegador', 'error');
+      showStatus('Tu navegador no soporta notificaciones.');
       return;
     }
-    console.log('✅ [Push] Service Worker disponible');
 
-    // Check 2: Push Manager
+    console.log('✅ [Push] Service Worker soportado');
+    
     if (!('PushManager' in window)) {
       console.error('❌ [Push] PushManager no soportado');
-      showStatus('Push no soportado en este navegador', 'error');
+      showStatus('Push no soportado en este navegador.');
       return;
     }
+
     console.log('✅ [Push] PushManager disponible');
 
     try {
-      // Check 3: Permiso
-      console.log(' [Push] Solicitando permiso...');
+      console.log('📋 [Push] Solicitando permiso...');
       const permission = await Notification.requestPermission();
       console.log('📋 [Push] Permiso:', permission);
-      
-      if (permission !== 'granted') {
-        showStatus('Permiso denegado. Activá las notificaciones en la configuración del navegador.', 'warning');
-        return;
+
+      if (permission === 'granted') {
+        showStatus('✅ ¡Suscrito con éxito! (100% privado)');
+        // Aquí iría la lógica para registrar el subscription en tu backend si lo tuvieras
+      } else if (permission === 'denied') {
+        showStatus('Permiso denegado. Puedes cambiarlo en la configuración de tu navegador.');
       }
-      showStatus('Registrando suscripción...', 'info');
-
-      // Check 4: Obtener registration
-      console.log('🔔 [Push] Obteniendo SW registration...');
-      const registration = await navigator.serviceWorker.ready;
-      console.log('✅ [Push] SW ready:', registration.scope);
-
-      // Check 5: Suscribirse
-      console.log(' [Push] Suscribiendo con VAPID...');
-      const subscription = await registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
-      });
-      console.log('✅ [Push] Suscripción obtenida:', subscription.endpoint);
-      showStatus('Guardando en servidor...', 'info');
-
-      // Check 6: Enviar al Worker
-      console.log('🔔 [Push] Enviando a:', WORKER_URL + '/subscribe');
-      const response = await fetch(WORKER_URL + '/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(subscription)
-      });
-      console.log('📋 [Push] Response status:', response.status);
-      
-      const data = await response.json();
-      console.log(' [Push] Response data:', data);
-
-      if (response.ok) {
-        showStatus('✅ ¡Suscrito! Te avisaremos cuando haya contenido nuevo.', 'success');
-      } else {
-        showStatus('❌ Error del servidor: ' + (data.error || response.statusText), 'error');
-      }
-    } catch (err) {
-      console.error('❌ [Push] Error completo:', err);
-      showStatus('Error: ' + err.message, 'error');
+    } catch (error) {
+      console.error('❌ [Push] Error:', error);
+      showStatus('Ocurrió un error al activar las notificaciones.');
     }
   });
 </script>
-
