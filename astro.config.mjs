@@ -16,7 +16,7 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
       VitePWA({
-        registerType: 'autoupdate',
+        registerType: 'autoUpdate',
         manifest: {
           name: 'SportDharma Ecosystem',
           short_name: 'SportDharma',
@@ -39,6 +39,7 @@ export default defineConfig({
           ]
         },
         workbox: {
+          importScripts: ['/push-handler.js'],
       importScripts: ['/push-handler.js'],
           globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
