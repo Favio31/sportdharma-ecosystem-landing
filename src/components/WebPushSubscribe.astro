@@ -18,10 +18,10 @@
 
 <script is:inline>
   function urlBase64ToUint8Array(base64String) {
-    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
     const rawData = window.atob(base64);
-    return Uint8Array.from([...rawData].map(c => c.charCodeAt(0)));
+    return Uint8Array.from(rawData, character => character.charCodeAt(0));
   }
 
   document.getElementById('subscribe-push')?.addEventListener('click', async () => {
@@ -34,24 +34,33 @@
     }
 
     try {
-      statusEl.textContent = 'Preparando...';
+      statusEl.textContent = 'Preparando Service Worker...';
       const registration = await navigator.serviceWorker.ready;
       
+      statusEl.textContent = 'Solicitando permiso...';
       const permission = await Notification.requestPermission();
       if (permission !== 'granted') {
         statusEl.textContent = '❌ Permiso denegado.';
         return;
       }
 
-      statusEl.textContent = 'Generando clave...';
-      const vapidKey = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg';
-      
+      statusEl.textContent = 'Generando clave segura...';
+      const VAPID_PUBLIC_KEY = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg';
+      const applicationServerKey = urlBase64ToUint8Array(VAPID_PUBLIC_KEY);
+
+      // VERIFICACIÓN EN CONSOLA (como pidió la IA)
+      console.log({
+        length: applicationServerKey.length,
+        firstByte: applicationServerKey[0],
+        type: applicationServerKey.constructor.name
+      });
+
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(vapidKey)
+        applicationServerKey: applicationServerKey
       });
       
-      statusEl.textContent = 'Guardando...';
+      statusEl.textContent = 'Guardando en backend seguro...';
       const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

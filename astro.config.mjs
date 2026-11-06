@@ -26,25 +26,15 @@ export default defineConfig({
           display: 'standalone',
           start_url: '/',
           icons: [
-            {
-              src: '/logo.png',
-              sizes: '192x192',
-              type: 'image/png'
-            },
-            {
-              src: '/logo.png',
-              sizes: '512x512',
-              type: 'image/png'
-            }
+            { src: '/logo.png', sizes: '192x192', type: 'image/png' },
+            { src: '/logo.png', sizes: '512x512', type: 'image/png' }
           ]
         },
         workbox: {
           importScripts: ['/push-handler.js'],
-      importScripts: ['/push-handler.js'],
           globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-          // Forzar nueva versiÃ³n del cachÃ©
-             cacheId: 'sportdharma-v4', // Cambiamos a v3 para forzar nuevo cachÃ©
+          cacheId: 'sportdharma-v4',
           skipWaiting: true,
           clientsClaim: true
         }
