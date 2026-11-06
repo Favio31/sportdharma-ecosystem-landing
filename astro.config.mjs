@@ -39,6 +39,7 @@ export default defineConfig({
           ]
         },
         workbox: {
+      importScripts: ['/push-handler.js'],
           globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
           // Forzar nueva versiÃ³n del cachÃ©
