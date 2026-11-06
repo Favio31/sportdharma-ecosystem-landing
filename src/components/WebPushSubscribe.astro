@@ -30,55 +30,96 @@
     return outputArray;
   }
 
+  function waitForServiceWorker(timeout = 10000) {
+    return new Promise((resolve, reject) => {
+      if (navigator.serviceWorker.controller) {
+        resolve(navigator.serviceWorker);
+        return;
+      }
+      const timer = setTimeout(() => reject(new Error('Timeout: SW no se registró')), timeout);
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        clearTimeout(timer);
+        resolve(navigator.serviceWorker);
+      });
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(reg => {
+          console.log('[Push] SW registrado:', reg.scope);
+          if (reg.active) {
+            clearTimeout(timer);
+            resolve(navigator.serviceWorker);
+          }
+        })
+        .catch(err => {
+          clearTimeout(timer);
+          reject(err);
+        });
+    });
+  }
+
   document.getElementById('subscribe-push')?.addEventListener('click', async () => {
     const statusEl = document.getElementById('push-status');
     if (!statusEl) return;
 
-    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-      statusEl.textContent = 'Tu navegador no soporta notificaciones push.';
+    if (!('serviceWorker' in navigator)) {
+      statusEl.textContent = '❌ Tu navegador no soporta Service Workers.';
+      return;
+    }
+    if (!('PushManager' in window)) {
+      statusEl.textContent = '❌ Tu navegador no soporta Push.';
       return;
     }
 
     try {
-      statusEl.textContent = 'Registrando Service Worker...';
-            if (!navigator.serviceWorker.controller) {
-        await navigator.serviceWorker.register('/sw.js');
-      }
+      statusEl.textContent = '1/4 Registrando Service Worker...';
+      await waitForServiceWorker(10000);
       const registration = await navigator.serviceWorker.ready;
-      
-      statusEl.textContent = 'Solicitando permiso...';
+      console.log('[Push] SW ready:', registration.scope);
+
+      statusEl.textContent = '2/4 Solicitando permiso...';
       const permission = await Notification.requestPermission();
+      console.log('[Push] Permiso:', permission);
       
-      if (permission === 'denied') {
-        statusEl.textContent = 'Permiso denegado. Actívalo en tu navegador.';
+      if (permission !== 'granted') {
+        statusEl.textContent = '❌ Permiso denegado. Actívalo en tu navegador.';
         return;
       }
 
-      statusEl.textContent = 'Generando suscripción segura...';
-      const vapidPublicKey = 'BEjsqpP02JpqiGtPi8bEfparA7Ng7SlkklYzXm6RhLF1SZwvaorc5jcm5QDt0htWiHGEecywWPvC4_hwJRelwQk'; 
+      statusEl.textContent = '3/4 Generando suscripción...';
+      const vapidPublicKey = 'BEjsqpP02JpqiGtPi8bEfparA7Ng7SlkklYzXm6RhLF1SZwvaorc5jcm5QDt0htWiHGEecywWPvC4_hwJRelwQk';
       
+      let applicationServerKey;
+      try {
+        applicationServerKey = urlBase64ToUint8Array(vapidPublicKey);
+      } catch (e) {
+        statusEl.textContent = '❌ Clave VAPID inválida.';
+        console.error('[Push] Error en clave VAPID:', e);
+        return;
+      }
+
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey)
+        applicationServerKey: applicationServerKey
       });
       
-      console.log('✅ [Push] Suscripción generada:', subscription);
-      statusEl.textContent = 'Guardando suscripción de forma segura...';
+      console.log('[Push] Suscripción generada:', subscription.endpoint);
+      statusEl.textContent = '4/4 Guardando suscripción...';
       
       try {
-        await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
+        const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(subscription)
         });
+        const data = await res.json();
+        console.log('[Push] Worker respondió:', data);
         statusEl.textContent = '✅ ¡Suscrito! (100% privado, sin emails)';
       } catch (err) {
-        console.error('❌ [Push] Error al enviar al Worker:', err);
-        statusEl.textContent = '⚠️ Error de conexión. Intentá de nuevo.';
+        console.error('[Push] Error al enviar al Worker:', err);
+        statusEl.textContent = '⚠️ Suscripción creada pero no se pudo guardar.';
       }
     } catch (error) {
-      console.error('❌ [Push] Error al suscribir:', error);
-      statusEl.textContent = 'Error al suscribir. Verifica la clave VAPID.';
+      console.error('[Push] Error general:', error);
+      statusEl.textContent = '❌ Error: ' + error.message;
     }
   });
 </script>
