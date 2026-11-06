@@ -1,12 +1,10 @@
-﻿<!-- Componente de Notificaciones Push (100% privado, sin emails) -->
-<div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all flex flex-col justify-between h-full">
+﻿<div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all flex flex-col justify-between h-full">
   <div>
     <div class="text-5xl mb-4">🔔</div>
     <h3 class="text-2xl font-bold text-ink mb-3">Notificaciones Soberanas</h3>
     <p class="text-ink-soft mb-6 text-sm leading-relaxed">
       Recibí actualizaciones <strong>sin dejar tu correo electrónico</strong>. 
-      Usamos tecnología nativa del navegador: <strong>sin bases de datos, sin tracking y sin spam</strong>. 
-      Tenés el control absoluto para desactivarlo cuando quieras.
+      Tecnología nativa del navegador: <strong>sin tracking y sin spam</strong>.
     </p>
   </div>
   <div>
@@ -31,33 +29,29 @@
     if (!statusEl) return;
 
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-      statusEl.textContent = '❌ Tu navegador no soporta notificaciones push.';
+      statusEl.textContent = '❌ Navegador no soportado.';
       return;
     }
 
     try {
-      statusEl.textContent = '1/3 Preparando Service Worker...';
+      statusEl.textContent = 'Preparando...';
       const registration = await navigator.serviceWorker.ready;
-      console.log('[Push] SW listo:', registration.scope);
-
-      statusEl.textContent = '2/3 Solicitando permiso...';
+      
       const permission = await Notification.requestPermission();
       if (permission !== 'granted') {
-        statusEl.textContent = '❌ Permiso denegado. Actívalo en tu navegador.';
+        statusEl.textContent = '❌ Permiso denegado.';
         return;
       }
 
-      statusEl.textContent = '3/3 Generando suscripción...';
-      const vapidPublicKey = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg';
+      statusEl.textContent = 'Generando clave...';
+      const vapidKey = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg';
       
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey)
+        applicationServerKey: urlBase64ToUint8Array(vapidKey)
       });
       
-      console.log('[Push] Suscripción exitosa:', subscription.endpoint);
-      statusEl.textContent = 'Guardando de forma segura...';
-      
+      statusEl.textContent = 'Guardando...';
       const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -65,12 +59,12 @@
       });
       
       if (res.ok) {
-        statusEl.textContent = '✅ ¡Suscrito! (100% privado, sin emails)';
+        statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
       } else {
-        statusEl.textContent = '⚠️ Error al guardar. Intentá de nuevo.';
+        statusEl.textContent = '⚠️ Error al guardar.';
       }
     } catch (error) {
-      console.error('❌ [Push] Error detallado:', error.name, error.message, error);
+      console.error('❌ [Push] Error real:', error.name, error.message);
       statusEl.textContent = '❌ Error: ' + error.message;
     }
   });
