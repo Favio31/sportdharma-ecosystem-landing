@@ -1,0 +1,7 @@
+﻿name = "sportdharmapush"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "SUBSCRIPTIONS"
+id = "133770dd37a54d799a1ca708bdbdd6df"
