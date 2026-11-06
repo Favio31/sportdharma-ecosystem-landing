@@ -41,6 +41,9 @@
 
     try {
       statusEl.textContent = 'Registrando Service Worker...';
+            if (!navigator.serviceWorker.controller) {
+        await navigator.serviceWorker.register('/sw.js');
+      }
       const registration = await navigator.serviceWorker.ready;
       
       statusEl.textContent = 'Solicitando permiso...';
