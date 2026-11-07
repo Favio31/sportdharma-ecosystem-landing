@@ -28,6 +28,39 @@
     return outputArray;
   }
 
+  async function ensureServiceWorker() {
+    // Si ya hay un SW activo, lo usamos
+    if (navigator.serviceWorker.controller) {
+      console.log('[SW] Ya hay un SW activo');
+      return await navigator.serviceWorker.ready;
+    }
+    
+    // Si no, lo registramos manualmente
+    console.log('[SW] Registrando /sw.js...');
+    const registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    
+    // Esperamos a que se active
+    if (registration.active) {
+      console.log('[SW] Ya está activo');
+      return await navigator.serviceWorker.ready;
+    }
+    
+    // Esperamos a que se instale y active
+    return new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => reject(new Error('Timeout registrando SW')), 10000);
+      
+      registration.addEventListener('updatefound', () => {
+        const installingWorker = registration.installing;
+        installingWorker.addEventListener('statechange', () => {
+          if (installingWorker.state === 'activated') {
+            clearTimeout(timeout);
+            resolve(navigator.serviceWorker.ready);
+          }
+        });
+      });
+    });
+  }
+
   document.getElementById('subscribe-push')?.addEventListener('click', async () => {
     const statusEl = document.getElementById('push-status');
     if (!statusEl) return;
@@ -38,26 +71,29 @@
     }
 
     try {
-      statusEl.textContent = 'Preparando...';
-      const registration = await navigator.serviceWorker.ready;
+      statusEl.textContent = '1/4 Preparando Service Worker...';
+      const registration = await ensureServiceWorker();
       
+      console.log('[SW] Ready:', registration.scope);
+      console.log('[SW] Active:', registration.active);
+
+      statusEl.textContent = '2/4 Solicitando permiso...';
       const permission = await Notification.requestPermission();
+      console.log('[Permiso]', permission);
+      
       if (permission !== 'granted') {
         statusEl.textContent = '❌ Permiso denegado.';
         return;
       }
 
-      statusEl.textContent = 'Generando clave...';
+      statusEl.textContent = '3/4 Generando clave...';
       const VAPID_PUBLIC_KEY = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg';
       const applicationServerKey = urlBase64ToUint8Array(VAPID_PUBLIC_KEY);
 
       console.log('=== DIAGNOSTICO VAPID ===');
       console.log('Clave:', VAPID_PUBLIC_KEY);
-      console.log('Longitud:', VAPID_PUBLIC_KEY.length);
       console.log('Uint8Array length:', applicationServerKey.length);
       console.log('Primer byte:', applicationServerKey[0]);
-      console.log('Tipo:', applicationServerKey.constructor.name);
-      console.log('Es Uint8Array:', applicationServerKey instanceof Uint8Array);
       console.log('========================');
 
       const subscription = await registration.pushManager.subscribe({
@@ -65,7 +101,7 @@
         applicationServerKey: applicationServerKey
       });
       
-      statusEl.textContent = 'Guardando...';
+      statusEl.textContent = '4/4 Guardando...';
       const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -78,7 +114,7 @@
         statusEl.textContent = '⚠️ Error al guardar.';
       }
     } catch (error) {
-      console.error('❌ [Push] Error:', error.name, error.message);
+      console.error(' [Push] Error:', error.name, error.message);
       statusEl.textContent = '❌ Error: ' + error.message;
     }
   });
