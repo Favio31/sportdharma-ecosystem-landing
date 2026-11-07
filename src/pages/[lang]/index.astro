@@ -228,7 +228,7 @@ const t = useTranslations(lang);
                 }
 
                 statusEl.textContent = 'Generando suscripción segura...';
-                const vapidPublicKey = 'TU_VAPID_PUBLIC_KEY_AQUI'; 
+                const VAPID_PUBLIC_KEY = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg'; 
                 
                 const subscription = await registration.pushManager.subscribe({
                   userVisibleOnly: true,
