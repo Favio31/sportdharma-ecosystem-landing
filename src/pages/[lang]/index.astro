@@ -1,6 +1,5 @@
 ﻿---
 import Layout from '../../layouts/Layout.astro';
-
 import Hero from '../../components/sections/Hero.astro';
 import { useTranslations } from '../../i18n/utils.js';
 
@@ -28,7 +27,6 @@ const t = useTranslations(lang);
 
         <!-- 2. FUNDADOR -->
         <a href={'/' + lang + '/fundador/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <!-- Texto + fotos: grid de 2 columnas -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div class="flex flex-col justify-center">
               <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.fundador_label')}</p>
@@ -47,7 +45,6 @@ const t = useTranslations(lang);
               </div>
             </div>
           </div>
-          <!-- Estadísticas: fuera del grid, ancho completo, centradas -->
           <div class="mt-6 border-t border-black/5 pt-6 dark:border-white/5">
             <div class="mx-auto grid max-w-lg grid-cols-3 gap-3 sm:gap-4">
               <div class="min-w-0 rounded-lg border border-white/30 p-3 text-center sm:p-4">
@@ -66,7 +63,7 @@ const t = useTranslations(lang);
           </div>
         </a>
 
-        <!-- 3. {t('home.manifiesto_label')} -->
+        <!-- 3. MANIFIESTO -->
         <a href={'/' + lang + '/manifiesto/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div class="flex flex-col justify-center items-center">
@@ -81,15 +78,14 @@ const t = useTranslations(lang);
               <div class="w-full rounded-xl border border-black/5 dark:border-white/5">
                 <img src="/images/templo-blanco.jpg" alt="Templo Blanco en Tailandia - Ruta en bicicleta" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
               </div>
-
-                <div class="w-full rounded-xl border border-black/5 dark:border-white/5">
-                  <img src="/logo-social2.jpg" alt="SportDharma Ecosystem Logo" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
-                </div>
+              <div class="w-full rounded-xl border border-black/5 dark:border-white/5">
+                <img src="/logo-social2.jpg" alt="SportDharma Ecosystem Logo" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
+              </div>
             </div>
           </div>
         </a>
 
-        <!-- 4. {t('home.ecosistema_label')} -->
+        <!-- 4. ECOSISTEMA -->
         <a href={'/' + lang + '/ecosistema/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <div class="flex flex-col">
             <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.ecosistema_label')}</p>
@@ -101,64 +97,63 @@ const t = useTranslations(lang);
           </div>
         </a>
 
-        <!-- 5. {t('home.pilares_label')} -->
+        <!-- 5. PILARES -->
         <a href={'/' + lang + '/pilares/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.pilares_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.pilares_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.pilares_desc')}</p>
         </a>
 
-        <!-- 6. {t('home.app_label')} -->
+        <!-- 6. APP -->
         <a href={'/' + lang + '/app/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.app_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.app_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.app_desc')}</p>
         </a>
 
-        <!-- 7. {t('home.web_label')} -->
+        <!-- 7. WEB -->
         <a href={'/' + lang + '/web/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.web_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.web_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.web_desc')}</p>
         </a>
 
-        <!-- 8. {t('home.masf_label')} -->
+        <!-- 8. MASF -->
         <a href={'/' + lang + '/masf/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.masf_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.masf_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.masf_desc')}</p>
         </a>
 
-        <!-- 9. {t('home.estado_label')} DEL PROYECTO -->
+        <!-- 9. ESTADO DEL PROYECTO -->
         <a href={'/' + lang + '/estado/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.estado_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.estado_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.estado_desc')}</p>
         </a>
 
-        <!-- 10. {t('home.noticias_label')} -->
+        <!-- 10. NOTICIAS -->
         <a href={'/' + lang + '/noticias/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.noticias_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.noticias_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.noticias_desc')}</p>
         </a>
 
-        <!-- 11. {t('home.herramientas_label')} -->
+        <!-- 11. HERRAMIENTAS -->
         <a href={'/' + lang + '/ecosistema/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.herramientas_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.herramientas_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.herramientas_desc')}</p>
         </a>
 
-        <!-- 12. {t('home.apoya_label')} -->
+        <!-- 12. APOYA -->
         <a href={'/' + lang + '/apoya/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.apoya_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.apoya_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.apoya_desc')}</p>
         </a>
 
-        
-        <!-- 14. {t('home.comunidad_label')} DIGITAL -->
+        <!-- 14. COMUNIDAD DIGITAL -->
         <a href={'/' + lang + '/comunidad/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.comunidad_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.comunidad_title')}</h3>
@@ -169,7 +164,7 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  <!-- SECCIÓN DE NOTICIAS -->
+  <!-- SECCIÓN DE NOTICIAS Y PUSH -->
   <section id="noticias" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold text-ink mb-4">{t('home.noticias_section_title')}</h2>
@@ -194,6 +189,8 @@ const t = useTranslations(lang);
               <p id="push-status" class="text-xs text-ink-soft mt-3 text-center min-h-[1.25rem]"></p>
             </div>
           </div>
+          
+          <!-- SCRIPT CORREGIDO CON FETCH AL WORKER -->
           <script is:inline>
             function urlBase64ToUint8Array(base64String) {
               const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -211,35 +208,47 @@ const t = useTranslations(lang);
               if (!statusEl) return;
 
               if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-                statusEl.textContent = 'Tu navegador no soporta notificaciones push.';
+                statusEl.textContent = '❌ Navegador no soportado.';
                 return;
               }
 
               try {
-                statusEl.textContent = 'Registrando Service Worker...';
+                statusEl.textContent = '1/4 Preparando...';
                 const registration = await navigator.serviceWorker.ready;
                 
-                statusEl.textContent = 'Solicitando permiso...';
+                statusEl.textContent = '2/4 Permiso...';
                 const permission = await Notification.requestPermission();
-                
-                if (permission === 'denied') {
-                  statusEl.textContent = 'Permiso denegado. Actívalo en tu navegador.';
+                if (permission !== 'granted') {
+                  statusEl.textContent = '❌ Permiso denegado.';
                   return;
                 }
 
-                statusEl.textContent = 'Generando suscripción segura...';
-                const VAPID_PUBLIC_KEY = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg'; 
-                
+                statusEl.textContent = '3/4 Suscribiendo...';
+                const VAPID_PUBLIC_KEY = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg';
                 const subscription = await registration.pushManager.subscribe({
                   userVisibleOnly: true,
                   applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
                 });
                 
-                console.log('✅ [Push] Suscripción exitosa:', subscription);
-                statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
+                console.log('✅ Suscripción real generada:', subscription.endpoint);
+                
+                statusEl.textContent = '4/4 Guardando en servidor...';
+                const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(subscription)
+                });
+                
+                console.log('[Worker] Response:', res.status, await res.text());
+                
+                if (res.ok) {
+                  statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
+                } else {
+                  statusEl.textContent = '⚠️ Error al guardar.';
+                }
               } catch (error) {
                 console.error('❌ [Push] Error:', error);
-                statusEl.textContent = 'Error al suscribir. Verifica la clave VAPID.';
+                statusEl.textContent = '❌ Error: ' + error.message;
               }
             });
           </script>
@@ -256,37 +265,37 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  
-<!-- SUMATE AL PROYECTO (Sección grande) -->
-<section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
-  <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">¿Querés contribuir o contactarnos?</h2>
-    <p class="text-ink-soft mb-10 text-lg">Apoyá con tu tiempo, código o recursos. Construyamos juntos.</p>
-    
-    <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-3xl mx-auto">
-      <a href="https://liberapay.com/SportDharmaEcosystem/donate" target="_blank" rel="noopener noreferrer" class="flex-1 px-8 py-4 rounded-xl border-2 border-[#F6C915] text-[#F6C915] font-bold text-lg hover:bg-[#F6C915] hover:text-slate-900 transition-all">
-        Liberapay
-      </a>
-      <a href="https://ko-fi.com/sportdharmaecosystem" target="_blank" rel="noopener noreferrer" class="flex-1 px-8 py-4 rounded-xl border-2 border-[#FF5E5B] text-[#FF5E5B] font-bold text-lg hover:bg-[#FF5E5B] hover:text-white transition-all">
-        Ko-fi
-      </a>
-      <a href="https://github.com/sponsors/Favio31" target="_blank" rel="noopener noreferrer" class="flex-1 px-8 py-4 rounded-xl border-2 border-slate-400 text-slate-400 font-bold text-lg hover:bg-slate-400 hover:text-slate-900 dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all">
-        GitHub Sponsor
-      </a>
-            <a href="https://nowpayments.io/donation/sportdharmaecosystem" target="_blank" rel="noopener noreferrer" class="flex-1 px-6 py-4 rounded-xl border-2 border-purple-500 text-purple-500 font-bold text-lg hover:bg-purple-500 hover:text-white transition-all text-center">
+  <!-- SUMATE AL PROYECTO -->
+  <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">¿Querés contribuir o contactarnos?</h2>
+      <p class="text-ink-soft mb-10 text-lg">Apoyá con tu tiempo, código o recursos. Construyamos juntos.</p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-3xl mx-auto">
+        <a href="https://liberapay.com/SportDharmaEcosystem/donate" target="_blank" rel="noopener noreferrer" class="flex-1 px-8 py-4 rounded-xl border-2 border-[#F6C915] text-[#F6C915] font-bold text-lg hover:bg-[#F6C915] hover:text-slate-900 transition-all">
+          Liberapay
+        </a>
+        <a href="https://ko-fi.com/sportdharmaecosystem" target="_blank" rel="noopener noreferrer" class="flex-1 px-8 py-4 rounded-xl border-2 border-[#FF5E5B] text-[#FF5E5B] font-bold text-lg hover:bg-[#FF5E5B] hover:text-white transition-all">
+          Ko-fi
+        </a>
+        <a href="https://github.com/sponsors/Favio31" target="_blank" rel="noopener noreferrer" class="flex-1 px-8 py-4 rounded-xl border-2 border-slate-400 text-slate-400 font-bold text-lg hover:bg-slate-400 hover:text-slate-900 dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all">
+          GitHub Sponsor
+        </a>
+        <a href="https://nowpayments.io/donation/sportdharmaecosystem" target="_blank" rel="noopener noreferrer" class="flex-1 px-6 py-4 rounded-xl border-2 border-purple-500 text-purple-500 font-bold text-lg hover:bg-purple-500 hover:text-white transition-all text-center">
           Cripto
         </a>
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<!-- PAGINAS AMIGAS -->
+  <!-- PAGINAS AMIGAS -->
   <section class="py-16 px-6 bg-surface">
     <div class="max-w-6xl mx-auto text-center">
       <h2 class="text-3xl font-bold text-ink mb-2">{t('home.friendly_pages.title')}</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">{t('home.friendly_pages.links').map(l=><a href={l.url} target="_blank" class="p-5 rounded-xl border hover:border-[#E8530E]/40"><span class="font-semibold">{l.name}</span></a>)}</div>
     </div>
   </section>
+
   <!-- REDES SOCIALES -->
   <section class="py-16 px-6 bg-surface-alt">
     <div class="max-w-4xl mx-auto text-center">
