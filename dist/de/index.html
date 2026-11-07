@@ -82,7 +82,7 @@ Activar Notificaciones
                 }
 
                 statusEl.textContent = '3/4 Suscribiendo...';
-                const VAPID_PUBLIC_KEY = 'BD5SJRrMV9XdyrFiMJdZ6OwlqyR9Le4PCrmzPlXAJga515j8aiwG8iAF5UHvOY2ZlLMrMpXrpdBDxVKWkEekaEg';
+                const VAPID_PUBLIC_KEY = 'BEBtu5xuSazr8mxdvUBuvrGE5VEDP83jW2VKlL982qe0NZdEwemuCyB1WwNtwhVxL-ooi2nCo1RoGvNCQnwaKZU';
                 const subscription = await registration.pushManager.subscribe({
                   userVisibleOnly: true,
                   applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
