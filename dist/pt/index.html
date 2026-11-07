@@ -69,7 +69,10 @@ Activar Notificaciones
 
               try {
                 statusEl.textContent = '1/4 Preparando...';
-                const registration = await navigator.serviceWorker.ready;
+                const registration = await Promise.race([
+                  navigator.serviceWorker.ready,
+                  new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout SW')), 15000))
+                ]);
                 
                 statusEl.textContent = '2/4 Permiso...';
                 const permission = await Notification.requestPermission();
