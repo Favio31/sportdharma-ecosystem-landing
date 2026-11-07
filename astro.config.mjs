@@ -26,8 +26,8 @@ export default defineConfig({
           display: 'standalone',
           start_url: '/',
           icons: [
-            { src: '/logo.png', sizes: '192x192', type: 'image/png' },
-            { src: '/logo.png', sizes: '512x512', type: 'image/png' }
+            { src: '/logo-social2.jpg', sizes: '192x192', type: 'image/jpeg' },
+            { src: '/logo-social2.jpg', sizes: '512x512', type: 'image/jpeg' }
           ]
         },
         workbox: {
