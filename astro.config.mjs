@@ -16,29 +16,32 @@ export default defineConfig({
     plugins: [
       tailwindcss(),
       VitePWA({
-        registerType: 'autoUpdate',
-        manifest: {
-          name: 'SportDharma Ecosystem',
-          short_name: 'SportDharma',
-          description: 'Infraestructura libre para quienes viven en ruta',
-          theme_color: '#0f172a',
-          background_color: '#ffffff',
-          display: 'standalone',
-          start_url: '/',
-          icons: [
-            { src: '/logo.png', sizes: '192x192', type: 'image/png' },
-            { src: '/logo.png', sizes: '512x512', type: 'image/png' }
-          ]
-        },
-        workbox: {
-          importScripts: ['/push-handler.js'],
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
-          maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-          cacheId: 'sportdharma-v4',
-          skipWaiting: true,
-          clientsClaim: true
-        }
-      })
+  registerType: 'autoUpdate',
+  manifest: {
+    name: 'SportDharma Ecosystem',
+    short_name: 'SportDharma',
+    description: 'Infraestructura libre para quienes viven en ruta',
+    theme_color: '#0f172a',
+    background_color: '#ffffff',
+    display: 'standalone',
+    start_url: '/',
+    icons: [
+      { src: '/logo.png', sizes: '192x192', type: 'image/png' },
+      { src: '/logo.png', sizes: '512x512', type: 'image/png' }
     ]
+  },
+  workbox: {
+    importScripts: ['/push-handler.js'],
+    globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
+    maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+    cacheId: 'sportdharma-FINAL-v10',
+    skipWaiting: true,
+    clientsClaim: true,
+    cleanupOutdatedCaches: true,
+    navigateFallbackDenylist: [/^\/api/],
+    runtimeCaching: [{
+      urlPattern: ({ url }) => url.hostname.endsWith('workers.dev'),
+      handler: 'NetworkOnly',
+    }],
   }
 });
