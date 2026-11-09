@@ -58,35 +58,96 @@ DESCUBRÍ, ¿Qué es SportDharma Ecosystem?
       display: inline;
       border-right: 2px solid #E8530E;
       padding-right: 1px;
-      animation: blink 0.7s step-end infinite;
     }
-    .typing-text.done {
-      border-right: none;
-      animation: none;
+    .typing-text.blinking {
+      animation: blink 0.7s step-end infinite;
     }
     @keyframes blink {
       50% { border-color: transparent; }
     }
   </style> <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const typingElements = document.querySelectorAll('.typing-text');
-      typingElements.forEach((el, index) => {
-        const text = el.getAttribute('data-text');
-        el.textContent = '';
-        const delay = index * 600 + 400;
-        setTimeout(() => {
-          let i = 0;
-          const typeInterval = setInterval(() => {
-            if (i < text.length) {
-              el.textContent += text.charAt(i);
-              i++;
+      const typingElements = Array.from(document.querySelectorAll('.typing-text'));
+      const texts = typingElements.map(el => el.getAttribute('data-text'));
+      const TYPE_SPEED = 35;
+      const DELETE_SPEED = 20;
+      const PAUSE_AFTER_TYPE = 3000;
+      const PAUSE_AFTER_DELETE = 500;
+      let currentLine = 0;
+      let currentChar = 0;
+      let isDeleting = false;
+
+      function setActiveCursor(index) {
+        typingElements.forEach((el, i) => {
+          if (i === index) {
+            el.classList.add('blinking');
+          } else {
+            el.classList.remove('blinking');
+          }
+        });
+      }
+
+      function tick() {
+        const currentEl = typingElements[currentLine];
+        const fullText = texts[currentLine];
+
+        if (!isDeleting) {
+          // Escribiendo
+          currentEl.textContent = fullText.substring(0, currentChar + 1);
+          currentChar++;
+
+          if (currentChar === fullText.length) {
+            // Terminó de escribir esta línea
+            if (currentLine === typingElements.length - 1) {
+              // Terminó de escribir TODAS las líneas, esperar y empezar a borrar
+              setActiveCursor(currentLine);
+              setTimeout(() => {
+                isDeleting = true;
+                tick();
+              }, PAUSE_AFTER_TYPE);
+              return;
             } else {
-              clearInterval(typeInterval);
-              el.classList.add('done');
+              // Pasar a la siguiente línea
+              currentLine++;
+              currentChar = 0;
+              setActiveCursor(currentLine);
+              setTimeout(tick, 150);
+              return;
             }
-          }, 35);
-        }, delay);
-      });
+          }
+          setTimeout(tick, TYPE_SPEED);
+        } else {
+          // Borrando
+          currentEl.textContent = fullText.substring(0, currentChar);
+          currentChar--;
+
+          if (currentChar < 0) {
+            // Terminó de borrar esta línea
+            if (currentLine === 0) {
+              // Volvió al inicio, reiniciar escritura
+              currentChar = 0;
+              isDeleting = false;
+              setActiveCursor(0);
+              setTimeout(tick, PAUSE_AFTER_DELETE);
+              return;
+            } else {
+              // Borrar línea anterior
+              currentLine--;
+              currentChar = texts[currentLine].length;
+              setActiveCursor(currentLine);
+              setTimeout(tick, DELETE_SPEED);
+              return;
+            }
+          }
+          setTimeout(tick, DELETE_SPEED);
+        }
+      }
+
+      // Iniciar animación
+      if (typingElements.length > 0) {
+        setActiveCursor(0);
+        setTimeout(tick, 500);
+      }
     });
   </script>  <section class="py-20 px-6 bg-surface-alt transition-colors duration-300"> <div class="max-w-6xl mx-auto"> <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start"> <!-- LOS 9 PILARES --> <a href="/it/pilares/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">I 9 PILASTRI</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Principi che ci definiscono</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Software Sovrano, Trasparente, Modulare, Educazione Permanente, Solidale, Ecologica, Inclusiva, Sostenibilità Allineata e Resiliente.</p> </a> <!-- 4. ECOSISTEMA --> <a href="/it/ecosistema/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <div class="flex flex-col"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">SCOPRI</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Cos&#39;è SportDharma Ecosystem?</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words mb-4">Infrastruttura libera, sovrana e offline-first per atleti outdoor. Tecnologia che rispetta la tua privacy e il tuo ambiente.</p> <div class="w-full rounded-xl border border-black/5 dark:border-white/5 mt-auto"> <img src="/ecosistema-diagram-transparente.png" alt="Ecosistema: App + Web + MASF" class="w-full h-auto rounded-xl border border-white/30" draggable="false"> </div> </div> </a> <!-- 6. APP --> <a href="/it/app/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">APP MOBILE</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Il tuo compagno offline in viaggio</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Mappe topografiche, tracciamento GPS e diario di viaggio. Funziona 100% senza internet, mantenendo i tuoi dati sotto il tuo totale controllo.</p> </a> <!-- 7. WEB --> <a href="/it/web/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">SITO WEB</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Contenuti curati da umani</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Notizie, guide tecniche e risorse organizzate. Installabile come PWA, multilingua e completamente funzionale offline.</p> </a> <!-- 8. MASF --> <a href="/it/masf/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">MOTORE MASF</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Curazione umana, non algoritmica</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Architettura Sciame Multi-Agente. Gli umani curano, l&#39;IA assiste. Nessun algoritmo opaco o bias nascosto.</p> </a> <!-- 9. ESTADO DEL PROYECTO --> <a href="/it/estado/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">STATO ATTUALE</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Progetto in sviluppo attivo</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Fase di costruzione dell&#39;infrastruttura base. Preparazione della candidatura al Proton Foundation Community Project con massima qualità e sicurezza.</p> </a> <!-- 10. NOTICIAS --> <a href="/it/noticias/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">NOTIZIE E INFORMAZIONI</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Curazione umana, 6 pubblicazioni giornaliere</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Contenuti freschi, verificati e rilevanti per la comunità outdoor, liberi da bias commerciali e algoritmi opachi.</p> </a> <!-- 11. HERRAMIENTAS --> <a href="/it/ecosistema/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">L&#39;ECOSISTEMA</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Strumenti che usiamo</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Astro, Tailwind CSS, Vite PWA e architetture multi-agente. Stack moderno, leggero e 100% open source.</p> </a> <!-- 12. APOYA --> <a href="/it/apoya/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">SOSTIENI IL PROGETTO</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Il software libero ha bisogno di sostegno</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Il tuo contributo mantiene viva l&#39;infrastruttura, senza pubblicità o vendita di dati. Grant e donazioni dirette.</p> </a> <!-- 14. COMUNIDAD DIGITAL --> <a href="/it/comunidad/" class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40"> <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">COMUNITÀ E PRESENZA</p> <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Connettiti con SportDharma Ecosystem</h3> <p class="text-ink-soft leading-relaxed text-sm text-left break-words">Seguici sulle nostre piattaforme digitali. Costruendo insieme una rete globale di atleti consapevoli.</p> </a> </div> </div> </section>  <section id="noticias" class="py-20 px-6 bg-surface-alt transition-colors duration-300"> <div class="max-w-4xl mx-auto text-center"> <h2 class="text-4xl font-bold text-ink mb-4">Notizie e Informazioni</h2> <p class="text-ink-soft text-lg mb-10">Curazione umana, 6 pubblicazioni giornaliere. Contenido fresco, verificado y relevante.</p> <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start"> <div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all flex flex-col justify-between h-full"> <div> <div class="text-5xl mb-4">🔔</div> <h3 class="text-2xl font-bold text-ink mb-3">Notificaciones Soberanas</h3> <p class="text-ink-soft mb-6 text-sm leading-relaxed">
 Recibí actualizaciones <strong>sin dejar tu correo electrónico</strong>. 
