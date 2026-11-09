@@ -21,8 +21,6 @@ const t = useTranslations(lang);
 <Layout title="SportDharma Ecosystem | Software Libre para Deportistas Outdoor">
   <Hero />
   
-
-  
   <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -166,7 +164,73 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  <!-- SECCIÓN DE NOTICIAS Y PUSH -->
+  <!-- SECCIÓN DESCUBRÍ CON EFECTO TYPING -->
+  <section class="py-20 px-6 bg-slate-900">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
+        DESCUBRÍ, ¿Qué es SportDharma Ecosystem?
+      </h2>
+      
+      <div class="rounded-2xl overflow-hidden shadow-2xl bg-slate-950 border border-slate-800">
+        <div class="flex items-center gap-2 px-4 py-3 bg-slate-800 border-b border-slate-700">
+          <div class="w-3 h-3 rounded-full bg-red-500"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <span class="ml-4 text-xs text-slate-400 font-mono">sportdharma.mjs</span>
+        </div>
+        
+        <div class="p-6 md:p-8 font-mono text-sm md:text-base overflow-x-auto">
+          <pre class="leading-relaxed"><span class="text-gray">const</span> <span class="text-orange">SportDharma</span> <span class="text-gray">=</span> <span class="text-white">{</span>
+  <span class="text-orange">infraestructura:</span> <span class="typing-text" data-text="'libre',"></span>
+  <span class="text-orange">soberania:</span> <span class="typing-text" data-text="true,"></span>
+  <span class="text-orange">offline_first:</span> <span class="typing-text" data-text="true,"></span>
+  <span class="text-orange">para:</span> <span class="typing-text" data-text="'deportistas outdoor',"></span>
+  <span class="text-orange">tecnologia:</span> <span class="typing-text" data-text="'respeta tu privacidad',"></span>
+  <span class="text-orange">valores:</span> <span class="typing-text" data-text="['transparencia', 'privacidad', 'resiliencia']"></span>
+<span class="text-white">};</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .font-mono { font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace; }
+    .text-gray { color: #94a3b8; }
+    .text-orange { color: #E8530E; }
+    .text-white { color: #ffffff; }
+    .typing-text { display: inline-block; overflow: hidden; border-right: 2px solid #E8530E; white-space: nowrap; opacity: 0; animation: typing 1.5s steps(40) forwards, blink 0.7s step-end infinite; }
+    .typing-text:nth-child(1) { animation-delay: 0.5s, 0.5s; }
+    .typing-text:nth-child(2) { animation-delay: 1.2s, 1.2s; }
+    .typing-text:nth-child(3) { animation-delay: 1.9s, 1.9s; }
+    .typing-text:nth-child(4) { animation-delay: 2.6s, 2.6s; }
+    .typing-text:nth-child(5) { animation-delay: 3.3s, 3.3s; }
+    .typing-text:nth-child(6) { animation-delay: 4s, 4s; }
+    @keyframes typing { from { width: 0; opacity: 1; } to { width: 100%; opacity: 1; } }
+    @keyframes blink { 50% { border-color: transparent; } }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const typingElements = document.querySelectorAll('.typing-text');
+      typingElements.forEach((el, index) => {
+        const text = el.getAttribute('data-text');
+        const delay = index * 700 + 500;
+        setTimeout(() => {
+          let i = 0;
+          const typeInterval = setInterval(() => {
+            if (i < text.length) {
+              el.textContent += text.charAt(i);
+              i++;
+            } else {
+              clearInterval(typeInterval);
+            }
+          }, 30);
+        }, delay);
+      });
+    });
+  </script>
+
+  <!-- SECCIÓN DE NOTICIAS -->
   <section id="noticias" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold text-ink mb-4">{t('home.noticias_section_title')}</h2>
@@ -192,7 +256,6 @@ const t = useTranslations(lang);
             </div>
           </div>
           
-          <!-- SCRIPT CORREGIDO CON FETCH AL WORKER -->
           <script is:inline>
             function urlBase64ToUint8Array(base64String) {
               const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -215,27 +278,44 @@ const t = useTranslations(lang);
               }
 
               try {
-                statusEl.textContent = '1/4 Preparando...';
-                const registration = await Promise.race([
-                  navigator.serviceWorker.ready,
-                  new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout SW')), 15000))
-                ]);
+                statusEl.textContent = '1/4 Obteniendo Service Worker...';
+                let registration = await navigator.serviceWorker.getRegistration();
                 
-                statusEl.textContent = '2/4 Permiso...';
+                if (!registration) {
+                  statusEl.textContent = '1/4 Registrando Service Worker...';
+                  registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+                  await new Promise((resolve, reject) => {
+                    const timeout = setTimeout(() => reject(new Error('Timeout')), 10000);
+                    registration.addEventListener('updatefound', () => {
+                      const newWorker = registration.installing;
+                      newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'activated') {
+                          clearTimeout(timeout);
+                          resolve();
+                        }
+                      });
+                    });
+                  });
+                }
+                
+                console.log('[SW] Registration:', registration);
+
+                statusEl.textContent = '2/4 Solicitando permiso...';
                 const permission = await Notification.requestPermission();
+                
                 if (permission !== 'granted') {
-                  statusEl.textContent = '❌ Permiso denegado.';
+                  statusEl.textContent = '❌ Permiso denegado. Actívalo en tu navegador.';
                   return;
                 }
 
-                statusEl.textContent = '3/4 Suscribiendo...';
+                statusEl.textContent = '3/4 Generando suscripción...';
                 const VAPID_PUBLIC_KEY = 'BEBtu5xuSazr8mxdvUBuvrGE5VEDP83jW2VKlL982qe0NZdEwemuCyB1WwNtwhVxL-ooi2nCo1RoGvNCQnwaKZU';
                 const subscription = await registration.pushManager.subscribe({
                   userVisibleOnly: true,
                   applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
                 });
                 
-                console.log('✅ Suscripción real generada:', subscription.endpoint);
+                console.log('✅ Suscripción generada:', subscription.endpoint);
                 
                 statusEl.textContent = '4/4 Guardando en servidor...';
                 const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
@@ -244,15 +324,16 @@ const t = useTranslations(lang);
                   body: JSON.stringify(subscription)
                 });
                 
-                console.log('[Worker] Response:', res.status, await res.text());
+                const responseText = await res.text();
+                console.log('[Worker] Response:', res.status, responseText);
                 
                 if (res.ok) {
                   statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
                 } else {
-                  statusEl.textContent = '⚠️ Error al guardar.';
+                  statusEl.textContent = '⚠️ Error al guardar: ' + responseText;
                 }
               } catch (error) {
-                console.error('❌ [Push] Error:', error);
+                console.error('❌ [Push] Error:', error.name, error.message);
                 statusEl.textContent = '❌ Error: ' + error.message;
               }
             });
