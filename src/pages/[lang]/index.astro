@@ -85,6 +85,95 @@ const t = useTranslations(lang);
           </div>
         </a>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DESCUBRÍ - TARJETA GRANDE CON CÓDIGO + IMAGEN (DEBAJO DE FUNDADOR Y MANIFIESTO) -->
+  <section class="py-16 md:py-20 px-4 md:px-6 bg-slate-900">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 md:mb-10 text-center px-2">
+        DESCUBRÍ, ¿Qué es SportDharma Ecosystem?
+      </h2>
+      
+      <div class="rounded-2xl overflow-hidden shadow-2xl bg-slate-950 border border-slate-800">
+        <div class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 bg-slate-800 border-b border-slate-700">
+          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500"></div>
+          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-500"></div>
+          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-500"></div>
+          <span class="ml-2 md:ml-4 text-[10px] md:text-xs text-slate-400 font-mono">sportdharmaecosystem.mjs</span>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
+          <div class="md:col-span-3 p-4 md:p-8 font-mono text-xs md:text-base leading-relaxed">
+            <pre class="whitespace-pre-wrap md:whitespace-pre break-words md:break-normal m-0 p-0"><span class="text-gray">const</span> <span class="text-orange">SportDharmaEcosystem</span> <span class="text-gray">=</span> <span class="text-white">{</span>
+  <span class="text-orange">infraestructura:</span> <span class="typing-text" data-text="'libre',"></span>
+  <span class="text-orange">soberania:</span> <span class="typing-text" data-text="true,"></span>
+  <span class="text-orange">offline_first:</span> <span class="typing-text" data-text="true,"></span>
+  <span class="text-orange">para:</span> <span class="typing-text" data-text="'deportistas outdoor',"></span>
+  <span class="text-orange">tecnologia:</span> <span class="typing-text" data-text="'respeta tu privacidad',"></span>
+  <span class="text-orange">valores:</span> <span class="typing-text" data-text="['transparencia', 'privacidad', 'resiliencia']"></span>
+<span class="text-white">};</span></pre>
+          </div>
+          
+          <div class="md:col-span-2 flex items-center justify-center p-6 md:p-8 bg-slate-900/50 border-t md:border-t-0 md:border-l border-slate-800">
+            <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800/50 p-4">
+              <img src="/ecosistema-diagram-transparente.png" alt="Ecosistema: App + Web + MASF" class="w-full h-auto max-w-[200px] md:max-w-[280px] mx-auto" draggable="false" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style is:inline>
+    .font-mono { font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace; }
+    .text-gray { color: #94a3b8; }
+    .text-orange { color: #E8530E; }
+    .text-white { color: #ffffff; }
+    .typing-text {
+      display: inline;
+      border-right: 2px solid #E8530E;
+      padding-right: 1px;
+      animation: blink 0.7s step-end infinite;
+    }
+    .typing-text.done {
+      border-right: none;
+      animation: none;
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const typingElements = document.querySelectorAll('.typing-text');
+      typingElements.forEach((el, index) => {
+        const text = el.getAttribute('data-text');
+        el.textContent = '';
+        const delay = index * 600 + 400;
+        setTimeout(() => {
+          let i = 0;
+          const typeInterval = setInterval(() => {
+            if (i < text.length) {
+              el.textContent += text.charAt(i);
+              i++;
+            } else {
+              clearInterval(typeInterval);
+              el.classList.add('done');
+            }
+          }, 35);
+        }, delay);
+      });
+    });
+  </script>
+
+  <!-- RESTO DE TARJETAS -->
+  <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
         <!-- LOS 9 PILARES -->
         <a href={'/' + lang + '/pilares/'} class="group block rounded-3xl border border-black/5 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.pilares_label')}</p>
@@ -164,88 +253,7 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  <!-- SECCIÓN DESCUBRÍ - TARJETA GRANDE CON CÓDIGO + IMAGEN -->
-  <section class="py-16 md:py-20 px-4 md:px-6 bg-slate-900">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 md:mb-10 text-center px-2">
-        DESCUBRÍ, ¿Qué es SportDharma Ecosystem?
-      </h2>
-      
-      <div class="rounded-2xl overflow-hidden shadow-2xl bg-slate-950 border border-slate-800">
-        <div class="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 bg-slate-800 border-b border-slate-700">
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500"></div>
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-500"></div>
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-500"></div>
-          <span class="ml-2 md:ml-4 text-[10px] md:text-xs text-slate-400 font-mono">sportdharmaecosystem.mjs</span>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
-          <!-- Código a la izquierda (3 columnas) -->
-          <div class="md:col-span-3 p-4 md:p-8 font-mono text-xs md:text-base leading-relaxed">
-            <pre class="whitespace-pre-wrap md:whitespace-pre break-words md:break-normal m-0 p-0"><span class="text-gray">const</span> <span class="text-orange">SportDharmaEcosystem</span> <span class="text-gray">=</span> <span class="text-white">{</span>
-  <span class="text-orange">infraestructura:</span> <span class="typing-text" data-text="'libre',"></span>
-  <span class="text-orange">soberania:</span> <span class="typing-text" data-text="true,"></span>
-  <span class="text-orange">offline_first:</span> <span class="typing-text" data-text="true,"></span>
-  <span class="text-orange">para:</span> <span class="typing-text" data-text="'deportistas outdoor',"></span>
-  <span class="text-orange">tecnologia:</span> <span class="typing-text" data-text="'respeta tu privacidad',"></span>
-  <span class="text-orange">valores:</span> <span class="typing-text" data-text="['transparencia', 'privacidad', 'resiliencia']"></span>
-<span class="text-white">};</span></pre>
-          </div>
-          
-          <!-- Imagen a la derecha (2 columnas) -->
-          <div class="md:col-span-2 flex items-center justify-center p-6 md:p-8 bg-slate-900/50 border-t md:border-t-0 md:border-l border-slate-800">
-            <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-800/50 p-4">
-              <img src="/ecosistema-diagram-transparente.png" alt="Ecosistema: App + Web + MASF" class="w-full h-auto max-w-[200px] md:max-w-[280px] mx-auto" draggable="false" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <style is:inline>
-    .font-mono { font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace; }
-    .text-gray { color: #94a3b8; }
-    .text-orange { color: #E8530E; }
-    .text-white { color: #ffffff; }
-    .typing-text {
-      display: inline;
-      border-right: 2px solid #E8530E;
-      padding-right: 1px;
-      animation: blink 0.7s step-end infinite;
-    }
-    .typing-text.done {
-      border-right: none;
-      animation: none;
-    }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-  </style>
-
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const typingElements = document.querySelectorAll('.typing-text');
-      typingElements.forEach((el, index) => {
-        const text = el.getAttribute('data-text');
-        el.textContent = '';
-        const delay = index * 600 + 400;
-        setTimeout(() => {
-          let i = 0;
-          const typeInterval = setInterval(() => {
-            if (i < text.length) {
-              el.textContent += text.charAt(i);
-              i++;
-            } else {
-              clearInterval(typeInterval);
-              el.classList.add('done');
-            }
-          }, 35);
-        }, delay);
-      });
-    });
-  </script>
-    <!-- SECCIÓN DE NOTICIAS -->
+  <!-- SECCIÓN DE NOTICIAS -->
   <section id="noticias" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold text-ink mb-4">{t('home.noticias_section_title')}</h2>
