@@ -1,0 +1,33 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils.js';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'it' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+---
+
+<Layout title={t('descubri.page_title') || 'DESCUBRÍ | SportDharma Ecosystem'}>
+  <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold text-ink mb-6">DESCUBRÍ, ¿Qué es SportDharma Ecosystem?</h1>
+      <p class="text-lg text-ink-soft mb-8">
+        SportDharma Ecosystem es una Infraestructura libre, soberana y offline-first para deportistas outdoor. 
+        Tecnología que respeta tu privacidad y tu entorno.
+      </p>
+      <div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent">
+        <p class="text-ink-soft">Contenido en desarrollo...</p>
+      </div>
+    </div>
+  </section>
+</Layout>
