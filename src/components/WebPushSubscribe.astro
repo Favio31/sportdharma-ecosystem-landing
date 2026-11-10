@@ -12,7 +12,6 @@
 </div>
 
 <script>
-  // Clave pública VAPID
   const VAPID_PUBLIC_KEY = 'BJG7t66S2zcnY5DtjjEJ6X18RhmpWtKCdlwwszKrAn4tnuNGOGPzIqySXz6hvYl6cfU2AcjY6wiUny8xN-Cd8Y4';
 
   function urlBase64ToUint8Array(base64String) {
@@ -26,100 +25,72 @@
     return outputArray;
   }
 
-  async function checkExistingSubscription() {
-    try {
-      const registration = await navigator.serviceWorker.ready;
-      const existingSubscription = await registration.pushManager.getSubscription();
-      return existingSubscription;
-    } catch (error) {
-      console.error('Error al verificar suscripción:', error);
-      return null;
-    }
-  }
-
   document.getElementById('subscribe-push')?.addEventListener('click', async () => {
     const statusEl = document.getElementById('push-status');
     if (!statusEl) return;
 
     try {
-      // 1. Verificar soporte
       if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
         statusEl.textContent = '❌ Navegador no soportado.';
         statusEl.style.color = 'red';
         return;
       }
 
-      // 2. Verificar estado del permiso ANTES de hacer nada
-      const permissionStatus = await navigator.permissions.query({ name: 'notifications' });
-      console.log('Estado del permiso:', permissionStatus.state);
-
-      // 3. Esperar a que el Service Worker esté listo
       const registration = await navigator.serviceWorker.ready;
-      console.log('Service Worker listo:', registration);
+      console.log('✅ Service Worker listo');
 
-      // 4. Verificar si ya existe una suscripción
-      let subscription = await registration.pushManager.getSubscription();
-      
-      if (subscription) {
-        console.log('✅ Ya existe una suscripción:', subscription.endpoint);
-        statusEl.textContent = '✅ ¡Ya estás suscrito! (100% privado)';
-        statusEl.style.color = 'green';
-        return;
+      // 1. Verificar y eliminar suscripción existente (clave del error)
+      let existingSubscription = await registration.pushManager.getSubscription();
+      if (existingSubscription) {
+        console.log('🗑️ Eliminando suscripción existente...');
+        await existingSubscription.unsubscribe();
+        console.log('✅ Suscripción anterior eliminada');
       }
 
-      // 5. Si no hay suscripción, proceder según el estado del permiso
+      // 2. Verificar permiso
+      const permissionStatus = await navigator.permissions.query({ name: 'notifications' });
+      
       if (permissionStatus.state === 'denied') {
-        statusEl.textContent = '❌ Permiso denegado. Haz clic en el candado 🔒 junto a la URL → Configuración del sitio → Notificaciones → Permitir';
+        statusEl.textContent = '❌ Permiso denegado. Actívalo en: Configuración → Apps → Chrome → Notificaciones';
         statusEl.style.color = 'red';
         return;
       }
 
-      if (permissionStatus.state === 'granted') {
-        // El permiso ya está concedido, solo necesitamos suscribirnos
-        console.log('Permiso concedido, suscribiendo...');
-      } else {
-        // permissionStatus.state === 'default' - necesitamos pedir permiso
-        console.log('Pidiendo permiso...');
+      if (permissionStatus.state === 'default') {
         const permission = await Notification.requestPermission();
-        console.log('Permiso solicitado:', permission);
-        
         if (permission !== 'granted') {
-          statusEl.textContent = ' Permiso denegado. Actívalo en tu navegador.';
+          statusEl.textContent = '❌ Permiso denegado.';
           statusEl.style.color = 'red';
           return;
         }
       }
 
-      // 6. Suscribirse a push
-      subscription = await registration.pushManager.subscribe({
+      // 3. Crear nueva suscripción
+      const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
       });
 
-      console.log('✅ Suscripción generada:', subscription.endpoint);
+      console.log('✅ Nueva suscripción creada:', subscription.endpoint);
 
-      // 7. Enviar suscripción al worker de Cloudflare
+      // 4. Enviar al Worker
       const response = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/subscribe', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription)
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log('✅ Guardado en KV:', data);
         statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
         statusEl.style.color = 'green';
+        console.log('✅ Guardado en KV exitosamente');
       } else {
         const errorText = await response.text();
-        console.error('❌ Error del worker:', response.status, errorText);
-        statusEl.textContent = `❌ Error al guardar: ${errorText}`;
+        statusEl.textContent = `❌ Error: ${errorText}`;
         statusEl.style.color = 'red';
       }
     } catch (error) {
-      console.error('❌ Error fatal:', error);
+      console.error('❌ Error:', error);
       statusEl.textContent = `❌ Error: ${error.message}`;
       statusEl.style.color = 'red';
     }
@@ -140,6 +111,8 @@
     font-size: 1.1rem;
     cursor: pointer;
     margin: 1rem 0;
+    width: 100%;
+    max-width: 300px;
   }
   .subscribe-btn:hover {
     background: #d14a0c;
