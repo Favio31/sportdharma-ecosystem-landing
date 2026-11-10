@@ -1,22 +1,20 @@
-<div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all flex flex-col justify-between h-full">
-  <div>
-    <div class="text-5xl mb-4">🔔</div>
-    <h3 class="text-2xl font-bold text-ink mb-3">Notificaciones Soberanas</h3>
-    <p class="text-ink-soft mb-6 text-sm leading-relaxed">
-      Recibí actualizaciones <strong>sin dejar tu correo electrónico</strong>. 
-      Tecnología nativa del navegador: <strong>sin tracking y sin spam</strong>.
-    </p>
-  </div>
-  <div>
-    <button id="subscribe-push" class="w-full px-8 py-3 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all hover:scale-105 flex items-center justify-center gap-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-      Activar Notificaciones
-    </button>
-    <p id="push-status" class="text-xs text-ink-soft mt-3 text-center min-h-[1.25rem]"></p>
-  </div>
+﻿---
+// src/components/WebPushSubscribe.astro
+---
+
+<div class="push-subscribe-container">
+  <h3>Notificaciones Soberanas</h3>
+  <p>Recibí actualizaciones sin dejar tu correo electrónico.</p>
+  <button id="subscribe-push" class="subscribe-btn">
+    🔔 Activar Notificaciones
+  </button>
+  <p id="push-status"></p>
 </div>
 
-<script is:inline>
+<script>
+  // Clave pública VAPID (la misma que usas en el backend)
+  const VAPID_PUBLIC_KEY = 'BJG7t66S2zcnY5DtjjEJ6X18RhmpWtKCdlwwszKrAn4tnuNGOGPzIqySXz6hvYl6cfU2AcjY6wiUny8xN-Cd8Y4';
+
   function urlBase64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
@@ -28,94 +26,83 @@
     return outputArray;
   }
 
-  async function ensureServiceWorker() {
-    // Si ya hay un SW activo, lo usamos
-    if (navigator.serviceWorker.controller) {
-      console.log('[SW] Ya hay un SW activo');
-      return await navigator.serviceWorker.ready;
-    }
-    
-    // Si no, lo registramos manualmente
-    console.log('[SW] Registrando /sw.js...');
-    const registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
-    
-    // Esperamos a que se active
-    if (registration.active) {
-      console.log('[SW] Ya está activo');
-      return await navigator.serviceWorker.ready;
-    }
-    
-    // Esperamos a que se instale y active
-    return new Promise((resolve, reject) => {
-      const timeout = setTimeout(() => reject(new Error('Timeout registrando SW')), 10000);
-      
-      registration.addEventListener('updatefound', () => {
-        const installingWorker = registration.installing;
-        installingWorker.addEventListener('statechange', () => {
-          if (installingWorker.state === 'activated') {
-            clearTimeout(timeout);
-            resolve(navigator.serviceWorker.ready);
-          }
-        });
-      });
-    });
-  }
-
   document.getElementById('subscribe-push')?.addEventListener('click', async () => {
     const statusEl = document.getElementById('push-status');
     if (!statusEl) return;
 
-    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-      statusEl.textContent = '❌ Navegador no soportado.';
-      return;
-    }
-
     try {
-      statusEl.textContent = '1/4 Preparando Service Worker...';
-      const registration = await ensureServiceWorker();
-      
-      console.log('[SW] Ready:', registration.scope);
-      console.log('[SW] Active:', registration.active);
-
-      statusEl.textContent = '2/4 Solicitando permiso...';
-      const permission = await Notification.requestPermission();
-      console.log('[Permiso]', permission);
-      
-      if (permission !== 'granted') {
-        statusEl.textContent = '❌ Permiso denegado.';
+      // 1. Verificar soporte
+      if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+        statusEl.textContent = '❌ Navegador no soportado.';
         return;
       }
 
-      statusEl.textContent = '3/4 Generando clave...';
-      const VAPID_PUBLIC_KEY = 'BJG7t66S2zcnY5DtjjEJ6X18RhmpWtKCdlwwszKrAn4tnuNGOGPzIqySXz6hvYl6cfU2AcjY6wiUny8xN-Cd8Y4';
-      const applicationServerKey = urlBase64ToUint8Array(VAPID_PUBLIC_KEY);
+      // 2. Registrar Service Worker
+      const registration = await navigator.serviceWorker.register('/sw.js');
+      console.log('✅ SW registrado:', registration);
 
-      console.log('=== DIAGNOSTICO VAPID ===');
-      console.log('Clave:', VAPID_PUBLIC_KEY);
-      console.log('Uint8Array length:', applicationServerKey.length);
-      console.log('Primer byte:', applicationServerKey[0]);
-      console.log('========================');
+      // 3. Pedir permiso de notificaciones
+      const permission = await Notification.requestPermission();
+      console.log('📋 Permiso:', permission);
+      
+      if (permission !== 'granted') {
+        statusEl.textContent = '❌ Permiso denegado. Actívalo en tu navegador.';
+        return;
+      }
 
+      // 4. Suscribirse a push
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: applicationServerKey
+        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
       });
-      
-      statusEl.textContent = '4/4 Guardando...';
-      const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/subscribe', {
+
+      console.log('✅ Suscripción generada:', subscription.endpoint);
+
+      // 5. Enviar suscripción al worker de Cloudflare
+      const response = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/subscribe', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(subscription)
       });
-      
-      if (res.ok) {
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('✅ Guardado en KV:', data);
         statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
       } else {
-        statusEl.textContent = '⚠️ Error al guardar.';
+        const errorText = await response.text();
+        console.error('❌ Error del worker:', response.status, errorText);
+        statusEl.textContent = `❌ Error al guardar: ${errorText}`;
       }
     } catch (error) {
-      console.error(' [Push] Error:', error.name, error.message);
-      statusEl.textContent = '❌ Error: ' + error.message;
+      console.error('❌ Error fatal:', error);
+      statusEl.textContent = `❌ Error: ${error.message}`;
     }
   });
 </script>
+
+<style>
+  .push-subscribe-container {
+    text-align: center;
+    padding: 2rem;
+  }
+  .subscribe-btn {
+    background: #E8530E;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 1rem 0;
+  }
+  .subscribe-btn:hover {
+    background: #d14a0c;
+  }
+  #push-status {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+</style>

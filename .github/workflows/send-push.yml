@@ -1,0 +1,96 @@
+﻿name: Send Web Push Notification
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Título de la notificación'
+        required: true
+        default: '🚴‍♂️ ¡Nueva Actualización!'
+      body:
+        description: 'Cuerpo del mensaje'
+        required: true
+        default: 'Hay nuevo contenido en SportDharma Ecosystem.'
+
+jobs:
+  send-notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install web-push
+
+      - name: Send Push Notifications
+        env:
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          KV_NAMESPACE_ID: ${{ secrets.KV_NAMESPACE_ID }}
+          WORKER_URL: https://sportdharmapush.faviosuenosapedal.workers.dev
+          PUSH_TITLE: ${{ github.event.inputs.title }}
+          PUSH_BODY: ${{ github.event.inputs.body }}
+        run: |
+          node << 'EOF'
+          const webpush = require('web-push');
+
+          // Configurar VAPID
+          webpush.setVapidDetails(
+            'mailto:contact@sportdharmaecosystem.com',
+            process.env.VAPID_PUBLIC_KEY,
+            process.env.VAPID_PRIVATE_KEY
+          );
+
+          async function sendNotifications() {
+            // 1. Obtener suscriptores del worker
+            const response = await fetch(`${process.env.WORKER_URL}/subscribers`);
+            const subscribers = await response.json();
+            
+            console.log(`📋 Suscriptores encontrados: ${subscribers.length}`);
+
+            if (subscribers.length === 0) {
+              console.log('⚠️ No hay suscriptores aún.');
+              return;
+            }
+
+            // 2. Enviar notificación a cada suscriptor
+            const payload = JSON.stringify({
+              title: process.env.PUSH_TITLE,
+              body: process.env.PUSH_BODY,
+              icon: '/logo-social2.jpg',
+              badge: '/logo-social2.jpg',
+              url: 'https://www.sportdharmaecosystem.com/es/'
+            });
+
+            let successCount = 0;
+            let failCount = 0;
+
+            for (const subscription of subscribers) {
+              try {
+                await webpush.sendNotification(subscription, payload);
+                console.log(`✅ Enviado a: ${subscription.endpoint.substring(0, 50)}...`);
+                successCount++;
+              } catch (error) {
+                console.error(`❌ Falló: ${error.message}`);
+                failCount++;
+              }
+            }
+
+            console.log('\n📊 RESUMEN FINAL:');
+            console.log(`   Total: ${subscribers.length}`);
+            console.log(`   Exitosos: ${successCount}`);
+            console.log(`   Fallidos: ${failCount}`);
+          }
+
+          sendNotifications().catch(err => {
+            console.error('❌ Error fatal:', err);
+            process.exit(1);
+          });
+          EOF
