@@ -5,7 +5,9 @@ on:
     branches:
       - main
     paths:
+      - 'src/pages/**'
       - 'src/content/**'
+  workflow_dispatch:
 
 jobs:
   send-notification:
