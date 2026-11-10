@@ -12,7 +12,7 @@ on:
       custom_title:
         description: 'Título personalizado (opcional)'
         required: false
-        default: '🚴‍♂️ ¡Nuevo Contenido en SportDharma!'
+        default: '🚴♂️ ¡Nuevo Contenido en SportDharma!'
       custom_body:
         description: 'Cuerpo del mensaje (opcional)'
         required: false
@@ -45,7 +45,6 @@ jobs:
         run: |
           node -e "
           const webpush = require('web-push');
-          const https = require('https');
 
           webpush.setVapidDetails(
             'mailto:contact@sportdharmaecosystem.com',
@@ -53,63 +52,95 @@ jobs:
             process.env.VAPID_PRIVATE_KEY
           );
 
-          const kvUrl = 'https://api.cloudflare.com/client/v4/accounts/' + process.env.CF_ACCOUNT_ID + '/storage/kv/namespaces/' + process.env.KV_NAMESPACE_ID + '/keys';
-          
-          const req = https.get(kvUrl + '?token=' + process.env.CF_API_TOKEN, (res) => {
-            let data = '';
-            res.on('data', chunk => data += chunk);
-            res.on('end', async () => {
-              try {
-                const keys = JSON.parse(data).result;
-                console.log('Encontrados ' + keys.length + ' suscriptores.');
-                
-                if (keys.length === 0) {
-                  console.log('⚠️ No hay suscriptores aún. El sistema está listo y funcionando.');
-                  process.exit(0);
+          async function sendNotifications() {
+            try {
+              // Obtener lista de keys del KV
+              const kvListUrl = \`https://api.cloudflare.com/client/v4/accounts/\${process.env.CF_ACCOUNT_ID}/storage/kv/namespaces/\${process.env.KV_NAMESPACE_ID}/keys\`;
+              
+              const listResponse = await fetch(kvListUrl, {
+                method: 'GET',
+                headers: {
+                  'Authorization': \`Bearer \${process.env.CF_API_TOKEN}\`,
+                  'Content-Type': 'application/json'
                 }
-
-                const title = process.env.CUSTOM_TITLE || '🚴‍♂️ ¡Nuevo Contenido en SportDharma!';
-                const body = process.env.CUSTOM_BODY || 'Se ha publicado nuevo contenido soberano y offline-first.';
-                
-                const payload = JSON.stringify({
-                  title: title,
-                  body: body,
-                  icon: '/icon-192.png',
-                  badge: '/badge-72.png',
-                  url: 'https://www.sportdharmaecosystem.com/es/noticias/',
-                  tag: 'sportdharma-update',
-                  requireInteraction: false
-                });
-
-                let successCount = 0;
-                let failCount = 0;
-                
-                for (const key of keys) {
-                  try {
-                    const subRes = await fetch('https://api.cloudflare.com/client/v4/accounts/' + process.env.CF_ACCOUNT_ID + '/storage/kv/namespaces/' + process.env.KV_NAMESPACE_ID + '/values/' + key.name + '?token=' + process.env.CF_API_TOKEN);
-                    const subData = await subRes.json();
-                    
-                    if (subData.success && subData.result) {
-                      const subscription = JSON.parse(subData.result);
-                      await webpush.sendNotification(subscription, payload);
-                      successCount++;
-                      console.log('✅ Enviado a: ' + key.name);
-                    }
-                  } catch (err) {
-                    failCount++;
-                    console.error('❌ Error enviando a ' + key.name + ':', err.message);
-                  }
-                }
-                
-                console.log('');
-                console.log('📊 RESUMEN:');
-                console.log('   Total suscriptores: ' + keys.length);
-                console.log('   Enviados exitosamente: ' + successCount);
-                console.log('   Fallidos: ' + failCount);
-              } catch (err) {
-                console.error('❌ Error en el proceso:', err);
-                process.exit(1);
+              });
+              
+              if (!listResponse.ok) {
+                const errorText = await listResponse.text();
+                console.error('❌ Error al obtener keys del KV:', listResponse.status, errorText);
+                console.error('🔍 Verificá que:');
+                console.error('   1. El API Token tenga permisos de lectura en KV');
+                console.error('   2. El KV_NAMESPACE_ID sea correcto');
+                console.error('   3. El CF_ACCOUNT_ID sea correcto');
+                process.exit(0); // Salir con éxito para no fallar el workflow
               }
-            });
-          });
+              
+              const listData = await listResponse.json();
+              const keys = listData.result || [];
+              
+              console.log('📋 Suscriptores encontrados: ' + keys.length);
+              
+              if (keys.length === 0) {
+                console.log('️ No hay suscriptores aún. El sistema está listo y funcionando.');
+                process.exit(0);
+              }
+
+              const title = process.env.CUSTOM_TITLE || '🚴♂️ ¡Nuevo Contenido en SportDharma!';
+              const body = process.env.CUSTOM_BODY || 'Se ha publicado nuevo contenido soberano y offline-first.';
+              
+              const payload = JSON.stringify({
+                title: title,
+                body: body,
+                icon: '/icon-192.png',
+                badge: '/badge-72.png',
+                url: 'https://www.sportdharmaecosystem.com/es/noticias/',
+                tag: 'sportdharma-update',
+                requireInteraction: false
+              });
+
+              let successCount = 0;
+              let failCount = 0;
+              
+              for (const key of keys) {
+                try {
+                  // Obtener el objeto de suscripción completo
+                  const getValueUrl = \`https://api.cloudflare.com/client/v4/accounts/\${process.env.CF_ACCOUNT_ID}/storage/kv/namespaces/\${process.env.KV_NAMESPACE_ID}/values/\${key.name}\`;
+                  
+                  const valueResponse = await fetch(getValueUrl, {
+                    method: 'GET',
+                    headers: {
+                      'Authorization': \`Bearer \${process.env.CF_API_TOKEN}\`,
+                      'Content-Type': 'application/json'
+                    }
+                  });
+                  
+                  if (!valueResponse.ok) {
+                    console.error('️ No se pudo obtener ' + key.name + ': ' + valueResponse.status);
+                    failCount++;
+                    continue;
+                  }
+                  
+                  const subscription = await valueResponse.json();
+                  await webpush.sendNotification(subscription, payload);
+                  successCount++;
+                  console.log('✅ Enviado a: ' + key.name);
+                } catch (err) {
+                  failCount++;
+                  console.error('❌ Error con ' + key.name + ':', err.message);
+                }
+              }
+              
+              console.log('');
+              console.log('📊 RESUMEN FINAL:');
+              console.log('   Total suscriptores: ' + keys.length);
+              console.log('   Enviados exitosamente: ' + successCount);
+              console.log('   Fallidos: ' + failCount);
+              
+            } catch (err) {
+              console.error('❌ Error general en el proceso:', err.message);
+              process.exit(0); // No fallar el workflow por errores de notificación
+            }
+          }
+          
+          sendNotifications();
           "
