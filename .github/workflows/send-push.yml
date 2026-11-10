@@ -6,7 +6,7 @@ on:
       title:
         description: 'Título de la notificación'
         required: true
-        default: '🚴‍♂️ ¡Nueva Actualización!'
+        default: '‍♂️ ¡Nueva Actualización!'
       body:
         description: 'Cuerpo del mensaje'
         required: true
@@ -34,7 +34,6 @@ jobs:
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           KV_NAMESPACE_ID: ${{ secrets.KV_NAMESPACE_ID }}
-          WORKER_URL: https://sportdharmapush.faviosuenosapedal.workers.dev
           PUSH_TITLE: ${{ github.event.inputs.title }}
           PUSH_BODY: ${{ github.event.inputs.body }}
         run: |
@@ -48,19 +47,49 @@ jobs:
             process.env.VAPID_PRIVATE_KEY
           );
 
-          async function sendNotifications() {
-            // 1. Obtener suscriptores del worker
-            const response = await fetch(`${process.env.WORKER_URL}/subscribers`);
-            const subscribers = await response.json();
+          async function getSubscribers() {
+            const url = `https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT_ID}/storage/kv/namespaces/${process.env.KV_NAMESPACE_ID}/keys`;
             
-            console.log(`📋 Suscriptores encontrados: ${subscribers.length}`);
+            console.log('🔍 Consultando KV...');
+            console.log('URL:', url);
+            
+            const response = await fetch(url, {
+              headers: { 
+                'Authorization': `Bearer ${process.env.CF_API_TOKEN}`,
+                'Content-Type': 'application/json'
+              }
+            });
+            
+            console.log('Status:', response.status);
+            
+            if (!response.ok) {
+              throw new Error(`Error al obtener keys del KV: ${response.status} ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            console.log('Respuesta completa:', JSON.stringify(data, null, 2));
+            
+            if (!data.success) {
+              throw new Error('La API de Cloudflare respondió con success: false');
+            }
+            
+            if (!data.result || !Array.isArray(data.result)) {
+              console.log('️ No hay suscriptores en el KV');
+              return [];
+            }
+            
+            console.log(`📋 Suscriptores encontrados: ${data.result.length}`);
+            return data.result;
+          }
 
-            if (subscribers.length === 0) {
-              console.log('⚠️ No hay suscriptores aún.');
+          async function sendNotifications() {
+            const keys = await getSubscribers();
+            
+            if (keys.length === 0) {
+              console.log('⚠️ No hay suscriptores. El sistema está listo, pero nadie se ha suscrito aún.');
               return;
             }
 
-            // 2. Enviar notificación a cada suscriptor
             const payload = JSON.stringify({
               title: process.env.PUSH_TITLE,
               body: process.env.PUSH_BODY,
@@ -72,21 +101,60 @@ jobs:
             let successCount = 0;
             let failCount = 0;
 
-            for (const subscription of subscribers) {
+            for (const key of keys) {
               try {
-                await webpush.sendNotification(subscription, payload);
-                console.log(`✅ Enviado a: ${subscription.endpoint.substring(0, 50)}...`);
-                successCount++;
+                console.log(`\n Procesando: ${key.name}`);
+                
+                // Obtener el valor completo de la suscripción
+                const valUrl = `https://api.cloudflare.com/client/v4/accounts/${process.env.CF_ACCOUNT_ID}/storage/kv/namespaces/${process.env.KV_NAMESPACE_ID}/values/${encodeURIComponent(key.name)}`;
+                
+                const valResponse = await fetch(valUrl, {
+                  headers: { 
+                    'Authorization': `Bearer ${process.env.CF_API_TOKEN}`,
+                    'Content-Type': 'application/json'
+                  }
+                });
+                
+                if (!valResponse.ok) {
+                  console.log(`⚠️ No se pudo obtener el valor: ${valResponse.status}`);
+                  failCount++;
+                  continue;
+                }
+                
+                // Cloudflare KV devuelve el texto crudo
+                const subscriptionText = await valResponse.text();
+                
+                try {
+                  const subscription = JSON.parse(subscriptionText);
+
+                  // Verificar que tenga las claves necesarias
+                  if (!subscription.endpoint || !subscription.keys?.p256dh || !subscription.keys?.auth) {
+                    console.log(`⚠️ Saltando suscripción inválida (sin claves): ${key.name.substring(0, 30)}...`);
+                    failCount++;
+                    continue;
+                  }
+
+                  await webpush.sendNotification(subscription, payload);
+                  console.log(`✅ Enviado a: ${key.name.substring(0, 50)}...`);
+                  successCount++;
+                } catch (parseError) {
+                  console.log(`⚠️ Error al parsear JSON: ${parseError.message}`);
+                  failCount++;
+                }
               } catch (error) {
-                console.error(`❌ Falló: ${error.message}`);
+                console.error(`❌ Falló para ${key.name}: ${error.message}`);
                 failCount++;
               }
             }
 
             console.log('\n📊 RESUMEN FINAL:');
-            console.log(`   Total: ${subscribers.length}`);
-            console.log(`   Exitosos: ${successCount}`);
+            console.log(`   Total suscriptores: ${keys.length}`);
+            console.log(`   Enviados exitosamente: ${successCount}`);
             console.log(`   Fallidos: ${failCount}`);
+            
+            if (failCount > 0 && successCount === 0) {
+              process.exit(1);
+            }
           }
 
           sendNotifications().catch(err => {
