@@ -8,6 +8,15 @@ on:
       - 'src/pages/**'
       - 'src/content/**'
   workflow_dispatch:
+    inputs:
+      custom_title:
+        description: 'Título personalizado (opcional)'
+        required: false
+        default: '🚴‍♂️ ¡Nuevo Contenido en SportDharma!'
+      custom_body:
+        description: 'Cuerpo del mensaje (opcional)'
+        required: false
+        default: 'Se ha publicado nuevo contenido soberano y offline-first.'
 
 jobs:
   send-notification:
@@ -19,7 +28,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install web-push
         run: npm install web-push
@@ -31,6 +40,8 @@ jobs:
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           KV_NAMESPACE_ID: ${{ secrets.KV_NAMESPACE_ID }}
+          CUSTOM_TITLE: ${{ github.event.inputs.custom_title }}
+          CUSTOM_BODY: ${{ github.event.inputs.custom_body }}
         run: |
           node -e "
           const webpush = require('web-push');
@@ -52,14 +63,27 @@ jobs:
                 const keys = JSON.parse(data).result;
                 console.log('Encontrados ' + keys.length + ' suscriptores.');
                 
+                if (keys.length === 0) {
+                  console.log('⚠️ No hay suscriptores aún. El sistema está listo y funcionando.');
+                  process.exit(0);
+                }
+
+                const title = process.env.CUSTOM_TITLE || '🚴‍♂️ ¡Nuevo Contenido en SportDharma!';
+                const body = process.env.CUSTOM_BODY || 'Se ha publicado nuevo contenido soberano y offline-first.';
+                
                 const payload = JSON.stringify({
-                  title: '🚴‍♂️ ¡Nuevo Contenido en SportDharma!',
-                  body: 'Se ha publicado nuevo contenido soberano y offline-first.',
+                  title: title,
+                  body: body,
                   icon: '/icon-192.png',
-                  url: 'https://www.sportdharmaecosystem.com/es/noticias/'
+                  badge: '/badge-72.png',
+                  url: 'https://www.sportdharmaecosystem.com/es/noticias/',
+                  tag: 'sportdharma-update',
+                  requireInteraction: false
                 });
 
                 let successCount = 0;
+                let failCount = 0;
+                
                 for (const key of keys) {
                   try {
                     const subRes = await fetch('https://api.cloudflare.com/client/v4/accounts/' + process.env.CF_ACCOUNT_ID + '/storage/kv/namespaces/' + process.env.KV_NAMESPACE_ID + '/values/' + key.name + '?token=' + process.env.CF_API_TOKEN);
@@ -69,14 +93,22 @@ jobs:
                       const subscription = JSON.parse(subData.result);
                       await webpush.sendNotification(subscription, payload);
                       successCount++;
+                      console.log('✅ Enviado a: ' + key.name);
                     }
                   } catch (err) {
-                    console.error('Error enviando a ' + key.name + ':', err.message);
+                    failCount++;
+                    console.error('❌ Error enviando a ' + key.name + ':', err.message);
                   }
                 }
-                console.log('✅ Notificaciones enviadas a ' + successCount + ' suscriptores.');
+                
+                console.log('');
+                console.log('📊 RESUMEN:');
+                console.log('   Total suscriptores: ' + keys.length);
+                console.log('   Enviados exitosamente: ' + successCount);
+                console.log('   Fallidos: ' + failCount);
               } catch (err) {
                 console.error('❌ Error en el proceso:', err);
+                process.exit(1);
               }
             });
           });
