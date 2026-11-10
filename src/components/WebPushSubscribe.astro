@@ -1,4 +1,4 @@
-﻿---
+---
 // src/components/WebPushSubscribe.astro
 ---
 
@@ -12,7 +12,7 @@
 </div>
 
 <script>
-  // Clave pública VAPID (la misma que usas en el backend)
+  // Clave pública VAPID
   const VAPID_PUBLIC_KEY = 'BJG7t66S2zcnY5DtjjEJ6X18RhmpWtKCdlwwszKrAn4tnuNGOGPzIqySXz6hvYl6cfU2AcjY6wiUny8xN-Cd8Y4';
 
   function urlBase64ToUint8Array(base64String) {
@@ -26,6 +26,17 @@
     return outputArray;
   }
 
+  async function checkExistingSubscription() {
+    try {
+      const registration = await navigator.serviceWorker.ready;
+      const existingSubscription = await registration.pushManager.getSubscription();
+      return existingSubscription;
+    } catch (error) {
+      console.error('Error al verificar suscripción:', error);
+      return null;
+    }
+  }
+
   document.getElementById('subscribe-push')?.addEventListener('click', async () => {
     const statusEl = document.getElementById('push-status');
     if (!statusEl) return;
@@ -34,31 +45,60 @@
       // 1. Verificar soporte
       if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
         statusEl.textContent = '❌ Navegador no soportado.';
+        statusEl.style.color = 'red';
         return;
       }
 
-      // 2. Registrar Service Worker
-      const registration = await navigator.serviceWorker.register('/sw.js');
-      console.log('✅ SW registrado:', registration);
+      // 2. Verificar estado del permiso ANTES de hacer nada
+      const permissionStatus = await navigator.permissions.query({ name: 'notifications' });
+      console.log('Estado del permiso:', permissionStatus.state);
 
-      // 3. Pedir permiso de notificaciones
-      const permission = await Notification.requestPermission();
-      console.log('📋 Permiso:', permission);
+      // 3. Esperar a que el Service Worker esté listo
+      const registration = await navigator.serviceWorker.ready;
+      console.log('Service Worker listo:', registration);
+
+      // 4. Verificar si ya existe una suscripción
+      let subscription = await registration.pushManager.getSubscription();
       
-      if (permission !== 'granted') {
-        statusEl.textContent = '❌ Permiso denegado. Actívalo en tu navegador.';
+      if (subscription) {
+        console.log('✅ Ya existe una suscripción:', subscription.endpoint);
+        statusEl.textContent = '✅ ¡Ya estás suscrito! (100% privado)';
+        statusEl.style.color = 'green';
         return;
       }
 
-      // 4. Suscribirse a push
-      const subscription = await registration.pushManager.subscribe({
+      // 5. Si no hay suscripción, proceder según el estado del permiso
+      if (permissionStatus.state === 'denied') {
+        statusEl.textContent = '❌ Permiso denegado. Haz clic en el candado 🔒 junto a la URL → Configuración del sitio → Notificaciones → Permitir';
+        statusEl.style.color = 'red';
+        return;
+      }
+
+      if (permissionStatus.state === 'granted') {
+        // El permiso ya está concedido, solo necesitamos suscribirnos
+        console.log('Permiso concedido, suscribiendo...');
+      } else {
+        // permissionStatus.state === 'default' - necesitamos pedir permiso
+        console.log('Pidiendo permiso...');
+        const permission = await Notification.requestPermission();
+        console.log('Permiso solicitado:', permission);
+        
+        if (permission !== 'granted') {
+          statusEl.textContent = ' Permiso denegado. Actívalo en tu navegador.';
+          statusEl.style.color = 'red';
+          return;
+        }
+      }
+
+      // 6. Suscribirse a push
+      subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
       });
 
       console.log('✅ Suscripción generada:', subscription.endpoint);
 
-      // 5. Enviar suscripción al worker de Cloudflare
+      // 7. Enviar suscripción al worker de Cloudflare
       const response = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/subscribe', {
         method: 'POST',
         headers: {
@@ -71,14 +111,17 @@
         const data = await response.json();
         console.log('✅ Guardado en KV:', data);
         statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
+        statusEl.style.color = 'green';
       } else {
         const errorText = await response.text();
         console.error('❌ Error del worker:', response.status, errorText);
         statusEl.textContent = `❌ Error al guardar: ${errorText}`;
+        statusEl.style.color = 'red';
       }
     } catch (error) {
       console.error('❌ Error fatal:', error);
       statusEl.textContent = `❌ Error: ${error.message}`;
+      statusEl.style.color = 'red';
     }
   });
 </script>
