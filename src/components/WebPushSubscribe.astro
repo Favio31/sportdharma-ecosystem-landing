@@ -102,7 +102,7 @@
       });
       
       statusEl.textContent = '4/4 Guardando...';
-      const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
+      const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription)
