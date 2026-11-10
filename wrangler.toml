@@ -1,4 +1,4 @@
-﻿name = "sportdharma-push"
+﻿name = "sportdharmapush"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
@@ -9,4 +9,5 @@ kv_namespaces = [
 [vars]
 SECRET_TOKEN = "DuZPrkfb1hsSaRF6VyJzkQ8tNeYOsM705"
 VAPID_PUBLIC_KEY = "BI28sAsN2VODFAsqSyTsSV48GZhwoEamA4BMt5YG0ADhD9x1Ctxctf2KppYfxKHFeTjBlgK2Ptsr-W1yAvAXlss"
+
 
