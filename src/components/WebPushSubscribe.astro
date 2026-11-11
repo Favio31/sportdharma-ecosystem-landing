@@ -30,16 +30,20 @@
     if (!statusEl) return;
 
     try {
+      // Verificar soporte del navegador
       if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
         statusEl.textContent = '❌ Navegador no soportado.';
-        statusEl.style.color = 'red';
         return;
       }
 
-      const registration = await navigator.serviceWorker.ready;
-      console.log('✅ Service Worker listo');
+      // 1. Registrar Service Worker si no existe
+      const registration = await navigator.serviceWorker.getRegistration();
+      if (!registration) {
+        statusEl.textContent = '❌ Service Worker no registrado.';
+        return;
+      }
 
-      // 1. Verificar y eliminar suscripción existente (clave del error)
+      // 2. Verificar y eliminar suscripción existente (clave del error)
       let existingSubscription = await registration.pushManager.getSubscription();
       if (existingSubscription) {
         console.log('🗑️ Eliminando suscripción existente...');
@@ -47,52 +51,38 @@
         console.log('✅ Suscripción anterior eliminada');
       }
 
-      // 2. Verificar permiso
-      const permissionStatus = await navigator.permissions.query({ name: 'notifications' });
-      
-      if (permissionStatus.state === 'denied') {
-        statusEl.textContent = '❌ Permiso denegado. Actívalo en: Configuración → Apps → Chrome → Notificaciones';
-        statusEl.style.color = 'red';
+      // 3. Solicitar permiso de notificación
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        statusEl.textContent = '❌ Permiso denegado.';
         return;
       }
 
-      if (permissionStatus.state === 'default') {
-        const permission = await Notification.requestPermission();
-        if (permission !== 'granted') {
-          statusEl.textContent = '❌ Permiso denegado.';
-          statusEl.style.color = 'red';
-          return;
-        }
-      }
-
-      // 3. Crear nueva suscripción
+      // 4. Crear nueva suscripción
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
       });
 
-      console.log('✅ Nueva suscripción creada:', subscription.endpoint);
-
-      // 4. Enviar al Worker
-      const response = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/subscribe', {
+      // 5. Enviar al Worker
+      const response = await fetch('https://sportdharmapush.faviosuenosapedat.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription)
       });
 
+      const responseText = await response.text();
       if (response.ok) {
-        statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
-        statusEl.style.color = 'green';
-        console.log('✅ Guardado en KV exitosamente');
+        statusEl.textContent = '✅ ¡Notificaciones activadas!';
+        statusEl.style.color = '#10b981';
       } else {
-        const errorText = await response.text();
-        statusEl.textContent = `❌ Error: ${errorText}`;
-        statusEl.style.color = 'red';
+        statusEl.textContent = '❌ Error al guardar: ' + responseText;
+        statusEl.style.color = '#ef4444';
       }
     } catch (error) {
-      console.error('❌ Error:', error);
-      statusEl.textContent = `❌ Error: ${error.message}`;
-      statusEl.style.color = 'red';
+      console.error('Error:', error);
+      statusEl.textContent = '❌ Error: ' + error.message;
+      statusEl.style.color = '#ef4444';
     }
   });
 </script>
@@ -100,25 +90,24 @@
 <style>
   .push-subscribe-container {
     text-align: center;
-    padding: 2rem;
   }
   .subscribe-btn {
     background: #E8530E;
     color: white;
-    padding: 1rem 2rem;
     border: none;
+    padding: 12px 24px;
     border-radius: 8px;
-    font-size: 1.1rem;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    margin: 1rem 0;
-    width: 100%;
-    max-width: 300px;
+    transition: all 0.3s;
   }
   .subscribe-btn:hover {
     background: #d14a0c;
+    transform: translateY(-2px);
   }
   #push-status {
     margin-top: 1rem;
-    font-weight: bold;
+    font-size: 14px;
   }
 </style>
