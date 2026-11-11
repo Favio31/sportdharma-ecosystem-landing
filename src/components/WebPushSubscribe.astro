@@ -8,6 +8,9 @@
   <button id="subscribe-push" class="subscribe-btn">
     🔔 Activar Notificaciones
   </button>
+  <button id="force-unsubscribe" class="unsubscribe-btn" style="display:none;">
+    🗑️ Limpiar y Reinstalar
+  </button>
   <p id="push-status"></p>
 </div>
 
@@ -25,37 +28,71 @@
     return outputArray;
   }
 
-  document.getElementById('subscribe-push')?.addEventListener('click', async () => {
+  // Función para forzar desuscripción total
+  async function forceUnsubscribe() {
+    const statusEl = document.getElementById('push-status');
+    if (!statusEl) return;
+    
+    try {
+      // 1. Obtener todos los Service Workers
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      
+      // 2. Eliminar todos los Service Workers
+      for (let registration of registrations) {
+        const subscription = await registration.pushManager.getSubscription();
+        if (subscription) {
+          await subscription.unsubscribe();
+          console.log('✅ Suscripción eliminada');
+        }
+        await registration.unregister();
+        console.log('✅ Service Worker desregistrado');
+      }
+      
+      // 3. Limpiar caché
+      const caches = await caches.keys();
+      await Promise.all(caches.map(cache => cache.delete()));
+      
+      statusEl.textContent = '✅ Limpieza completada. Ahora podés activar notificaciones.';
+      statusEl.style.color = '#10b981';
+      
+      // Mostrar botón de activar
+      document.getElementById('subscribe-push').style.display = 'inline-block';
+      document.getElementById('force-unsubscribe').style.display = 'none';
+      
+    } catch (error) {
+      console.error('Error:', error);
+      statusEl.textContent = '❌ Error al limpiar: ' + error.message;
+    }
+  }
+
+  // Función para activar notificaciones
+  async function subscribeToPush() {
     const statusEl = document.getElementById('push-status');
     if (!statusEl) return;
 
     try {
-      // Verificar soporte del navegador
+      // Verificar soporte
       if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
         statusEl.textContent = '❌ Navegador no soportado.';
         return;
       }
 
-      // 1. Registrar Service Worker si no existe
-      const registration = await navigator.serviceWorker.getRegistration();
-      if (!registration) {
-        statusEl.textContent = '❌ Service Worker no registrado.';
-        return;
-      }
+      // 1. Registrar Service Worker
+      const registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+      console.log('✅ Service Worker registrado:', registration);
 
-      // 2. Verificar y eliminar suscripción existente (clave del error)
-      let existingSubscription = await registration.pushManager.getSubscription();
-      if (existingSubscription) {
-        console.log('🗑️ Eliminando suscripción existente...');
-        await existingSubscription.unsubscribe();
-        console.log('✅ Suscripción anterior eliminada');
-      }
-
-      // 3. Solicitar permiso de notificación
+      // 2. Solicitar permiso
       const permission = await Notification.requestPermission();
       if (permission !== 'granted') {
         statusEl.textContent = '❌ Permiso denegado.';
         return;
+      }
+
+      // 3. Verificar si hay suscripción vieja
+      const existingSubscription = await registration.pushManager.getSubscription();
+      if (existingSubscription) {
+        console.log('⚠️ Ya existe una suscripción, eliminando...');
+        await existingSubscription.unsubscribe();
       }
 
       // 4. Crear nueva suscripción
@@ -76,13 +113,41 @@
         statusEl.textContent = '✅ ¡Notificaciones activadas!';
         statusEl.style.color = '#10b981';
       } else {
-        statusEl.textContent = '❌ Error al guardar: ' + responseText;
+        statusEl.textContent = '❌ Error: ' + responseText;
         statusEl.style.color = '#ef4444';
       }
     } catch (error) {
       console.error('Error:', error);
       statusEl.textContent = '❌ Error: ' + error.message;
       statusEl.style.color = '#ef4444';
+      
+      // Si el error es de clave diferente, mostrar botón de limpieza
+      if (error.message.includes('applicationServerKey') || error.message.includes('gcm_sender_id')) {
+        statusEl.textContent = '❌ Conflicto de claves. Presioná "Limpiar y Reinstalar"';
+        document.getElementById('force-unsubscribe').style.display = 'inline-block';
+      }
+    }
+  }
+
+  // Event listeners
+  document.getElementById('subscribe-push')?.addEventListener('click', subscribeToPush);
+  document.getElementById('force-unsubscribe')?.addEventListener('click', forceUnsubscribe);
+
+  // Verificar al cargar si hay conflicto
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.getRegistration();
+      if (registration) {
+        const subscription = await registration.pushManager.getSubscription();
+        if (subscription) {
+          const keys = subscription.toJSON().keys;
+          if (keys && keys.p256dh && keys.auth) {
+            console.log('✅ Ya hay una suscripción activa');
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error al verificar:', error);
     }
   });
 </script>
@@ -101,13 +166,30 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
+    display: inline-block;
   }
   .subscribe-btn:hover {
     background: #d14a0c;
     transform: translateY(-2px);
   }
+  .unsubscribe-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    display: none;
+  }
+  .unsubscribe-btn:hover {
+    background: #b91c1c;
+  }
   #push-status {
     margin-top: 1rem;
     font-size: 14px;
+    min-height: 1.5rem;
   }
 </style>
