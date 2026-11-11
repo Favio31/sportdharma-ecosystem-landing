@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/sections/Hero.astro';
 import { useTranslations } from '../../i18n/utils.js';
+import QueEsSection from '../../components/sections/QueEsSection.astro';
 
 export async function getStaticPaths() {
   return [
@@ -41,7 +42,7 @@ const t = useTranslations(lang);
                 <img src="/fundador-2.jpg" alt={t('home.fundador_alt_2')} class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
               </div>
               <div class="w-full rounded-xl border border-black/5 dark:border-white/5">
-                <img src="/images/fundador/documental-un-ano-en-bicicleta.jpg" alt="Documental Un Año en Bicicleta" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
+                <img src="/images/fundador/documental-un-ano-en-bicicleta.jpg" alt="Documental Un AÃ±o en Bicicleta" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
               </div>
             </div>
           </div>
@@ -53,11 +54,11 @@ const t = useTranslations(lang);
               </div>
               <div class="min-w-0 rounded-lg border border-white/30 p-3 text-center sm:p-4">
                 <div class="text-xl font-bold leading-tight text-[#E8530E] dark:text-orange-500 sm:text-2xl">84</div>
-                <div class="mt-1 text-xs text-ink-soft">países</div>
+                <div class="mt-1 text-xs text-ink-soft">paÃ­ses</div>
               </div>
               <div class="min-w-0 rounded-lg border border-white/30 p-3 text-center sm:p-4">
                 <div class="text-xl font-bold leading-tight text-[#E8530E] dark:text-orange-500 sm:text-2xl">11</div>
-                <div class="mt-1 text-xs text-ink-soft">años en ruta</div>
+                <div class="mt-1 text-xs text-ink-soft">aÃ±os en ruta</div>
               </div>
             </div>
           </div>
@@ -89,11 +90,11 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  <!-- SECCIÓN DESCUBRÍ - TARJETA GRANDE CON CÓDIGO + IMAGEN (ANIMACIÓN LOOP INFINITO) -->
+  <!-- SECCIÃ“N DESCUBRÃ - TARJETA GRANDE CON CÃ“DIGO + IMAGEN (ANIMACIÃ“N LOOP INFINITO) -->
   <section class="py-16 md:py-20 px-4 md:px-6 bg-slate-900">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-2xl md:text-4xl font-bold text-white mb-6 md:mb-10 text-center px-2">
-        DESCUBRÍ, ¿Qué es SportDharma Ecosystem?
+        DESCUBRÃ, Â¿QuÃ© es SportDharma Ecosystem?
       </h2>
       
       <a href={'/' + lang + '/descubri/'} class="group block rounded-2xl overflow-hidden shadow-2xl bg-slate-950 border border-slate-800 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99] dark:border-white/5 dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
@@ -177,9 +178,9 @@ const t = useTranslations(lang);
           currentChar++;
 
           if (currentChar === fullText.length) {
-            // Terminó de escribir esta línea
+            // TerminÃ³ de escribir esta lÃ­nea
             if (currentLine === typingElements.length - 1) {
-              // Terminó de escribir TODAS las líneas, esperar y empezar a borrar
+              // TerminÃ³ de escribir TODAS las lÃ­neas, esperar y empezar a borrar
               setActiveCursor(currentLine);
               setTimeout(() => {
                 isDeleting = true;
@@ -187,7 +188,7 @@ const t = useTranslations(lang);
               }, PAUSE_AFTER_TYPE);
               return;
             } else {
-              // Pasar a la siguiente línea
+              // Pasar a la siguiente lÃ­nea
               currentLine++;
               currentChar = 0;
               setActiveCursor(currentLine);
@@ -202,16 +203,16 @@ const t = useTranslations(lang);
           currentChar--;
 
           if (currentChar < 0) {
-            // Terminó de borrar esta línea
+            // TerminÃ³ de borrar esta lÃ­nea
             if (currentLine === 0) {
-              // Volvió al inicio, reiniciar escritura
+              // VolviÃ³ al inicio, reiniciar escritura
               currentChar = 0;
               isDeleting = false;
               setActiveCursor(0);
               setTimeout(tick, PAUSE_AFTER_DELETE);
               return;
             } else {
-              // Borrar línea anterior
+              // Borrar lÃ­nea anterior
               currentLine--;
               currentChar = texts[currentLine].length;
               setActiveCursor(currentLine);
@@ -223,7 +224,7 @@ const t = useTranslations(lang);
         }
       }
 
-      // Iniciar animación
+      // Iniciar animaciÃ³n
       if (typingElements.length > 0) {
         setActiveCursor(0);
         setTimeout(tick, 500);
@@ -305,7 +306,7 @@ const t = useTranslations(lang);
     </div>
   </section>
 
-  <!-- SECCIÓN DE NOTICIAS -->
+  <!-- SECCIÃ“N DE NOTICIAS -->
   <section id="noticias" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold text-ink mb-4">{t('home.noticias_section_title')}</h2>
@@ -314,12 +315,12 @@ const t = useTranslations(lang);
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <div class="p-8 rounded-3xl border border-black/5 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all flex flex-col justify-between h-full">
             <div>
-              <div class="text-5xl mb-4">🔔</div>
+              <div class="text-5xl mb-4">ðŸ””</div>
               <h3 class="text-2xl font-bold text-ink mb-3">Notificaciones Soberanas</h3>
               <p class="text-ink-soft mb-6 text-sm leading-relaxed">
-                Recibí actualizaciones <strong>sin dejar tu correo electrónico</strong>. 
-                Usamos tecnología nativa del navegador: <strong>sin bases de datos, sin tracking y sin spam</strong>. 
-                Tenés el control absoluto para desactivarlo cuando quieras.
+                RecibÃ­ actualizaciones <strong>sin dejar tu correo electrÃ³nico</strong>. 
+                Usamos tecnologÃ­a nativa del navegador: <strong>sin bases de datos, sin tracking y sin spam</strong>. 
+                TenÃ©s el control absoluto para desactivarlo cuando quieras.
               </p>
             </div>
             <div>
@@ -348,7 +349,7 @@ const t = useTranslations(lang);
               if (!statusEl) return;
 
               if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
-                statusEl.textContent = '❌ Navegador no soportado.';
+                statusEl.textContent = 'âŒ Navegador no soportado.';
                 return;
               }
 
@@ -379,18 +380,18 @@ const t = useTranslations(lang);
                 const permission = await Notification.requestPermission();
                 
                 if (permission !== 'granted') {
-                  statusEl.textContent = '❌ Permiso denegado. Actívalo en tu navegador.';
+                  statusEl.textContent = 'âŒ Permiso denegado. ActÃ­valo en tu navegador.';
                   return;
                 }
 
-                statusEl.textContent = '3/4 Generando suscripción...';
+                statusEl.textContent = '3/4 Generando suscripciÃ³n...';
                 const VAPID_PUBLIC_KEY = 'BEBtu5xuSazr8mxdvUBuvrGE5VEDP83jW2VKlL982qe0NZdEwemuCyB1WwNtwhVxL-ooi2nCo1RoGvNCQnwaKZU';
                 const subscription = await registration.pushManager.subscribe({
                   userVisibleOnly: true,
                   applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
                 });
                 
-                console.log('✅ Suscripción generada:', subscription.endpoint);
+                console.log('âœ… SuscripciÃ³n generada:', subscription.endpoint);
                 
                 statusEl.textContent = '4/4 Guardando en servidor...';
                 const res = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev', {
@@ -403,13 +404,13 @@ const t = useTranslations(lang);
                 console.log('[Worker] Response:', res.status, responseText);
                 
                 if (res.ok) {
-                  statusEl.textContent = '✅ ¡Suscrito! (100% privado)';
+                  statusEl.textContent = 'âœ… Â¡Suscrito! (100% privado)';
                 } else {
-                  statusEl.textContent = '⚠️ Error al guardar: ' + responseText;
+                  statusEl.textContent = 'âš ï¸ Error al guardar: ' + responseText;
                 }
               } catch (error) {
-                console.error('❌ [Push] Error:', error.name, error.message);
-                statusEl.textContent = '❌ Error: ' + error.message;
+                console.error('âŒ [Push] Error:', error.name, error.message);
+                statusEl.textContent = 'âŒ Error: ' + error.message;
               }
             });
           </script>
@@ -429,8 +430,8 @@ const t = useTranslations(lang);
   <!-- SUMATE AL PROYECTO -->
   <section class="py-20 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">¿Querés contribuir o contactarnos?</h2>
-      <p class="text-ink-soft mb-10 text-lg">Apoyá con tu tiempo, código o recursos. Construyamos juntos.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">Â¿QuerÃ©s contribuir o contactarnos?</h2>
+      <p class="text-ink-soft mb-10 text-lg">ApoyÃ¡ con tu tiempo, cÃ³digo o recursos. Construyamos juntos.</p>
       
       <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-3xl mx-auto">
         <a href="https://liberapay.com/SportDharmaEcosystem/donate" target="_blank" rel="noopener noreferrer" class="flex-1 px-8 py-4 rounded-xl border-2 border-[#F6C915] text-[#F6C915] font-bold text-lg hover:bg-[#F6C915] hover:text-slate-900 transition-all">
@@ -448,6 +449,8 @@ const t = useTranslations(lang);
       </div>
     </div>
   </section>
+
+<QueEsSection />
 
   <!-- PAGINAS AMIGAS -->
   <section class="py-16 px-6 bg-surface">
