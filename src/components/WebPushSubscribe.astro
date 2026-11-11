@@ -81,7 +81,7 @@
         applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
       });
 
-      const response = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/subscribe', {
+      const response = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(subscription)
