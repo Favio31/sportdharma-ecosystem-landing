@@ -41,7 +41,7 @@ const t = useTranslations(lang);
                 <img src="/fundador-2.jpg" alt={t('home.fundador_alt_2')} class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
               </div>
               <div class="w-full rounded-xl border border-white/10 dark:border-white/5">
-                <img src="/images/fundador/documental-un-ano-en-bicicleta.jpg" alt="Documental Un AÃ±o en Bicicleta" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
+                <img src="/images/fundador/documental-un-ano-en-bicicleta.jpg" alt="Documental Un Año en Bicicleta" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ const t = useTranslations(lang);
               </div>
               <div class="min-w-0 rounded-lg border border-white/30 p-3 text-center sm:p-4">
                 <div class="text-xl font-bold leading-tight text-[#E8530E] dark:text-orange-500 sm:text-2xl">11</div>
-                <div class="mt-1 text-xs text-ink-soft">aÃ±os en ruta</div>
+                <div class="mt-1 text-xs text-ink-soft">Años en ruta</div>
               </div>
             </div>
           </div>
@@ -177,9 +177,9 @@ const t = useTranslations(lang);
           currentChar++;
 
           if (currentChar === fullText.length) {
-            // TerminÃ³ de escribir esta lÃ­nea
+            // Terminó de escribir esta lÃ­nea
             if (currentLine === typingElements.length - 1) {
-              // TerminÃ³ de escribir TODAS las lÃ­neas, esperar y empezar a borrar
+              // Terminó de escribir TODAS las lÃ­neas, esperar y empezar a borrar
               setActiveCursor(currentLine);
               setTimeout(() => {
                 isDeleting = true;
@@ -202,7 +202,7 @@ const t = useTranslations(lang);
           currentChar--;
 
           if (currentChar < 0) {
-            // TerminÃ³ de borrar esta lÃ­nea
+            // Terminó de borrar esta lÃ­nea
             if (currentLine === 0) {
               // VolviÃ³ al inicio, reiniciar escritura
               currentChar = 0;
@@ -223,7 +223,7 @@ const t = useTranslations(lang);
         }
       }
 
-      // Iniciar animaciÃ³n
+      // Iniciar animación
       if (typingElements.length > 0) {
         setActiveCursor(0);
         setTimeout(tick, 500);
@@ -314,7 +314,7 @@ const t = useTranslations(lang);
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <div class="p-8 rounded-3xl border border-white/10 dark:border-white/5 bg-transparent hover:border-[#E8530E]/40 transition-all flex flex-col justify-between h-full">
             <div>
-              <div class="text-5xl mb-4">ðŸ””</div>
+              <div class="text-5xl mb-4">🔔</div>
               <h3 class="text-2xl font-bold text-ink mb-3">Notificaciones Soberanas</h3>
               <p class="text-ink-soft mb-6 text-sm leading-relaxed">
                 Recibí­ actualizaciones <strong>sin dejar tu correo electrónico</strong>. 
