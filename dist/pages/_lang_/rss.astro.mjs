@@ -1,0 +1,45 @@
+import { c as createAstro, a as createComponent, r as renderComponent, b as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../../chunks/astro/server_Bt_anjVH.mjs';
+import 'piccolore';
+import { $ as $$Layout } from '../../chunks/Layout_DF7ekleg.mjs';
+export { renderers } from '../../renderers.mjs';
+
+const $$Astro = createAstro("https://www.sportdharmaecosystem.com");
+async function getStaticPaths() {
+  return [
+    { params: { lang: "es" } },
+    { params: { lang: "en" } },
+    { params: { lang: "fr" } },
+    { params: { lang: "pt" } },
+    { params: { lang: "de" } }
+  ];
+}
+const $$Index = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  Astro2.self = $$Index;
+  const { lang } = Astro2.params;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Suscripci\xF3n RSS | SportDharma Ecosystem", "lang": lang }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<section class="py-20 px-6 bg-surface"> <div class="max-w-4xl mx-auto"> <div class="text-center mb-12"> <div class="text-7xl mb-6">📡</div> <h1 class="text-4xl md:text-5xl font-bold text-ink mb-4">Suscripción vía RSS</h1> <p class="text-xl text-ink-soft mb-8">La forma más pura, privada y descentralizada de seguir nuestras novedades.</p> </div> <div class="prose prose-lg dark:prose-invert max-w-none mb-12 mx-auto text-center"> <p class="text-ink-soft text-lg leading-relaxed">
+Sin algoritmos, sin tracking, sin intermediarios. Vos controlás qué leer y cuándo. 
+          Copiá la URL de abajo en tu lector RSS favorito.
+</p> </div> <!-- Caja con la URL del RSS --> <div class="bg-surface-alt border-2 border-[#E8530E]/30 rounded-2xl p-8 mb-10 max-w-2xl mx-auto"> <h2 class="text-2xl font-bold text-ink mb-4 text-center">URL del Feed RSS</h2> <div class="bg-black/5 dark:bg-white/5 rounded-lg p-4 mb-4 break-all"> <code class="text-[#E8530E] text-sm md:text-base select-all block text-center font-mono">
+https://sportdharmaecosystem.com/rss.xml
+</code> </div> <p class="text-ink-soft text-sm text-center">Copiá esta URL y pegala en tu lector preferido.</p> </div> <!-- Lectores recomendados --> <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto"> <div class="p-6 rounded-xl border border-black/5 dark:border-white/5 bg-surface-alt text-center"> <h3 class="font-bold text-ink mb-2 text-xl">Feedly</h3> <p class="text-ink-soft text-sm mb-4">El lector RSS más popular. Gratis y multiplataforma.</p> <a href="https://feedly.com" target="_blank" rel="noopener" class="text-[#E8530E] text-sm font-semibold hover:underline">Visitar →</a> </div> <div class="p-6 rounded-xl border border-black/5 dark:border-white/5 bg-surface-alt text-center"> <h3 class="font-bold text-ink mb-2 text-xl">Inoreader</h3> <p class="text-ink-soft text-sm mb-4">Potente y con funciones avanzadas de filtrado.</p> <a href="https://inoreader.com" target="_blank" rel="noopener" class="text-[#E8530E] text-sm font-semibold hover:underline">Visitar →</a> </div> <div class="p-6 rounded-xl border border-black/5 dark:border-white/5 bg-surface-alt text-center"> <h3 class="font-bold text-ink mb-2 text-xl">NetNewsWire</h3> <p class="text-ink-soft text-sm mb-4">Open source para macOS e iOS. Rápido y ligero.</p> <a href="https://netnewswire.com" target="_blank" rel="noopener" class="text-[#E8530E] text-sm font-semibold hover:underline">Visitar →</a> </div> </div> <!-- Botones de acción --> <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto"> <a href="/rss.xml" target="_blank" rel="noopener" class="px-8 py-4 rounded-lg bg-[#E8530E] text-white font-semibold hover:bg-[#d14a0c] transition-all hover:scale-105 text-center">
+Ver archivo XML crudo
+</a> <a${addAttribute(`/${lang}/`, "href")} class="px-8 py-4 rounded-lg border border-[#E8530E] text-[#E8530E] font-semibold hover:bg-[#E8530E]/10 transition-all text-center">
+Volver al inicio
+</a> </div> </div> </section> ` })}`;
+}, "C:/Users/User/sportdharma-ecosystem-landing/src/pages/[lang]/rss/index.astro", void 0);
+
+const $$file = "C:/Users/User/sportdharma-ecosystem-landing/src/pages/[lang]/rss/index.astro";
+const $$url = "/[lang]/rss";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Index,
+  file: $$file,
+  getStaticPaths,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };
