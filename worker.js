@@ -5,7 +5,6 @@
 
     if (request.method === "OPTIONS") return new Response(null, { headers: corsHeaders, status: 204 });
 
-    // Diccionario Multilingüe
     const translations = {
       es: { title: "📬 SportDharma", body: "Nueva publicación en SportDharma Ecosystem. ¡Haz clic para leer!" },
       en: { title: "📬 SportDharma", body: "New post in SportDharma Ecosystem. Click to read!" },
@@ -15,7 +14,6 @@
       pt: { title: "📬 SportDharma", body: "Nova publicação no SportDharma Ecosystem. Clique para ler!" }
     };
 
-    // 1. GUARDAR SUSCRIPCIÓN (Incluye 'lang')
     if (url.pathname === "/subscribe" && request.method === "POST") {
       try {
         const data = await request.json();
@@ -26,7 +24,6 @@
       }
     }
 
-    // 2. LISTAR SUSCRIPCIONES
     if (url.pathname === "/subscribers" && request.method === "GET") {
       if (url.searchParams.get("token") !== env.SECRET_TOKEN) return new Response(JSON.stringify({ error: "No autorizado" }), { status: 401 });
       const keys = await env.PUSH_SUBS.list();
@@ -37,7 +34,6 @@
       return new Response(JSON.stringify(subs.filter(Boolean)), { headers: { "Content-Type": "application/json" } });
     }
 
-    // 3. ENVIAR NOTIFICACIÓN (Usa el idioma guardado)
     if (url.pathname === "/send-test" && request.method === "POST") {
       if (url.searchParams.get("token") !== env.SECRET_TOKEN) return new Response(JSON.stringify({ error: "No autorizado" }), { status: 401 });
       
@@ -51,6 +47,9 @@
       };
       const enc = (obj) => b64url(new TextEncoder().encode(JSON.stringify(obj)));
 
+      // LLAVE PÚBLICA FIJA PARA EVITAR ERRORES DE VARIABLES DE ENTORNO
+      const publicKey = "BKRvq4NiQWfebuVqz_tjZxjS6OaQNHLgCqgExu9b1-os03BJPhPKFnt5c0SsI06GtAiavQbM9Dt8Rwd6WffPGd8";
+
       async function getVapidAuth(audience) {
         const jwk = JSON.parse(env.VAPID_PRIVATE_JWK);
         const key = await crypto.subtle.importKey('jwk', jwk, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['sign']);
@@ -58,11 +57,11 @@
         const payload = { aud: audience, exp: Math.floor(Date.now() / 1000) + 12 * 60 * 60, sub: 'mailto:contact@sportdharmaecosystem.com' };
         const toSign = `${enc(header)}.${enc(payload)}`;
         const sig = new Uint8Array(await crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, key, new TextEncoder().encode(toSign)));
-        return `vapid t=${toSign}.${b64url(sig)}, k=${env.VAPID_PUBLIC_KEY}`;
+        return `vapid t=${toSign}.${b64url(sig)}, k=${publicKey}`;
       }
 
       for (const k of keys.keys) {
-        if (k.name.includes("test")) continue;
+        if (k.name.includes("test") || k.name.includes("directo") || k.name.includes("wrangler")) continue;
         try {
           const subData = JSON.parse(await env.PUSH_SUBS.get(k.name));
           const lang = subData.lang && translations[subData.lang] ? subData.lang : 'es';
@@ -71,8 +70,17 @@
 
           const res = await fetch(k.name, { 
             method: "POST",
-            headers: { "Authorization": authHeader, "TTL": "60", "Urgency": "high", "Content-Type": "application/json" },
-            body: JSON.stringify({ title: msg.title, body: msg.body, icon: 'https://www.sportdharmaecosystem.com/logo.jpg' })
+            headers: { 
+              "Authorization": authHeader, 
+              "TTL": "60", 
+              "Urgency": "high", 
+              "Content-Type": "application/json" 
+            },
+            body: JSON.stringify({ 
+              title: msg.title, 
+              body: msg.body, 
+              icon: 'https://www.sportdharmaecosystem.com/logo.jpg' 
+            })
           });
           results.push({ endpoint: k.name.substring(0, 30) + "...", status: res.status, lang: lang });
         } catch (e) { results.push({ error: e.message }); }
