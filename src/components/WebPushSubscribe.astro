@@ -5,14 +5,15 @@
 <div class="push-subscribe-container">
   <h3>Notificaciones Soberanas</h3>
   <p>Recibí actualizaciones sin dejar tu correo electrónico.</p>
-  <p style='font-size: 10px; word-break: break-all; color: red; background: yellow; padding: 5px;'>DEBUG KEY: BKRvq4NiQWfebuVqz_tjZxjS6OaQNHLgCqgExu9b1-os03BJPhPKFnt5c0SsI06GtAiavQbM9Dt8Rwd6WffPGd8</p>
-    <p style='font-size: 10px; word-break: break-all; color: red; background: yellow; padding: 5px;'>DEBUG KEY: BKRvq4NiQWfebuVqz_tjZxjS6OaQNHLgCqgExu9b1-os03BJPhPKFnt5c0SsI06GtAiavQbM9Dt8Rwd6WffPGd8</p>
-    <button id="subscribe-push" class="subscribe-btn">
+  
+  <button id="subscribe-push" class="subscribe-btn">
     🔔 Activar Notificaciones
   </button>
+  
   <button id="force-unsubscribe" class="unsubscribe-btn" style="display:none;">
     🗑️ Limpiar y Reinstalar
   </button>
+  
   <p id="push-status"></p>
 </div>
 
@@ -34,6 +35,7 @@
     const statusEl = document.getElementById('push-status');
     if (!statusEl) return;
     try {
+      statusEl.textContent = '⏳ Limpiando sistema...';
       const registrations = await navigator.serviceWorker.getRegistrations();
       for (let registration of registrations) {
         const subscription = await registration.pushManager.getSubscription();
@@ -47,7 +49,8 @@
       statusEl.style.color = '#10b981';
       setTimeout(() => window.location.reload(), 2000);
     } catch (error) {
-      statusEl.textContent = '❌ Error al limpiar.';
+      statusEl.textContent = '❌ Error al limpiar: ' + error.message;
+      statusEl.style.color = '#dc2626';
     }
   }
 
@@ -58,63 +61,64 @@
     try {
       if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
         statusEl.textContent = '❌ Navegador no soportado.';
+        statusEl.style.color = '#dc2626';
+        return;
+      }
+
+      statusEl.textContent = '⏳ Solicitando permiso...';
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        statusEl.textContent = '❌ Permiso denegado.';
+        statusEl.style.color = '#dc2626';
         return;
       }
 
       statusEl.textContent = '⏳ Preparando sistema...';
-      
-      // Esperar a que el SW esté 100% activo
+      // Declaración ÚNICA de registration
       const registration = await navigator.serviceWorker.ready;
-      console.log('✅ Service Worker listo y activo:', registration);
 
-      const permission = await Notification.requestPermission();
-      if (permission !== 'granted') {
-        statusEl.textContent = '❌ Permiso denegado.';
-        return;
-      }
-
+      // PASO CRÍTICO: Eliminar cualquier suscripción vieja cachéada
       const existingSubscription = await registration.pushManager.getSubscription();
       if (existingSubscription) {
         await existingSubscription.unsubscribe();
+        console.log('[SW] Suscripción vieja eliminada forzosamente');
       }
 
-      const registration = await navigator.serviceWorker.ready;
+      statusEl.textContent = '⏳ Generando nueva suscripción...';
+      const newSubscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
+      });
 
-// PASO CRÍTICO: Eliminar cualquier suscripción vieja cachéada
-const existingSubscription = await registration.pushManager.getSubscription();
-if (existingSubscription) {
-  await existingSubscription.unsubscribe();
-  console.log('[SW] Suscripción vieja eliminada para forzar una nueva');
-}
-
-// PASO 2: Crear la nueva suscripción con la llave nueva
-const newSubscription = await registration.pushManager.subscribe({
-  userVisibleOnly: true,
-  applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
-});
-
-      // URL BLINDADA Y EXACTA (LA QUE PROBAMOS QUE FUNCIONA)
+      statusEl.textContent = '⏳ Guardando en el servidor...';
+      // CORRECCIÓN: Usar newSubscription (no subscription)
       const response = await fetch('https://sportdharmapush.faviosuenosapedal.workers.dev/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(subscription)
+        body: JSON.stringify(newSubscription)
       });
 
       if (response.ok) {
         statusEl.textContent = '✅ ¡Notificaciones activadas con éxito!';
         statusEl.style.color = '#10b981';
-        document.getElementById('subscribe-push').textContent = '✅ Activado';
-        document.getElementById('subscribe-push').disabled = true;
+        const btn = document.getElementById('subscribe-push');
+        if (btn) {
+          btn.textContent = '✅ Activado';
+          btn.disabled = true;
+        }
       } else {
         const errText = await response.text();
         statusEl.textContent = '❌ Error del servidor: ' + errText;
+        statusEl.style.color = '#dc2626';
       }
     } catch (error) {
       console.error('Error de suscripción:', error);
       statusEl.textContent = '❌ Error: ' + error.message;
+      statusEl.style.color = '#dc2626';
       
       if (error.message.includes('applicationServerKey') || error.message.includes('gcm_sender_id') || error.message.includes('active')) {
-        document.getElementById('force-unsubscribe').style.display = 'inline-block';
+        const forceBtn = document.getElementById('force-unsubscribe');
+        if (forceBtn) forceBtn.style.display = 'inline-block';
       }
     }
   }
@@ -124,11 +128,11 @@ const newSubscription = await registration.pushManager.subscribe({
 </script>
 
 <style>
-  .push-subscribe-container { text-align: center; }
+  .push-subscribe-container { text-align: center; padding: 20px; }
   .subscribe-btn {
     background: #E8530E; color: white; border: none; padding: 12px 24px;
     border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer;
-    transition: all 0.3s; display: inline-block;
+    transition: all 0.3s; display: inline-block; margin-top: 10px;
   }
   .subscribe-btn:hover:not(:disabled) { background: #d14a0c; transform: translateY(-2px); }
   .subscribe-btn:disabled { background: #10b981; cursor: default; }
@@ -138,5 +142,5 @@ const newSubscription = await registration.pushManager.subscribe({
     margin-top: 10px; display: none;
   }
   .unsubscribe-btn:hover { background: #b91c1c; }
-  #push-status { margin-top: 1rem; font-size: 14px; min-height: 1.5rem; }
+  #push-status { margin-top: 1rem; font-size: 14px; min-height: 1.5rem; font-weight: 500; }
 </style>
