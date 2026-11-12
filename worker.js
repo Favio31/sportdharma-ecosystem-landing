@@ -72,7 +72,7 @@
           const res = await fetch(k.name, { 
             method: "POST",
             headers: { "Authorization": authHeader, "TTL": "60", "Urgency": "high", "Content-Type": "application/json" },
-            body: JSON.stringify({ title: msg.title, body: msg.body, icon: 'https://www.sportdharmaecosystem.com/logo-social2.jpg' })
+            body: JSON.stringify({ title: msg.title, body: msg.body, icon: 'https://www.sportdharmaecosystem.com/logo.jpg' })
           });
           results.push({ endpoint: k.name.substring(0, 30) + "...", status: res.status, lang: lang });
         } catch (e) { results.push({ error: e.message }); }
