@@ -33,6 +33,7 @@ export default defineConfig({
         workbox: {
           importScripts: ['/push-handler.js'],
           globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
+          globIgnores: ['**/push-handler.js'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
           cacheId: 'sportdharma-FINAL-v13',
           skipWaiting: true,
