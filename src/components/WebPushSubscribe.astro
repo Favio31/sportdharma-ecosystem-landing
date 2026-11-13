@@ -37,7 +37,27 @@
       }
 
       statusEl.textContent = 'Registrando Service Worker...';
-      const registration = await navigator.serviceWorker.ready;
+      let registration;
+      try {
+        // Timeout de 5 segundos para evitar cuelgues infinitos
+        const readyPromise = navigator.serviceWorker.ready;
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Timeout (5s) en Service Worker')), 5000)
+        );
+        registration = await Promise.race([readyPromise, timeoutPromise]);
+      } catch (err) {
+        console.warn('SW ready falló o timeout, intentando registro manual:', err);
+        try {
+          // Fallback: registro manual forzado
+          registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+          await registration.update();
+        } catch (regErr) {
+          statusEl.textContent = '❌ Error SW: ' + regErr.message;
+          statusEl.style.color = 'red';
+          console.error('Fallo registro manual:', regErr);
+          return;
+        }
+      }
 
       const existingSubscription = await registration.pushManager.getSubscription();
       if (existingSubscription) {
@@ -52,8 +72,6 @@
       });
 
       statusEl.textContent = 'Enviando al servidor...';
-      
-      // EXTRAER DATOS EXPLÍCITAMENTE (esto es lo que faltaba)
       const subscriptionData = {
         endpoint: newSubscription.endpoint,
         keys: newSubscription.toJSON().keys,
@@ -76,7 +94,7 @@
         statusEl.style.color = 'red';
       }
     } catch (err) {
-      console.error('Error:', err);
+      console.error('Error general:', err);
       statusEl.textContent = '❌ Error: ' + err.message;
       statusEl.style.color = 'red';
     }
