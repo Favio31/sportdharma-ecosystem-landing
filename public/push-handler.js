@@ -1,10 +1,9 @@
-﻿self.addEventListener('push', function(event) {
+self.addEventListener('push', function(event) {
   console.log('[SW] Push recibido');
   const title = 'SportDharma Ecosystem';
   const options = {
     body: '¡Notificaciones Soberanas activadas con éxito! 🚴‍♂️',
-    icon: '/logo-social2.jpg',
-    badge: '/logo-social2.jpg',
+    icon: '/logo.jpg',
     vibrate: [200, 100, 200, 100, 200],
     tag: 'sportdharma-test',
     requireInteraction: true,
