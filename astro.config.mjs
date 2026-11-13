@@ -35,7 +35,7 @@ export default defineConfig({
           globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
           globIgnores: ['**/push-handler.js'],
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-          cacheId: 'sportdharma-FINAL-v13',
+          cacheId: 'sportdharma-FINAL-v16',
           skipWaiting: true,
           clientsClaim: true,
           cleanupOutdatedCaches: true,
