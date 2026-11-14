@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/sections/Hero.astro';
 import NoticiasSection from '../../components/NoticiasSection.astro';
-import InfraestructuraCard from '../../components/InfraestructuraCard.astro';
+import Extra1Card from '../../components/Extra1Card.astro';
 import ConstructionBanner from '../../components/ConstructionBanner.astro';
 import { useTranslations } from '../../i18n/utils.js';
 
@@ -95,12 +95,12 @@ const t = useTranslations(lang);
   </section>
 
   
-  <!-- INFRAESTRUCTURA TÉCNICA (alineada a la derecha) -->
-  <section class="py-8 px-6 bg-surface-alt transition-colors duration-300">
+  <!-- EXTRA 1 (alineada a la derecha) -->
+  <section class="py-2 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div></div> <!-- Espacio vacío a la izquierda -->
-        <InfraestructuraCard />
+        <Extra1Card />
       </div>
     </div>
   </section>
