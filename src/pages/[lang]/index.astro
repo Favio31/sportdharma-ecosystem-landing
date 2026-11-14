@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/sections/Hero.astro';
 import NoticiasSection from '../../components/NoticiasSection.astro';
+import InfraestructuraCard from '../../components/InfraestructuraCard.astro';
 import ConstructionBanner from '../../components/ConstructionBanner.astro';
 import { useTranslations } from '../../i18n/utils.js';
 
@@ -93,6 +94,8 @@ const t = useTranslations(lang);
   </section>
 
   <!-- SECCIÓN NUEVA: 9 PUBLICACIONES + PORTAL NOTICIAS E INFORMACIÓN -->
+  <InfraestructuraCard />
+
   <NoticiasSection lang={lang} />
 
   <!-- SECCIÓN DESCUBRÍ - TARJETA GRANDE CON CÓDIGO + IMAGEN (ANIMACIÓN LOOP INFINITO) -->
