@@ -55,8 +55,8 @@ const repoUrl = 'https://github.com/Favio31/sportdharma-ecosystem-landing';
     padding: 0.625rem 1rem;
     text-decoration: none;
     position: sticky;
-    top: 0;
-    z-index: 100;
+    top: calc(var(--header-h) + 0.5rem);
+    z-index: 40;
     transition: background-color 0.2s ease;
   }
   .construction-banner:hover {
@@ -89,3 +89,12 @@ const repoUrl = 'https://github.com/Favio31/sportdharma-ecosystem-landing';
     }
   }
 </style>
+
+<script>
+  // Medir altura del header y guardarla en variable CSS
+  const header = document.querySelector('header');
+  if (header) {
+    const headerHeight = header.offsetHeight;
+    document.documentElement.style.setProperty('--header-h', headerHeight + 'px');
+  }
+</script>
