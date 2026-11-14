@@ -1,70 +1,106 @@
-﻿---
-// Sección Noticias e Información - Portal de las 6 categorías
+---
+// Sección Publicaciones Diarias - 9 Categorías + Conversión
+import WebPushSubscribe from './WebPushSubscribe.astro';
 ---
 
-<section id="noticias" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
+<section id="publicaciones" class="py-20 px-6 bg-surface-alt transition-colors duration-300">
   <div class="max-w-6xl mx-auto">
     
     <div class="text-center mb-16">
-      <span class="text-ink-soft font-semibold uppercase tracking-wide text-sm">Noticias e Información</span>
+      <span class="text-[#E8530E] dark:text-orange-500 font-semibold uppercase tracking-wide text-sm">Publicaciones Diarias</span>
       <h2 class="text-3xl md:text-5xl font-bold text-ink mt-3 mb-4">
-        Curación <span class="text-ink-soft">humana</span>, 6 categorías diarias
+        Curación <span class="text-ink-soft">humana</span>, 9 categorías
       </h2>
       <p class="text-lg text-ink-soft max-w-2xl mx-auto">
-        Contenido filtrado por humanos, sin algoritmos, sin trackers. 6 publicaciones diarias para quienes viven en ruta.
+        Contenido filtrado por humanos, sin algoritmos, sin trackers. Publicaciones diarias para quienes viven en ruta.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       
-      <!-- DEPORTES -->
-      <a href="/noticias/deportes" class="bg-surface border border-line rounded-xl p-6 hover:border-ink hover:shadow-lg transition-all duration-300 group">
+      <!-- 1. FRASE DEL DÍA -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
+        <div class="text-4xl mb-4">💬</div>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Frase del día</h3>
+        <p class="text-sm text-ink-soft mb-4">Inspiration diaria para el camino y la mente.</p>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
+      </a>
+
+      <!-- 2. DEPORTE -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
         <div class="text-4xl mb-4">🚴</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:opacity-80 transition-opacity">Deportes</h3>
-        <p class="text-sm text-ink-soft mb-4">Ciclismo y mecánica, caminata, running, trekking.</p>
-        <span class="text-ink font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Ver artículos →</span>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Deporte</h3>
+        <p class="text-sm text-ink-soft mb-4">Ciclismo, mecánica, caminata, running, trekking.</p>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
       </a>
 
-      <!-- SALUD -->
-      <a href="/noticias/salud" class="bg-surface border border-line rounded-xl p-6 hover:border-ink hover:shadow-lg transition-all duration-300 group">
+      <!-- 3. SALUD -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
         <div class="text-4xl mb-4">🥗</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:opacity-80 transition-opacity">Salud</h3>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Salud</h3>
         <p class="text-sm text-ink-soft mb-4">Nutrición, recuperación física, salud mental en ruta.</p>
-        <span class="text-ink font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Ver artículos →</span>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
       </a>
 
-      <!-- ESPIRITUALIDAD -->
-      <a href="/noticias/espiritualidad" class="bg-surface border border-line rounded-xl p-6 hover:border-ink hover:shadow-lg transition-all duration-300 group">
-        <div class="text-4xl mb-4">🧘</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:opacity-80 transition-opacity">Espiritualidad</h3>
-        <p class="text-sm text-ink-soft mb-4">Tai Chi, yoga, meditación.</p>
-        <span class="text-ink font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Ver artículos →</span>
-      </a>
-
-      <!-- VIAJES -->
-      <a href="/noticias/viajes" class="bg-surface border border-line rounded-xl p-6 hover:border-ink hover:shadow-lg transition-all duration-300 group">
-        <div class="text-4xl mb-4">🏕️</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:opacity-80 transition-opacity">Viajes</h3>
-        <p class="text-sm text-ink-soft mb-4">Camping, logística y fronteras, finanzas en ruta.</p>
-        <span class="text-ink font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Ver artículos →</span>
-      </a>
-
-      <!-- EDUCACIÓN -->
-      <a href="/noticias/educacion" class="bg-surface border border-line rounded-xl p-6 hover:border-ink hover:shadow-lg transition-all duration-300 group">
+      <!-- 4. EDUCACIÓN -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
         <div class="text-4xl mb-4">🆘</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:opacity-80 transition-opacity">Educación</h3>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Educación</h3>
         <p class="text-sm text-ink-soft mb-4">Primeros auxilios, supervivencia, habilidades blandas.</p>
-        <span class="text-ink font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Ver artículos →</span>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
       </a>
 
-      <!-- OPEN SOURCE -->
-      <a href="/noticias/open-source" class="bg-surface border border-line rounded-xl p-6 hover:border-ink hover:shadow-lg transition-all duration-300 group">
+      <!-- 5. OPEN SOURCE -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
         <div class="text-4xl mb-4">🐙</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:opacity-80 transition-opacity">Open Source</h3>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Open Source</h3>
         <p class="text-sm text-ink-soft mb-4">Noticias FOSS, grants, herramientas de privacidad.</p>
-        <span class="text-ink font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Ver artículos →</span>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
+      </a>
+
+      <!-- 6. ESPIRITUALIDAD -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
+        <div class="text-4xl mb-4">🧘</div>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Espiritualidad</h3>
+        <p class="text-sm text-ink-soft mb-4">Tai Chi, yoga, meditación, filosofía de ruta.</p>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
+      </a>
+
+      <!-- 7. VIAJE -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
+        <div class="text-4xl mb-4">🏕️</div>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Viaje</h3>
+        <p class="text-sm text-ink-soft mb-4">Camping, logística, fronteras, finanzas en ruta.</p>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
+      </a>
+
+      <!-- 8. EXTRA 1 -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
+        <div class="text-4xl mb-4">⭐</div>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Extra 1</h3>
+        <p class="text-sm text-ink-soft mb-4">Contenido especial en definición.</p>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
+      </a>
+
+      <!-- 9. EXTRA 2 -->
+      <a href="#" class="bg-surface border border-line rounded-xl p-6 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.2)] transition-all duration-300 group">
+        <div class="text-4xl mb-4">🚀</div>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] transition-colors">Extra 2</h3>
+        <p class="text-sm text-ink-soft mb-4">Contenido especial en definición.</p>
+        <span class="text-[#E8530E] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Próximamente →</span>
       </a>
 
     </div>
+
+    <!-- BLOQUE DE CONVERSIÓN (NOTIFICACIONES) -->
+    <div class="mt-20 text-center bg-surface border border-line rounded-2xl p-8 md:p-12 shadow-sm">
+      <h3 class="text-2xl md:text-3xl font-bold text-ink mb-3">¿Querés recibir las notificaciones cuando publicamos?</h3>
+      <p class="text-ink-soft mb-8 max-w-xl mx-auto">Abajo está el botón de acción para mantenerte al día. Sin algoritmos, sin trackers, solo contenido soberano.</p>
+      
+      <div class="flex justify-center">
+        <WebPushSubscribe />
+        </div>
+    </div>
+
   </div>
 </section>
