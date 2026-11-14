@@ -94,8 +94,6 @@ const t = useTranslations(lang);
   </section>
 
   <!-- SECCIÓN NUEVA: 9 PUBLICACIONES + PORTAL NOTICIAS E INFORMACIÓN -->
-  <InfraestructuraCard />
-
   <NoticiasSection lang={lang} />
 
   <!-- SECCIÓN DESCUBRÍ - TARJETA GRANDE CON CÓDIGO + IMAGEN (ANIMACIÓN LOOP INFINITO) -->
@@ -174,7 +172,9 @@ const t = useTranslations(lang);
     });
   </script>
 
-  <!-- RESTO DE TARJETAS -->
+  <InfraestructuraCard />
+
+        <!-- RESTO DE TARJETAS -->
   <section class="py-16 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
