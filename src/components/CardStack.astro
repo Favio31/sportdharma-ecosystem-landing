@@ -1,57 +1,85 @@
 ---
-// Mazo de cartas animado (aicssanimations Card Stack Shuffle)
-// reduce-motion => mazo estatico de 3 cartas (NUNCA 1 sola)
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const src = `${base}/ecosistema-diagram-transparente.jpg`;
 ---
-<div class="card-stack-shuffle">
-  <img src="/ecosistema-diagram-transparente.jpg" alt="Ecosistema: App + Web + MASF" style="--i: 0" draggable="false" />
-  <img src="/ecosistema-diagram-transparente.jpg" alt="Ecosistema: App + Web + MASF" style="--i: 1" draggable="false" />
-  <img src="/ecosistema-diagram-transparente.jpg" alt="Ecosistema: App + Web + MASF" style="--i: 2" draggable="false" />
+
+<div
+  class="card-stack"
+  role="img"
+  aria-label="Mazo de tarjetas con el diagrama del ecosistema"
+>
+  <div class="card-stack-shuffle" aria-hidden="true">
+    <div class="card"><img src={src} alt="" decoding="async" /></div>
+    <div class="card"><img src={src} alt="" decoding="async" /></div>
+    <div class="card"><img src={src} alt="" decoding="async" /></div>
+  </div>
 </div>
 
 <style>
+  .card-stack {
+    --brand: #e8530e;
+    font-size: 1rem;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    /* Espacio propio para el recorrido: nada se corta */
+    padding: 2.5em 2.5em 2em 3.5em;
+  }
+
   .card-stack-shuffle {
     position: relative;
-    width: 13em;
-    height: 13em;
-    margin: 0 auto;
+    width: 11em;
+    height: 11em;
   }
-  @media (min-width: 768px) { .card-stack-shuffle { font-size: 19px; } }
-  .card-stack-shuffle > img {
+
+  .card {
     position: absolute;
     inset: 0;
+    overflow: hidden;
+    border-radius: 0.8em;
+    background: #0a0a0a;
+    border: 1.5px solid rgb(232 83 14 / 0.75);
+    box-shadow:
+      0 0.6em 1.2em rgb(0 0 0 / 0.6),
+      0 0 1.2em rgb(232 83 14 / 0.18);
+    will-change: transform;
+  }
+
+  .card img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: 0.8em;
-    background: #0a0a0a;
-    box-shadow: 0 0.5em 1em -0.5em rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,255,255,0.12);
-    opacity: 1;
   }
-  /* Animacion por defecto (loop) */
-  .card-stack-shuffle > img {
-    animation:
-      deal 4.5s cubic-bezier(0.65, 0, 0.35, 1) infinite,
-      layer 4.5s linear infinite;
-    animation-delay: calc(var(--i) * -1.5s);
-  }
-  @keyframes deal {
-    0%, 18% { transform: none; filter: brightness(1); }
-    25% { transform: translate(2.6em, -0.3em) rotate(8deg); filter: brightness(1); }
-    33%, 50% { transform: translateY(-0.8em) scale(0.86); filter: brightness(0.7); }
-    66%, 83% { transform: translateY(-0.4em) scale(0.93); filter: brightness(0.85); }
-    100% { transform: none; filter: brightness(1); }
-  }
-  @keyframes layer {
-    0%, 27% { z-index: 3; }
-    27.5%, 61.5% { z-index: 1; }
-    62%, 93.5% { z-index: 2; }
-    94%, 100% { z-index: 3; }
-  }
-  /* reduce-motion => mazo ESTATICO de 3 cartas visibles (no 1 sola) */
-  @media (prefers-reduced-motion: reduce) {
-    .card-stack-shuffle > img { animation: none; opacity: 1; filter: none; }
-    .card-stack-shuffle > img:nth-child(1) { transform: none; z-index: 3; }
-    .card-stack-shuffle > img:nth-child(2) { transform: translateY(0.6em) translateX(0.5em) rotate(4deg); z-index: 2; }
-    .card-stack-shuffle > img:nth-child(3) { transform: translateY(1.2em) translateX(-0.5em) rotate(-4deg); z-index: 1; }
+
+  /* ESTADO POR DEFECTO = mazo estático (reduced-motion y fallback) */
+  .card:nth-child(1) { transform: none; z-index: 3; border-color: var(--brand); }
+  .card:nth-child(2) { transform: translate(0.8em, -0.8em) rotate(3deg) scale(0.97); z-index: 2; }
+  .card:nth-child(3) { transform: translate(1.6em, -1.6em) rotate(6deg) scale(0.94); z-index: 1; }
+
+  /* ANIMACIÓN: solo si el usuario NO pidió reducir movimiento */
+  @media (prefers-reduced-motion: no-preference) {
+    .card {
+      animation: deal 6s ease-in-out infinite;
+    }
+    /* 3 pasos de 2s: cada carta va desfasada un paso */
+    .card:nth-child(1) { animation-delay: 0s; }
+    .card:nth-child(2) { animation-delay: -4s; }
+    .card:nth-child(3) { animation-delay: -2s; }
+
+    @keyframes deal {
+      /* frente -> sale volando a la izquierda -> va al fondo */
+      0%      { transform: none; z-index: 3; }
+      5%      { transform: translate(-2.2em, 0.3em) rotate(-9deg); z-index: 4; }
+      12%, 33.33% {
+        transform: translate(1.6em, -1.6em) rotate(6deg) scale(0.94); z-index: 1;
+      }
+      /* fondo -> medio */
+      45.33%, 66.67% {
+        transform: translate(0.8em, -0.8em) rotate(3deg) scale(0.97); z-index: 2;
+      }
+      /* medio -> frente */
+      78.67%, 100% { transform: none; z-index: 3; }
+    }
   }
 </style>
