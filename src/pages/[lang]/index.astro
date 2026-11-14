@@ -90,11 +90,20 @@ const t = useTranslations(lang);
         </a>
 
   <!-- INFRAESTRUCTURA TÉCNICA -->
-  <InfraestructuraCard />
 </div>
     </div>
   </section>
 
+  
+  <!-- INFRAESTRUCTURA TÉCNICA (alineada a la derecha) -->
+  <section class="py-8 px-6 bg-surface-alt transition-colors duration-300">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div></div> <!-- Espacio vacío a la izquierda -->
+        <InfraestructuraCard />
+      </div>
+    </div>
+  </section>
   <!-- SECCIÓN NUEVA: 9 PUBLICACIONES + PORTAL NOTICIAS E INFORMACIÓN -->
   <NoticiasSection lang={lang} />
 
