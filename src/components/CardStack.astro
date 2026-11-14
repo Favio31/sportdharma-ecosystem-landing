@@ -1,0 +1,51 @@
+---
+// Mazo de cartas animado adaptado de aicssanimations "Card Stack Shuffle"
+// 3 imagenes del diagrama que se reparten en loop (negative delays)
+---
+<div class="card-stack-shuffle">
+  <img src="/ecosistema-diagram-transparente.jpg" alt="Ecosistema: App + Web + MASF" style="--i: 0" draggable="false" />
+  <img src="/ecosistema-diagram-transparente.jpg" alt="Ecosistema: App + Web + MASF" style="--i: 1" draggable="false" />
+  <img src="/ecosistema-diagram-transparente.jpg" alt="Ecosistema: App + Web + MASF" style="--i: 2" draggable="false" />
+</div>
+
+<style>
+  .card-stack-shuffle {
+    --c: #E8530E;
+    font-size: 16px;
+    position: relative;
+    width: 13em;
+    height: 13em;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) { .card-stack-shuffle { font-size: 19px; } }
+  .card-stack-shuffle > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.8em;
+    background: #0a0a0a;
+    box-shadow: 0 0.5em 1em -0.5em rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,255,255,0.12);
+    animation:
+      deal 4.5s cubic-bezier(0.65, 0, 0.35, 1) infinite,
+      layer 4.5s linear infinite;
+    animation-delay: calc(var(--i) * -1.5s);
+  }
+  @keyframes deal {
+    0%, 18% { transform: none; filter: brightness(1); }
+    25% { transform: translate(2.6em, -0.3em) rotate(8deg); filter: brightness(1); }
+    33%, 50% { transform: translateY(-0.8em) scale(0.86); filter: brightness(0.7); }
+    66%, 83% { transform: translateY(-0.4em) scale(0.93); filter: brightness(0.85); }
+    100% { transform: none; filter: brightness(1); }
+  }
+  @keyframes layer {
+    0%, 27% { z-index: 3; }
+    27.5%, 61.5% { z-index: 1; }
+    62%, 93.5% { z-index: 2; }
+    94%, 100% { z-index: 3; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-stack-shuffle > img { animation-duration: 0.01ms; animation-iteration-count: 1; }
+  }
+</style>
