@@ -1,6 +1,6 @@
 ---
-// Mazo de cartas animado adaptado de aicssanimations "Card Stack Shuffle"
-// 3 imagenes del diagrama que se reparten en loop (negative delays)
+// Mazo de cartas animado (aicssanimations Card Stack Shuffle)
+// reduce-motion => mazo estatico de 3 cartas (NUNCA 1 sola)
 ---
 <div class="card-stack-shuffle">
   <img src="/ecosistema-diagram-transparente.jpg" alt="Ecosistema: App + Web + MASF" style="--i: 0" draggable="false" />
@@ -10,8 +10,6 @@
 
 <style>
   .card-stack-shuffle {
-    --c: #E8530E;
-    font-size: 16px;
     position: relative;
     width: 13em;
     height: 13em;
@@ -27,6 +25,10 @@
     border-radius: 0.8em;
     background: #0a0a0a;
     box-shadow: 0 0.5em 1em -0.5em rgba(0,0,0,0.7), inset 0 0 0 1px rgba(255,255,255,0.12);
+    opacity: 1;
+  }
+  /* Animacion por defecto (loop) */
+  .card-stack-shuffle > img {
     animation:
       deal 4.5s cubic-bezier(0.65, 0, 0.35, 1) infinite,
       layer 4.5s linear infinite;
@@ -45,7 +47,11 @@
     62%, 93.5% { z-index: 2; }
     94%, 100% { z-index: 3; }
   }
+  /* reduce-motion => mazo ESTATICO de 3 cartas visibles (no 1 sola) */
   @media (prefers-reduced-motion: reduce) {
-    .card-stack-shuffle > img { animation-duration: 0.01ms; animation-iteration-count: 1; }
+    .card-stack-shuffle > img { animation: none; opacity: 1; filter: none; }
+    .card-stack-shuffle > img:nth-child(1) { transform: none; z-index: 3; }
+    .card-stack-shuffle > img:nth-child(2) { transform: translateY(0.6em) translateX(0.5em) rotate(4deg); z-index: 2; }
+    .card-stack-shuffle > img:nth-child(3) { transform: translateY(1.2em) translateX(-0.5em) rotate(-4deg); z-index: 1; }
   }
 </style>
