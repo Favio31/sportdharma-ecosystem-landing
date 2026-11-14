@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/sections/Hero.astro';
 import NoticiasSection from '../../components/NoticiasSection.astro';
+import ConstructionBanner from '../../components/ConstructionBanner.astro';
 import { useTranslations } from '../../i18n/utils.js';
 
 export async function getStaticPaths() {
@@ -20,6 +21,7 @@ const t = useTranslations(lang);
 ---
 
 <Layout title="SportDharma Ecosystem | Software Libre para Deportistas Outdoor">
+  <ConstructionBanner lang={lang} />
   <Hero />
 
   <section class="py-16 px-6 bg-surface-alt transition-colors duration-300">

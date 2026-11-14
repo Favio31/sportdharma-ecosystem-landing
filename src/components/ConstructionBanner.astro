@@ -1,0 +1,63 @@
+---
+// Banner sticky superior: "En Construcción Activa" (solo home)
+interface Props { lang: string }
+const { lang } = Astro.props;
+
+const messages: Record<string, string> = {
+  es: '🚧 En Construcción Activa — Seguinos en GitHub',
+  en: '🚧 Under Active Construction — Follow us on GitHub',
+  fr: '🚧 En Construction Active — Suivez-nous sur GitHub',
+  pt: '🚧 Em Construção Ativa — Siga-nos no GitHub',
+  de: '🚧 Im aktiven Aufbau — Folge uns auf GitHub',
+  it: '🚧 In Costruzione Attiva — Seguici su GitHub'
+};
+const message = messages[lang] || messages['es'];
+const repoUrl = 'https://github.com/Favio31/sportdharma-ecosystem-landing';
+---
+
+<a
+  href={repoUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="construction-banner"
+  aria-label="SportDharma Ecosystem on GitHub"
+>
+  <span class="construction-banner__text">{message}</span>
+  <span class="construction-banner__arrow" aria-hidden="true">→</span>
+</a>
+
+<style is:global>
+  .construction-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    background-color: #E8530E;
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.625rem 1rem;
+    text-decoration: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.2s ease;
+  }
+  .construction-banner:hover {
+    background-color: #c9460b;
+  }
+  .construction-banner__arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+  .construction-banner:hover .construction-banner__arrow {
+    transform: translateX(4px);
+  }
+  @media (max-width: 640px) {
+    .construction-banner {
+      font-size: 0.75rem;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+</style>
