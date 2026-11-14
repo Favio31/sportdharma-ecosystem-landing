@@ -1,5 +1,5 @@
 ---
-// Banner sticky superior: logo SportDharma + texto + logo GitHub (solo home)
+// Banner sticky superior: logo SportDharma (fondo blanco circular) + texto + logo GitHub (solo home)
 interface Props { lang: string }
 const { lang } = Astro.props;
 
@@ -22,13 +22,13 @@ const repoUrl = 'https://github.com/Favio31/sportdharma-ecosystem-landing';
   class="construction-banner"
   aria-label="SportDharma Ecosystem on GitHub"
 >
-  <!-- Logo SportDharma (blanco por filtro CSS) -->
+  <!-- Logo SportDharma (fondo blanco circular) -->
   <img
     src="/logo.jpg"
     alt="SportDharma Ecosystem"
     class="construction-banner__logo-sd"
-    width="22"
-    height="22"
+    width="26"
+    height="26"
     draggable="false"
   />
 
@@ -64,8 +64,11 @@ const repoUrl = 'https://github.com/Favio31/sportdharma-ecosystem-landing';
   }
   .construction-banner__logo-sd {
     flex-shrink: 0;
-    filter: brightness(0) invert(1);
+    background-color: #ffffff;
     border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 2px;
+    object-fit: cover;
   }
   .construction-banner__logo-gh {
     flex-shrink: 0;
@@ -77,8 +80,8 @@ const repoUrl = 'https://github.com/Favio31/sportdharma-ecosystem-landing';
       gap: 0.4rem;
     }
     .construction-banner__logo-sd {
-      width: 18px;
-      height: 18px;
+      width: 22px;
+      height: 22px;
     }
     .construction-banner__logo-gh {
       width: 16px;
