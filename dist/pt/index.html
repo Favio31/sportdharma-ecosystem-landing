@@ -52,7 +52,7 @@ Búsqueda de contenido: MASF | Curaduría de textos: IA | Curación general y fi
   <span class="text-[#38bdf8]">infraestructura:</span> <span class="typing-text" data-text="'libre',"></span>
   <span class="text-[#38bdf8]">soberania:</span> <span class="typing-text" data-text="true,"></span>
   <span class="text-[#38bdf8]">offline_first:</span> <span class="typing-text" data-text="true,"></span>
-  <span class="text-[#38bdf8]">para:</span> <span class="typing-text" data-text="'deportistas outdoor', rescatistas, comunidades remotas"></span>
+  <span class="text-[#38bdf8]">para:</span> <span class="typing-text typing-text-para" data-text="'deportistas outdoor', rescatistas, comunidades remotas"></span>
   <span class="text-[#38bdf8]">tecnologia:</span> <span class="typing-text" data-text="'respeta tu privacidad',"></span>
   <span class="text-[#38bdf8]">valores:</span> <span class="typing-text" data-text="['transparencia', 'privacidad', 'resiliencia']"></span>
 <span class="text-[#a78bfa]"></span>;</pre> </div> <div class="md:col-span-2 min-w-0 flex items-center justify-center p-2 md:p-4 bg-[#1e293b] border-t md:border-t-0 md:border-l border-slate-800"> <div class="rounded-xl"> <div class="card-stack" role="img" aria-label="Mazo de tarjetas con el diagrama del ecosistema" data-astro-cid-jekpdxoh> <div class="card-stack-shuffle" aria-hidden="true" data-astro-cid-jekpdxoh> <div class="card" data-astro-cid-jekpdxoh><img src="/ecosistema-diagram-transparente.png" alt="" decoding="async" data-astro-cid-jekpdxoh></div> <div class="card" data-astro-cid-jekpdxoh><img src="/ecosistema-diagram-transparente.png" alt="" decoding="async" data-astro-cid-jekpdxoh></div> <div class="card" data-astro-cid-jekpdxoh><img src="/ecosistema-diagram-transparente.png" alt="" decoding="async" data-astro-cid-jekpdxoh></div> </div> </div>  </div> </div> </div> </a> </div> </section> <style>
@@ -69,7 +69,10 @@ Búsqueda de contenido: MASF | Curaduría de textos: IA | Curación general y fi
     @keyframes blink-cursor { 50% { border-color: transparent; } }
     @media (max-width: 768px) {
     pre { padding-left: 1rem !important; }
-    pre .typing-text { display: block; padding-left: 3.5rem; }
+    
+  }
+  @media (max-width: 768px) {
+    .typing-text-para { display: inline-block; text-indent: -3.5rem; padding-left: 3.5rem; }
   }
 </style> <script>
     document.addEventListener('DOMContentLoaded', () => {
