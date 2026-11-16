@@ -6,7 +6,7 @@
   <h3>Notificaciones Soberanas</h3>
   <p>Recibí actualizaciones sin dejar tu correo electrónico.</p>
   
-  <button id="subscribe-push" class="subscribe-btn">🔔 Activar Notificaciones</button>
+  <button id="subscribe-push" class="subscribe-btn">Activar Notificaciones</button>
   <p id="push-status" style="font-weight: bold; font-size: 16px;"></p>
 </div>
 
@@ -100,11 +100,11 @@
 <style>
   .push-subscribe-container { text-align: center; }
   .subscribe-btn {
-    background: #E8530E; color: white; border: none; padding: 12px 24px;
+    background: transparent; color: #E8530E; border: 2px solid #E8530E; padding: 12px 24px;
     border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer;
     transition: all 0.3s; display: inline-block;
   }
-  .subscribe-btn:hover:not(:disabled) { background: #d14a0c; transform: translateY(-2px); }
+  .subscribe-btn:hover:not(:disabled) { background: rgba(232,83,14,0.1); transform: translateY(-2px); }
   .subscribe-btn:disabled { background: #10b981; cursor: default; }
   #push-status { margin-top: 1rem; font-size: 14px; min-height: 1.5rem; }
 </style>
