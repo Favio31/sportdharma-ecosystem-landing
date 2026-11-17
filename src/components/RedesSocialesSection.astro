@@ -9,18 +9,18 @@ const canales = [
 ];
 ---
 
-<section class="relative py-16 px-4 md:px-8 bg-[#0f172a]">
+<section class="relative py-16 px-4 md:px-8 bg-surface">
   <div class="relative z-10 max-w-5xl mx-auto">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Mis Canales de Ruta</h2>
-      <p class="text-slate-400 max-w-2xl mx-auto">Seguí el viaje, las historias y el día a día en bicicleta.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Mis páginas de viaje y canales de YouTube</h2>
+      <p class="text-slate-400 max-w-2xl mx-auto">Seguí el viaje en tiempo real: crónicas en Facebook y videos en YouTube.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {canales.map((c) => (
         <a href={c.url} target="_blank" rel="noopener noreferrer"
-           class="group relative flex flex-col bg-[#0f172a]/40 hover:bg-violet-900/20 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1">
-          <div class="aspect-video w-full overflow-hidden bg-slate-800 flex items-center justify-center">
+           class="group relative flex flex-col bg-transparent hover:bg-violet-900/20 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1">
+          <div class="aspect-video w-full overflow-hidden bg-surface flex items-center justify-center">
             <img src={c.img} alt={c.nombre}
                  class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                  loading="lazy" />
