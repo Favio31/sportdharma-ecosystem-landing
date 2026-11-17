@@ -6,6 +6,7 @@ import Extra1Card from '../../components/Extra1Card.astro';
 import CardStack from '../../components/CardStack.astro';
 import ConstructionBanner from '../../components/ConstructionBanner.astro';
 import { useTranslations } from '../../i18n/utils.js';
+import PresenciaDigitalSection from '../../components/PresenciaDigitalSection.astro';
 
 export async function getStaticPaths() {
   return [
@@ -99,7 +100,9 @@ const t = useTranslations(lang);
   </section>
 
   
-  <!-- SECCIÓN NUEVA: 9 PUBLICACIONES + PORTAL NOTICIAS E INFORMACIÓN -->
+  <PresenciaDigitalSection />
+
+<!-- SECCIÓN NUEVA: 9 PUBLICACIONES + PORTAL NOTICIAS E INFORMACIÓN -->
   <NoticiasSection lang={lang} />
 
   <!-- SECCIÓN DESCUBRÍ - TARJETA GRANDE CON CÓDIGO + IMAGEN (ANIMACIÓN LOOP INFINITO) -->
