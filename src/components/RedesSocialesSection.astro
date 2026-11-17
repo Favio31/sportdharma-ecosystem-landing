@@ -1,0 +1,70 @@
+---
+import * as SI from 'simple-icons';
+
+const canales = [
+  { 
+    nombre: 'Pedalear el Mundo', 
+    plataforma: 'Facebook', 
+    url: 'https://www.facebook.com/PedalearElMundo/', 
+    img: '/fundador/fb-pedalear.jpg', 
+    icono: SI.siFacebook.path 
+  },
+  { 
+    nombre: 'Sueños a Pedal', 
+    plataforma: 'Facebook', 
+    url: 'https://www.facebook.com/SuenosAPedal/', 
+    img: '/fundador/fb-suenos.jpg', 
+    icono: SI.siFacebook.path 
+  },
+  { 
+    nombre: 'Favio Marcelo Giorgio Data', 
+    plataforma: 'YouTube', 
+    url: 'https://www.youtube.com/@faviomarcelogiorgiodata4684', 
+    img: '/fundador/yt-favio1.jpg', 
+    icono: SI.siYoutube.path 
+  },
+  { 
+    nombre: 'Favio Giorgio', 
+    plataforma: 'YouTube', 
+    url: 'https://www.youtube.com/@faviogiorgio8492', 
+    img: '/fundador/yt-favio2.jpg', 
+    icono: SI.siYoutube.path 
+  }
+];
+---
+
+<section class="relative py-16 px-4 md:px-8 bg-[#0f172a]">
+  <div class="relative z-10 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Mis Canales de Ruta</h2>
+      <p class="text-slate-400 max-w-2xl mx-auto">Seguí el viaje, las historias y el día a día en bicicleta.</p>
+    </p>
+    
+    <!-- Grilla flotante sin bordes, 2 columnas en mobile, 4 en desktop -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {canales.map((c) => (
+        <a href={c.url} target="_blank" rel="noopener noreferrer" 
+           class="group relative flex flex-col bg-[#0f172a]/40 hover:bg-violet-900/20 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1">
+          
+          <!-- Miniatura -->
+          <div class="aspect-video w-full overflow-hidden bg-slate-800">
+            <img src={c.img} alt={c.nombre} 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                 loading="lazy" />
+          </div>
+          
+          <!-- Info -->
+          <div class="p-4 flex items-center gap-3">
+            <svg class="w-5 h-5 shrink-0 text-slate-400 group-hover:text-violet-400 transition-colors" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d={c.icono}></path>
+            </svg>
+            <div class="flex flex-col">
+              <span class="text-xs font-semibold text-violet-400 uppercase tracking-wider">{c.plataforma}</span>
+              <span class="text-sm font-bold text-slate-200 group-hover:text-white transition-colors line-clamp-1">{c.nombre}</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
