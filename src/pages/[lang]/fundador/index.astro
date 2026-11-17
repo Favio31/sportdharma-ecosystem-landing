@@ -22,11 +22,20 @@ const t = useTranslations(lang);
   <section class="py-20 px-6 bg-surface">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12">
-        <img 
-          src="/images/fundador/suenos-a-pedal.jpg" 
-          alt="Sueños A Pedal Logo" 
-          class="w-48 h-48 mx-auto mb-6 rounded-full object-cover shadow-lg bg-white"
-        />
+                <div class="flex flex-wrap justify-center items-center gap-6 mb-6">
+          <img
+            src="/images/fundador/suenos-a-pedal.jpg"
+            alt="Sueños A Pedal Logo"
+            class="w-48 h-48 rounded-full object-cover shadow-lg bg-white"
+          />
+          <a href="https://www.facebook.com/PedalearElMundo/" target="_blank" rel="noopener noreferrer" title="Pedalear el Mundo en Facebook" class="block">
+            <img
+              src="/fundador/fb-pedalear.jpg"
+              alt="Pedalear el Mundo Logo"
+              class="w-48 h-48 rounded-full object-cover shadow-lg bg-white grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            />
+          </a>
+        </div>
         <h1 class="text-4xl md:text-5xl font-bold text-ink mb-4">{t('fundador.title')}</h1>
         <p class="text-xl text-[#E8530E] font-semibold italic">{t('fundador.tagline')}</p>
       </div>
