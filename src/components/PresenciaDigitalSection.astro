@@ -1,51 +1,58 @@
 ---
 // Seccion Presencia Digital
-// Logos oficiales (simple-icons) + wordmarks tipograficos + glow radial decolorado estilo astro.build
+// Diseño: Retícula sin tarjeta, glow decolorado astro.build, logos oficiales + wordmarks
 import * as SI from 'simple-icons';
 
 const redes = [
   { name: 'GitHub',        url: 'https://github.com/Favio31',                                   icon: SI.siGithub?.path },
+  { name: 'LinkedIn',      url: 'https://www.linkedin.com/in/faviomgiorgiodata',                icon: null }, // Wordmark
   { name: 'Ko-fi',         url: 'https://ko-fi.com/fmgiorgiodata',                              icon: SI.siKofi?.path },
   { name: 'Liberapay',     url: 'https://es.liberapay.com/SportDharmaEcosystem/',               icon: SI.siLiberapay?.path },
-  { name: 'GoatCounter',   url: 'https://sportdharmaecosystem.goatcounter.com/',                icon: null },
-  { name: 'F6S',           url: 'https://www.f6s.com/favio-marcelo-giorgio-data',               icon: null },
+  { name: 'GoatCounter',   url: 'https://sportdharmaecosystem.goatcounter.com/',                icon: null }, // Wordmark
+  { name: 'F6S',           url: 'https://www.f6s.com/favio-marcelo-giorgio-data',               icon: null }, // Wordmark
   { name: 'Crunchbase',    url: 'https://www.crunchbase.com/organization/sportdharma-ecosystem', icon: SI.siCrunchbase?.path },
-  { name: 'Gust',          url: 'https://gust.com/companies/sportdharma-ecosystem',             icon: null },
+  { name: 'Gust',          url: 'https://gust.com/companies/sportdharma-ecosystem',             icon: null }, // Wordmark
   { name: 'Product Hunt',  url: 'https://www.producthunt.com/@sportdharmaecosystem',            icon: SI.siProducthunt?.path },
-  { name: 'DEV',           url: 'https://dev.to/favio31',                                       icon: SI.siDevdotto?.path },
+  { name: 'Dev.to',        url: 'https://dev.to/favio31',                                       icon: SI.siDevdotto?.path },
   { name: 'Vivaldi',       url: 'https://social.vivaldi.net/@SportDharmaEcosystem',             icon: SI.siVivaldi?.path },
   { name: 'OpenStreetMap', url: 'https://www.openstreetmap.org/user/Favio31',                   icon: SI.siOpenstreetmap?.path },
-  { name: 'Warmshowers',   url: 'https://app.warmshowers.org/profiles/b2670d74-d76d-43a8-aeb0-157126a14ea5', icon: null },
+  { name: 'Warmshowers',   url: 'https://app.warmshowers.org/profiles/b2670d74-d76d-43a8-aeb0-157126a14ea5', icon: null }, // Wordmark
   { name: 'Lemmy',         url: 'https://lemmy.world/u/SportDharmaEcosystem',                   icon: SI.siLemmy?.path },
   { name: 'Hashnode',      url: 'https://hashnode.com/@sportdharmaecosystem',                   icon: SI.siHashnode?.path },
-  { name: 'LinkedIn',      url: 'https://www.linkedin.com/in/faviomgiorgiodata',                icon: SI.siLinkedin?.path },
 ];
 ---
 
 <section class="relative overflow-hidden py-16 px-4 md:px-8 bg-[#0f172a]">
-  <!-- Glow radial decolorado estilo astro.build -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_-10%,rgba(124,58,237,0.55),rgba(15,23,42,0)_70%)]"></div>
+  <!-- Glow radial decolorado estilo astro.build (violeta suave arriba-centro fundiéndose en el fondo) -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_-10%,rgba(124,58,237,0.4),transparent_70%)] pointer-events-none"></div>
 
   <div class="relative z-10 max-w-6xl mx-auto">
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Presencia Digital</h2>
-      <p class="text-slate-300 max-w-2xl mx-auto">Podés conectar y sumarte con nosotros</p>
+      <p class="text-slate-400 max-w-2xl mx-auto">Podés conectar y sumarte con nosotros</p>
     </div>
 
-    <!-- Retícula estilo tailwindcss.com: divisores finos + celdas clicables -->
+    <!-- Retícula estilo tailwindcss.com: divisores finos (gap-px) + celdas clicables sin borde de tarjeta -->
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
       {redes.map((r) => (
         <a href={r.url} target="_blank" rel="noopener noreferrer"
-           class="group flex items-center gap-3 p-5 bg-[#0f172a]/40 hover:bg-violet-900/30 transition-colors duration-200">
+           class="group flex items-center gap-3 p-5 bg-[#0f172a] hover:bg-violet-900/20 transition-colors duration-200">
+          
           {r.icon ? (
-            <svg class="w-6 h-6 shrink-0 text-slate-300 group-hover:text-violet-400 transition-colors" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={r.icon}></path></svg>
+            <!-- Logo oficial SVG -->
+            <svg class="w-6 h-6 shrink-0 text-slate-400 group-hover:text-violet-400 transition-colors" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d={r.icon}></path>
+            </svg>
           ) : (
-            <span class="w-6 h-6 shrink-0 rounded-md bg-violet-500/20 group-hover:bg-violet-500/40 transition-colors"></span>
+            <!-- Wordmark tipográfico (cuadrado decorativo sutil + texto bold) -->
+            <span class="w-6 h-6 shrink-0 flex items-center justify-center text-xs font-black text-slate-400 group-hover:text-violet-400 transition-colors">
+              {r.name.substring(0, 2).toUpperCase()}
+            </span>
           )}
-          <span class:list={[
-            'font-bold tracking-tight transition-colors',
-            r.icon ? 'text-base text-slate-200 group-hover:text-white' : 'text-lg text-white group-hover:text-violet-300'
-          ]}>{r.name}</span>
+          
+          <span class="font-bold tracking-tight text-slate-400 group-hover:text-white transition-colors text-sm md:text-base">
+            {r.name}
+          </span>
         </a>
       ))}
     </div>
