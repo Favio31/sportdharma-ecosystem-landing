@@ -112,92 +112,36 @@ const t = useTranslations(lang);
 <!-- SECCIÓN NUEVA: 9 PUBLICACIONES + PORTAL NOTICIAS E INFORMACIÓN -->
   <NoticiasSection lang={lang} />
 
-  <!-- SECCIÓN DESCUBRÍ - TARJETA GRANDE CON CÓDIGO + IMAGEN (ANIMACIÓN LOOP INFINITO) -->
   <section class="py-12 md:py-16 px-4 md:px-6 bg-surface-alt">
-    <div class="max-w-6xl mx-auto">
-
-      <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-10 text-center px-2"><span class="text-slate-500 dark:text-slate-400">DESCUBRÍ </span><span class="text-white">¿Qué es SportDharma Ecosystem?</span></h2>
-
-
-      <a href={'/' + lang + '/descubri/'} class="group block rounded-2xl overflow-hidden shadow-2xl bg-[#0f172a] border-2 border-gray-400 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-10 text-center px-2">
+      <span class="text-slate-500 dark:text-slate-400">DESCUBRÍ</span> <span class="text-ink">¿Qué es SportDharma Ecosystem?</span>
+    </h2>
+    <div class="descubri-layout grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div class="rounded-2xl overflow-hidden shadow-2xl bg-[#0f172a] border-2 border-gray-400">
         <div class="flex items-center gap-2 px-3 md:px-4 py-2 bg-[#0f172a] border-b border-gray-500">
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047] blink-1"></div>
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047] blink-2"></div>
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047] blink-3"></div>
+          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047]"></div>
+          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047]"></div>
+          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047]"></div>
           <span class="ml-2 md:ml-4 text-[10px] md:text-xs text-[#fde047] font-mono">sportdharmaecosystem.mjs</span>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
-          <div class="md:col-span-3 p-3 md:p-6 font-mono text-xs md:text-sm leading-relaxed pl-8">
-            <pre class="whitespace-pre-wrap break-words m-0 p-0 grid grid-cols-[max-content_1fr] gap-x-[1ch]"><span class="col-span-2"><span class="text-[#4ade80]">const</span> <span class="text-[#4ade80]">SportDharmaEcosystem</span> <span class="text-[#4ade80]">=</span> <span class="text-black">{</span></span>
-  <span class="text-[#38bdf8]">infraestructura:</span> <span class="typing-text whitespace-pre-wrap [overflow-wrap:anywhere]" data-text="'libre',"></span>
-  <span class="text-[#38bdf8]">soberania:</span> <span class="typing-text whitespace-pre-wrap [overflow-wrap:anywhere]" data-text="true,"></span>
-  <span class="text-[#38bdf8]">offline_first:</span> <span class="typing-text whitespace-pre-wrap [overflow-wrap:anywhere]" data-text="true,"></span>
-  <span class="text-[#38bdf8]">para:</span> <span class="typing-text " data-text="'deportistas outdoor', rescatistas, comunidades remotas"></span>
-  <span class="text-[#38bdf8]">tecnologia:</span> <span class="typing-text whitespace-pre-wrap [overflow-wrap:anywhere]" data-text="'respeta tu privacidad',"></span>
-  <span class="text-[#38bdf8]">valores:</span> <span class="typing-text whitespace-pre-wrap [overflow-wrap:anywhere]" data-text="['transparencia', 'privacidad', 'resiliencia']"></span>
+        <div class="p-3 md:p-6 font-mono text-xs md:text-sm leading-relaxed">
+          <pre class="whitespace-pre-wrap break-words m-0 p-0 grid grid-cols-[max-content_1fr] gap-x-[1ch]" data-typing><span class="col-span-2"><span class="text-[#4ade80]">const</span> <span class="text-[#4ade80]">SportDharmaEcosystem</span> <span class="text-[#4ade80]">=</span> <span class="text-black">{</span></span>
+<span class="text-[#38bdf8]">infraestructura:</span> <span class="cs-tw"><span class="cs-ghost">'libre',</span><span class="cs-live" aria-hidden="true"></span></span>
+<span class="text-[#38bdf8]">soberania:</span> <span class="cs-tw"><span class="cs-ghost">true,</span><span class="cs-live" aria-hidden="true"></span></span>
+<span class="text-[#38bdf8]">offline_first:</span> <span class="cs-tw"><span class="cs-ghost">true,</span><span class="cs-live" aria-hidden="true"></span></span>
+<span class="text-[#38bdf8]">para:</span> <span class="cs-tw"><span class="cs-ghost">'deportistas outdoor', rescatistas, comunidades remotas</span><span class="cs-live" aria-hidden="true"></span></span>
+<span class="text-[#38bdf8]">tecnologia:</span> <span class="cs-tw"><span class="cs-ghost">'respeta tu privacidad',</span><span class="cs-live" aria-hidden="true"></span></span>
+<span class="text-[#38bdf8]">valores:</span> <span class="cs-tw"><span class="cs-ghost">['transparencia', 'privacidad', 'resiliencia']</span><span class="cs-live" aria-hidden="true"></span></span>
 <span class="col-span-2 text-[#a78bfa]">};</span></pre>
-          </div>
-
-          <div class="md:col-span-2 min-w-0 flex items-center justify-center p-2 md:p-4 bg-[#0f172a] border-t md:border-t-0 md:border-l border-slate-800">
-            <div class="rounded-xl">
-              <TacticalHudFlyer />
-            </div>
-          </div>
         </div>
-      </a>
+      </div>
+      <div class="flex items-center justify-center">
+        <TacticalHudFlyer />
+      </div>
     </div>
-  </section>
-
-  <style is:inline>
-    .font-mono { font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace; }
-    .text-gray { color: #94a3b8; }
-    .text-orange { color: #E8530E; }
-    .text-cyan { color: #60a5fa; }
-    @keyframes blink-circle { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-    .blink-1 { animation: blink-circle 1.5s infinite; }
-    .blink-2 { animation: blink-circle 1.5s infinite 0.3s; }
-    .blink-3 { animation: blink-circle 1.5s infinite 0.6s; }
-    .typing-text { display: inline; border-right: 2px solid #a78bfa; padding-right: 1px; color: #ec4899; }
-    .typing-text.blinking { animation: blink-cursor 0.7s step-end infinite; }
-    @keyframes blink-cursor { 50% { border-color: transparent; } }
-    @media (max-width: 768px) {
-    pre { padding-left: 1rem !important; }
-    
-  }
-  @media (max-width: 768px) {
-    .typing-text-para { display: inline-block; text-indent: -3.5rem; padding-left: 3.5rem; }
-  }
-</style>
-
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const typingElements = Array.from(document.querySelectorAll('.typing-text'));
-      const texts = typingElements.map(el => el.getAttribute('data-text'));
-      const TYPE_SPEED = 35; const DELETE_SPEED = 20; const PAUSE_AFTER_TYPE = 3000; const PAUSE_AFTER_DELETE = 500;
-      let currentLine = 0; let currentChar = 0; let isDeleting = false;
-      function setActiveCursor(index) { typingElements.forEach((el, i) => { if (i === index) el.classList.add('blinking'); else el.classList.remove('blinking'); }); }
-      function tick() {
-        const currentEl = typingElements[currentLine]; const fullText = texts[currentLine];
-        if (!isDeleting) {
-          currentEl.textContent = fullText.substring(0, currentChar + 1); currentChar++;
-          if (currentChar === fullText.length) {
-            if (currentLine === typingElements.length - 1) { setActiveCursor(currentLine); setTimeout(() => { isDeleting = true; tick(); }, PAUSE_AFTER_TYPE); return; }
-            else { currentLine++; currentChar = 0; setActiveCursor(currentLine); setTimeout(tick, 150); return; }
-          }
-          setTimeout(tick, TYPE_SPEED);
-        } else {
-          currentEl.textContent = fullText.substring(0, currentChar); currentChar--;
-          if (currentChar < 0) {
-            if (currentLine === 0) { currentChar = 0; isDeleting = false; setActiveCursor(0); setTimeout(tick, PAUSE_AFTER_DELETE); return; }
-            else { currentLine--; currentChar = texts[currentLine].length; setActiveCursor(currentLine); setTimeout(tick, DELETE_SPEED); return; }
-          }
-          setTimeout(tick, DELETE_SPEED);
-        }
-      }
-      if (typingElements.length > 0) { setActiveCursor(0); setTimeout(tick, 500); }
-    });
-  </script>
+  </div>
+</section>
 <!-- RESTO DE TARJETAS -->
   <section class="py-16 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
