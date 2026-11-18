@@ -237,4 +237,50 @@ const t = useTranslations(lang);
       <div class="flex flex-wrap justify-center gap-4">{t('home.social_media.links').map(l=><a href={l.url} target="_blank" class="px-6 py-3 rounded-lg border hover:bg-[#E8530E] hover:text-white">{l.name}</a>)}</div>
     </div>
   </section>
+<style is:inline>
+  .cs-tw { position: relative; display: block; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .cs-ghost { color: #ec4899; }
+  .cs-live { position: absolute; inset: 0; color: #ec4899; pointer-events: none; white-space: pre-wrap; overflow-wrap: anywhere; }
+  [data-typing].is-armed .cs-ghost { color: transparent; }
+  .cs-live.is-typing::after {
+    content: ""; display: inline-block; width: 0; height: 1em;
+    border-right: .6ch solid #a78bfa; vertical-align: text-bottom;
+    animation: cs-blink 1s steps(1) infinite;
+  }
+  @keyframes cs-blink { 50% { opacity: 0; } }
+</style>
+<script is:inline>
+  (function() {
+    function init() {
+      var pre = document.querySelector('[data-typing]');
+      if (!pre) { setTimeout(init, 50); return; }
+      pre.classList.add('is-armed');
+      var lines = Array.prototype.slice.call(pre.querySelectorAll('.cs-tw'));
+      var li = 0, ci = 0, SPEED = 35, isDeleting = false, pauseAfterWrite = 5000, pauseAfterDelete = 500;
+      function step() {
+        if (!isDeleting) {
+          if (li >= lines.length) {
+            isDeleting = true; li = lines.length - 1; ci = lines[li].querySelector('.cs-ghost').textContent.length;
+            setTimeout(step, pauseAfterWrite); return;
+          }
+          var line = lines[li], full = line.querySelector('.cs-ghost').textContent, live = line.querySelector('.cs-live');
+          live.classList.add('is-typing');
+          if (ci < full.length) { live.textContent = full.slice(0, ci + 1); ci++; setTimeout(step, SPEED); }
+          else { live.classList.remove('is-typing'); li++; ci = 0; setTimeout(step, 150); }
+        } else {
+          if (li < 0) {
+            lines.forEach(function(l) { l.querySelector('.cs-live').textContent = ''; });
+            li = 0; ci = 0; isDeleting = false; setTimeout(step, pauseAfterDelete); return;
+          }
+          var line = lines[li], full = line.querySelector('.cs-ghost').textContent, live = line.querySelector('.cs-live');
+          live.classList.add('is-typing');
+          if (ci > 0) { ci--; live.textContent = full.slice(0, ci); setTimeout(step, SPEED / 2); }
+          else { live.classList.remove('is-typing'); li--; if (li >= 0) ci = lines[li].querySelector('.cs-ghost').textContent.length; setTimeout(step, 100); }
+        }
+      }
+      step();
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  })();
+</script>
 </Layout>
