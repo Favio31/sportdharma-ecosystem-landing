@@ -1,0 +1,18 @@
+﻿name: Increment Counter
+on:
+  repository_dispatch:
+    types: [increment_push_counter]
+jobs:
+  increment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Increment
+        run: node -e "const d=require('./stats.json'); d.push_subscribers++; require('fs').writeFileSync('./stats.json', JSON.stringify(d, null, 2));"
+      - name: Commit
+        run: |
+          git config user.name "actions"
+          git config user.email "actions@github.com"
+          git add stats.json
+          git commit -m "chore: bump counter" || echo "No changes"
+          git push
