@@ -8,11 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Increment
-        run: node -e "const d=require('./stats.json'); d.push_subscribers++; require('fs').writeFileSync('./stats.json', JSON.stringify(d, null, 2));"
+        run: node -e "const d=require('./public/stats.json'); d.push_subscribers++; require('fs').writeFileSync('./public/stats.json', JSON.stringify(d, null, 2));"
       - name: Commit
         run: |
           git config user.name "actions"
           git config user.email "actions@github.com"
-          git add stats.json
+          git add public/stats.json
           git commit -m "chore: bump counter" || echo "No changes"
           git push
