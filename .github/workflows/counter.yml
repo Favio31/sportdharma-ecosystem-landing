@@ -1,4 +1,4 @@
-﻿name: Increment Counter
+name: Increment Counter
 on:
   repository_dispatch:
     types: [increment_push_counter]
@@ -10,18 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Increment Counter
-        run: |
-          FILE="public/stats.json"
-          if [ -f "" ]; then
-            CURRENT=
-          else
-            CURRENT=0
-          fi
-          NEW=
-          echo "{\"push_subscribers\": $NEW}" > ""
-          echo "NEW_COUNT=" >> $GITHUB_ENV
+        run: node -e "const fs=require('fs'); const f='public/stats.json'; const d=fs.existsSync(f)?JSON.parse(fs.readFileSync(f)):{push_subscribers:0}; d.push_subscribers++; fs.writeFileSync(f, JSON.stringify(d, null, 2)); console.log('New count:', d.push_subscribers);"
       - name: Commit and Push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: bump counter to ${{ env.NEW_COUNT }}"
+          commit_message: "chore: bump counter"
           file_pattern: public/stats.json
