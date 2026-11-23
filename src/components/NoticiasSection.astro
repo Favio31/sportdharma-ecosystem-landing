@@ -1,4 +1,4 @@
-﻿---
+---
 // Título movido a la sección correcta
 import WebPushSubscribe from './WebPushSubscribe.astro';
 
@@ -112,13 +112,29 @@ const { lang } = Astro.props;
 
   </div>
   <script>
-    fetch('/stats.json?v=' + Date.now())
-      .then(res => res.json())
-      .then(data => {
-        const el = document.getElementById('push-counter');
-        if (el && data.push_subscribers !== undefined) el.textContent = data.push_subscribers;
-      })
-      .catch(() => {});
+    (async () => {
+      const el = document.getElementById('push-counter');
+      if (!el) return;
+      const urls = [
+        'https://sportdharmaecosystem.com/stats.json?nocache=' + Date.now(),
+        'https://raw.githubusercontent.com/Favio31/sportdharma-ecosystem-landing/main/public/stats.json'
+      ];
+      for (const url of urls) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) continue;
+          const data = await res.json();
+          if (typeof data.push_subscribers === 'number') {
+            el.textContent = data.push_subscribers;
+            console.log('[counter] OK desde', url, '=>', data.push_subscribers);
+            return;
+          }
+        } catch (e) {
+          console.warn('[counter] fallo', url, e.message);
+        }
+      }
+      console.error('[counter] NO se pudo obtener stats.json');
+    })();
   </script>
 </section>
 
