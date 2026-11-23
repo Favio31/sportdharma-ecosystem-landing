@@ -1,18 +1,30 @@
-name: Increment Counter
+﻿name: Increment Counter
 on:
   repository_dispatch:
     types: [increment_push_counter]
 permissions:
   contents: write
+concurrency:
+  group: increment-push-counter
+  cancel-in-progress: false
 jobs:
   increment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
       - name: Increment Counter
-        run: node -e "const fs=require('fs'); const f='public/stats.json'; const d=fs.existsSync(f)?JSON.parse(fs.readFileSync(f)):{push_subscribers:0}; d.push_subscribers++; fs.writeFileSync(f, JSON.stringify(d, null, 2)); console.log('New count:', d.push_subscribers);"
+        run: node scripts/increment-counter.mjs
       - name: Commit and Push
+        id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: bump counter"
+          commit_message: "chore: bump push counter"
           file_pattern: public/stats.json
+          disable_globbing: true
+      - name: Fail loud si no hubo commit
+        if: steps.commit.outputs.changes_detected == 'false'
+        run: |
+          echo "::error::Workflow corrio pero no detecto cambios (race o dispatch duplicado)."
+          exit 1
