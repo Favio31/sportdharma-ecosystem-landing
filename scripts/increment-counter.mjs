@@ -1,10 +1,12 @@
-﻿import fs from 'node:fs';
+import fs from 'node:fs';
 import path from 'node:path';
 const FILE = 'public/stats.json';
 const KEY = 'push_subscribers';
 let data = {};
 if (fs.existsSync(FILE)) {
-  try { data = JSON.parse(fs.readFileSync(FILE, 'utf8')); }
+  let raw = fs.readFileSync(FILE, 'utf8');
+  if (raw.charCodeAt(0) === 0xFEFF) raw = raw.slice(1);
+  try { data = JSON.parse(raw); }
   catch (e) { console.error('[FATAL] stats.json corrupto:', e.message); process.exit(1); }
 }
 if (typeof data[KEY] !== 'number' || !Number.isFinite(data[KEY]) || data[KEY] < 0) {
