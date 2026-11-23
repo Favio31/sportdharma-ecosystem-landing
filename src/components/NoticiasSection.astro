@@ -1,4 +1,4 @@
----
+﻿---
 // Título movido a la sección correcta
 import WebPushSubscribe from './WebPushSubscribe.astro';
 
@@ -112,7 +112,7 @@ const { lang } = Astro.props;
 
   </div>
   <script>
-    fetch('/stats.json')
+    fetch('/stats.json?v=' + Date.now())
       .then(res => res.json())
       .then(data => {
         const el = document.getElementById('push-counter');
@@ -121,3 +121,4 @@ const { lang } = Astro.props;
       .catch(() => {});
   </script>
 </section>
+
