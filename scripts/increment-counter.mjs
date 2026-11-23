@@ -8,7 +8,7 @@ if (fs.existsSync(FILE)) {
   catch (e) { console.error('[FATAL] stats.json corrupto:', e.message); process.exit(1); }
 }
 if (typeof data[KEY] !== 'number' || !Number.isFinite(data[KEY]) || data[KEY] < 0) {
-  console.warn('[WARN] campo inválido, reset a 0'); data[KEY] = 0;
+  console.warn('[WARN] campo invalido, reset a 0'); data[KEY] = 0;
 }
 const prev = data[KEY];
 data[KEY] = prev + 1;
