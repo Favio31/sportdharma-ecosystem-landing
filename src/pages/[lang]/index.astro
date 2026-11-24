@@ -15,6 +15,7 @@ import { useTranslations } from '../../i18n/utils.js';
 import PresenciaDigitalSection from '../../components/PresenciaDigitalSection.astro'
 import TacticalHudFlyer from '../../components/TacticalHudFlyer.astro';;
 import PuentesSolidarios from '../../components/PuentesSolidarios.astro';
+import SponsorsSection from '../../components/SponsorsSection.astro';
 
 export async function getStaticPaths() {
   return [
@@ -321,6 +322,9 @@ const t = useTranslations(lang);
 </div>
 </div>
 </section>
+
+<!-- SPONSORS -->
+<SponsorsSection />
 
 <!-- TIENDA DE ALIADOS -->
 <section class="relative overflow-hidden py-20 px-4 md:px-8 bg-[#0f172a]">
