@@ -16,6 +16,7 @@ import PresenciaDigitalSection from '../../components/PresenciaDigitalSection.as
 import TacticalHudFlyer from '../../components/TacticalHudFlyer.astro';;
 import PuentesSolidarios from '../../components/PuentesSolidarios.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
+import CheckListSection from '../../components/CheckListSection.astro';
 
 export async function getStaticPaths() {
   return [
@@ -268,6 +269,9 @@ const t = useTranslations(lang);
     </div>
   </div>
 </section>
+
+<!-- ANTES DE PEDALEAR -->
+<CheckListSection lang={lang} />
 
 <!-- SUMATE AL PROYECTO -->
 <section class="relative overflow-hidden py-20 px-4 md:px-8 bg-[#0f172a]">
