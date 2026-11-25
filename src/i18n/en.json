@@ -195,7 +195,11 @@
     "f4_title": "Local Travel Diary",
     "f4_desc": "Document your journey with photos, notes and waypoints. Everything is saved locally on your device, under your total control.",
     "placeholder_title": "App Mockup (Coming Soon)",
-    "placeholder_desc": "Available for Android and iOS"
+    "placeholder_desc": "Available for Android and iOS",
+    "f5_title": "Dharma Safe: Protección y Comunicación Offline",
+    "f5_desc": "Sistema de protección del usuario con geolocalización en tiempo real. Con radio LoRa, pedí ayuda en emergencias o coordiná con tu grupo de deportistas sin necesidad de internet. Comunicación 100% offline.",
+    "f6_title": "Dharma Energy: Telemetría Soberana",
+    "f6_desc": "Ingesta local de archivos .GPX, .FIT y .KML sin APIs de terceros. Modelo determinista de fatiga acumulada y logística de reabastecimiento nutricional e hidratación mapeada en la Dharma-DB. Tu energía, tus datos."
   },
   "masf": {
     "page_title": "MASF Engine | SportDharma Ecosystem",
