@@ -1,6 +1,19 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'it' } },
+  ];
+}
+
 const { lang } = Astro.params;
+
 const fullList = [
   { id: 'bike', title: '1. Revisión de la bicicleta', desc: 'Frenos, presión de cubiertas, cadena lubricada y ajuste de cambios. Una bici segura es tu principal aliada.' },
   { id: 'gear', title: '2. Revisión del equipamiento', desc: 'Alforjas bien sujetas, kit de reparación, cámara de repuesto, documentación y agua suficiente para la etapa.' },
@@ -48,14 +61,17 @@ const fullList = [
         });
       });
 
-      document.getElementById('resetBtn').addEventListener('click', () => {
-        if(confirm('¿Reiniciar la lista para un nuevo día?')) {
-          checkboxes.forEach(cb => {
-            cb.checked = false;
-            localStorage.removeItem('sde_checklist_' + cb.id);
-          });
-        }
-      });
+      const resetBtn = document.getElementById('resetBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if(confirm('¿Reiniciar la lista para un nuevo día?')) {
+            checkboxes.forEach(cb => {
+              cb.checked = false;
+              localStorage.removeItem('sde_checklist_' + cb.id);
+            });
+          }
+        });
+      }
     });
   </script>
 </Layout>
