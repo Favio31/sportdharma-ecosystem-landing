@@ -17,6 +17,7 @@ import TacticalHudFlyer from '../../components/TacticalHudFlyer.astro';;
 import PuentesSolidarios from '../../components/PuentesSolidarios.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
 import CheckListSection from '../../components/CheckListSection.astro';
+import LogisticaViajeSection from '../../components/LogisticaViajeSection.astro';
 
 export async function getStaticPaths() {
   return [
@@ -269,6 +270,9 @@ const t = useTranslations(lang);
     </div>
   </div>
 </section>
+
+<!-- LOGISTICA DE VIAJE -->
+<LogisticaViajeSection lang={lang} />
 
 <!-- ANTES DE PEDALEAR -->
 <CheckListSection lang={lang} />

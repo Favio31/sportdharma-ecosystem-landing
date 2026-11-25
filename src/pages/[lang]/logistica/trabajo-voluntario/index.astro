@@ -1,0 +1,37 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'it' } },
+  ];
+}
+const { lang } = Astro.params;
+const apps = [
+  { name: 'Workaway', url: 'https://www.workaway.info/', desc: 'La mayor comunidad de intercambio cultural y voluntariado en 170 países.' },
+  { name: 'Worldpackers', url: 'https://www.worldpackers.com/', desc: 'Plataforma con verificación de anfitriones y fuerte enfoque en turismo regenerativo.' },
+  { name: 'WWOOF', url: 'https://wwoof.net/', desc: 'Red mundial de voluntariado en granjas orgánicas y sostenibles.' }
+];
+---
+<Layout lang={lang} title="Trabajo Voluntario | SportDharma">
+  <main class="min-h-screen py-20 px-4 md:px-8">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">Logística de Viaje</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-ink mb-6">Trabajo Voluntario</h1>
+      <p class="text-ink-soft mb-10 leading-relaxed">Intercambiá tu tiempo y saberes por alojamiento y manutención. Estas plataformas conectan viajeros con anfitriones en todo el mundo.</p>
+      <div class="space-y-4">
+        {apps.map((app) => (
+          <a href={app.url} target="_blank" rel="noopener noreferrer" class="block p-6 rounded-2xl bg-surface/40 border border-black/5 dark:border-white/5 hover:border-[#E8530E]/40 transition-all group">
+            <h3 class="text-xl font-bold text-ink mb-1 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{app.name}</h3>
+            <p class="text-ink-soft text-sm">{app.desc}</p>
+          </a>
+        ))}
+      </div>
+      <p class="mt-10 text-sm text-ink-soft italic">Enlaces de referido activos que canalizan una comisión hacia el fondo de OPEX Mínimo del proyecto.</p>
+    </div>
+  </main>
+</Layout>

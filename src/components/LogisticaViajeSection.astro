@@ -1,0 +1,49 @@
+---
+const { lang } = Astro.props;
+const cards = [
+  {
+    href: `/${lang}/logistica/visas/`,
+    label: 'DOCUMENTACIÓN',
+    title: 'Gestión de Visas y Fronteras',
+    desc: 'Requisitos, prórrogas y derechos del viajero en cada frontera.',
+    icon: 'M9 12h6m-6 4h6M9 8h6M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z'
+  },
+  {
+    href: `/${lang}/logistica/trabajo-voluntario/`,
+    label: 'INTERCAMBIO',
+    title: 'Trabajo Voluntario',
+    desc: 'Workaway, Worldpackers y WWOOF: intercambio de trabajo por alojamiento y manutención.',
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z'
+  },
+  {
+    href: `/${lang}/logistica/redes-hospitalidad/`,
+    label: 'HOSPITALIDAD',
+    title: 'Redes de Hospitalidad',
+    desc: 'Alojamiento colaborativo: compartís tiempo y saberes con las familias anfitrionas.',
+    icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'
+  }
+];
+---
+<section class="relative overflow-hidden py-20 px-4 md:px-8 bg-gradient-to-b from-[#0f172a] via-[#14203a] to-[#0f172a]">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(232,83,14,0.12),transparent_60%)] pointer-events-none"></div>
+  <div class="relative max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">En Ruta</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-3">Logística de Viaje</h2>
+      <p class="text-ink-soft max-w-2xl mx-auto">Herramientas y recursos soberanos para tu planificación: documentación, intercambio y hospitalidad global.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {cards.map((card) => (
+        <a href={card.href} class="group block h-full rounded-2xl border border-black/5 dark:border-white/5 bg-surface/40 backdrop-blur-sm p-8 outline-none! transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)]">
+          <div class="w-12 h-12 rounded-lg bg-[#E8530E]/10 dark:bg-[#E8530E]/20 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-[#E8530E] dark:text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={card.icon}></path></svg>
+          </div>
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{card.label}</p>
+          <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{card.title}</h3>
+          <p class="text-ink-soft leading-relaxed text-sm mb-4">{card.desc}</p>
+          <span class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">Explorar →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
