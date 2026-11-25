@@ -1,0 +1,92 @@
+---
+const { lang } = Astro.props;
+const cards = [
+  {
+    href: `/${lang}/logistica/documentacion/`,
+    label: 'FRONTERAS',
+    title: 'Documentación y Visas',
+    desc: 'Consultá los requisitos de entrada, duración de estadía y procesos de prórroga en cada territorio.',
+    badges: ['Pasaporte', 'Visas', 'Seguros'],
+    hasAffiliate: false
+  },
+  {
+    href: `/${lang}/logistica/intercambio/`,
+    label: 'VOLUNTARIADO',
+    title: 'Trabajo e Intercambio',
+    desc: 'Conectá con anfitriones globales ofreciendo tu tiempo y saberes a cambio de alojamiento y manutención.',
+    badges: ['Workaway', 'Worldpackers', 'WWOOF'],
+    hasAffiliate: true
+  },
+  {
+    href: `/${lang}/logistica/hospitalidad/`,
+    label: 'ACOGIDA',
+    title: 'Redes de Hospitalidad',
+    desc: 'Disfrutá de alojamiento colaborativo basado en la confianza. Compartís tu tiempo y saberes con familias anfitrionas.',
+    badges: ['Warmshowers', 'BeWelcome', 'Trustroots', 'HelpX'],
+    hasAffiliate: false
+  },
+  {
+    href: `/${lang}/logistica/seguro-medico/`,
+    label: 'SALUD',
+    title: 'Seguro Médico de Viaje',
+    desc: 'Accedé a cobertura global y flexible, diseñada específicamente para la dinámica de los nómadas y cicloviajeros.',
+    badges: ['SafetyWing', 'Heymondo'],
+    hasAffiliate: true
+  },
+  {
+    href: `/${lang}/logistica/finanzas/`,
+    label: 'FINANZAS',
+    title: 'Finanzas Sin Fronteras',
+    desc: 'Optimizá tus comisiones con cuentas multidivisa que ofrecen el tipo de cambio real y transparencia total.',
+    badges: ['Wise', 'Revolut', 'N26'],
+    hasAffiliate: true
+  },
+  {
+    href: `/${lang}/logistica/guias/`,
+    label: 'RECURSOS',
+    title: 'Guías y Recursos de Ruta',
+    desc: 'Planificá tu travesía con información verificada. Explorá guías clásicas y rutas comunitarias actualizadas.',
+    badges: ['Lonely Planet', 'Wikiloc', 'Amazon'],
+    hasAffiliate: true
+  }
+];
+---
+<section class="relative overflow-hidden py-20 px-4 md:px-8 bg-gradient-to-b from-[#0f172a] via-[#131c2e] to-[#0f172a]">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(232,83,14,0.1),transparent_60%)] pointer-events-none"></div>
+  <div class="relative max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">En Ruta</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-3">Logística de Viaje</h2>
+      <p class="text-ink-soft max-w-2xl mx-auto">Herramientas y recursos soberanos para tu planificación: documentación, intercambio, salud y finanzas.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {cards.map((card) => (
+        <a href={card.href} class="group block h-full rounded-2xl border border-gray-700/50 bg-surface/40 backdrop-blur-sm p-6 outline-none! transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:bg-surface/60 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.25)]">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{card.label}</p>
+          <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{card.title}</h3>
+          <div class="flex flex-wrap gap-2 mb-4">
+            {card.badges.map((badge) => (
+              <span class="px-2.5 py-1 rounded-full bg-[#E8530E]/10 text-[#E8530E] dark:text-orange-400 text-xs font-bold border border-[#E8530E]/20 group-hover:bg-[#E8530E]/20 transition-colors">
+                {badge}
+              </span>
+            ))}
+          </div>
+          <p class="text-ink-soft leading-relaxed text-sm mb-4">{card.desc}</p>
+          {card.hasAffiliate && (
+            <p class="mt-4 pt-4 border-t border-white/10 text-xs text-ink-soft italic leading-snug">
+              Al usar estos enlaces, obtenés un beneficio directo y apoyás el mantenimiento de esta plataforma soberana.
+            </p>
+          )}
+          {!card.hasAffiliate && card.title.includes('Hospitalidad') && (
+            <p class="mt-4 pt-4 border-t border-white/10 text-xs text-ink-soft italic leading-snug">
+              La App SportDharma te permite descargar estos contactos para usarlos con total autonomía en zonas remotas.
+            </p>
+          )}
+          <span class="mt-2 inline-flex items-center text-sm font-semibold text-[#E8530E] dark:text-orange-500 group-hover:translate-x-1 transition-transform">
+            Explorar recursos →
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
