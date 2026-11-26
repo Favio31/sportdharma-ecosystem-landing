@@ -17,187 +17,33 @@ import TacticalHudFlyer from '../../components/TacticalHudFlyer.astro';;
 import PuentesSolidarios from '../../components/PuentesSolidarios.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
 import CheckListSection from '../../components/CheckListSection.astro';
-import LogisticaViajeSection from '../../components/LogisticaViajeSection.astro';
-import ComparteTuRutaSection from '../../components/ComparteTuRutaSection.astro';
-
-export async function getStaticPaths() {
-  return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'fr' } },
-    { params: { lang: 'pt' } },
-    { params: { lang: 'de' } },
-    { params: { lang: 'it' } },
-  ];
-}
-
-const { lang } = Astro.params;
-const t = useTranslations(lang);
 ---
-
-<Layout title="SportDharma Ecosystem | Software Libre para Deportistas Outdoor">
-  <ConstructionBanner lang={lang} />
-  <Hero />
-
-  <section class="py-16 px-6 bg-surface-alt transition-colors duration-300">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-
-        <!-- 2. FUNDADOR -->
-        <a href={'/' + lang + '/fundador/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40 md:row-span-2">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="flex flex-col justify-center">
-              <p class="text-slate-500 dark:text-slate-400 font-bold text-xs uppercase tracking-wider mb-2">{t('home.fundador_label')}</p>
-              <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.fundador_name')}</h3>
-              <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.fundador_desc')}</p>
-            </div>
-            <div class="space-y-3">
-              <div class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 ">
-                <img src="/fundador-1.jpg" alt={t('home.fundador_alt_1')} class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
-              </div>
-              <div class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 ">
-                <img src="/fundador-2.jpg" alt={t('home.fundador_alt_2')} class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
-              </div>
-              <div class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 ">
-                <img src="/images/fundador/documental-un-ano-en-bicicleta.jpg" alt="Documental Un Año en Bicicleta" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
-              </div>
-            </div>
-          </div>
-          <div class="mt-6 border-t border-black/5 pt-6 ">
-            <div class="mx-auto flex w-full flex-nowrap justify-between items-start gap-1 sm:gap-4">
-              <div class="min-w-0 rounded-lg border border-white/30 p-3 text-center sm:p-4">
-                <div class="text-xl font-bold leading-tight text-[#E8530E] dark:text-orange-500 sm:text-2xl">120.000</div>
-                <div class="mt-1 text-xs text-ink-soft">km recorridos</div>
-              </div>
-              <div class="min-w-0 rounded-lg border border-white/30 p-3 text-center sm:p-4">
-                <div class="text-xl font-bold leading-tight text-[#E8530E] dark:text-orange-500 sm:text-2xl">84</div>
-                <div class="mt-1 text-xs text-ink-soft">países</div>
-              </div>
-              <div class="min-w-0 rounded-lg border border-white/30 p-3 text-center sm:p-4">
-                <div class="text-xl font-bold leading-tight text-[#E8530E] dark:text-orange-500 sm:text-2xl">11</div>
-                <div class="mt-1 text-xs text-ink-soft">Años en ruta</div>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <!-- 3. MANIFIESTO -->
-        <a href={'/' + lang + '/manifiesto/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="flex flex-col justify-center items-start">
-              <p class="text-slate-500 dark:text-slate-400 font-bold text-xs uppercase tracking-wider mb-2">{t('home.manifiesto_label')}</p>
-              <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.manifiesto_title')}</h3>
-              <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.manifiesto_desc')}</p>
-            </div>
-            <div class="space-y-3">
-              <div class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 ">
-                <img src="/images/camping-atardecer.jpeg" alt="Camping al atardecer en ruta" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
-              </div>
-              <div class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 ">
-                <img src="/images/templo-blanco.jpg" alt="Templo Blanco en Tailandia - Ruta en bicicleta" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
-              </div>
-              <div class="w-full rounded-xl border-2 border-gray-300 dark:border-gray-600 ">
-                <img src="/logo-social2.jpg" alt="SportDharma Ecosystem Logo" class="w-full h-auto rounded-xl border border-white/30" draggable="false" />
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <!-- RELATOS DE VIAJEROS (debajo de Manifiesto) -->
-        <Extra1Card />
-
-  <!-- INFRAESTRUCTURA TÉCNICA -->
-</div>
-    </div>
-  </section>
-
-  
-
-
-<!-- SECCIÓN NUEVA: 9 PUBLICACIONES + PORTAL NOTICIAS E INFORMACIÓN -->
-  <NoticiasSection lang={lang} />
-
-
-
-  <section class="py-12 md:py-16 px-4 md:px-6 bg-gradient-to-r from-blue-50 via-slate-100 to-gray-200 dark:from-blue-950 dark:via-slate-900 dark:to-gray-900">
-  <div class="max-w-6xl mx-auto">
-    <a href={'/' + lang + '/descubri/'} class="block group">
-    <h2 class="text-2xl md:text-4xl font-bold mb-6 md:mb-10 text-center px-2 group-hover:text-[#E8530E] transition-colors">
-      <span class="text-slate-500 dark:text-slate-400">DESCUBRÍ</span> <span class="text-ink">¿Qué es SportDharma Ecosystem?</span>
-    </h2>
-    </a>
-    <a href={'/' + lang + '/descubri/'} class="descubri-layout grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center block">
-      <div class="rounded-2xl overflow-hidden shadow-2xl bg-surface-alt border-2 border-gray-300 dark:border-gray-600">
-        <div class="flex items-center gap-2 px-3 md:px-4 py-2 bg-surface-alt border-b border-gray-500">
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047]"></div>
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047]"></div>
-          <div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#fde047]"></div>
-          <span class="ml-2 md:ml-4 text-[10px] md:text-xs text-[#fde047] font-mono">sportdharmaecosystem.mjs</span>
-        </div>
-        <div class="p-3 md:p-6 font-mono text-xs md:text-sm leading-relaxed">
-          <pre class="whitespace-pre-wrap break-words m-0 p-0 grid grid-cols-[max-content_1fr] gap-x-[1ch]" data-typing><span class="col-span-2"><span class="text-[#4ade80]">const</span> <span class="text-[#4ade80]">SportDharmaEcosystem</span> <span class="text-[#4ade80]">=</span> <span class="text-black">{</span></span>
-<span class="text-[#38bdf8]">infraestructura:</span> <span class="cs-tw"><span class="cs-ghost">'libre',</span><span class="cs-live" aria-hidden="true"></span></span>
-<span class="text-[#38bdf8]">soberania:</span> <span class="cs-tw"><span class="cs-ghost">true,</span><span class="cs-live" aria-hidden="true"></span></span>
-<span class="text-[#38bdf8]">offline_first:</span> <span class="cs-tw"><span class="cs-ghost">true,</span><span class="cs-live" aria-hidden="true"></span></span>
-<span class="text-[#38bdf8]">para:</span> <span class="cs-tw"><span class="cs-ghost">'deportistas outdoor', rescatistas, comunidades remotas</span><span class="cs-live" aria-hidden="true"></span></span>
-<span class="text-[#38bdf8]">tecnologia:</span> <span class="cs-tw"><span class="cs-ghost">'respeta tu privacidad',</span><span class="cs-live" aria-hidden="true"></span></span>
-<span class="text-[#38bdf8]">valores:</span> <span class="cs-tw"><span class="cs-ghost">['transparencia', 'privacidad', 'resiliencia']</span><span class="cs-live" aria-hidden="true"></span></span>
-<span class="col-span-2 text-[#a78bfa]">};</span></pre>
-        </div>
-      </div>
-      <div class="flex items-center justify-center">
-        <TacticalHudFlyer />
-      </div>
-    </a>
-  </div>
-</section>
-<!-- COMPARTE TU RUTA -->
-<ComparteTuRutaSection lang={lang} />
-
 <!-- RESTO DE TARJETAS -->
-  <section class="py-16 px-6 bg-surface-alt transition-colors duration-300">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <a href={'/' + lang + '/pilares/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.pilares_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.pilares_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.pilares_desc')}</p>
-        </a>
-
         <a href={'/' + lang + '/app/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.app_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.app_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.app_desc')}</p>
-        </a>
-
         <a href={'/' + lang + '/web/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.web_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.web_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.web_desc')}</p>
-        </a>
-
         <a href={'/' + lang + '/masf/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.masf_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.masf_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.masf_desc')}</p>
-        </a>
-
-</div>
-</div>
-</section>
-
-
 <!-- DHARMA ACADEMY -->
 <section class="relative overflow-hidden py-20 px-4 md:px-8 bg-[#0f172a]">
   <!-- Glow cinematográfico 'Magic Hour' (Ámbar + Rosa) -->
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_85%_75%_at_20%_0%,rgba(251,146,60,0.4),rgba(244,114,182,0.2)_40%,transparent_75%)] pointer-events-none"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_100%,rgba(253,224,71,0.15),transparent_60%)] pointer-events-none"></div>
-  
   <div class="relative max-w-7xl mx-auto">
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">Dharma Academy</h2>
       <p class="text-ink-soft text-lg max-w-2xl mx-auto">Educación cinematográfica y consciente. Cursos gratuitos y premium para potenciar tu camino.</p>
-    </div>
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Card 1: GRATIS -->
@@ -206,16 +52,12 @@ const t = useTranslations(lang);
           <div class="absolute inset-0 flex items-center justify-center text-gray-600 group-hover:scale-105 transition-transform duration-500">Thumbnail</div>
           <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-white drop-shadow-lg"><path d="M8 5v14l11-7z"/></svg>
-          </div>
           <span class="absolute top-3 left-3 px-2 py-1 rounded text-xs font-bold bg-emerald-500 text-white">GRATIS</span>
-        </div>
         <div class="p-4">
           <div class="flex items-center gap-2 text-xs text-ink-soft mb-2">
             <span>⏱ 30 min</span><span>•</span><span>Principiante</span>
-          </div>
           <h3 class="text-base font-bold text-ink mb-2 line-clamp-2 group-hover:text-[#E8530E] transition-colors">Introducción a la Meditación Mindfulness</h3>
           <p class="text-sm text-ink-soft">Por Favio</p>
-        </div>
       </a>
       
       <!-- Card 2: PREMIUM -->
@@ -224,16 +66,12 @@ const t = useTranslations(lang);
           <div class="absolute inset-0 flex items-center justify-center text-gray-600 group-hover:scale-105 transition-transform duration-500">Thumbnail</div>
           <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-white drop-shadow-lg"><path d="M8 5v14l11-7z"/></svg>
-          </div>
           <span class="absolute top-3 left-3 px-2 py-1 rounded text-xs font-bold bg-[#E8530E] text-white">PREMIUM</span>
-        </div>
         <div class="p-4">
           <div class="flex items-center gap-2 text-xs text-ink-soft mb-2">
             <span>⏱ 2h 15m</span><span>•</span><span>Intermedio</span>
-          </div>
           <h3 class="text-base font-bold text-ink mb-2 line-clamp-2 group-hover:text-[#E8530E] transition-colors">Yoga y Neurociencia para Deportistas</h3>
           <p class="text-sm text-ink-soft">Por Favio</p>
-        </div>
       </a>
       
       <!-- Card 3: GRATIS -->
@@ -242,16 +80,12 @@ const t = useTranslations(lang);
           <div class="absolute inset-0 flex items-center justify-center text-gray-600 group-hover:scale-105 transition-transform duration-500">Thumbnail</div>
           <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-white drop-shadow-lg"><path d="M8 5v14l11-7z"/></svg>
-          </div>
           <span class="absolute top-3 left-3 px-2 py-1 rounded text-xs font-bold bg-emerald-500 text-white">GRATIS</span>
-        </div>
         <div class="p-4">
           <div class="flex items-center gap-2 text-xs text-ink-soft mb-2">
             <span>⏱ 45 min</span><span>•</span><span>Todos los niveles</span>
-          </div>
           <h3 class="text-base font-bold text-ink mb-2 line-clamp-2 group-hover:text-[#E8530E] transition-colors">Respiración Consciente en Ruta</h3>
           <p class="text-sm text-ink-soft">Por Favio</p>
-        </div>
       </a>
       
       <!-- Card 4: PREMIUM -->
@@ -260,32 +94,25 @@ const t = useTranslations(lang);
           <div class="absolute inset-0 flex items-center justify-center text-gray-600 group-hover:scale-105 transition-transform duration-500">Thumbnail</div>
           <div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-white drop-shadow-lg"><path d="M8 5v14l11-7z"/></svg>
-          </div>
           <span class="absolute top-3 left-3 px-2 py-1 rounded text-xs font-bold bg-[#E8530E] text-white">PREMIUM</span>
-        </div>
         <div class="p-4">
           <div class="flex items-center gap-2 text-xs text-ink-soft mb-2">
             <span>⏱ 3h 00m</span><span>•</span><span>Avanzado</span>
-          </div>
           <h3 class="text-base font-bold text-ink mb-2 line-clamp-2 group-hover:text-[#E8530E] transition-colors">Masterclass: Software Soberano y MASF</h3>
           <p class="text-sm text-ink-soft">Por Favio</p>
-        </div>
       </a>
-    </div>
-  </div>
-</section>
-
 <!-- LOGISTICA DE VIAJE -->
 <LogisticaViajeSection lang={lang} />
-
 <!-- ANTES DE PEDALEAR -->
 <CheckListSection lang={lang} />
-
 <!-- SUMATE AL PROYECTO -->
 <section class="relative overflow-hidden py-20 px-4 md:px-8 bg-[#0f172a]">
   <!-- Glow naranja cálido estilo astro.build (2 capas de gradiente) -->
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_85%_75%_at_40%_-5%,rgba(56,189,248,0.55),rgba(14,165,233,0.3)_40%,transparent_75%)] pointer-events-none"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_75%_0%,rgba(139,92,246,0.35),transparent_60%)] pointer-events-none"></div>
+import ComparteTuRutaSection from '../../components/ComparteTuRutaSection.astro';
+<ComparteTuRutaSection lang={lang} />
+
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">Sumate al proyecto</h2>
       <p class="text-ink-soft mb-10 text-lg">Tu apoyo sostiene esta página web e impulsa el desarrollo de la futura App.</p>
@@ -295,10 +122,6 @@ const t = useTranslations(lang);
         <a href="https://github.com/sponsors/Favio31" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-4 whitespace-nowrap rounded-xl border-2 border-slate-400 text-slate-400 font-bold text-lg hover:bg-slate-400 hover:text-slate-900 dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub Sponsor</a>
         <a href="https://opencollective.com/sportdharma-ecosystem" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-4 whitespace-nowrap rounded-xl border-2 border-blue-500 text-blue-500 font-bold text-lg hover:bg-blue-500 hover:text-white transition-all"><img src="https://www.google.com/s2/favicons?domain=opencollective.com&sz=64" alt="OC" class="w-5 h-5 rounded-full bg-white" />Open Collective</a>
         <a href="https://nowpayments.io/donation/sportdharmaecosystem" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-4 whitespace-nowrap rounded-xl border-2 border-purple-500 text-purple-500 font-bold text-lg hover:bg-purple-500 hover:text-white transition-all"><span class="inline-flex items-center gap-2"><span class="font-normal text-lg leading-none">NP</span>Cripto</span>NOWPayments</a>
-      </div>
-    </div>
-  </section>
-
 <section class="py-16 px-6 bg-surface-alt transition-colors duration-300">
 <div class="max-w-6xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -306,44 +129,29 @@ const t = useTranslations(lang);
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.estado_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.estado_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.estado_desc')}</p>
-        </a>
-
         <a href={'/' + lang + '/noticias/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.noticias_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.noticias_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.noticias_desc')}</p>
-        </a>
-
         <a href={'/' + lang + '/ecosistema/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.herramientas_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.herramientas_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.herramientas_desc')}</p>
-        </a>
-
         <a href={'/' + lang + '/apoya/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.apoya_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.apoya_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.apoya_desc')}</p>
-        </a>
-
         <a href={'/' + lang + '/comunidad/'} class="group block rounded-3xl border-2 border-gray-300 dark:border-gray-600 bg-transparent p-8 outline-none! [-webkit-tap-highlight-color:transparent] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/40 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)] focus-visible:border-[#E8530E]/40 active:translate-y-0 active:scale-[0.99]  dark:hover:border-orange-500/40 dark:hover:shadow-[0_0_40px_-8px_rgba(249,115,22,0.35)] dark:focus-visible:border-orange-500/40">
           <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{t('home.comunidad_label')}</p>
           <h3 class="text-2xl font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{t('home.comunidad_title')}</h3>
           <p class="text-ink-soft leading-relaxed text-sm text-left break-words">{t('home.comunidad_desc')}</p>
-        </a>
-</div>
-</div>
-</section>
-
 <!-- SPONSORS -->
 <SponsorsSection />
-
 <!-- TIENDA DE ALIADOS -->
 <section class="relative overflow-hidden py-20 px-4 md:px-8 bg-[#0f172a]">
   <!-- Glow verde esmeralda estilo astro.build (2 capas) -->
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_85%_75%_at_30%_-5%,rgba(16,185,129,0.55),rgba(20,184,166,0.3)_40%,transparent_75%)] pointer-events-none"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_0%,rgba(52,211,153,0.3),transparent_60%)] pointer-events-none"></div>
-  
   <div class="relative max-w-6xl mx-auto text-center">
 <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">Tienda SDE</h2>
 <p class="text-ink-soft text-lg max-w-2xl mx-auto mb-2">Productos verificados de aliados que comparten nuestros valores.</p>
@@ -392,31 +200,19 @@ const t = useTranslations(lang);
         <p class="text-sm text-ink-soft mb-4">Descripción breve del producto o servicio de este aliado.</p>
         <span class="inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">Ver producto →</span>
       </a>
-    </div>
-  </div>
-</section>
-
-
   <!-- PAGINAS AMIGAS -->
   <section class="py-16 px-6 bg-surface">
     <div class="max-w-6xl mx-auto text-center">
       <h2 class="text-3xl font-bold text-ink mb-2">{t('home.friendly_pages.title')}</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-6xl mx-auto">{t('home.friendly_pages.links').map(l=><a href={l.url} target="_blank" class="p-5 rounded-xl border hover:border-[#E8530E]/40"><span class="font-semibold">{l.name}</span></a>)}</div>
-    </div>
-  </section>
-
   <!-- PUENTES SOLIDARIOS -->
   <PuentesSolidarios />
-
   <PresenciaDigitalSection />
-
   <!-- REDES SOCIALES -->
   <section class="py-16 px-6 bg-surface-alt">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl font-bold text-ink mb-2">{t('home.social_media.title')}</h2>
       <div class="flex flex-wrap justify-center gap-4">{t('home.social_media.links').map(l=><a href={l.url} target="_blank" class="px-6 py-3 rounded-lg border hover:bg-[#E8530E] hover:text-white">{l.name}</a>)}</div>
-    </div>
-  </section>
 <style is:inline>
   .cs-tw { position: relative; display: block; white-space: pre-wrap; overflow-wrap: anywhere; }
   .cs-ghost { color: #ec4899; }
