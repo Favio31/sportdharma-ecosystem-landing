@@ -18,6 +18,7 @@ import PuentesSolidarios from '../../components/PuentesSolidarios.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
 import CheckListSection from '../../components/CheckListSection.astro';
 import LogisticaViajeSection from '../../components/LogisticaViajeSection.astro';
+import ComparteTuRutaSection from '../../components/ComparteTuRutaSection.astro';
 
 export async function getStaticPaths() {
   return [
@@ -150,6 +151,9 @@ const t = useTranslations(lang);
     </a>
   </div>
 </section>
+<!-- COMPARTE TU RUTA -->
+<ComparteTuRutaSection lang={lang} />
+
 <!-- RESTO DE TARJETAS -->
   <section class="py-16 px-6 bg-surface-alt transition-colors duration-300">
     <div class="max-w-6xl mx-auto">

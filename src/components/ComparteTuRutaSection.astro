@@ -1,0 +1,29 @@
+---
+const { lang } = Astro.props;
+---
+<section class="relative overflow-hidden py-20 px-4 md:px-8">
+  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image:url('/logistica-bg.webp')"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/70 via-[#0f172a]/65 to-[#0f172a]/72"></div>
+  <div class="relative max-w-3xl mx-auto">
+    <div class="text-center mb-8">
+      <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">Comunidad</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-3">Comparte tu Ruta</h2>
+      <p class="text-ink-soft max-w-2xl mx-auto">¿Tenés una historia, un consejo mecánico o una reflexión de ruta? Compartí tu conocimiento con la comunidad y formá parte del legado SportDharma.</p>
+    </div>
+    <a href="mailto:contact@sportdharmaecosystem.com?subject=COMPARTE%20TU%20RUTA" class="group block rounded-2xl border border-white/10 bg-[#0f172a]/70 backdrop-blur-md p-8 outline-none! transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/50 hover:bg-[#0f172a]/85 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)]">
+      <div class="flex flex-col items-center text-center">
+        <div class="w-16 h-16 rounded-full bg-[#E8530E]/15 border border-[#E8530E]/30 flex items-center justify-center mb-4 group-hover:bg-[#E8530E]/25 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#E8530E] dark:text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">Envianos tu artículo</h3>
+        <p class="text-ink-soft leading-relaxed text-sm mb-4">Escribinos a <span class="text-[#E8530E] dark:text-orange-400 font-semibold">contact@sportdharmaecosystem.com</span> con el asunto <span class="text-[#E8530E] dark:text-orange-400 font-semibold">COMPARTE TU RUTA</span>. Adjuntá tu texto, fotos y archivo .gpx si tenés uno. Nuestro equipo curador revisará y publicará tu aporte con el sello de calidad SportDharma.</p>
+        <span class="inline-flex items-center gap-2 text-sm font-semibold text-[#E8530E] dark:text-orange-500 group-hover:translate-x-1 transition-transform">
+          Enviar mi historia →
+        </span>
+      </div>
+    </a>
+    <p class="text-center text-xs text-ink-soft italic mt-6">Tu relato se suma a la biblioteca libre de conocimiento ciclista. Curado, verificado y soberano.</p>
+  </div>
+</section>
