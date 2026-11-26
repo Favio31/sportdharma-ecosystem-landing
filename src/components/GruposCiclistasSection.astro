@@ -1,0 +1,36 @@
+---
+const { lang } = Astro.props;
+const grupos = [
+  { label: 'LA PAZ · BOLIVIA', title: 'Ruta de los Andes', desc: 'Rodamos por los caminos de altura del altiplano, compartiendo rutas técnicas y cultura andina.', badges: ['48 miembros', '120 rutas', '3.400 km'] },
+  { label: 'LUANG PRABANG · LAOS', title: 'Pedales del Mekong', desc: 'Exploramos selvas, templos y riberas del Mekong con salidas semanales de ritmo pausado.', badges: ['35 miembros', '80 rutas', '2.100 km'] },
+  { label: 'BARILOCHE · ARGENTINA', title: 'Rueda Libre Patagonia', desc: 'Recorremos la cordillera patagónica, sus lagos y vientos, forjando comunidad en cada travesía.', badges: ['62 miembros', '95 rutas', '5.800 km'] },
+  { label: 'MARRAKECH · MARRUECOS', title: 'Cicloviajeros del Atlas', desc: 'Cruzamos el desierto y las montañas del Atlas, uniendo rutas ancestrales con hospitalidad bereber.', badges: ['29 miembros', '60 rutas', '1.900 km'] }
+];
+---
+<section class="relative overflow-hidden py-20 px-4 md:px-8">
+  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image:url('/grupos-ciclistas-bg.webp')"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/70 via-[#0f172a]/65 to-[#0f172a]/72"></div>
+  <div class="relative max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">Comunidad en movimiento</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-3">Publicaciones de Grupos Ciclistas</h2>
+      <p class="text-ink-soft max-w-2xl mx-auto">Cada grupo aporta sus rutas, relatos y saberes. Leé las experiencias, descargá los trazados .gpx y sumate al legado SportDharma Ecosystem.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {grupos.map((g) => (
+        <div class="group block h-full rounded-2xl border border-white/10 bg-[#0f172a]/70 backdrop-blur-md p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E8530E]/50 hover:bg-[#0f172a]/85 hover:shadow-[0_0_40px_-8px_rgba(232,83,14,0.35)]">
+          <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-xs uppercase tracking-wider mb-2">{g.label}</p>
+          <h3 class="text-lg font-bold text-ink mb-3 group-hover:text-[#E8530E] dark:group-hover:text-orange-500 transition-colors">{g.title}</h3>
+          <div class="flex flex-wrap gap-2 mb-4">
+            {g.badges.map((b) => (
+              <span class="px-2.5 py-1 rounded-full bg-[#E8530E]/15 text-[#E8530E] dark:text-orange-400 text-xs font-bold border border-[#E8530E]/25">{b}</span>
+            ))}
+          </div>
+          <p class="text-ink-soft leading-relaxed text-sm mb-4">{g.desc}</p>
+          <span class="inline-flex items-center text-sm font-semibold text-[#E8530E] dark:text-orange-500 group-hover:translate-x-1 transition-transform">Explorar publicaciones →</span>
+        </div>
+      ))}
+    </div>
+    <p class="text-center text-xs text-ink-soft italic mt-8">Publicaciones de ejemplo. Tu grupo puede ocupar una de estas tarjetas enviando sus rutas a contact@sportdharmaecosystem.com.</p>
+  </div>
+</section>

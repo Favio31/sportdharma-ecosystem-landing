@@ -18,6 +18,7 @@ import PuentesSolidarios from '../../components/PuentesSolidarios.astro';
 import SponsorsSection from '../../components/SponsorsSection.astro';
 import CheckListSection from '../../components/CheckListSection.astro';
 import LogisticaViajeSection from '../../components/LogisticaViajeSection.astro';
+import GruposCiclistasSection from '../../components/GruposCiclistasSection.astro';
 import ComparteTuRutaSection from '../../components/ComparteTuRutaSection.astro';
 
 export async function getStaticPaths() {
@@ -281,6 +282,9 @@ const t = useTranslations(lang);
 <LogisticaViajeSection lang={lang} />
 
 <!-- ANTES DE PEDALEAR -->
+<!-- PUBLICACIONES DE GRUPOS CICLISTAS -->
+<GruposCiclistasSection lang={lang} />
+
 <CheckListSection lang={lang} />
 
 <!-- SUMATE AL PROYECTO -->
