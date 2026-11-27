@@ -168,7 +168,7 @@
     "label": "ECOSISTEMA",
     "title_1": "Página",
     "title_2": "Web",
-    "subtitle": "Contenido curado por humanos, no por algoritmos. Conocimiento accesible, verificable y libre de sesgos comerciales.",
+    "subtitle": "Stack moderno, ligero y 100% open source: Astro, Tailwind CSS, Vite PWA y arquitecturas multiagente. Contenido curado por humanos, conocimiento accesible y verificable.",
     "f1_title": "Contenido Curado por Humanos",
     "f1_desc": "Artículos, guías y recursos seleccionados por expertos en deporte, viaje y tecnología. Sin algoritmos opacos ni sesgos comerciales.",
     "f2_title": "Actualización Constante",
@@ -177,8 +177,15 @@
     "f3_desc": "Instalala como app en tu navegador. Funciona offline gracias al Service Worker. Acceso rápido desde cualquier dispositivo.",
     "f4_title": "Multi-idioma Nativo",
     "f4_desc": "Español e inglés desde el día 1. Selector con localStorage, sin cookies. Accesible para la comunidad global de deportistas.",
+    "f5_title": "Astro: rendimiento sin JavaScript innecesario",
+    "f5_desc": "Framework estÃ¡tico que genera pÃ¡ginas en tiempo de build. Cero hidrataciÃ³n por defecto, carga instantÃ¡nea y SEO nativo. La web vuela incluso en conexiones lentas.",
+    "f6_title": "Tailwind CSS: diseÃ±o responsivo atÃ³mico",
+    "f6_desc": "Sistema de utilidades atÃ³micas para componentes responsivos. Modo oscuro automÃ¡tico, jerarquÃa visual coherente y mantenimiento simplificado en todas las secciones.",
+    "f7_title": "MASF: curaciÃ³n inteligente con modelos locales",
+    "f7_desc": "Multi-Agent Swarm Framework con qwen2.5 y qwen3. ExtracciÃ³n, validaciÃ³n y publicaciÃ³n asistida por IA, con supervisiÃ³n humana final. Grounding verificable con citas textuales.",
     "placeholder_title": "Portal Web (Próximamente)",
-    "placeholder_desc": "Accesible desde cualquier navegador"
+    "placeholder_title": "Software 100% open source",
+    "placeholder_desc": "GNU AGPLv3 para el cÃ³digo, CC-BY-SA 4.0 para la documentaciÃ³n. Software soberano, auditado y libre de dependencias propietarias."
   },
   "app": {
     "page_title": "App Móvil | SportDharma Ecosystem",
