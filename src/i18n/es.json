@@ -183,7 +183,7 @@
     "f6_desc": "Sistema de utilidades atÃ³micas para componentes responsivos. Modo oscuro automÃ¡tico, jerarquÃa visual coherente y mantenimiento simplificado en todas las secciones.",
     "f7_title": "MASF: curaciÃ³n inteligente con modelos locales",
     "f7_desc": "Multi-Agent Swarm Framework con qwen2.5 y qwen3. ExtracciÃ³n, validaciÃ³n y publicaciÃ³n asistida por IA, con supervisiÃ³n humana final. Grounding verificable con citas textuales.",
-    "placeholder_title": "Portal Web (Próximamente)",
+    "f5_title": "Astro: rendimiento sin JavaScript innecesario",
     "placeholder_title": "Software 100% open source",
     "placeholder_desc": "GNU AGPLv3 para el cÃ³digo, CC-BY-SA 4.0 para la documentaciÃ³n. Software soberano, auditado y libre de dependencias propietarias."
   },
