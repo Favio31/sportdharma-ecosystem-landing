@@ -356,49 +356,72 @@ const t = useTranslations(lang);
 <p class="text-ink-soft text-lg max-w-2xl mx-auto mb-2">Productos verificados de aliados que comparten nuestros valores.</p>
 <p class="text-ink-soft text-lg max-w-2xl mx-auto mb-12">Tu compra nos hace crecer a todos: usuario, creador y proyecto.</p>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-      <!-- Card 1 -->
-      <a href="#" class="group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300">
-        <img src="/libro-ruggeri.webp" alt="Portada del libro Del Plata a La Habana" class="h-48 sm:h-56 md:h-64 w-full object-contain rounded-xl mb-4 bg-white/5 p-2" />
-        <h3 class="text-xl font-bold text-ink mb-1 group-hover:text-emerald-400 transition-colors">Del Plata a La Habana. América Latina en bicicleta.</h3>
-        <p class="text-xs text-ink-soft italic mb-2">Autor: Andrés Ruggeri</p>
-        <p class="text-sm text-ink-soft mb-4">Un viaje ciclista desde la Argentina a Cuba, realizado hace casi treinta años, con la finalidad de homenajear los cuarenta años de la Revolución Cubana (el 1 de enero de 1999) y recolectando firmas y haciendo actividades en contra del bloqueo estadounidense a la isla.</p>
-        <span class="inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">Ver producto →</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+      <a href='#' class='group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300'>
+        <div class='flex flex-col md:flex-row gap-6'>
+          <img src='/libro-ruggeri.webp' alt='Portada Del Plata a La Habana' class='w-40 md:w-48 h-64 object-contain rounded-lg bg-white/5 p-2 flex-shrink-0' />
+          <div class='flex-1'>
+            <h3 class='text-xl font-bold text-ink mb-1 group-hover:text-emerald-400 transition-colors'>Del Plata a La Habana. América Latina en bicicleta.</h3>
+            <p class='text-xs text-ink-soft italic mb-2'>Autor: Andrés Ruggeri</p>
+            <p class='text-sm text-ink-soft mb-4'>Un viaje ciclista desde la Argentina a Cuba, realizado hace casi treinta años, con la finalidad de homenajear los cuarenta años de la Revolución Cubana (el 1 de enero de 1999) y recolectando firmas y haciendo actividades en contra del bloqueo estadounidense a la isla.</p>
+            <span class='inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform'>Ver producto →</span>
+          </div>
+        </div>
       </a>
-      <!-- Card 2 -->
-      <a href="#" class="group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300">
-        <div class="h-40 bg-gray-800 rounded-xl mb-4 flex items-center justify-center text-gray-500">Imagen</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-emerald-400 transition-colors">Producto aliado 2</h3>
-        <p class="text-sm text-ink-soft mb-4">Descripción breve del producto o servicio de este aliado.</p>
-        <span class="inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">Ver producto →</span>
+      <a href='#' class='group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300'>
+        <div class='flex flex-col md:flex-row gap-6'>
+          <div class='w-40 md:w-48 h-64 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 flex-shrink-0'>Imagen</div>
+          <div class='flex-1'>
+            <h3 class='text-xl font-bold text-ink mb-1 group-hover:text-emerald-400 transition-colors'>Producto aliado 2</h3>
+            
+            <p class='text-sm text-ink-soft mb-4'>Descripción breve del producto o servicio de este aliado.</p>
+            <span class='inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform'>Ver producto →</span>
+          </div>
+        </div>
       </a>
-      <!-- Card 3 -->
-      <a href="#" class="group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300">
-        <div class="h-40 bg-gray-800 rounded-xl mb-4 flex items-center justify-center text-gray-500">Imagen</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-emerald-400 transition-colors">Producto aliado 3</h3>
-        <p class="text-sm text-ink-soft mb-4">Descripción breve del producto o servicio de este aliado.</p>
-        <span class="inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">Ver producto →</span>
+      <a href='#' class='group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300'>
+        <div class='flex flex-col md:flex-row gap-6'>
+          <div class='w-40 md:w-48 h-64 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 flex-shrink-0'>Imagen</div>
+          <div class='flex-1'>
+            <h3 class='text-xl font-bold text-ink mb-1 group-hover:text-emerald-400 transition-colors'>Producto aliado 3</h3>
+            
+            <p class='text-sm text-ink-soft mb-4'>Descripción breve del producto o servicio de este aliado.</p>
+            <span class='inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform'>Ver producto →</span>
+          </div>
+        </div>
       </a>
-      <!-- Card 4 -->
-      <a href="#" class="group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300">
-        <div class="h-40 bg-gray-800 rounded-xl mb-4 flex items-center justify-center text-gray-500">Imagen</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-emerald-400 transition-colors">Producto aliado 4</h3>
-        <p class="text-sm text-ink-soft mb-4">Descripción breve del producto o servicio de este aliado.</p>
-        <span class="inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">Ver producto →</span>
+      <a href='#' class='group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300'>
+        <div class='flex flex-col md:flex-row gap-6'>
+          <div class='w-40 md:w-48 h-64 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 flex-shrink-0'>Imagen</div>
+          <div class='flex-1'>
+            <h3 class='text-xl font-bold text-ink mb-1 group-hover:text-emerald-400 transition-colors'>Producto aliado 4</h3>
+            
+            <p class='text-sm text-ink-soft mb-4'>Descripción breve del producto o servicio de este aliado.</p>
+            <span class='inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform'>Ver producto →</span>
+          </div>
+        </div>
       </a>
-      <!-- Card 5 -->
-      <a href="#" class="group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300">
-        <div class="h-40 bg-gray-800 rounded-xl mb-4 flex items-center justify-center text-gray-500">Imagen</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-emerald-400 transition-colors">Producto aliado 5</h3>
-        <p class="text-sm text-ink-soft mb-4">Descripción breve del producto o servicio de este aliado.</p>
-        <span class="inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">Ver producto →</span>
+      <a href='#' class='group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300'>
+        <div class='flex flex-col md:flex-row gap-6'>
+          <div class='w-40 md:w-48 h-64 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 flex-shrink-0'>Imagen</div>
+          <div class='flex-1'>
+            <h3 class='text-xl font-bold text-ink mb-1 group-hover:text-emerald-400 transition-colors'>Producto aliado 5</h3>
+            
+            <p class='text-sm text-ink-soft mb-4'>Descripción breve del producto o servicio de este aliado.</p>
+            <span class='inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform'>Ver producto →</span>
+          </div>
+        </div>
       </a>
-      <!-- Card 6 -->
-      <a href="#" class="group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300">
-        <div class="h-40 bg-gray-800 rounded-xl mb-4 flex items-center justify-center text-gray-500">Imagen</div>
-        <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-emerald-400 transition-colors">Producto aliado 6</h3>
-        <p class="text-sm text-ink-soft mb-4">Descripción breve del producto o servicio de este aliado.</p>
-        <span class="inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">Ver producto →</span>
+      <a href='#' class='group block rounded-2xl border border-gray-700 bg-surface/50 p-6 hover:border-emerald-500/50 hover:bg-surface transition-all duration-300'>
+        <div class='flex flex-col md:flex-row gap-6'>
+          <div class='w-40 md:w-48 h-64 bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 flex-shrink-0'>Imagen</div>
+          <div class='flex-1'>
+            <h3 class='text-xl font-bold text-ink mb-1 group-hover:text-emerald-400 transition-colors'>Producto aliado 6</h3>
+            
+            <p class='text-sm text-ink-soft mb-4'>Descripción breve del producto o servicio de este aliado.</p>
+            <span class='inline-flex items-center text-sm font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform'>Ver producto →</span>
+          </div>
+        </div>
       </a>
     </div>
   </div>
