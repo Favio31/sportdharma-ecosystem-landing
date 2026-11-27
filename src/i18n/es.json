@@ -179,9 +179,9 @@
     "f4_desc": "Español e inglés desde el día 1. Selector con localStorage, sin cookies. Accesible para la comunidad global de deportistas.",
     "f5_title": "Astro: rendimiento sin JavaScript innecesario",
     "f5_desc": "Framework estático que genera páginas en tiempo de build. Cero hidratación por defecto, carga instantánea y SEO nativo. La web vuela incluso en conexiones lentas.",
-    "f6_title": "Tailwind CSS: diseÃ±o responsivo atÃ³mico",
+    "f6_title": "Tailwind CSS: diseño responsivo atómico",
     "f6_desc": "Sistema de utilidades atómicas para componentes responsivos. Modo oscuro automático, jerarquía visual coherente y mantenimiento simplificado en todas las secciones.",
-    "f7_title": "MASF: curaciÃ³n inteligente con modelos locales",
+    "f7_title": "MASF: curación inteligente con modelos locales",
     "f7_desc": "Multi-Agent Swarm Framework con qwen2.5 y qwen3. Extracción, validación y publicación asistida por IA, con supervisión humana final. Grounding verificable con citas textuales.",
     "f5_title": "Astro: rendimiento sin JavaScript innecesario",
     "placeholder_title": "Software 100% open source",
@@ -205,7 +205,7 @@
     "placeholder_desc": "Disponible para Android e iOS",
     "f5_title": "Dharma Safe: Protección y Comunicación Offline",
     "f5_desc": "Sistema de protección del usuario con geolocalización en tiempo real. Con radio LoRa, pedí ayuda en emergencias o coordiná con tu grupo de deportistas sin necesidad de internet. Comunicación 100% offline.",
-    "f6_title": "Dharma Energy: Telemetría Soberana",
+    "f6_title": "Tailwind CSS: diseño responsivo atómico",
     "f6_desc": "Ingesta local de archivos .GPX, .FIT y .KML sin APIs de terceros. Modelo determinista de fatiga acumulada y logística de reabastecimiento nutricional e hidratación mapeada en la Dharma-DB. Tu energía, tus datos."
   },
   "masf": {
