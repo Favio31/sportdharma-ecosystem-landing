@@ -7,9 +7,8 @@ const grupos = [
   { label: 'MARRAKECH · MARRUECOS', title: 'Cicloviajeros del Atlas', desc: 'Cruzamos el desierto y las montañas del Atlas, uniendo rutas ancestrales con hospitalidad bereber.', badges: ['29 miembros', '60 rutas', '1.900 km'] }
 ];
 ---
-<section class="relative overflow-hidden py-20 px-4 md:px-8 bg-[#0f172a]">
-  <img src="/grupos-ciclistas-bg.webp" alt="" class="absolute inset-x-0 top-0 w-full aspect-[4/3] object-cover object-[center_70%] md:object-[center_60%] [mask-image:linear-gradient(to_bottom,black_70%,transparent)] md:h-full md:aspect-auto md:[mask-image:none]" aria-hidden="true" />
-  <div class="absolute inset-0 bg-gradient-to-b from-[#0f172a]/70 via-[#0f172a]/65 to-[#0f172a]/72"></div>
+<section class="relative overflow-hidden py-20 px-4 md:px-8 bg-[url('/grupos-ciclistas-bg.webp')] bg-cover bg-center bg-fixed">
+  <div class="absolute inset-0 bg-[#0f172a]/40"></div>
   <div class="relative max-w-6xl mx-auto">
     <div class="text-center mb-14">
       <p class="text-[#E8530E] dark:text-orange-500 font-semibold text-sm uppercase tracking-wider mb-2">Comunidad en movimiento</p>
